@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เว็บไซต์แบบร่าง (Draft Website)</title>
+    <style>
+        /* รีเซ็ตค่าพื้นฐาน */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ส่วนหัว (Navigation Bar) */
+        header {
+            background-color: #1a252f;
+            color: #ffffff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1abc9c;
+        }
+
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #1abc9c;
+        }
+
+        /* ส่วนต้อนรับ (Hero Section) */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50, #1abc9c);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero .btn {
+            background-color: #ffffff;
+            color: #2c3e50;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .hero .btn:hover {
+            background-color: #16a085;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* ส่วนเนื้อหาหลัก (Main Content) */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: #1abc9c;
+            margin: 10px auto 0;
+        }
+
+        /* ส่วนการ์ดบริการ (Services Grid) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card icon {
+            font-size: 40px;
+            color: #1abc9c;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        /* ส่วนท้าย (Footer) */
+        footer {
+            background-color: #1a252f;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+
+        /* รองรับการแสดงผลบนมือถือ */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            header nav {
+                margin-top: 15px;
+            }
+            header nav a {
+                margin: 0 10px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">MyBrand</div>
+        <nav>
+            <a href="#">หน้าแรก</a>
+            <a href="#">เกี่ยวกับเรา</a>
+            <a href="#">บริการ</a>
+            <a href="#">ติดต่อเรา</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>ยินดีต้อนรับสู่ เว็บไซต์แบบร่าง</h1>
+        <p>เริ่มต้นสร้างสรรค์ไอเดียของคุณให้กลายเป็นจริงได้ที่นี่</p>
+        <a href="#" class="btn">เริ่มต้นใช้งาน</a>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h2 class="section-title">บริการของเรา</h2>
+        
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <icon>🎨</icon>
+                <h3>การออกแบบ</h3>
+                <p>ดีไซน์หน้าเว็บให้สวยงาม ทันสมัย และตอบโจทย์ผู้ใช้งานในทุกแพลตฟอร์ม</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <icon>💻</icon>
+                <h3>การพัฒนา</h3>
+                <p>เขียนโค้ดด้วยโครงสร้างที่สะอาด ปลอดภัย และมีความเร็วในการโหลดสูง</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <icon>📈</icon>
+                <h3>การตลาดออนไลน์</h3>
+                <p>ช่วยให้เว็บไซต์ของคุณติดหน้าแรกบนเครื่องมือค้นหาและเข้าถึงกลุ่มเป้าหมาย</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 MyBrand. All Rights Reserved. | ร่างขึ้นเพื่อเป็นตัวอย่าง</p>
+    </footer>
+
+</body>
+</html>
