@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Assistant | On-Device AI Visual Assistant for iPhone</title>
+    <meta name="description" content="Vision Assistant is a 100% on-device visual assistant for iPhone. YOLOv11 object detection, LiDAR scene depth, Whisper STT, and Local LLM reasoning.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons (Lucide Icons via CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Subtle Background Glows -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo-container">
+                <img src="assets/logo.png" alt="Vision Assistant Logo" class="logo-img">
+                <span class="logo-text">Vision Assistant</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#features" class="nav-link">
+                    <span class="lang-en">Features</span>
+                    <span class="lang-th">ฟีเจอร์</span>
+                </a>
+                <a href="#pipeline" class="nav-link">
+                    <span class="lang-en">Pipeline</span>
+                    <span class="lang-th">การทำงาน</span>
+                </a>
+                <a href="#setup" class="nav-link">
+                    <span class="lang-en">Setup</span>
+                    <span class="lang-th">การตั้งค่า</span>
+                </a>
+                <a href="#" id="register-link" class="nav-link nav-btn-register">
+                    <span class="lang-en">Beta Trial</span>
+                    <span class="lang-th">ลงทะเบียนทดลองใช้งาน</span>
+                </a>
+            </nav>
+
+            <div class="lang-selector">
+                <button class="lang-toggle-btn active" data-value="en">EN</button>
+                <button class="lang-toggle-btn" data-value="th">TH</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-info reveal">
+                    <div class="badge">
+                        <i data-lucide="cpu" class="badge-icon"></i>
+                        <span class="lang-en">100% On-Device AI</span>
+                        <span class="lang-th">ประมวลผลบนเครื่อง 100%</span>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="lang-en">Private Visual Intelligence for iPhone</span>
+                        <span class="lang-th">ระบบวิเคราะห์ภาพอัจฉริยะแบบส่วนตัวบน iPhone</span>
+                    </h1>
+                    <p class="hero-description">
+                        <span class="lang-en">The camera sees objects, LiDAR measures distance, Whisper listens, a local LLM reasons, and TTS speaks. Everything runs directly on your Apple Neural Engine. No cloud, no tracking.</span>
+                        <span class="lang-th">กล้องมองเห็นวัตถุ LiDAR วัดระยะทาง Whisper รับฟังเสียง โมเดลภาษาขนาดใหญ่ประมวลผล และสังเคราะห์เสียงกลับ ทุกอย่างทำงานบน Apple Neural Engine ในเครื่องโดยตรง ไม่ต้องเชื่อมต่อคลาวด์ ปลอดภัยและเป็นส่วนตัว</span>
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#setup" class="btn btn-primary">
+                            <span class="lang-en">Configure Setup</span>
+                            <span class="lang-th">เริ่มต้นตั้งค่า</span>
+                            <i data-lucide="arrow-right" class="btn-icon"></i>
+                        </a>
+                        <a href="#features" class="btn btn-secondary">
+                            <span class="lang-en">Explore Features</span>
+                            <span class="lang-th">สำรวจฟีเจอร์</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual reveal">
+                    <div class="logo-hero-wrapper">
+                        <div class="logo-hero-glow"></div>
+                        <div class="logo-hero-card">
+                            <img src="assets/logo.png" alt="Vision Assistant Logo" class="logo-hero-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-container grid grid-3">
+                <div class="stat-card reveal">
+                    <div class="stat-icon-wrapper color-cyan">
+                        <i data-lucide="shield-check" class="stat-icon"></i>
+                    </div>
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">
+                        <span class="lang-en">On-Device Privacy</span>
+                        <span class="lang-th">ความเป็นส่วนตัวบนเครื่อง</span>
+                    </div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="stat-icon-wrapper color-indigo">
+                        <i data-lucide="zap" class="stat-icon"></i>
+                    </div>
+                    <div class="stat-number">&lt; 10ms</div>
+                    <div class="stat-label">
+                        <span class="lang-en">YOLO Object Detection Latency</span>
+                        <span class="lang-th">ความหน่วงตรวจจับวัตถุ YOLO</span>
+                    </div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="stat-icon-wrapper color-pink">
+                        <i data-lucide="cloud-off" class="stat-icon"></i>
+                    </div>
+                    <div class="stat-number">Zero</div>
+                    <div class="stat-label">
+                        <span class="lang-en">External Network Dependency</span>
+                        <span class="lang-th">ความพึ่งพาเครือข่ายภายนอก</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interface Preview Section -->
+        <section class="preview-section">
+            <div class="section-header reveal">
+                <h2 class="section-title">
+                    <span class="lang-en">Intuitive Mobile Interface</span>
+                    <span class="lang-th">อินเทอร์เฟซใช้งานง่ายบนมือถือ</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-en">A clean, dark mode SwiftUI experience designed for rapid, heads-up interactions.</span>
+                    <span class="lang-th">อินเทอร์เฟซภาษา Swift บนหน้าจอธีมมืด ออกแบบมาเพื่อการตอบสนองที่รวดเร็วและเป็นธรรมชาติ</span>
+                </p>
+            </div>
+            
+            <div class="preview-container reveal">
+                <div class="phone-mockup-wrapper">
+                    <div class="phone-glow"></div>
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <img src="assets/screenshot.png" alt="Vision Assistant App Screenshot" class="screenshot-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section id="features" class="features-section">
+            <div class="section-header reveal">
+                <h2 class="section-title">
+                    <span class="lang-en">Core Architecture Modules</span>
+                    <span class="lang-th">โมดูลสถาปัตยกรรมหลัก</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-en">A modular approach combining native Swift APIs with powerful edge computing frameworks.</span>
+                    <span class="lang-th">ระบบแบบแยกโมดูลที่รวม API ดั้งเดิมของ Swift เข้ากับเฟรมเวิร์กการคำนวณที่ขอบแบบทรงประสิทธิภาพ</span>
+                </p>
+            </div>
+
+            <div class="features-grid grid grid-3">
+                <!-- Feature 1: Perception -->
+                <div class="feature-card reveal">
+                    <div class="feature-header">
+                        <div class="feature-icon-box color-indigo">
+                            <i data-lucide="eye" class="feature-icon"></i>
+                        </div>
+                        <h3 class="feature-title">
+                            <span class="lang-en">Perception (YOLOv11)</span>
+                            <span class="lang-th">การรับรู้ภาพ (YOLOv11)</span>
+                        </h3>
+                    </div>
+                    <p class="feature-description">
+                        <span class="lang-en">Real-time visual detection powered by YOLOv11 exported to CoreML. Harnesses the Apple Neural Engine (ANE) via Vision framework for sub-10ms performance.</span>
+                        <span class="lang-th">การตรวจจับภาพแบบเรียลไทม์ผ่านโมเดล YOLOv11 ที่แปลงเป็น CoreML ทำงานร่วมกับเฟรมเวิร์ก Vision บน Neural Engine ของ Apple ได้เร็วต่ำกว่า 10ms</span>
+                    </p>
+                </div>
+
+                <!-- Feature 2: Depth -->
+                <div class="feature-card reveal">
+                    <div class="feature-header">
+                        <div class="feature-icon-box color-cyan">
+                            <i data-lucide="radar" class="feature-icon"></i>
+                        </div>
+                        <h3 class="feature-title">
+                            <span class="lang-en">LiDAR Depth Sensing</span>
+                            <span class="lang-th">ระยะชัดลึกด้วย LiDAR</span>
+                        </h3>
+                    </div>
+                    <p class="feature-description">
+                        <span class="lang-en">Utilizes ARKit <code>sceneDepth</code> on Pro iPhones. Measures precise physical coordinates in meters, anchoring physical distance data to every YOLO object bounding box.</span>
+                        <span class="lang-th">ใช้ ARKit <code>sceneDepth</code> บน iPhone รุ่น Pro เพื่อคำนวณและปักหมุดระยะห่างของวัตถุแต่ละชิ้นในแบบเมตรจริงได้อย่างแม่นยำ</span>
+                    </p>
+                </div>
+
+                <!-- Feature 3: Listening -->
+                <div class="feature-card reveal">
+                    <div class="feature-header">
+                        <div class="feature-icon-box color-emerald">
+                            <i data-lucide="mic" class="feature-icon"></i>
+                        </div>
+                        <h3 class="feature-title">
+                            <span class="lang-en">Offline Speech (Whisper)</span>
+                            <span class="lang-th">การรับฟังออฟไลน์ (Whisper)</span>
+                        </h3>
+                    </div>
+                    <p class="feature-description">
+                        <span class="lang-en">Local Voice Activity Detection (VAD) coupled with Apple Speech/WhisperKit. Seamlessly transcripts voice instructions into textual queries entirely local.</span>
+                        <span class="lang-th">ระบบตรวจจับเสียงพูด (VAD) ในเครื่อง ทำงานร่วมกับ Apple Speech และพร้อมอัปเกรดใช้งาน WhisperKit เพื่อถอดเสียงคำสั่งเป็นข้อความแบบออฟไลน์</span>
+                    </p>
+                </div>
+
+                <!-- Feature 4: Reasoning -->
+                <div class="feature-card reveal">
+                    <div class="feature-header">
+                        <div class="feature-icon-box color-pink">
+                            <i data-lucide="brain" class="feature-icon"></i>
+                        </div>
+                        <h3 class="feature-title">
+                            <span class="lang-en">Local LLM Reasoning</span>
+                            <span class="lang-th">การประมวลความคิด LLM</span>
+                        </h3>
+                    </div>
+                    <p class="feature-description">
+                        <span class="lang-en">Integrates <code>llama.cpp</code> via <code>LLM.swift</code>. Feeds scene layout context (YOLO classes + LiDAR depth) to local models like Qwen or Llama 3 for intelligent answers.</span>
+                        <span class="lang-th">ผสานรวม <code>llama.cpp</code> ผ่าน <code>LLM.swift</code> ส่งบริบทของสภาพแวดล้อม (ประเภทวัตถุและระยะ LiDAR) ให้โมเดลภาษาขนาดใหญ่ที่ประมวลผลบนเครื่อง (เช่น Qwen หรือ Llama 3)</span>
+                    </p>
+                </div>
+
+                <!-- Feature 5: Voice -->
+                <div class="feature-card reveal">
+                    <div class="feature-header">
+                        <div class="feature-icon-box color-orange">
+                            <i data-lucide="volume-2" class="feature-icon"></i>
+                        </div>
+                        <h3 class="feature-title">
+                            <span class="lang-en">TTS Synthesis</span>
+                            <span class="lang-th">การตอบกลับด้วยเสียงพูด</span>
+                        </h3>
+                    </div>
+                    <p class="feature-description">
+                        <span class="lang-en">Brings answers to life using standard Apple iOS AVSpeechSynthesizer, with customizable support for Piper high-fidelity offline TTS via sherpa-onnx.</span>
+                        <span class="lang-th">แปลงข้อความคำตอบเป็นเสียงพูดธรรมชาติผ่าน AVSpeechSynthesizer ของระบบ หรือสามารถอัปเกรดเป็น Piper TTS คุณภาพสูงแบบออฟไลน์ผ่านเฟรมเวิร์ก sherpa-onnx</span>
+                    </p>
+                </div>
+
+                <!-- Feature 6: Model Hub -->
+                <div class="feature-card reveal">
+                    <div class="feature-header">
+                        <div class="feature-icon-box color-purple">
+                            <i data-lucide="download-cloud" class="feature-icon"></i>
+                        </div>
+                        <h3 class="feature-title">
+                            <span class="lang-en">On-Device Model Hub</span>
+                            <span class="lang-th">ศูนย์จัดการโมเดลในเครื่อง</span>
+                        </h3>
+                    </div>
+                    <p class="feature-description">
+                        <span class="lang-en">A catalog built in SwiftUI. Enables dynamic downloading, compiling, switching, and clearing weights per category (YOLO models, LLM binaries, and TTS voices).</span>
+                        <span class="lang-th">แค็ตตาล็อกและระบบดาวน์โหลดในแอป ให้ผู้ใช้สามารถเลือกดาวน์โหลด ติดตั้ง สลับสับเปลี่ยน หรือลบโมเดลและเสียงแต่ละประเภทได้อย่างอิสระ</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pipeline / Interaction Section -->
+        <section id="pipeline" class="pipeline-section">
+            <div class="section-header reveal">
+                <h2 class="section-title">
+                    <span class="lang-en">Real-Time Processing Flow</span>
+                    <span class="lang-th">การไหลของข้อมูลแบบเรียลไทม์</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-en">Tap each stage of the pipeline to see how sensory data transforms into voice intelligence.</span>
+                    <span class="lang-th">แตะที่แต่ละขั้นตอนด้านล่างเพื่อเรียนรู้วิธีการทำงานในการเปลี่ยนข้อมูลภาพและเสียงสู่ความรู้ความเข้าใจ</span>
+                </p>
+            </div>
+
+            <!-- Flowchart Container -->
+            <div class="pipeline-container reveal">
+                <div class="pipeline-flow">
+                    <!-- Step 1 -->
+                    <div class="pipeline-node" data-target="info-sensors">
+                        <div class="node-icon-wrapper color-cyan">
+                            <i data-lucide="camera" class="node-icon"></i>
+                        </div>
+                        <h4 class="node-title">
+                            <span class="lang-en">1. Sensors</span>
+                            <span class="lang-th">1. เซ็นเซอร์</span>
+                        </h4>
+                        <p class="node-meta">Camera, LiDAR, Mic</p>
+                        <div class="node-pulse"></div>
+                    </div>
+
+                    <div class="pipeline-connector active">
+                        <div class="connector-line"></div>
+                        <i data-lucide="chevron-right" class="connector-arrow"></i>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="pipeline-node" data-target="info-perception">
+                        <div class="node-icon-wrapper color-indigo">
+                            <i data-lucide="activity" class="node-icon"></i>
+                        </div>
+                        <h4 class="node-title">
+                            <span class="lang-en">2. Perception</span>
+                            <span class="lang-th">2. การรับรู้</span>
+                        </h4>
+                        <p class="node-meta">YOLO + LiDAR Depth</p>
+                        <div class="node-pulse"></div>
+                    </div>
+
+                    <div class="pipeline-connector">
+                        <div class="connector-line"></div>
+                        <i data-lucide="chevron-right" class="connector-arrow"></i>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="pipeline-node" data-target="info-coordinator">
+                        <div class="node-icon-wrapper color-pink">
+                            <i data-lucide="git-branch" class="node-icon"></i>
+                        </div>
+                        <h4 class="node-title">
+                            <span class="lang-en">3. Coordinator</span>
+                            <span class="lang-th">3. ผู้ประสานงาน</span>
+                        </h4>
+                        <p class="node-meta">Scene Context Builder</p>
+                        <div class="node-pulse"></div>
+                    </div>
+
+                    <div class="pipeline-connector">
+                        <div class="connector-line"></div>
+                        <i data-lucide="chevron-right" class="connector-arrow"></i>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="pipeline-node" data-target="info-reasoning">
+                        <div class="node-icon-wrapper color-purple">
+                            <i data-lucide="server" class="node-icon"></i>
+                        </div>
+                        <h4 class="node-title">
+                            <span class="lang-en">4. Local LLM</span>
+                            <span class="lang-th">4. ประมวลความคิด</span>
+                        </h4>
+                        <p class="node-meta">llama.cpp / Qwen</p>
+                        <div class="node-pulse"></div>
+                    </div>
+
+                    <div class="pipeline-connector">
+                        <div class="connector-line"></div>
+                        <i data-lucide="chevron-right" class="connector-arrow"></i>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="pipeline-node" data-target="info-output">
+                        <div class="node-icon-wrapper color-orange">
+                            <i data-lucide="message-square" class="node-icon"></i>
+                        </div>
+                        <h4 class="node-title">
+                            <span class="lang-en">5. Output</span>
+                            <span class="lang-th">5. การตอบกลับ</span>
+                        </h4>
+                        <p class="node-meta">Piper TTS / UI Speech</p>
+                        <div class="node-pulse"></div>
+                    </div>
+                </div>
+
+                <!-- Info Cards that toggle on tap -->
+                <div class="pipeline-details">
+                    <div id="info-sensors" class="detail-card active">
+                        <h3 class="detail-title color-cyan">
+                            <span class="lang-en">Stage 1: Raw Sensors Feed & Data Ingestion</span>
+                            <span class="lang-th">ขั้นตอนที่ 1: เซ็นเซอร์หลัก & แหล่งนำเข้าข้อมูล</span>
+                        </h3>
+                        <p class="detail-description">
+                            <span class="lang-en">A high-performance hardware sensor pipeline built on top of Apple's native frameworks. The high-FPS video feed is continuously captured using <code>AVCaptureSession</code> from <code>AVFoundation</code>. Simultaneously, on LiDAR-equipped devices (iPhone 12 Pro and later), scene depth is calculated in real-time at 30Hz using ARKit's <code>sceneDepth</code>, constructing a millimeter-precise 3D depth map. Meanwhile, the microphone stream continuously outputs raw PCM buffers monitored by an energy-based Voice Activity Detector (VAD) to track start and end points of speech off-cloud.</span>
+                            <span class="lang-th">ชุดเซ็นเซอร์ประสิทธิภาพสูงทำงานผ่าน API ดั้งเดิมของ Apple ดึงภาพวิดีโอแบบสดเฟรมเรตสูงด้วย <code>AVCaptureSession</code> จาก <code>AVFoundation</code> ขณะเดียวกันสำหรับเครื่องที่มี LiDAR (iPhone 12 Pro เป็นต้นไป) ระบบจะสแกนความลึกรอบตัวผ่านแผนผัง <code>sceneDepth</code> ของ ARKit ที่ความถี่ 30Hz เพื่อคำนวณระยะเชิงพื้นที่จริงแม่นยำระดับมิลลิเมตร ควบคู่ไปกับการดึงสัญญาณเสียงไมค์ดิบ PCM มาตรวจสอบสัญญาณการพูดผ่านตัวประมวลผล VAD ในเครื่อง</span>
+                        </p>
+                    </div>
+
+                    <div id="info-perception" class="detail-card">
+                        <h3 class="detail-title color-indigo">
+                            <span class="lang-en">Stage 2: Real-time Perception Engine (CoreML)</span>
+                            <span class="lang-th">ขั้นตอนที่ 2: ระบบวิเคราะห์การรับรู้ภาพจริง (CoreML)</span>
+                        </h3>
+                        <p class="detail-description">
+                            <span class="lang-en">The raw image frames are passed directly to <code>YOLODetector.swift</code>, which runs the local YOLOv11 object detection model compiled into <code>.mlmodelc</code> format. This runs 100% on-device on the Apple Neural Engine (ANE) via the Vision framework, achieving sub-10ms latencies. Once objects (such as person, cup, chair, door) are detected and bounding boxes are identified, <code>DepthSampler.swift</code> reads the center of each bounding box and matches it with the ARKit LiDAR depth buffer to determine the precise distance in meters for each detection.</span>
+                            <span class="lang-th">เฟรมภาพสดจะถูกส่งไปประมวลผลที่ <code>YOLODetector.swift</code> ซึ่งรันโมเดล YOLOv11 ที่แปลงเป็นฟอร์แมต <code>.mlmodelc</code> เพื่อประสิทธิภาพความเร็วสูงสุดบนชิป Apple Neural Engine (ANE) ผ่านเฟรมเวิร์ก Vision ของระบบด้วยความเร็วเฉลี่ยต่ำกว่า 10ms เมื่อตรวจพบพิกัดวัตถุ (เช่น คน, โทรศัพท์, แก้วน้ำ) <code>DepthSampler.swift</code> จะนำพิกัดจุดกึ่งกลางของวัตถุไปเทียบกับความลึกใน LiDAR depth buffer เพื่อวัดระยะเชิงฟิสิกส์จริงออกมาเป็นหน่วยเมตร</span>
+                        </p>
+                    </div>
+
+                    <div id="info-coordinator" class="detail-card">
+                        <h3 class="detail-title color-pink">
+                            <span class="lang-en">Stage 3: Scene Context Builder & Orchestration</span>
+                            <span class="lang-th">ขั้นตอนที่ 3: รวมบริบทและควบคุมการทำงาน</span>
+                        </h3>
+                        <p class="detail-description">
+                            <span class="lang-en">The <code>AssistantCoordinator</code> serves as the central brain orchestrating the event loop. Once VAD detects that user speech has ended or a message is submitted, the coordinator grabs the latest <code>SceneSnapshot</code> (holding the active list of detected YOLO classes and their LiDAR depth dimensions). The <code>SceneContextBuilder</code> immediately translates this spatial layout into a structured, semantic text description (e.g. "A cup at 0.4 meters, a laptop at 0.8 meters"). This scene summary is prepended to the system prompt to feed the LLM.</span>
+                            <span class="lang-th"><code>AssistantCoordinator</code> ทำหน้าที่เป็นศูนย์กลางคอยควบคุมการทำงาน เมื่อ VAD ตรวจพบว่าผู้ใช้พูดจบหรือเมื่อผู้ใช้พิมพ์ส่งคำถาม ระบบจะบันทึกสถานะแวดล้อมล่าสุด <code>SceneSnapshot</code> (ซึ่งรวมประเภทวัตถุและระยะเชิงพื้นที่จริงจากกล้องและ LiDAR เช่น "แก้วน้ำอยู่ใกล้ห่าง 0.4 เมตร, คอมพิวเตอร์ห่าง 0.8 เมตร") จากนั้น <code>SceneContextBuilder</code> จะนำพิกัดเหล่านี้ไปแปลงเป็นข้อความบรรยายภาษาธรรมชาติ เพื่อนำไปแนบเป็น System Prompt ให้โมเดลภาษาเข้าใจสภาพแวดล้อมแวดล้อมรอบตัวก่อนวิเคราะห์ตอบกลับ</span>
+                        </p>
+                    </div>
+
+                    <div id="info-reasoning" class="detail-card">
+                        <h3 class="detail-title color-purple">
+                            <span class="lang-en">Stage 4: Local LLM Processing (llama.cpp)</span>
+                            <span class="lang-th">ขั้นตอนที่ 4: โมเดลภาษาประมวลความคิดในเครื่อง (llama.cpp)</span>
+                        </h3>
+                        <p class="detail-description">
+                            <span class="lang-en">The compiled scene prompt, chat history, and user question are directed to the offline <code>LLMService</code>. Leveraging the <code>LLM.swift</code> Swift Package and the compiled C++ core of <code>llama.cpp</code>, the app runs large language models (like Qwen-2.5-7B or Llama-3-8B) on the unified memory of Apple Silicon with GPU acceleration. The model streams token responses word-by-word back to the coordinator, updating the chat bubbles on screen instantly with zero network latency, keeping user query data private and secure on-device.</span>
+                            <span class="lang-th">ข้อความข้อมูลห้องสนทนา ประวัติแชต และคำบรรยายพื้นที่แวดล้อมจะถูกป้อนเข้าสู่ <code>LLMService</code> ซึ่งทำงานร่วมกับแพ็คเกจ <code>LLM.swift</code> และแกนภาษา C++ ของ <code>llama.cpp</code> เพื่อรันโมเดลภาษาขนาดใหญ่ เช่น Qwen-2.5-7B หรือ Llama-3-8B บนหน่วยความจำร่วม (Unified Memory) ด้วยการ์ดจอผ่าน Metal API ระบบจะทำการถอดรหัสคำตอบแบบ Token Streaming ค่อย ๆ ส่งตัวอักษรกลับมาแสดงผลทันทีโดยปราศจากความหน่วงจากอินเทอร์เน็ตและเก็บข้อมูลส่วนตัวไว้บนเครื่อง</span>
+                        </p>
+                    </div>
+
+                    <div id="info-output" class="detail-card">
+                        <h3 class="detail-title color-orange">
+                            <span class="lang-en">Stage 5: Voice Feedback & UI Update</span>
+                            <span class="lang-th">ขั้นตอนที่ 5: การสังเคราะห์เสียงพูดและการแสดงผล</span>
+                        </h3>
+                        <p class="detail-description">
+                            <span class="lang-en">As word tokens stream in, the SwiftUI chat interface renders the updates fluidly. Concurrently, sentences are queued into the <code>TTSService</code>. High-fidelity audio is synthesized offline. By default, it uses Apple's native <code>AVSpeechSynthesizer</code>, but it can be configured to use a custom Piper TTS model via the <code>sherpa-onnx</code> framework. The synthesized PCM audio is queued and played via an audio node, creating a seamless, interactive voice feedback loop for eyes-free navigation.</span>
+                            <span class="lang-th">เมื่อโมเดลประมวลผลคำตอบออกมา หน้าจอข้อความจะอัปเดตกล่องแชต SwiftUI แบบเรียลไทม์ ขณะเดียวกันประโยคคำตอบจะถูกจัดสรรเข้าคิวส่งให้ <code>TTSService</code> เพื่อสังเคราะห์เสียงพูดออฟไลน์คุณภาพสูง โดยระบบรองรับทั้งสังเคราะห์เสียงพูดเริ่มต้น (`AVSpeechSynthesizer`) ของ iOS หรือโมเดลสังเคราะห์เสียงที่เป็นธรรมชาติของ Piper TTS ผ่านเฟรมเวิร์ก `sherpa-onnx` เพื่อนำสัญญาณ PCM ที่ได้ส่งออกไปเปิดผ่านลำโพงของ iPhone ทำให้ผู้ใช้สนทนาโต้ตอบและรับทราบข้อมูลได้อย่างราบรื่นโดยไม่ต้องมองจอ</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Setup / Code Documentation Section -->
+        <section id="setup" class="setup-section">
+            <div class="section-header reveal">
+                <h2 class="section-title">
+                    <span class="lang-en">Developer Quickstart Guide</span>
+                    <span class="lang-th">คู่มือการเริ่มต้นใช้งานสำหรับนักพัฒนา</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-en">Configure keys, setup dependency packages, and export models to compile the app.</span>
+                    <span class="lang-th">วิธีตั้งค่าคีย์ ตั้งค่าแพ็คเกจ และคอมไพล์โมเดลเพื่อให้แอปเริ่มทำงานบนอุปกรณ์ของคุณ</span>
+                </p>
+            </div>
+
+            <!-- Setup Container with Tabs -->
+            <div class="setup-container reveal">
+                <div class="setup-tabs">
+                    <button class="setup-tab-btn active" data-target="tab-keys">
+                        <i data-lucide="key" class="tab-btn-icon"></i>
+                        <span class="lang-en">1. API Keys Config</span>
+                        <span class="lang-th">1. ตั้งค่าคีย์ API</span>
+                    </button>
+                    <button class="setup-tab-btn" data-target="tab-xcode">
+                        <i data-lucide="code-2" class="tab-btn-icon"></i>
+                        <span class="lang-en">2. Xcode Structure</span>
+                        <span class="lang-th">2. โครงสร้าง Xcode</span>
+                    </button>
+                    <button class="setup-tab-btn" data-target="tab-yolo">
+                        <i data-lucide="box" class="tab-btn-icon"></i>
+                        <span class="lang-en">3. CoreML Export</span>
+                        <span class="lang-th">3. แปลงโมเดล CoreML</span>
+                    </button>
+                </div>
+
+                <div class="setup-tab-content">
+                    <!-- Tab 1: API Keys -->
+                    <div id="tab-keys" class="tab-pane active">
+                        <div class="tab-pane-header">
+                            <h4 class="pane-title">
+                                <span class="lang-en">Configure Settings & Key File</span>
+                                <span class="lang-th">การตั้งค่าไฟล์ APIKeys.swift</span>
+                            </h4>
+                            <p class="pane-subtitle">
+                                <span class="lang-en">Define keys in <code>VisionAssistant/Shared/Settings/APIKeys.swift</code>. Standard local fallbacks are active if empty.</span>
+                                <span class="lang-th">กำหนดคีย์ในไฟล์ <code>APIKeys.swift</code> แอปจะใช้วิธีคำนวณสำรองในเครื่องถ้าปล่อยให้ว่างไว้</span>
+                            </p>
+                        </div>
+                        <div class="code-block-wrapper">
+                            <div class="code-block-header">
+                                <span class="code-filename">APIKeys.swift</span>
+                                <button class="copy-btn" data-clipboard-target="#code-keys">
+                                    <i data-lucide="copy" class="copy-icon"></i>
+                                    <span class="lang-en">Copy</span>
+                                    <span class="lang-th">คัดลอก</span>
+                                </button>
+                            </div>
+                            <pre><code id="code-keys" class="language-swift">import Foundation
+
+struct APIKeys {
+    // Used for online TTS (OpenAI) and fallback LLM (GPT-4o-mini)
+    static let openAIKey = "your-openai-api-key-here"
+    
+    // Used for ultra-fast online LLM inferences (Llama 3, Mixtral)
+    static let groqKey = "your-groq-api-key-here"
+    
+    // Note: Do not commit your real api keys to public repositories!
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Xcode Setup -->
+                    <div id="tab-xcode" class="tab-pane">
+                        <div class="tab-pane-header">
+                            <h4 class="pane-title">
+                                <span class="lang-en">Create App Structure & Set Permissions</span>
+                                <span class="lang-th">สร้างโปรเจกต์ Xcode และกำหนดสิทธิ์</span>
+                            </h4>
+                            <p class="pane-subtitle">
+                                <span class="lang-en">Follow these steps to initialize the SwiftUI project correctly in Xcode 16.</span>
+                                <span class="lang-th">ทำตามขั้นตอนนี้เพื่อสร้างแอป SwiftUI ใน Xcode 16</span>
+                            </p>
+                        </div>
+                        <div class="instruction-list">
+                            <div class="instruction-item">
+                                <span class="step-num">1</span>
+                                <div class="step-desc">
+                                    <span class="lang-en">Open Xcode → <strong>File → New → Project</strong>. Pick App. Set Product Name to <code>VisionAssistant</code>, SwiftUI interface.</span>
+                                    <span class="lang-th">เปิด Xcode → <strong>File → New → Project</strong> เลือกประเภท App ตั้งชื่อโครงการว่า <code>VisionAssistant</code> ใช้หน้าตา SwiftUI</span>
+                                </div>
+                            </div>
+                            <div class="instruction-item">
+                                <span class="step-num">2</span>
+                                <div class="step-desc">
+                                    <span class="lang-en">Delete auto-generated <code>ContentView.swift</code>. Drag all directories (App, Core, Features, Shared, Resources) to Xcode target groups.</span>
+                                    <span class="lang-th">ลบไฟล์ <code>ContentView.swift</code> ที่สร้างให้อัตโนมัติออก ดึงโฟลเดอร์โครงการทั้งหมดใส่ใน Xcode targets</span>
+                                </div>
+                            </div>
+                            <div class="instruction-item">
+                                <span class="step-num">3</span>
+                                <div class="step-desc">
+                                    <span class="lang-en">Ensure hardware permissions are declared. Edit target Info settings or merge contents of <code>Info.plist.additions.xml</code>:</span>
+                                    <span class="lang-th">กำหนดสิทธิ์การใช้กล้อง LiDAR และไมโครโฟน ดึงไฟล์ <code>Info.plist.additions.xml</code> เข้าใน Target Info:</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-block-wrapper">
+                            <div class="code-block-header">
+                                <span class="code-filename">Info.plist (Keys to merge)</span>
+                                <button class="copy-btn" data-clipboard-target="#code-plist">
+                                    <i data-lucide="copy" class="copy-icon"></i>
+                                    <span class="lang-en">Copy</span>
+                                    <span class="lang-th">คัดลอก</span>
+                                </button>
+                            </div>
+                            <pre><code id="code-plist" class="language-xml">&lt;key&gt;NSCameraUsageDescription&lt;/key&gt;
+&lt;string&gt;Camera access is needed to detect objects using YOLOv11.&lt;/string&gt;
+&lt;key&gt;NSMicrophoneUsageDescription&lt;/key&gt;
+&lt;string&gt;Microphone access is needed for speech-to-text input.&lt;/string&gt;
+&lt;key&gt;NSSpeechRecognitionUsageDescription&lt;/key&gt;
+&lt;string&gt;Speech recognition is used to understand your spoken commands.&lt;/string&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3: YOLO & CoreML -->
+                    <div id="tab-yolo" class="tab-pane">
+                        <div class="tab-pane-header">
+                            <h4 class="pane-title">
+                                <span class="lang-en">Export YOLOv11 to CoreML Package</span>
+                                <span class="lang-th">แปลงโมเดล YOLOv11 ให้เป็น CoreML</span>
+                            </h4>
+                            <p class="pane-subtitle">
+                                <span class="lang-en">Ultralytics models can be easily compiled for the Apple Neural Engine using Python.</span>
+                                <span class="lang-th">ใช้ไลบรารี Python ในการแปลงโมเดลของ Ultralytics ให้เป็นรูปแบบ CoreML สำหรับ Neural Engine</span>
+                            </p>
+                        </div>
+                        <div class="code-block-wrapper">
+                            <div class="code-block-header">
+                                <span class="code-filename">Terminal</span>
+                                <button class="copy-btn" data-clipboard-target="#code-yolo">
+                                    <i data-lucide="copy" class="copy-icon"></i>
+                                    <span class="lang-en">Copy</span>
+                                    <span class="lang-th">คัดลอก</span>
+                                </button>
+                            </div>
+                            <pre><code id="code-yolo" class="language-bash"># Install python packages
+pip install ultralytics coremltools
+
+# Export YOLOv11 model with NMS parameters included
+yolo export model=yolo11n.pt format=coreml nms=True
+
+# Note: This outputs "yolo11n.mlpackage". Drag and copy it
+# directly into your Xcode build target resources.</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-copy">
+                <span class="lang-en">&copy; 2026 Vision Assistant Project. SCiUS Forums 17. Built for high-performance edge AI.</span>
+                <span class="lang-th">&copy; 2026 โครงการ Vision Assistant | SCiUS Forums 17 | ขับเคลื่อนด้วย AI ออฟไลน์ประสิทธิภาพสูง</span>
+            </p>
+            <div class="footer-links">
+                <a href="#features" class="footer-link">
+                    <span class="lang-en">Features</span>
+                    <span class="lang-th">ฟีเจอร์</span>
+                </a>
+                <a href="#pipeline" class="footer-link">
+                    <span class="lang-en">Pipeline</span>
+                    <span class="lang-th">สถาปัตยกรรม</span>
+                </a>
+                <a href="#setup" class="footer-link">
+                    <span class="lang-en">Setup</span>
+                    <span class="lang-th">ติดตั้ง</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
