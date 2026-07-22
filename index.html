@@ -1,621 +1,567 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vision Assistant | On-Device AI Visual Assistant for iPhone</title>
-    <meta name="description" content="Vision Assistant is a 100% on-device visual assistant for iPhone. YOLOv11 object detection, LiDAR scene depth, Whisper STT, and Local LLM reasoning.">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Icons (Lucide Icons via CDN) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VisionGuide Offline — ให้ AI เป็นดวงตา</title>
+<meta name="description" content="แอปผู้ช่วยการมองเห็นสำหรับผู้พิการทางสายตา วิเคราะห์สภาพแวดล้อมด้วย AI บนเครื่อง ทำงานออฟไลน์ 100%">
+<style>
+  :root{
+    --bg:#070b12; --bg-2:#0a1019; --surface:#0e1626; --surface-2:#121d30;
+    --border:rgba(255,255,255,.08); --border-2:rgba(255,255,255,.15);
+    --text:#e7edf7; --muted:#93a2ba; --dim:#586880;
+    --teal:#2fe6c8; --teal-2:#25c4ac; --teal-soft:rgba(47,230,200,.12);
+    --amber:#ff7a59;      /* semantic: ใกล้ / alert */
+    --green:#3ddc97;      /* semantic: ปลอดภัย */
+    --indigo:#6a86ff;     /* semantic: ไกล */
+    --violet:#a074ff;
+    --font-sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","Noto Sans Thai",system-ui,sans-serif;
+    --font-mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    --maxw:1180px;
+    --ease:cubic-bezier(.4,0,.15,1);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:var(--font-sans); line-height:1.65;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+  }
+  ::selection{background:rgba(47,230,200,.28);color:#fff}
+  a{color:inherit;text-decoration:none}
+  img,canvas{display:block;max-width:100%}
+  :focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .measure{max-width:62ch}
+
+  /* eyebrow / mono labels */
+  .eyebrow{
+    font-family:var(--font-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--teal);display:inline-flex;align-items:center;gap:9px;font-weight:600;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:linear-gradient(90deg,var(--teal),transparent)}
+  .mono{font-family:var(--font-mono)}
+
+  h1,h2,h3{text-wrap:balance;line-height:1.08;font-weight:800;letter-spacing:-.015em}
+
+  /* ---------------- top bar ---------------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;height:60px;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 24px;
+    background:rgba(7,11,18,.55);backdrop-filter:blur(18px) saturate(160%);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    border-bottom:1px solid transparent;transition:border-color .3s,background .3s;
+  }
+  .topbar.scrolled{border-bottom-color:var(--border);background:rgba(7,11,18,.8)}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.01em}
+  .brand .glyph{width:26px;height:26px;flex-shrink:0}
+  .brand small{font-family:var(--font-mono);font-weight:500;color:var(--dim);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase}
+  .navlinks{display:flex;gap:6px}
+  .navlinks a{
+    font-size:.86rem;color:var(--muted);padding:7px 13px;border-radius:9px;transition:color .2s,background .2s;
+  }
+  .navlinks a:hover{color:var(--text);background:rgba(255,255,255,.05)}
+  @media(max-width:820px){.navlinks{display:none}}
+
+  /* ---------------- hero ---------------- */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:110px 0 70px;overflow:hidden}
+  #depthfield{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.9}
+  .hero-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:
+      radial-gradient(120% 90% at 12% 50%, rgba(7,11,18,.72), transparent 60%),
+      linear-gradient(180deg, rgba(7,11,18,.5) 0%, transparent 24%, transparent 62%, var(--bg) 100%);
+  }
+  .hero .wrap{position:relative;z-index:2;width:100%}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  @media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+
+  .hero h1{font-size:clamp(2.7rem,6.6vw,5rem);margin:22px 0 0}
+  .hero h1 .grad{
+    background:linear-gradient(100deg,var(--amber) 4%,#f6c85f 26%,var(--teal) 55%,var(--indigo) 84%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  }
+  .lede{color:var(--muted);font-size:clamp(1.02rem,1.7vw,1.22rem);margin-top:22px;max-width:52ch}
+  .lede b{color:var(--text);font-weight:600}
+
+  .statrow{display:flex;flex-wrap:wrap;gap:11px;margin-top:34px}
+  .stat{
+    display:flex;flex-direction:column;gap:2px;padding:12px 16px;border-radius:13px;
+    background:linear-gradient(180deg,var(--surface),rgba(14,22,38,.6));border:1px solid var(--border);
+  }
+  .stat .n{font-family:var(--font-mono);font-size:1.28rem;font-weight:700;letter-spacing:-.02em;color:var(--text);font-variant-numeric:tabular-nums}
+  .stat .l{font-size:.74rem;color:var(--muted);letter-spacing:.01em}
+  .stat .n .u{color:var(--teal)}
+
+  /* perception panel (hero right) */
+  .panel{
+    position:relative;background:linear-gradient(180deg,rgba(12,20,34,.92),rgba(9,15,26,.92));
+    border:1px solid var(--border-2);border-radius:20px;padding:20px;
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.04);
+    backdrop-filter:blur(6px);
+  }
+  .panel::before,.panel::after{content:"";position:absolute;width:16px;height:16px;border:1.5px solid var(--teal);opacity:.55}
+  .panel::before{top:10px;left:10px;border-right:none;border-bottom:none}
+  .panel::after{bottom:10px;right:10px;border-left:none;border-top:none}
+  .panel-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .panel-hd .t{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .live{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.16em;color:var(--green)}
+  .live .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(61,220,151,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(61,220,151,.55)}70%{box-shadow:0 0 0 7px rgba(61,220,151,0)}100%{box-shadow:0 0 0 0 rgba(61,220,151,0)}}
+
+  .det{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--border)}
+  .det:first-of-type{border-top:none}
+  .det .obj{font-weight:600;font-size:.95rem;min-width:74px}
+  .det .bar{flex:1;height:6px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden;position:relative}
+  .det .bar i{position:absolute;inset:0;transform-origin:left;border-radius:99px;transform:scaleX(var(--v,.5));transition:transform 1.1s var(--ease)}
+  .det .d{font-family:var(--font-mono);font-size:.82rem;color:var(--muted);min-width:56px;text-align:right;font-variant-numeric:tabular-nums}
+  .tag{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;padding:3px 7px;border-radius:6px;text-transform:uppercase}
+  .tag.near{color:var(--amber);background:rgba(255,122,89,.14)}
+  .tag.far{color:var(--indigo);background:rgba(106,134,255,.14)}
+  .speak{
+    margin-top:16px;padding:12px 14px;border-radius:12px;background:var(--teal-soft);border:1px solid rgba(47,230,200,.22);
+    font-size:.86rem;color:#d7fff7;display:flex;gap:10px;align-items:flex-start;line-height:1.5;
+  }
+  .speak .ic{flex-shrink:0;margin-top:2px;color:var(--teal)}
+
+  .scrollcue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2;
+    font-family:var(--font-mono);font-size:.64rem;letter-spacing:.24em;color:var(--dim);text-transform:uppercase;
+    display:flex;flex-direction:column;align-items:center;gap:8px}
+  .scrollcue .line{width:1px;height:34px;background:linear-gradient(180deg,var(--dim),transparent);animation:drop 2.2s var(--ease) infinite}
+  @keyframes drop{0%{transform:scaleY(0);transform-origin:top;opacity:0}40%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);transform-origin:bottom;opacity:0}}
+
+  /* ---------------- generic section ---------------- */
+  section{position:relative;padding:96px 0}
+  .sec-head{max-width:66ch}
+  .sec-head h2{font-size:clamp(1.9rem,3.8vw,3rem);margin:16px 0 0}
+  .sec-head p{color:var(--muted);font-size:1.06rem;margin-top:16px}
+
+  .rule{height:1px;background:linear-gradient(90deg,var(--border),transparent);border:none}
+
+  /* problem / impact band */
+  .impact{background:linear-gradient(180deg,var(--bg),var(--bg-2))}
+  .impact .big{font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:800;line-height:1.28;letter-spacing:-.01em;max-width:20ch}
+  .impact .big em{font-style:normal;color:var(--teal)}
+  .impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  @media(max-width:860px){.impact-grid{grid-template-columns:1fr;gap:26px}}
+  .impact-points{display:flex;flex-direction:column;gap:18px}
+  .ip{display:flex;gap:14px;align-items:flex-start}
+  .ip .k{font-family:var(--font-mono);color:var(--teal);font-size:.8rem;font-weight:600;padding-top:3px;min-width:34px}
+  .ip .b{color:var(--muted)}
+  .ip .b strong{color:var(--text);font-weight:600;display:block;margin-bottom:2px}
+
+  /* capabilities grid */
+  .caps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+  @media(max-width:900px){.caps{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.caps{grid-template-columns:1fr}}
+  .cap{
+    background:linear-gradient(180deg,var(--surface),rgba(11,17,28,.7));border:1px solid var(--border);
+    border-radius:16px;padding:22px;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s;
+    position:relative;overflow:hidden;
+  }
+  .cap:hover{transform:translateY(-4px);border-color:var(--border-2);box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+  .cap .ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    background:var(--teal-soft);color:var(--teal);margin-bottom:16px}
+  .cap h3{font-size:1.06rem;letter-spacing:-.01em}
+  .cap p{color:var(--muted);font-size:.92rem;margin-top:8px}
+  .cap .k{position:absolute;top:18px;right:18px;font-family:var(--font-mono);font-size:.64rem;color:var(--dim);letter-spacing:.1em}
+
+  /* pipeline */
+  .pipe{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:56px;position:relative}
+  @media(max-width:900px){.pipe{grid-template-columns:1fr;gap:0}}
+  .step{position:relative;padding:24px 18px}
+  .step:not(:last-child)::after{content:"";position:absolute;top:44px;right:-1px;width:1px;height:calc(100% - 44px);background:var(--border)}
+  @media(max-width:900px){.step:not(:last-child)::after{display:none}}
+  .step .num{font-family:var(--font-mono);font-size:.72rem;color:var(--teal);letter-spacing:.16em;font-weight:600}
+  .step .node{width:38px;height:38px;border-radius:11px;background:var(--surface-2);border:1px solid var(--border-2);
+    display:flex;align-items:center;justify-content:center;color:var(--text);margin:12px 0 14px}
+  .step h3{font-size:1rem}
+  .step p{color:var(--muted);font-size:.86rem;margin-top:6px}
+  .step .eng{font-family:var(--font-mono);font-size:.68rem;color:var(--dim);margin-top:10px;letter-spacing:.03em}
+  .pipe-track{position:absolute;top:44px;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,var(--amber),#f6c85f,var(--teal),var(--indigo),var(--violet));
+    opacity:.5;border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform 1.6s var(--ease)}
+  .pipe.in .pipe-track{transform:scaleX(1)}
+  @media(max-width:900px){.pipe-track{display:none}}
+
+  /* models */
+  .models{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:52px}
+  @media(max-width:720px){.models{grid-template-columns:1fr}}
+  .model{
+    background:linear-gradient(180deg,var(--surface),rgba(11,17,28,.7));border:1px solid var(--border);
+    border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;
+  }
+  .model::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--mc,var(--teal))}
+  .model-hd{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+  .model-hd .name{font-family:var(--font-mono);font-weight:700;font-size:1.02rem;letter-spacing:-.01em}
+  .model-hd .role{color:var(--muted);font-size:.86rem}
+  .model .meta{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:var(--font-mono);font-size:.68rem;padding:4px 9px;border-radius:7px;background:rgba(255,255,255,.05);
+    border:1px solid var(--border);color:var(--muted);letter-spacing:.03em}
+  .chip.lic{color:var(--green);border-color:rgba(61,220,151,.25);background:rgba(61,220,151,.08)}
+  .model .desc{color:var(--muted);font-size:.9rem;line-height:1.55}
+
+  /* privacy */
+  .privacy{background:
+      radial-gradient(90% 120% at 85% 0%, rgba(47,230,200,.06), transparent 55%),
+      linear-gradient(180deg,var(--bg-2),var(--bg))}
+  .privacy h2{font-size:clamp(2rem,4.4vw,3.3rem)}
+  .privacy h2 .grad{background:linear-gradient(100deg,var(--teal),var(--indigo));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .priv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+  @media(max-width:860px){.priv-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:460px){.priv-grid{grid-template-columns:1fr}}
+  .priv{padding:20px;border:1px solid var(--border);border-radius:14px;background:rgba(14,22,38,.5)}
+  .priv .ic{color:var(--teal);margin-bottom:12px}
+  .priv strong{display:block;font-size:.98rem;margin-bottom:5px}
+  .priv span{color:var(--muted);font-size:.85rem;line-height:1.5}
+
+  /* engineering strip */
+  .eng-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+  @media(max-width:860px){.eng-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:460px){.eng-grid{grid-template-columns:1fr}}
+  .metric .n{font-family:var(--font-mono);font-size:2.1rem;font-weight:700;letter-spacing:-.03em;
+    background:linear-gradient(120deg,var(--text),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    font-variant-numeric:tabular-nums}
+  .metric .l{color:var(--muted);font-size:.88rem;margin-top:4px}
+  .stack{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px}
+  .stack .t{font-family:var(--font-mono);font-size:.78rem;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--border);background:var(--surface);color:var(--muted)}
+
+  /* footer */
+  footer{border-top:1px solid var(--border);padding:56px 0 44px;background:var(--bg-2)}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .foot-brand{display:flex;align-items:center;gap:12px;font-weight:800}
+  .foot-meta{font-family:var(--font-mono);font-size:.74rem;color:var(--dim);line-height:1.9;letter-spacing:.03em;text-align:right}
+  .foot-meta .status{color:var(--amber)}
+  @media(max-width:560px){.foot-grid{flex-direction:column;align-items:flex-start}.foot-meta{text-align:left}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    .pipe-track{transform:scaleX(1)}
+    .det .bar i{transition:none}
+  }
+</style>
 </head>
 <body>
-    <!-- Subtle Background Glows -->
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-    <div class="grid-overlay"></div>
 
-    <!-- Navigation Header -->
-    <header class="header">
-        <div class="header-container">
-            <a href="#" class="logo-container">
-                <img src="./assets/logo.png" alt="Vision Assistant Logo" class="logo-img">
-                <span class="logo-text">Vision Assistant</span>
-            </a>
-            
-            <nav class="nav-links">
-                <a href="#features" class="nav-link">
-                    <span class="lang-en">Features</span>
-                    <span class="lang-th">ฟีเจอร์</span>
-                </a>
-                <a href="#pipeline" class="nav-link">
-                    <span class="lang-en">Pipeline</span>
-                    <span class="lang-th">การทำงาน</span>
-                </a>
-                <a href="#setup" class="nav-link">
-                    <span class="lang-en">Setup</span>
-                    <span class="lang-th">การตั้งค่า</span>
-                </a>
-                <a href="https://forms.gle/AfKt1SUzs4d9S1ER8" target="_blank" id="register-link" class="nav-link nav-btn-register">
-                    <span class="lang-en">Beta Trial</span>
-                    <span class="lang-th">ลงทะเบียนทดลองใช้งาน</span>
-                </a>
-            </nav>
+<!-- SVG icon defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 8V5a2 2 0 0 1 2-2h3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M21 16v3a2 2 0 0 1-2 2h-3M3 12h18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M4 15 15 4l5 5L9 20zM8 11l2 2M11 8l2 2M14 5l2 2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-voice" viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM5 11a7 7 0 0 0 14 0M12 18v3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-speak" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9zM17 8a5 5 0 0 1 0 8M19.5 5.5a9 9 0 0 1 0 13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 6h16M4 6V4M20 6V4M9 6v14M9 20H6M9 20h3M15 6v9M13 15h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3zM12 10v5M12 18h.01" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><path d="M6 10V7a6 6 0 0 1 12 0v3M5 10h14v10H5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M2 12l20-8-8 20-2.5-8.5L2 12z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mem" viewBox="0 0 24 24"><path d="M6 6h12v12H6zM9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L19 6h0a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><path d="M8 8h8v8H8zM4 9V7a3 3 0 0 1 3-3h2M20 9V7a3 3 0 0 0-3-3h-2M4 15v2a3 3 0 0 0 3 3h2M20 15v2a3 3 0 0 1-3 3h-2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-merge" viewBox="0 0 24 24"><path d="M6 3v4a5 5 0 0 0 5 5h2a5 5 0 0 1 5 5v4M18 3v4a5 5 0 0 1-5 5M12 21l-3-3M12 21l3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-swift" viewBox="0 0 24 24"><path d="M17 18c-3 1.6-8 1-11-2 3 .7 5.5-.2 7-1C9 12 5.5 8 4 5c2 2 6 4.5 8 5.5C10.5 8.5 8.5 5.5 8 4c2.2 2.3 5.6 5 7.5 6 .5-1.6.3-3.4-.5-5 3 2.5 4.5 7 3 11 .3.6 .8 1.4 1 2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
 
-            <div class="lang-selector">
-                <button class="lang-toggle-btn active" data-value="en">EN</button>
-                <button class="lang-toggle-btn" data-value="th">TH</button>
-            </div>
+<header class="topbar" id="topbar">
+  <a class="brand" href="#top" aria-label="VisionGuide หน้าแรก">
+    <svg class="glyph" viewBox="0 0 40 40" aria-hidden="true">
+      <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ff7a59"/><stop offset=".5" stop-color="#2fe6c8"/><stop offset="1" stop-color="#6a86ff"/>
+      </linearGradient></defs>
+      <circle cx="20" cy="20" r="18" fill="none" stroke="url(#bg1)" stroke-width="2.4"/>
+      <circle cx="20" cy="20" r="6.5" fill="none" stroke="url(#bg1)" stroke-width="2.4"/>
+      <circle cx="20" cy="20" r="2" fill="#2fe6c8"/>
+    </svg>
+    VisionGuide <small>OFFLINE</small>
+  </a>
+  <nav class="navlinks" aria-label="ลิงก์ในหน้า">
+    <a href="#overview">ภาพรวม</a>
+    <a href="#features">ความสามารถ</a>
+    <a href="#how">วิธีทำงาน</a>
+    <a href="#models">โมเดล AI</a>
+    <a href="#privacy">ความเป็นส่วนตัว</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="overview" style="padding-top:110px">
+  <canvas id="depthfield" aria-hidden="true"></canvas>
+  <div class="hero-veil"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">ผู้ช่วยการมองเห็น · บนอุปกรณ์</span>
+        <h1>เปลี่ยนกล้องมือถือ<br>ให้เป็น<span class="grad">ดวงตา</span></h1>
+        <p class="lede">แอปสำหรับ<b>ผู้พิการทางสายตา</b> ที่วิเคราะห์สภาพแวดล้อมรอบตัวด้วยปัญญาประดิษฐ์บนเครื่อง — บอกว่ามีอะไรอยู่ตรงไหน ห่างแค่ไหน และอ่านข้อความให้ฟัง ทั้งหมดนี้<b>ทำงานได้แม้ไม่มีอินเทอร์เน็ตแม้แต่นิดเดียว</b></p>
+
+        <div class="statrow">
+          <div class="stat"><span class="n">100<span class="u">%</span></span><span class="l">ทำงานออฟไลน์</span></div>
+          <div class="stat"><span class="n">4</span><span class="l">โมเดล AI บนเครื่อง</span></div>
+          <div class="stat"><span class="n">2</span><span class="l">ภาษา (ไทย · อังกฤษ)</span></div>
+          <div class="stat"><span class="n">0</span><span class="l">ข้อมูลที่ส่งออกเครือข่าย</span></div>
         </div>
-    </header>
+      </div>
 
-    <main class="main-content">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-container">
-                <div class="hero-info reveal">
-                    <div class="badge">
-                        <i data-lucide="cpu" class="badge-icon"></i>
-                        <span class="lang-en">100% On-Device AI</span>
-                        <span class="lang-th">ประมวลผลบนเครื่อง 100%</span>
-                    </div>
-                    <h1 class="hero-title">
-                        <span class="lang-en">Private Visual Intelligence for iPhone</span>
-                        <span class="lang-th">ระบบวิเคราะห์ภาพอัจฉริยะแบบส่วนตัวบน iPhone</span>
-                    </h1>
-                    <p class="hero-description">
-                        <span class="lang-en">The camera sees objects, LiDAR measures distance, Whisper listens, a local LLM reasons, and TTS speaks. Everything runs directly on your Apple Neural Engine. No cloud, no tracking.</span>
-                        <span class="lang-th">กล้องมองเห็นวัตถุ LiDAR วัดระยะทาง Whisper รับฟังเสียง โมเดลภาษาขนาดใหญ่ประมวลผล และสังเคราะห์เสียงกลับ ทุกอย่างทำงานบน Apple Neural Engine ในเครื่องโดยตรง ไม่ต้องเชื่อมต่อคลาวด์ ปลอดภัยและเป็นส่วนตัว</span>
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#setup" class="btn btn-primary">
-                            <span class="lang-en">Configure Setup</span>
-                            <span class="lang-th">เริ่มต้นตั้งค่า</span>
-                            <i data-lucide="arrow-right" class="btn-icon"></i>
-                        </a>
-                        <a href="#features" class="btn btn-secondary">
-                            <span class="lang-en">Explore Features</span>
-                            <span class="lang-th">สำรวจฟีเจอร์</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-visual reveal">
-                    <div class="logo-hero-wrapper">
-                        <div class="logo-hero-glow"></div>
-                        <div class="logo-hero-card">
-                            <img src="./assets/logo.png" alt="Vision Assistant Logo" class="logo-hero-img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="stats-section">
-            <div class="stats-container grid grid-3">
-                <div class="stat-card reveal">
-                    <div class="stat-icon-wrapper color-cyan">
-                        <i data-lucide="shield-check" class="stat-icon"></i>
-                    </div>
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">
-                        <span class="lang-en">On-Device Privacy</span>
-                        <span class="lang-th">ความเป็นส่วนตัวบนเครื่อง</span>
-                    </div>
-                </div>
-                <div class="stat-card reveal">
-                    <div class="stat-icon-wrapper color-indigo">
-                        <i data-lucide="zap" class="stat-icon"></i>
-                    </div>
-                    <div class="stat-number">&lt; 10ms</div>
-                    <div class="stat-label">
-                        <span class="lang-en">YOLO Object Detection Latency</span>
-                        <span class="lang-th">ความหน่วงตรวจจับวัตถุ YOLO</span>
-                    </div>
-                </div>
-                <div class="stat-card reveal">
-                    <div class="stat-icon-wrapper color-pink">
-                        <i data-lucide="cloud-off" class="stat-icon"></i>
-                    </div>
-                    <div class="stat-number">Zero</div>
-                    <div class="stat-label">
-                        <span class="lang-en">External Network Dependency</span>
-                        <span class="lang-th">ความพึ่งพาเครือข่ายภายนอก</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interface Preview Section -->
-        <section class="preview-section">
-            <div class="section-header reveal">
-                <h2 class="section-title">
-                    <span class="lang-en">Intuitive Mobile Interface</span>
-                    <span class="lang-th">อินเทอร์เฟซใช้งานง่ายบนมือถือ</span>
-                </h2>
-                <p class="section-subtitle">
-                    <span class="lang-en">A clean, dark mode SwiftUI experience designed for rapid, heads-up interactions.</span>
-                    <span class="lang-th">อินเทอร์เฟซภาษา Swift บนหน้าจอธีมมืด ออกแบบมาเพื่อการตอบสนองที่รวดเร็วและเป็นธรรมชาติ</span>
-                </p>
-            </div>
-            
-            <div class="preview-container reveal">
-                <div class="phone-mockup-wrapper">
-                    <div class="phone-glow"></div>
-                    <div class="phone-frame">
-                        <div class="phone-screen">
-                            <img src="./assets/screenshot.png" alt="Vision Assistant App Screenshot" class="screenshot-img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Grid -->
-        <section id="features" class="features-section">
-            <div class="section-header reveal">
-                <h2 class="section-title">
-                    <span class="lang-en">Core Architecture Modules</span>
-                    <span class="lang-th">โมดูลสถาปัตยกรรมหลัก</span>
-                </h2>
-                <p class="section-subtitle">
-                    <span class="lang-en">A modular approach combining native Swift APIs with powerful edge computing frameworks.</span>
-                    <span class="lang-th">ระบบแบบแยกโมดูลที่รวม API ดั้งเดิมของ Swift เข้ากับเฟรมเวิร์กการคำนวณที่ขอบแบบทรงประสิทธิภาพ</span>
-                </p>
-            </div>
-
-            <div class="features-grid grid grid-3">
-                <!-- Feature 1: Perception -->
-                <div class="feature-card reveal">
-                    <div class="feature-header">
-                        <div class="feature-icon-box color-indigo">
-                            <i data-lucide="eye" class="feature-icon"></i>
-                        </div>
-                        <h3 class="feature-title">
-                            <span class="lang-en">Perception (YOLOv11)</span>
-                            <span class="lang-th">การรับรู้ภาพ (YOLOv11)</span>
-                        </h3>
-                    </div>
-                    <p class="feature-description">
-                        <span class="lang-en">Real-time visual detection powered by YOLOv11 exported to CoreML. Harnesses the Apple Neural Engine (ANE) via Vision framework for sub-10ms performance.</span>
-                        <span class="lang-th">การตรวจจับภาพแบบเรียลไทม์ผ่านโมเดล YOLOv11 ที่แปลงเป็น CoreML ทำงานร่วมกับเฟรมเวิร์ก Vision บน Neural Engine ของ Apple ได้เร็วต่ำกว่า 10ms</span>
-                    </p>
-                </div>
-
-                <!-- Feature 2: Depth -->
-                <div class="feature-card reveal">
-                    <div class="feature-header">
-                        <div class="feature-icon-box color-cyan">
-                            <i data-lucide="radar" class="feature-icon"></i>
-                        </div>
-                        <h3 class="feature-title">
-                            <span class="lang-en">LiDAR Depth Sensing</span>
-                            <span class="lang-th">ระยะชัดลึกด้วย LiDAR</span>
-                        </h3>
-                    </div>
-                    <p class="feature-description">
-                        <span class="lang-en">Utilizes ARKit <code>sceneDepth</code> on Pro iPhones. Measures precise physical coordinates in meters, anchoring physical distance data to every YOLO object bounding box.</span>
-                        <span class="lang-th">ใช้ ARKit <code>sceneDepth</code> บน iPhone รุ่น Pro เพื่อคำนวณและปักหมุดระยะห่างของวัตถุแต่ละชิ้นในแบบเมตรจริงได้อย่างแม่นยำ</span>
-                    </p>
-                </div>
-
-                <!-- Feature 3: Listening -->
-                <div class="feature-card reveal">
-                    <div class="feature-header">
-                        <div class="feature-icon-box color-emerald">
-                            <i data-lucide="mic" class="feature-icon"></i>
-                        </div>
-                        <h3 class="feature-title">
-                            <span class="lang-en">Offline Speech (Whisper)</span>
-                            <span class="lang-th">การรับฟังออฟไลน์ (Whisper)</span>
-                        </h3>
-                    </div>
-                    <p class="feature-description">
-                        <span class="lang-en">Local Voice Activity Detection (VAD) coupled with Apple Speech/WhisperKit. Seamlessly transcripts voice instructions into textual queries entirely local.</span>
-                        <span class="lang-th">ระบบตรวจจับเสียงพูด (VAD) ในเครื่อง ทำงานร่วมกับ Apple Speech และพร้อมอัปเกรดใช้งาน WhisperKit เพื่อถอดเสียงคำสั่งเป็นข้อความแบบออฟไลน์</span>
-                    </p>
-                </div>
-
-                <!-- Feature 4: Reasoning -->
-                <div class="feature-card reveal">
-                    <div class="feature-header">
-                        <div class="feature-icon-box color-pink">
-                            <i data-lucide="brain" class="feature-icon"></i>
-                        </div>
-                        <h3 class="feature-title">
-                            <span class="lang-en">Local LLM Reasoning</span>
-                            <span class="lang-th">การประมวลความคิด LLM</span>
-                        </h3>
-                    </div>
-                    <p class="feature-description">
-                        <span class="lang-en">Integrates <code>llama.cpp</code> via <code>LLM.swift</code>. Feeds scene layout context (YOLO classes + LiDAR depth) to local models like Qwen or Llama 3 for intelligent answers.</span>
-                        <span class="lang-th">ผสานรวม <code>llama.cpp</code> ผ่าน <code>LLM.swift</code> ส่งบริบทของสภาพแวดล้อม (ประเภทวัตถุและระยะ LiDAR) ให้โมเดลภาษาขนาดใหญ่ที่ประมวลผลบนเครื่อง (เช่น Qwen หรือ Llama 3)</span>
-                    </p>
-                </div>
-
-                <!-- Feature 5: Voice -->
-                <div class="feature-card reveal">
-                    <div class="feature-header">
-                        <div class="feature-icon-box color-orange">
-                            <i data-lucide="volume-2" class="feature-icon"></i>
-                        </div>
-                        <h3 class="feature-title">
-                            <span class="lang-en">TTS Synthesis</span>
-                            <span class="lang-th">การตอบกลับด้วยเสียงพูด</span>
-                        </h3>
-                    </div>
-                    <p class="feature-description">
-                        <span class="lang-en">Brings answers to life using standard Apple iOS AVSpeechSynthesizer, with customizable support for Piper high-fidelity offline TTS via sherpa-onnx.</span>
-                        <span class="lang-th">แปลงข้อความคำตอบเป็นเสียงพูดธรรมชาติผ่าน AVSpeechSynthesizer ของระบบ หรือสามารถอัปเกรดเป็น Piper TTS คุณภาพสูงแบบออฟไลน์ผ่านเฟรมเวิร์ก sherpa-onnx</span>
-                    </p>
-                </div>
-
-                <!-- Feature 6: Model Hub -->
-                <div class="feature-card reveal">
-                    <div class="feature-header">
-                        <div class="feature-icon-box color-purple">
-                            <i data-lucide="download-cloud" class="feature-icon"></i>
-                        </div>
-                        <h3 class="feature-title">
-                            <span class="lang-en">On-Device Model Hub</span>
-                            <span class="lang-th">ศูนย์จัดการโมเดลในเครื่อง</span>
-                        </h3>
-                    </div>
-                    <p class="feature-description">
-                        <span class="lang-en">A catalog built in SwiftUI. Enables dynamic downloading, compiling, switching, and clearing weights per category (YOLO models, LLM binaries, and TTS voices).</span>
-                        <span class="lang-th">แค็ตตาล็อกและระบบดาวน์โหลดในแอป ให้ผู้ใช้สามารถเลือกดาวน์โหลด ติดตั้ง สลับสับเปลี่ยน หรือลบโมเดลและเสียงแต่ละประเภทได้อย่างอิสระ</span>
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pipeline / Interaction Section -->
-        <section id="pipeline" class="pipeline-section">
-            <div class="section-header reveal">
-                <h2 class="section-title">
-                    <span class="lang-en">Real-Time Processing Flow</span>
-                    <span class="lang-th">การไหลของข้อมูลแบบเรียลไทม์</span>
-                </h2>
-                <p class="section-subtitle">
-                    <span class="lang-en">Tap each stage of the pipeline to see how sensory data transforms into voice intelligence.</span>
-                    <span class="lang-th">แตะที่แต่ละขั้นตอนด้านล่างเพื่อเรียนรู้วิธีการทำงานในการเปลี่ยนข้อมูลภาพและเสียงสู่ความรู้ความเข้าใจ</span>
-                </p>
-            </div>
-
-            <!-- Flowchart Container -->
-            <div class="pipeline-container reveal">
-                <div class="pipeline-flow">
-                    <!-- Step 1 -->
-                    <div class="pipeline-node" data-target="info-sensors">
-                        <div class="node-icon-wrapper color-cyan">
-                            <i data-lucide="camera" class="node-icon"></i>
-                        </div>
-                        <h4 class="node-title">
-                            <span class="lang-en">1. Sensors</span>
-                            <span class="lang-th">1. เซ็นเซอร์</span>
-                        </h4>
-                        <p class="node-meta">Camera, LiDAR, Mic</p>
-                        <div class="node-pulse"></div>
-                    </div>
-
-                    <div class="pipeline-connector active">
-                        <div class="connector-line"></div>
-                        <i data-lucide="chevron-right" class="connector-arrow"></i>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="pipeline-node" data-target="info-perception">
-                        <div class="node-icon-wrapper color-indigo">
-                            <i data-lucide="activity" class="node-icon"></i>
-                        </div>
-                        <h4 class="node-title">
-                            <span class="lang-en">2. Perception</span>
-                            <span class="lang-th">2. การรับรู้</span>
-                        </h4>
-                        <p class="node-meta">YOLO + LiDAR Depth</p>
-                        <div class="node-pulse"></div>
-                    </div>
-
-                    <div class="pipeline-connector">
-                        <div class="connector-line"></div>
-                        <i data-lucide="chevron-right" class="connector-arrow"></i>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="pipeline-node" data-target="info-coordinator">
-                        <div class="node-icon-wrapper color-pink">
-                            <i data-lucide="git-branch" class="node-icon"></i>
-                        </div>
-                        <h4 class="node-title">
-                            <span class="lang-en">3. Coordinator</span>
-                            <span class="lang-th">3. ผู้ประสานงาน</span>
-                        </h4>
-                        <p class="node-meta">Scene Context Builder</p>
-                        <div class="node-pulse"></div>
-                    </div>
-
-                    <div class="pipeline-connector">
-                        <div class="connector-line"></div>
-                        <i data-lucide="chevron-right" class="connector-arrow"></i>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="pipeline-node" data-target="info-reasoning">
-                        <div class="node-icon-wrapper color-purple">
-                            <i data-lucide="server" class="node-icon"></i>
-                        </div>
-                        <h4 class="node-title">
-                            <span class="lang-en">4. Local LLM</span>
-                            <span class="lang-th">4. ประมวลความคิด</span>
-                        </h4>
-                        <p class="node-meta">llama.cpp / Qwen</p>
-                        <div class="node-pulse"></div>
-                    </div>
-
-                    <div class="pipeline-connector">
-                        <div class="connector-line"></div>
-                        <i data-lucide="chevron-right" class="connector-arrow"></i>
-                    </div>
-
-                    <!-- Step 5 -->
-                    <div class="pipeline-node" data-target="info-output">
-                        <div class="node-icon-wrapper color-orange">
-                            <i data-lucide="message-square" class="node-icon"></i>
-                        </div>
-                        <h4 class="node-title">
-                            <span class="lang-en">5. Output</span>
-                            <span class="lang-th">5. การตอบกลับ</span>
-                        </h4>
-                        <p class="node-meta">Piper TTS / UI Speech</p>
-                        <div class="node-pulse"></div>
-                    </div>
-                </div>
-
-                <!-- Info Cards that toggle on tap -->
-                <div class="pipeline-details">
-                    <div id="info-sensors" class="detail-card active">
-                        <h3 class="detail-title color-cyan">
-                            <span class="lang-en">Stage 1: Raw Sensors Feed & Data Ingestion</span>
-                            <span class="lang-th">ขั้นตอนที่ 1: เซ็นเซอร์หลัก & แหล่งนำเข้าข้อมูล</span>
-                        </h3>
-                        <p class="detail-description">
-                            <span class="lang-en">A high-performance hardware sensor pipeline built on top of Apple's native frameworks. The high-FPS video feed is continuously captured using <code>AVCaptureSession</code> from <code>AVFoundation</code>. Simultaneously, on LiDAR-equipped devices (iPhone 12 Pro and later), scene depth is calculated in real-time at 30Hz using ARKit's <code>sceneDepth</code>, constructing a millimeter-precise 3D depth map. Meanwhile, the microphone stream continuously outputs raw PCM buffers monitored by an energy-based Voice Activity Detector (VAD) to track start and end points of speech off-cloud.</span>
-                            <span class="lang-th">ชุดเซ็นเซอร์ประสิทธิภาพสูงทำงานผ่าน API ดั้งเดิมของ Apple ดึงภาพวิดีโอแบบสดเฟรมเรตสูงด้วย <code>AVCaptureSession</code> จาก <code>AVFoundation</code> ขณะเดียวกันสำหรับเครื่องที่มี LiDAR (iPhone 12 Pro เป็นต้นไป) ระบบจะสแกนความลึกรอบตัวผ่านแผนผัง <code>sceneDepth</code> ของ ARKit ที่ความถี่ 30Hz เพื่อคำนวณระยะเชิงพื้นที่จริงแม่นยำระดับมิลลิเมตร ควบคู่ไปกับการดึงสัญญาณเสียงไมค์ดิบ PCM มาตรวจสอบสัญญาณการพูดผ่านตัวประมวลผล VAD ในเครื่อง</span>
-                        </p>
-                    </div>
-
-                    <div id="info-perception" class="detail-card">
-                        <h3 class="detail-title color-indigo">
-                            <span class="lang-en">Stage 2: Real-time Perception Engine (CoreML)</span>
-                            <span class="lang-th">ขั้นตอนที่ 2: ระบบวิเคราะห์การรับรู้ภาพจริง (CoreML)</span>
-                        </h3>
-                        <p class="detail-description">
-                            <span class="lang-en">The raw image frames are passed directly to <code>YOLODetector.swift</code>, which runs the local YOLOv11 object detection model compiled into <code>.mlmodelc</code> format. This runs 100% on-device on the Apple Neural Engine (ANE) via the Vision framework, achieving sub-10ms latencies. Once objects (such as person, cup, chair, door) are detected and bounding boxes are identified, <code>DepthSampler.swift</code> reads the center of each bounding box and matches it with the ARKit LiDAR depth buffer to determine the precise distance in meters for each detection.</span>
-                            <span class="lang-th">เฟรมภาพสดจะถูกส่งไปประมวลผลที่ <code>YOLODetector.swift</code> ซึ่งรันโมเดล YOLOv11 ที่แปลงเป็นฟอร์แมต <code>.mlmodelc</code> เพื่อประสิทธิภาพความเร็วสูงสุดบนชิป Apple Neural Engine (ANE) ผ่านเฟรมเวิร์ก Vision ของระบบด้วยความเร็วเฉลี่ยต่ำกว่า 10ms เมื่อตรวจพบพิกัดวัตถุ (เช่น คน, โทรศัพท์, แก้วน้ำ) <code>DepthSampler.swift</code> จะนำพิกัดจุดกึ่งกลางของวัตถุไปเทียบกับความลึกใน LiDAR depth buffer เพื่อวัดระยะเชิงฟิสิกส์จริงออกมาเป็นหน่วยเมตร</span>
-                        </p>
-                    </div>
-
-                    <div id="info-coordinator" class="detail-card">
-                        <h3 class="detail-title color-pink">
-                            <span class="lang-en">Stage 3: Scene Context Builder & Orchestration</span>
-                            <span class="lang-th">ขั้นตอนที่ 3: รวมบริบทและควบคุมการทำงาน</span>
-                        </h3>
-                        <p class="detail-description">
-                            <span class="lang-en">The <code>AssistantCoordinator</code> serves as the central brain orchestrating the event loop. Once VAD detects that user speech has ended or a message is submitted, the coordinator grabs the latest <code>SceneSnapshot</code> (holding the active list of detected YOLO classes and their LiDAR depth dimensions). The <code>SceneContextBuilder</code> immediately translates this spatial layout into a structured, semantic text description (e.g. "A cup at 0.4 meters, a laptop at 0.8 meters"). This scene summary is prepended to the system prompt to feed the LLM.</span>
-                            <span class="lang-th"><code>AssistantCoordinator</code> ทำหน้าที่เป็นศูนย์กลางคอยควบคุมการทำงาน เมื่อ VAD ตรวจพบว่าผู้ใช้พูดจบหรือเมื่อผู้ใช้พิมพ์ส่งคำถาม ระบบจะบันทึกสถานะแวดล้อมล่าสุด <code>SceneSnapshot</code> (ซึ่งรวมประเภทวัตถุและระยะเชิงพื้นที่จริงจากกล้องและ LiDAR เช่น "แก้วน้ำอยู่ใกล้ห่าง 0.4 เมตร, คอมพิวเตอร์ห่าง 0.8 เมตร") จากนั้น <code>SceneContextBuilder</code> จะนำพิกัดเหล่านี้ไปแปลงเป็นข้อความบรรยายภาษาธรรมชาติ เพื่อนำไปแนบเป็น System Prompt ให้โมเดลภาษาเข้าใจสภาพแวดล้อมแวดล้อมรอบตัวก่อนวิเคราะห์ตอบกลับ</span>
-                        </p>
-                    </div>
-
-                    <div id="info-reasoning" class="detail-card">
-                        <h3 class="detail-title color-purple">
-                            <span class="lang-en">Stage 4: Local LLM Processing (llama.cpp)</span>
-                            <span class="lang-th">ขั้นตอนที่ 4: โมเดลภาษาประมวลความคิดในเครื่อง (llama.cpp)</span>
-                        </h3>
-                        <p class="detail-description">
-                            <span class="lang-en">The compiled scene prompt, chat history, and user question are directed to the offline <code>LLMService</code>. Leveraging the <code>LLM.swift</code> Swift Package and the compiled C++ core of <code>llama.cpp</code>, the app runs large language models (like Qwen-2.5-7B or Llama-3-8B) on the unified memory of Apple Silicon with GPU acceleration. The model streams token responses word-by-word back to the coordinator, updating the chat bubbles on screen instantly with zero network latency, keeping user query data private and secure on-device.</span>
-                            <span class="lang-th">ข้อความข้อมูลห้องสนทนา ประวัติแชต และคำบรรยายพื้นที่แวดล้อมจะถูกป้อนเข้าสู่ <code>LLMService</code> ซึ่งทำงานร่วมกับแพ็คเกจ <code>LLM.swift</code> และแกนภาษา C++ ของ <code>llama.cpp</code> เพื่อรันโมเดลภาษาขนาดใหญ่ เช่น Qwen-2.5-7B หรือ Llama-3-8B บนหน่วยความจำร่วม (Unified Memory) ด้วยการ์ดจอผ่าน Metal API ระบบจะทำการถอดรหัสคำตอบแบบ Token Streaming ค่อย ๆ ส่งตัวอักษรกลับมาแสดงผลทันทีโดยปราศจากความหน่วงจากอินเทอร์เน็ตและเก็บข้อมูลส่วนตัวไว้บนเครื่อง</span>
-                        </p>
-                    </div>
-
-                    <div id="info-output" class="detail-card">
-                        <h3 class="detail-title color-orange">
-                            <span class="lang-en">Stage 5: Voice Feedback & UI Update</span>
-                            <span class="lang-th">ขั้นตอนที่ 5: การสังเคราะห์เสียงพูดและการแสดงผล</span>
-                        </h3>
-                        <p class="detail-description">
-                            <span class="lang-en">As word tokens stream in, the SwiftUI chat interface renders the updates fluidly. Concurrently, sentences are queued into the <code>TTSService</code>. High-fidelity audio is synthesized offline. By default, it uses Apple's native <code>AVSpeechSynthesizer</code>, but it can be configured to use a custom Piper TTS model via the <code>sherpa-onnx</code> framework. The synthesized PCM audio is queued and played via an audio node, creating a seamless, interactive voice feedback loop for eyes-free navigation.</span>
-                            <span class="lang-th">เมื่อโมเดลประมวลผลคำตอบออกมา หน้าจอข้อความจะอัปเดตกล่องแชต SwiftUI แบบเรียลไทม์ ขณะเดียวกันประโยคคำตอบจะถูกจัดสรรเข้าคิวส่งให้ <code>TTSService</code> เพื่อสังเคราะห์เสียงพูดออฟไลน์คุณภาพสูง โดยระบบรองรับทั้งสังเคราะห์เสียงพูดเริ่มต้น (`AVSpeechSynthesizer`) ของ iOS หรือโมเดลสังเคราะห์เสียงที่เป็นธรรมชาติของ Piper TTS ผ่านเฟรมเวิร์ก `sherpa-onnx` เพื่อนำสัญญาณ PCM ที่ได้ส่งออกไปเปิดผ่านลำโพงของ iPhone ทำให้ผู้ใช้สนทนาโต้ตอบและรับทราบข้อมูลได้อย่างราบรื่นโดยไม่ต้องมองจอ</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Setup / Code Documentation Section -->
-        <section id="setup" class="setup-section">
-            <div class="section-header reveal">
-                <h2 class="section-title">
-                    <span class="lang-en">Developer Quickstart Guide</span>
-                    <span class="lang-th">คู่มือการเริ่มต้นใช้งานสำหรับนักพัฒนา</span>
-                </h2>
-                <p class="section-subtitle">
-                    <span class="lang-en">Configure keys, setup dependency packages, and export models to compile the app.</span>
-                    <span class="lang-th">วิธีตั้งค่าคีย์ ตั้งค่าแพ็คเกจ และคอมไพล์โมเดลเพื่อให้แอปเริ่มทำงานบนอุปกรณ์ของคุณ</span>
-                </p>
-            </div>
-
-            <!-- Setup Container with Tabs -->
-            <div class="setup-container reveal">
-                <div class="setup-tabs">
-                    <button class="setup-tab-btn active" data-target="tab-keys">
-                        <i data-lucide="key" class="tab-btn-icon"></i>
-                        <span class="lang-en">1. API Keys Config</span>
-                        <span class="lang-th">1. ตั้งค่าคีย์ API</span>
-                    </button>
-                    <button class="setup-tab-btn" data-target="tab-xcode">
-                        <i data-lucide="code-2" class="tab-btn-icon"></i>
-                        <span class="lang-en">2. Xcode Structure</span>
-                        <span class="lang-th">2. โครงสร้าง Xcode</span>
-                    </button>
-                    <button class="setup-tab-btn" data-target="tab-yolo">
-                        <i data-lucide="box" class="tab-btn-icon"></i>
-                        <span class="lang-en">3. CoreML Export</span>
-                        <span class="lang-th">3. แปลงโมเดล CoreML</span>
-                    </button>
-                </div>
-
-                <div class="setup-tab-content">
-                    <!-- Tab 1: API Keys -->
-                    <div id="tab-keys" class="tab-pane active">
-                        <div class="tab-pane-header">
-                            <h4 class="pane-title">
-                                <span class="lang-en">Configure Settings & Key File</span>
-                                <span class="lang-th">การตั้งค่าไฟล์ APIKeys.swift</span>
-                            </h4>
-                            <p class="pane-subtitle">
-                                <span class="lang-en">Define keys in <code>VisionAssistant/Shared/Settings/APIKeys.swift</code>. Standard local fallbacks are active if empty.</span>
-                                <span class="lang-th">กำหนดคีย์ในไฟล์ <code>APIKeys.swift</code> แอปจะใช้วิธีคำนวณสำรองในเครื่องถ้าปล่อยให้ว่างไว้</span>
-                            </p>
-                        </div>
-                        <div class="code-block-wrapper">
-                            <div class="code-block-header">
-                                <span class="code-filename">APIKeys.swift</span>
-                                <button class="copy-btn" data-clipboard-target="#code-keys">
-                                    <i data-lucide="copy" class="copy-icon"></i>
-                                    <span class="lang-en">Copy</span>
-                                    <span class="lang-th">คัดลอก</span>
-                                </button>
-                            </div>
-                            <pre><code id="code-keys" class="language-swift">import Foundation
-
-struct APIKeys {
-    // Used for online TTS (OpenAI) and fallback LLM (GPT-4o-mini)
-    static let openAIKey = "your-openai-api-key-here"
-    
-    // Used for ultra-fast online LLM inferences (Llama 3, Mixtral)
-    static let groqKey = "your-groq-api-key-here"
-    
-    // Note: Do not commit your real api keys to public repositories!
-}</code></pre>
-                        </div>
-                    </div>
-
-                    <!-- Tab 2: Xcode Setup -->
-                    <div id="tab-xcode" class="tab-pane">
-                        <div class="tab-pane-header">
-                            <h4 class="pane-title">
-                                <span class="lang-en">Create App Structure & Set Permissions</span>
-                                <span class="lang-th">สร้างโปรเจกต์ Xcode และกำหนดสิทธิ์</span>
-                            </h4>
-                            <p class="pane-subtitle">
-                                <span class="lang-en">Follow these steps to initialize the SwiftUI project correctly in Xcode 16.</span>
-                                <span class="lang-th">ทำตามขั้นตอนนี้เพื่อสร้างแอป SwiftUI ใน Xcode 16</span>
-                            </p>
-                        </div>
-                        <div class="instruction-list">
-                            <div class="instruction-item">
-                                <span class="step-num">1</span>
-                                <div class="step-desc">
-                                    <span class="lang-en">Open Xcode → <strong>File → New → Project</strong>. Pick App. Set Product Name to <code>VisionAssistant</code>, SwiftUI interface.</span>
-                                    <span class="lang-th">เปิด Xcode → <strong>File → New → Project</strong> เลือกประเภท App ตั้งชื่อโครงการว่า <code>VisionAssistant</code> ใช้หน้าตา SwiftUI</span>
-                                </div>
-                            </div>
-                            <div class="instruction-item">
-                                <span class="step-num">2</span>
-                                <div class="step-desc">
-                                    <span class="lang-en">Delete auto-generated <code>ContentView.swift</code>. Drag all directories (App, Core, Features, Shared, Resources) to Xcode target groups.</span>
-                                    <span class="lang-th">ลบไฟล์ <code>ContentView.swift</code> ที่สร้างให้อัตโนมัติออก ดึงโฟลเดอร์โครงการทั้งหมดใส่ใน Xcode targets</span>
-                                </div>
-                            </div>
-                            <div class="instruction-item">
-                                <span class="step-num">3</span>
-                                <div class="step-desc">
-                                    <span class="lang-en">Ensure hardware permissions are declared. Edit target Info settings or merge contents of <code>Info.plist.additions.xml</code>:</span>
-                                    <span class="lang-th">กำหนดสิทธิ์การใช้กล้อง LiDAR และไมโครโฟน ดึงไฟล์ <code>Info.plist.additions.xml</code> เข้าใน Target Info:</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="code-block-wrapper">
-                            <div class="code-block-header">
-                                <span class="code-filename">Info.plist (Keys to merge)</span>
-                                <button class="copy-btn" data-clipboard-target="#code-plist">
-                                    <i data-lucide="copy" class="copy-icon"></i>
-                                    <span class="lang-en">Copy</span>
-                                    <span class="lang-th">คัดลอก</span>
-                                </button>
-                            </div>
-                            <pre><code id="code-plist" class="language-xml">&lt;key&gt;NSCameraUsageDescription&lt;/key&gt;
-&lt;string&gt;Camera access is needed to detect objects using YOLOv11.&lt;/string&gt;
-&lt;key&gt;NSMicrophoneUsageDescription&lt;/key&gt;
-&lt;string&gt;Microphone access is needed for speech-to-text input.&lt;/string&gt;
-&lt;key&gt;NSSpeechRecognitionUsageDescription&lt;/key&gt;
-&lt;string&gt;Speech recognition is used to understand your spoken commands.&lt;/string&gt;</code></pre>
-                        </div>
-                    </div>
-
-                    <!-- Tab 3: YOLO & CoreML -->
-                    <div id="tab-yolo" class="tab-pane">
-                        <div class="tab-pane-header">
-                            <h4 class="pane-title">
-                                <span class="lang-en">Export YOLOv11 to CoreML Package</span>
-                                <span class="lang-th">แปลงโมเดล YOLOv11 ให้เป็น CoreML</span>
-                            </h4>
-                            <p class="pane-subtitle">
-                                <span class="lang-en">Ultralytics models can be easily compiled for the Apple Neural Engine using Python.</span>
-                                <span class="lang-th">ใช้ไลบรารี Python ในการแปลงโมเดลของ Ultralytics ให้เป็นรูปแบบ CoreML สำหรับ Neural Engine</span>
-                            </p>
-                        </div>
-                        <div class="code-block-wrapper">
-                            <div class="code-block-header">
-                                <span class="code-filename">Terminal</span>
-                                <button class="copy-btn" data-clipboard-target="#code-yolo">
-                                    <i data-lucide="copy" class="copy-icon"></i>
-                                    <span class="lang-en">Copy</span>
-                                    <span class="lang-th">คัดลอก</span>
-                                </button>
-                            </div>
-                            <pre><code id="code-yolo" class="language-bash"># Install python packages
-pip install ultralytics coremltools
-
-# Export YOLOv11 model with NMS parameters included
-yolo export model=yolo11n.pt format=coreml nms=True
-
-# Note: This outputs "yolo11n.mlpackage". Drag and copy it
-# directly into your Xcode build target resources.</code></pre>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <p class="footer-copy">
-                <span class="lang-en">&copy; 2026 Vision Assistant Project. SCiUS Forums 17. Built for high-performance edge AI.</span>
-                <span class="lang-th">&copy; 2026 โครงการ Vision Assistant | SCiUS Forums 17 | ขับเคลื่อนด้วย AI ออฟไลน์ประสิทธิภาพสูง</span>
-            </p>
-            <div class="footer-links">
-                <a href="#features" class="footer-link">
-                    <span class="lang-en">Features</span>
-                    <span class="lang-th">ฟีเจอร์</span>
-                </a>
-                <a href="#pipeline" class="footer-link">
-                    <span class="lang-en">Pipeline</span>
-                    <span class="lang-th">สถาปัตยกรรม</span>
-                </a>
-                <a href="#setup" class="footer-link">
-                    <span class="lang-en">Setup</span>
-                    <span class="lang-th">ติดตั้ง</span>
-                </a>
-            </div>
+      <!-- perception panel -->
+      <div class="panel" role="img" aria-label="ตัวอย่างผลวิเคราะห์ฉาก: พบคนที่ 1.4 เมตร เก้าอี้ที่ 2.8 เมตร ประตูที่ 4.1 เมตร และข้อความ 'ทางออก'">
+        <div class="panel-hd">
+          <span class="t">SCENE ANALYSIS</span>
+          <span class="live"><span class="dot"></span>LIVE</span>
         </div>
-    </footer>
+        <div class="det"><span class="obj">คน</span><span class="bar"><i style="--v:.28;background:linear-gradient(90deg,#ff7a59,#ff9e73)"></i></span><span class="d">1.4 ม</span><span class="tag near">ใกล้</span></div>
+        <div class="det"><span class="obj">เก้าอี้</span><span class="bar"><i style="--v:.52;background:linear-gradient(90deg,#f6c85f,#2fe6c8)"></i></span><span class="d">2.8 ม</span></div>
+        <div class="det"><span class="obj">ประตู</span><span class="bar"><i style="--v:.78;background:linear-gradient(90deg,#2fe6c8,#6a86ff)"></i></span><span class="d">4.1 ม</span><span class="tag far">ไกล</span></div>
+        <div class="det"><span class="obj">ป้ายข้อความ</span><span class="bar"><i style="--v:.62;background:linear-gradient(90deg,#2fe6c8,#8aa0ff)"></i></span><span class="d">“ทางออก”</span></div>
+        <div class="speak">
+          <svg class="ic" width="17" height="17" aria-hidden="true"><use href="#i-speak"/></svg>
+          <span>“มีคนอยู่ข้างหน้าประมาณ 1.4 เมตร ด้านขวามีเก้าอี้ และมีประตูทางออกอยู่ไกลออกไป”</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scrollcue" aria-hidden="true"><span>เลื่อนลง</span><span class="line"></span></div>
+</section>
 
-    <script src="app.js"></script>
+<!-- ================= IMPACT ================= -->
+<section class="impact">
+  <div class="wrap">
+    <div class="impact-grid">
+      <div class="reveal">
+        <span class="eyebrow">ทำไมต้องมีแอปนี้</span>
+        <p class="big" style="margin-top:18px">การเดินทางในที่ที่ไม่คุ้นเคย ไม่ควรต้องพึ่ง<em>สัญญาณเน็ต</em> หรือแลกมาด้วย<em>ความเป็นส่วนตัว</em></p>
+      </div>
+      <div class="impact-points reveal d1">
+        <div class="ip"><span class="k">01</span><span class="b"><strong>อิสระในการเดินทาง</strong>รู้ว่ามีสิ่งกีดขวาง คน หรือทางเดินอยู่ตรงไหน โดยไม่ต้องรอใครช่วยบอก</span></div>
+        <div class="ip"><span class="k">02</span><span class="b"><strong>ใช้ได้ทุกที่ แม้ไม่มีเน็ต</strong>ในลิฟต์ ใต้ดิน ต่างจังหวัด หรือโหมดเครื่องบิน แอปก็ยังทำงานเต็มประสิทธิภาพ</span></div>
+        <div class="ip"><span class="k">03</span><span class="b"><strong>ภาพชีวิตประจำวันไม่รั่วไหล</strong>ทุกอย่างประมวลผลบนเครื่อง ไม่มีภาพหรือเสียงถูกอัปโหลดไปที่ใด</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:var(--maxw);margin:0 auto">
+
+<!-- ================= FEATURES ================= -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">ความสามารถ</span>
+      <h2>สิ่งที่แอปทำได้ ในปุ่มเดียว</h2>
+      <p>ออกแบบให้ควบคุมง่ายที่สุดสำหรับผู้ที่มองไม่เห็น — แตะหรือสั่งด้วยเสียง แล้วให้แอปเล่าสิ่งที่อยู่ตรงหน้าให้ฟัง</p>
+    </div>
+    <div class="caps">
+      <div class="cap reveal"><span class="k">YOLO26</span><div class="ic"><svg width="22" height="22"><use href="#i-scan"/></svg></div><h3>ตรวจจับวัตถุ &amp; จัดลำดับความสำคัญ</h3><p>ระบุคน สิ่งของ และสิ่งกีดขวางในเฟรม พร้อมเลือกบอกสิ่งที่สำคัญต่อความปลอดภัยก่อน</p></div>
+      <div class="cap reveal d1"><span class="k">DEPTH</span><div class="ic"><svg width="22" height="22"><use href="#i-ruler"/></svg></div><h3>ประเมินระยะทาง</h3><p>บอกว่าวัตถุอยู่ห่างกี่เมตร ใช้ LiDAR เมื่อมี และประเมินจากภาพเมื่อไม่มี โดยไม่เดาระยะทางแบบมั่ว</p></div>
+      <div class="cap reveal d2"><span class="k">QWEN</span><div class="ic"><svg width="22" height="22"><use href="#i-eye"/></svg></div><h3>บรรยายฉากเป็นภาษาไทย</h3><p>โมเดลภาษาบนเครื่องเรียบเรียงสิ่งที่เห็นเป็นประโยคธรรมชาติ และมีคำบรรยายสำรองเมื่อโมเดลไม่พร้อม</p></div>
+      <div class="cap reveal"><span class="k">WHISPER</span><div class="ic"><svg width="22" height="22"><use href="#i-voice"/></svg></div><h3>สั่งงานด้วยเสียง</h3><p>ถอดเสียงพูดเป็นคำสั่งบนเครื่อง ถามได้ว่า “ข้างหน้ามีอะไร” หรือให้ช่วยหาสิ่งของที่ต้องการ</p></div>
+      <div class="cap reveal d1"><span class="k">OCR</span><div class="ic"><svg width="22" height="22"><use href="#i-text"/></svg></div><h3>อ่านข้อความให้ฟัง</h3><p>จับภาพป้าย เมนู หรือเอกสาร แล้วอ่านออกเสียง เมื่อมีข้อความหลายจุดจะให้เลือกว่าจะอ่านอันไหน</p></div>
+      <div class="cap reveal d2"><span class="k">HAPTIC</span><div class="ic" style="background:rgba(255,122,89,.14);color:var(--amber)"><svg width="22" height="22"><use href="#i-alert"/></svg></div><h3>เตือนการชนด้วยการสั่น</h3><p>สั่นเตือนอัตโนมัติเมื่อวัตถุเข้าใกล้เกินระยะที่ตั้งไว้ พร้อมสัญญาณเสียงบอกทิศทาง ปรับระยะเริ่มเตือนได้เอง</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section id="how" style="background:linear-gradient(180deg,var(--bg),var(--bg-2))">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">วิธีทำงาน · ทุกอย่างบนเครื่อง</span>
+      <h2>จากภาพหนึ่งเฟรม สู่เสียงบรรยาย ใน 6 ขั้นตอน</h2>
+      <p>ทุกขั้นตอนเชื่อมกันแบบ pipeline ด้วยการฉีดพึ่งพา (dependency injection) ที่ทดสอบแยกส่วนได้ และไม่มีขั้นตอนใดต้องออกอินเทอร์เน็ต</p>
+    </div>
+    <div class="pipe reveal" id="pipe">
+      <div class="pipe-track"></div>
+      <div class="step"><span class="num">01</span><div class="node"><svg width="20" height="20"><use href="#i-cam"/></svg></div><h3>รับภาพจากกล้อง</h3><p>ดึงเฟรมและข้อมูลความลึกจากเฟรมเดียวกันผ่าน ARKit</p><div class="eng">ARKit · AVFoundation</div></div>
+      <div class="step"><span class="num">02</span><div class="node"><svg width="20" height="20"><use href="#i-scan"/></svg></div><h3>ตรวจจับวัตถุ</h3><p>หาว่ามีวัตถุอะไรบ้างและอยู่ตำแหน่งใดในภาพ</p><div class="eng">YOLO26 · Core ML</div></div>
+      <div class="step"><span class="num">03</span><div class="node"><svg width="20" height="20"><use href="#i-ruler"/></svg></div><h3>ประเมินความลึก</h3><p>เลือกใช้ LiDAR หรือประเมินจากภาพแบบปรับตามสถานการณ์</p><div class="eng">LiDAR · Depth Anything</div></div>
+      <div class="step"><span class="num">04</span><div class="node"><svg width="20" height="20"><use href="#i-merge"/></svg></div><h3>หลอมรวมฉาก</h3><p>รวมวัตถุ ระยะ และความน่าเชื่อถือเข้าเป็นภาพฉากเดียว</p><div class="eng">Scene Fusion</div></div>
+      <div class="step"><span class="num">05</span><div class="node"><svg width="20" height="20"><use href="#i-eye"/></svg></div><h3>เรียบเรียงคำบรรยาย</h3><p>ให้โมเดลภาษาเล่าเป็นประโยค หรือใช้คำบรรยายสำรอง</p><div class="eng">Qwen · llama.cpp</div></div>
+      <div class="step"><span class="num">06</span><div class="node" style="border-color:rgba(47,230,200,.5);color:var(--teal)"><svg width="20" height="20"><use href="#i-speak"/></svg></div><h3>พูด · สั่น · เสียงเตือน</h3><p>ส่งออกเป็นเสียงบรรยาย การสั่น และสัญญาณเสียงบอกทิศ</p><div class="eng">TTS · Haptics · Audio</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODELS ================= -->
+<section id="models">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">เครื่องยนต์ AI · 4 โมเดลบนอุปกรณ์</span>
+      <h2>โมเดลระดับงานวิจัย ที่ถูกย่อให้รันในมือถือ</h2>
+      <p>ทุกโมเดลถูกควอนไทซ์และแพ็กลงในแอปโดยตรง โหลดจากในเครื่อง ไม่มีการเรียก API ภายนอก</p>
+    </div>
+    <div class="models">
+      <div class="model reveal" style="--mc:#ff7a59">
+        <div class="model-hd"><span class="name">YOLO26n</span><span class="role">ตรวจจับวัตถุ</span></div>
+        <div class="meta"><span class="chip">Core ML · mlpackage</span><span class="chip">640×640 RGB</span><span class="chip">out [1,300,6]</span></div>
+        <p class="desc">โมเดลตรวจจับวัตถุรุ่นเล็กที่สุดของ Ultralytics ส่งออกเป็น Core ML เพื่อความเร็วบน Neural Engine</p>
+      </div>
+      <div class="model reveal d1" style="--mc:#2fe6c8">
+        <div class="model-hd"><span class="name">Depth Anything V2</span><span class="role">ประเมินความลึก</span></div>
+        <div class="meta"><span class="chip">Core ML · Small</span><span class="chip">518×392</span><span class="chip lic">Apache-2.0</span></div>
+        <p class="desc">ประเมินความลึกเชิงสัมพัทธ์จากภาพเดียว ใช้เป็นตัวสำรองเมื่ออุปกรณ์ไม่มีเซนเซอร์ LiDAR</p>
+      </div>
+      <div class="model reveal d1" style="--mc:#6a86ff">
+        <div class="model-hd"><span class="name">Whisper small</span><span class="role">ถอดเสียงเป็นข้อความ</span></div>
+        <div class="meta"><span class="chip">whisper.cpp</span><span class="chip">quant q5_0</span><span class="chip lic">MIT</span></div>
+        <p class="desc">ถอดเสียงพูดเป็นข้อความบนเครื่องผ่านบริดจ์ whisper.cpp ที่คอมไพล์เป็น native สำหรับ iPhone</p>
+      </div>
+      <div class="model reveal d2" style="--mc:#a074ff">
+        <div class="model-hd"><span class="name">Qwen3.5-2B</span><span class="role">บรรยายฉาก (LLM)</span></div>
+        <div class="meta"><span class="chip">llama.cpp · GGUF</span><span class="chip">Q4_K_M</span><span class="chip lic">Apache-2.0</span></div>
+        <p class="desc">โมเดลภาษา 2 พันล้านพารามิเตอร์ ควอนไทซ์ 4-bit เรียบเรียงสิ่งที่ตรวจพบเป็นคำบรรยายภาษาไทย</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRIVACY ================= -->
+<section id="privacy" class="privacy">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">ความเป็นส่วนตัว โดยการออกแบบ</span>
+      <h2>ข้อมูลของคุณ<br><span class="grad">ไม่เคยออกจากเครื่อง</span></h2>
+      <p>แอปไม่มีเส้นทางเครือข่ายสำหรับส่งข้อมูลออกเลย ภาพ ความลึก เสียง และคำบรรยายทั้งหมดอยู่ในหน่วยความจำชั่วคราวของการวิเคราะห์นั้นเท่านั้น</p>
+    </div>
+    <div class="priv-grid">
+      <div class="priv reveal"><div class="ic"><svg width="24" height="24"><use href="#i-plane"/></svg></div><strong>ทำงานในโหมดเครื่องบิน</strong><span>ไม่ต้องเชื่อมต่ออินเทอร์เน็ต ใช้งานได้แม้ไม่มีสัญญาณ</span></div>
+      <div class="priv reveal d1"><div class="ic"><svg width="24" height="24"><use href="#i-mem"/></svg></div><strong>ประมวลผลในหน่วยความจำ</strong><span>ไม่บันทึกภาพ เสียง หรือเนื้อหาฉากลงในเครื่องหรือที่ใด</span></div>
+      <div class="priv reveal d2"><div class="ic"><svg width="24" height="24"><use href="#i-lock"/></svg></div><strong>ขอสิทธิ์เท่าที่จำเป็น</strong><span>ขอเพียงกล้องและไมโครโฟน ไม่ขอตำแหน่ง รูปภาพ หรือการติดตาม</span></div>
+      <div class="priv reveal d3"><div class="ic"><svg width="24" height="24"><use href="#i-cpu"/></svg></div><strong>คำนวณบนอุปกรณ์</strong><span>ทุกโมเดลรันบนชิปของ iPhone เอง ไม่พึ่งเซิร์ฟเวอร์ภายนอก</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENGINEERING ================= -->
+<section id="engineering">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">เบื้องหลังทางวิศวกรรม</span>
+      <h2>สร้างแบบเนทีฟ ทดสอบได้ ตรวจสอบได้</h2>
+      <p>สถาปัตยกรรมแบบฉีดพึ่งพาผ่านโปรโตคอล ทำให้แต่ละบริการถูกจำลองและทดสอบแยกส่วนได้จริง รองรับทั้งอุปกรณ์ที่มีและไม่มี LiDAR</p>
+    </div>
+    <div class="eng-grid">
+      <div class="metric reveal"><div class="n">4</div><div class="l">โมเดล AI ทำงานร่วมกันบนเครื่อง</div></div>
+      <div class="metric reveal d1"><div class="n">118</div><div class="l">เทสต์อัตโนมัติ ครอบคลุมตรรกะหลัก</div></div>
+      <div class="metric reveal d2"><div class="n">2</div><div class="l">โหมดความลึก · LiDAR และประเมินจากภาพ</div></div>
+      <div class="metric reveal d3"><div class="n">0</div><div class="l">การเรียกใช้เครือข่ายขณะทำงาน</div></div>
+    </div>
+    <div class="stack reveal d1">
+      <span class="t">SwiftUI</span><span class="t">Core ML</span><span class="t">ARKit</span><span class="t">Vision</span>
+      <span class="t">llama.cpp</span><span class="t">whisper.cpp</span><span class="t">Swift ↔ C++ bridge</span>
+      <span class="t">Protocol-based DI</span><span class="t">Neural Engine</span><span class="t">Haptics · AVAudio</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-brand">
+        <svg class="glyph" width="26" height="26" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="url(#bg1)" stroke-width="2.4"/>
+          <circle cx="20" cy="20" r="6.5" fill="none" stroke="url(#bg1)" stroke-width="2.4"/>
+          <circle cx="20" cy="20" r="2" fill="#2fe6c8"/>
+        </svg>
+        VisionGuide <small style="font-family:var(--font-mono);color:var(--dim);font-weight:500;font-size:.62rem;letter-spacing:.14em">OFFLINE</small>
+      </div>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:12px;max-width:44ch">ผู้ช่วยการมองเห็นแบบออฟไลน์ สำหรับผู้พิการทางสายตา · ภาษาไทยเป็นค่าเริ่มต้น</p>
+    </div>
+    <div class="foot-meta">
+      <div>PROJECT · SCiUS FORUMS 17</div>
+      <div>ON-DEVICE · YOLO26 · DEPTH ANYTHING · WHISPER · QWEN</div>
+      <div class="status">STATUS · อยู่ระหว่างการทดสอบบนอุปกรณ์จริง</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- top bar shadow on scroll ---- */
+  var topbar = document.getElementById('topbar');
+  var onScroll = function(){ topbar.classList.toggle('scrolled', window.scrollY > 12); };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* ---- reveal on view ---- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.16, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal, #pipe').forEach(function(el){ io.observe(el); });
+
+  /* ---- hero depth field (dot grid + scan line) ---- */
+  var cv = document.getElementById('depthfield');
+  if(!cv) return;
+  var ctx = cv.getContext('2d');
+  var W=0, H=0, dpr = Math.min(window.devicePixelRatio||1, 2);
+  var STOPS = [[255,122,89],[246,200,95],[47,230,200],[106,134,255],[160,116,255]]; // ใกล้→ไกล
+  function lerp(a,b,t){return a+(b-a)*t;}
+  function depthColor(v){ // v in 0..1 → rgb across STOPS
+    v=Math.max(0,Math.min(1,v));
+    var seg=v*(STOPS.length-1), i=Math.floor(seg), t=seg-i;
+    var a=STOPS[i], b=STOPS[Math.min(i+1,STOPS.length-1)];
+    return [lerp(a[0],b[0],t),lerp(a[1],b[1],t),lerp(a[2],b[2],t)];
+  }
+  function resize(){
+    var r = cv.getBoundingClientRect();
+    W=r.width; H=r.height;
+    cv.width=Math.floor(W*dpr); cv.height=Math.floor(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  window.addEventListener('resize', resize); resize();
+
+  var GAP=30, R=2.1;
+  function frame(t){
+    ctx.clearRect(0,0,W,H);
+    var time=t*0.00016;
+    for(var y=GAP*0.5; y<H; y+=GAP){
+      for(var x=GAP*0.5; x<W; x+=GAP){
+        // smooth evolving depth value
+        var v = 0.5
+          + 0.34*Math.sin(x*0.0055 + time*1.3 + Math.cos(y*0.004+time))
+          + 0.30*Math.cos(y*0.0075 - time*1.0);
+        v = (v*0.5)+0.5;
+        var c = depthColor(v);
+        // fade toward left (keep text side calm) and edges
+        var edge = Math.min(1, (x/W)*1.5) ;
+        var a = 0.06 + 0.16*Math.pow(edge,1.3);
+        ctx.beginPath();
+        ctx.arc(x, y, R+(v*0.9), 0, 6.2832);
+        ctx.fillStyle='rgba('+(c[0]|0)+','+(c[1]|0)+','+(c[2]|0)+','+a+')';
+        ctx.fill();
+      }
+    }
+    // scan line
+    var sy = ((t*0.045) % (H+160)) - 80;
+    var g = ctx.createLinearGradient(0, sy-70, 0, sy+70);
+    g.addColorStop(0,'rgba(47,230,200,0)');
+    g.addColorStop(.5,'rgba(47,230,200,.10)');
+    g.addColorStop(1,'rgba(47,230,200,0)');
+    ctx.fillStyle=g; ctx.fillRect(0, sy-70, W, 140);
+    ctx.strokeStyle='rgba(47,230,200,.28)'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(0,sy); ctx.lineTo(W,sy); ctx.stroke();
+    raf=requestAnimationFrame(frame);
+  }
+  var raf;
+  if(reduce){ frame(3000); cancelAnimationFrame(raf); }
+  else { raf=requestAnimationFrame(frame); }
+})();
+</script>
 </body>
 </html>
