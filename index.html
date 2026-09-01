@@ -18,7 +18,9 @@
     --font-sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","Noto Sans Thai",system-ui,sans-serif;
     --font-mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
     --maxw:1180px;
-    --ease:cubic-bezier(.4,0,.15,1);
+    --ease:cubic-bezier(.22,1,.36,1);
+    --ease-soft:cubic-bezier(.16,1,.3,1);
+    --glass:rgba(12,20,34,.62);
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
@@ -33,6 +35,24 @@
   a{color:inherit;text-decoration:none}
   img,canvas{display:block;max-width:100%}
   :focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
+
+  /* Apple-like motion language */
+  .ambient{
+    position:absolute;inset:auto;pointer-events:none;filter:blur(50px);opacity:.24;
+    border-radius:50%;mix-blend-mode:screen;will-change:transform;
+  }
+  .ambient.a1{width:280px;height:280px;right:4%;top:18%;background:#2fe6c8}
+  .ambient.a2{width:360px;height:360px;right:22%;bottom:8%;background:#6a86ff;opacity:.14}
+  .magnetic{transition:transform .55s var(--ease-soft),box-shadow .55s var(--ease-soft)}
+  .magnetic:hover{transform:translateY(-3px) scale(1.012)}
+  .hero-copy{will-change:transform}
+  .hero-visual{will-change:transform}
+  .section-orbit{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .section-orbit::before,.section-orbit::after{
+    content:"";position:absolute;border:1px solid rgba(255,255,255,.05);border-radius:50%;
+    width:52vw;height:52vw;left:58%;top:40%;transform:translate(-50%,-50%);
+  }
+  .section-orbit::after{width:72vw;height:72vw;opacity:.45}
 
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
   .measure{max-width:62ch}
@@ -239,19 +259,68 @@
   @media(max-width:560px){.foot-grid{flex-direction:column;align-items:flex-start}.foot-meta{text-align:left}}
 
   /* reveal */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-  .reveal.in{opacity:1;transform:none}
+  .reveal{
+    opacity:0;transform:translate3d(0,42px,0) scale(.985);
+    filter:blur(4px);
+    transition:
+      opacity 1s var(--ease-soft),
+      transform 1s var(--ease-soft),
+      filter 1s var(--ease-soft);
+  }
+  .reveal.in{opacity:1;transform:none;filter:none}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+  /* Text that gently tracks the viewport like product landing pages */
+  .hero h1,.hero .lede,.hero .statrow{animation:heroIn 1.05s var(--ease-soft) both}
+  .hero .lede{animation-delay:.1s}
+  .hero .statrow{animation-delay:.18s}
+  .hero-visual{animation:heroCardIn 1.2s .12s var(--ease-soft) both}
+  @keyframes heroIn{
+    from{opacity:0;transform:translate3d(0,24px,0);filter:blur(5px)}
+    to{opacity:1;transform:none;filter:none}
+  }
+  @keyframes heroCardIn{
+    from{opacity:0;transform:translate3d(0,36px,0) scale(.965);filter:blur(7px)}
+    to{opacity:1;transform:none;filter:none}
+  }
+
+  /* Better depth + hover response */
+  .panel,.cap,.model,.priv,.stat{
+    transform:translateZ(0);
+    transition:
+      transform .65s var(--ease),
+      border-color .45s ease,
+      box-shadow .65s var(--ease),
+      background .45s ease;
+  }
+  .panel:hover{box-shadow:0 45px 100px -35px rgba(0,0,0,.88), inset 0 1px 0 rgba(255,255,255,.05)}
+  .cap:hover,.model:hover,.priv:hover{transform:translateY(-7px)}
+  .stat:hover{transform:translateY(-4px) scale(1.015)}
+
+  /* Scroll progress */
+  .progress{
+    position:fixed;z-index:120;left:0;top:0;width:100%;height:2px;
+    transform-origin:left center;transform:scaleX(0);
+    background:linear-gradient(90deg,var(--amber),#f6c85f,var(--teal),var(--indigo),var(--violet));
+    box-shadow:0 0 14px rgba(47,230,200,.35);pointer-events:none
+  }
+
+  @media(max-width:900px){
+    .section-orbit::before,.section-orbit::after{left:65%;width:95vw;height:95vw}
+  }
 
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;scroll-behavior:auto}
     .reveal{opacity:1;transform:none;transition:none}
     .pipe-track{transform:scaleX(1)}
     .det .bar i{transition:none}
+    .hero h1,.hero .lede,.hero .statrow,.hero-visual{animation:none}
+    .hero-copy,.hero-visual,.ambient{transform:none!important}
   }
 </style>
 </head>
 <body>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <!-- SVG icon defs -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -302,7 +371,7 @@
   <div class="hero-veil"></div>
   <div class="wrap">
     <div class="hero-grid">
-      <div>
+      <div class="hero-copy">
         <span class="eyebrow">ผู้ช่วยการมองเห็น · บนอุปกรณ์</span>
         <h1>เปลี่ยนกล้องมือถือ<br>ให้เป็น<span class="grad">ดวงตา</span></h1>
         <p class="lede">แอปสำหรับ<b>ผู้พิการทางสายตา</b> ที่วิเคราะห์สภาพแวดล้อมรอบตัวด้วยปัญญาประดิษฐ์บนเครื่อง — บอกว่ามีอะไรอยู่ตรงไหน ห่างแค่ไหน และอ่านข้อความให้ฟัง ทั้งหมดนี้<b>ทำงานได้แม้ไม่มีอินเทอร์เน็ตแม้แต่นิดเดียว</b></p>
@@ -375,6 +444,7 @@
 
 <!-- ================= HOW IT WORKS ================= -->
 <section id="how" style="background:linear-gradient(180deg,var(--bg),var(--bg-2))">
+  <div class="section-orbit" aria-hidden="true"></div>
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">วิธีทำงาน · ทุกอย่างบนเครื่อง</span>
@@ -385,7 +455,7 @@
       <div class="pipe-track"></div>
       <div class="step"><span class="num">01</span><div class="node"><svg width="20" height="20"><use href="#i-cam"/></svg></div><h3>รับภาพจากกล้อง</h3><p>ดึงเฟรมและข้อมูลความลึกจากเฟรมเดียวกันผ่าน ARKit</p><div class="eng">ARKit · AVFoundation</div></div>
       <div class="step"><span class="num">02</span><div class="node"><svg width="20" height="20"><use href="#i-scan"/></svg></div><h3>ตรวจจับวัตถุ</h3><p>หาว่ามีวัตถุอะไรบ้างและอยู่ตำแหน่งใดในภาพ</p><div class="eng">YOLO26 · Core ML</div></div>
-      <div class="step"><span class="num">03</span><div class="node"><svg width="20" height="20"><use href="#i-ruler"/></svg></div><h3>ประเมินความลึก</h3><p>เลือกใช้ LiDAR หรือประเมินจากภาพแบบปรับตามสถานการณ์</p><div class="eng">LiDAR · Depth Anything</div></div>
+      <div class="step"><span class="num">03</span><div class="node"><svg width="20" height="20"><use href="#i-ruler"/></svg></div><h3>ประเมินความลึก</h3><p>เลือกใช้ LiDAR หรือประเมินจากภาพแบบปรับตามสถานการณ์</p><div class="eng">LiDAR · Depth Anything V3</div></div>
       <div class="step"><span class="num">04</span><div class="node"><svg width="20" height="20"><use href="#i-merge"/></svg></div><h3>หลอมรวมฉาก</h3><p>รวมวัตถุ ระยะ และความน่าเชื่อถือเข้าเป็นภาพฉากเดียว</p><div class="eng">Scene Fusion</div></div>
       <div class="step"><span class="num">05</span><div class="node"><svg width="20" height="20"><use href="#i-eye"/></svg></div><h3>เรียบเรียงคำบรรยาย</h3><p>ให้โมเดลภาษาเล่าเป็นประโยค หรือใช้คำบรรยายสำรอง</p><div class="eng">Qwen · llama.cpp</div></div>
       <div class="step"><span class="num">06</span><div class="node" style="border-color:rgba(47,230,200,.5);color:var(--teal)"><svg width="20" height="20"><use href="#i-speak"/></svg></div><h3>พูด · สั่น · เสียงเตือน</h3><p>ส่งออกเป็นเสียงบรรยาย การสั่น และสัญญาณเสียงบอกทิศ</p><div class="eng">TTS · Haptics · Audio</div></div>
@@ -408,7 +478,7 @@
         <p class="desc">โมเดลตรวจจับวัตถุรุ่นเล็กที่สุดของ Ultralytics ส่งออกเป็น Core ML เพื่อความเร็วบน Neural Engine</p>
       </div>
       <div class="model reveal d1" style="--mc:#2fe6c8">
-        <div class="model-hd"><span class="name">Depth Anything V2</span><span class="role">ประเมินความลึก</span></div>
+        <div class="model-hd"><span class="name">Depth Anything V3</span><span class="role">ประเมินความลึก</span></div>
         <div class="meta"><span class="chip">Core ML · Small</span><span class="chip">518×392</span><span class="chip lic">Apache-2.0</span></div>
         <p class="desc">ประเมินความลึกเชิงสัมพัทธ์จากภาพเดียว ใช้เป็นตัวสำรองเมื่ออุปกรณ์ไม่มีเซนเซอร์ LiDAR</p>
       </div>
@@ -492,6 +562,16 @@
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---- cinematic scroll progress ---- */
+  var progress = document.getElementById('progress');
+  var updateProgress = function(){
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - window.innerHeight;
+    progress.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+  };
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
+
   /* ---- top bar shadow on scroll ---- */
   var topbar = document.getElementById('topbar');
   var onScroll = function(){ topbar.classList.toggle('scrolled', window.scrollY > 12); };
@@ -502,8 +582,39 @@
     entries.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
-  }, {threshold:.16, rootMargin:'0px 0px -8% 0px'});
+  }, {threshold:.08, rootMargin:'0px 0px -14% 0px'});
   document.querySelectorAll('.reveal, #pipe').forEach(function(el){ io.observe(el); });
+
+  /* ---- subtle parallax + pointer tilt ---- */
+  var hero = document.querySelector('.hero');
+  var copy = document.querySelector('.hero-copy');
+  var visual = document.querySelector('.hero-visual');
+  var a1 = document.querySelector('.ambient.a1');
+  var a2 = document.querySelector('.ambient.a2');
+
+  function parallax(){
+    if(reduce || !hero) return;
+    var rect = hero.getBoundingClientRect();
+    var p = Math.max(-1, Math.min(1, -rect.top / Math.max(1, hero.offsetHeight)));
+    if(copy) copy.style.transform = 'translate3d(0,' + (p*20) + 'px,0)';
+    if(visual) visual.style.transform = 'translate3d(0,' + (p*38) + 'px,0)';
+    if(a1) a1.style.transform = 'translate3d(' + (p*22) + 'px,' + (p*-34) + 'px,0)';
+    if(a2) a2.style.transform = 'translate3d(' + (p*-18) + 'px,' + (p*22) + 'px,0)';
+  }
+  window.addEventListener('scroll', parallax, {passive:true});
+  parallax();
+
+  if(!reduce && visual){
+    visual.addEventListener('pointermove', function(e){
+      var r = visual.getBoundingClientRect();
+      var x = (e.clientX-r.left)/r.width - .5;
+      var y = (e.clientY-r.top)/r.height - .5;
+      visual.style.transform = 'perspective(900px) rotateX(' + (-y*4) + 'deg) rotateY(' + (x*5) + 'deg) translateY(-2px)';
+    });
+    visual.addEventListener('pointerleave', function(){
+      visual.style.transform = 'translate3d(0,0,0)';
+    });
+  }
 
   /* ---- hero depth field (dot grid + scan line) ---- */
   var cv = document.getElementById('depthfield');
@@ -565,3 +676,4 @@
 </script>
 </body>
 </html>
+ทำให้ UI เว็บนี้สวยขึ้นหน่อยอยากได้ animation เเบบเว็บ apple.com
