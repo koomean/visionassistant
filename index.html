@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VisionGuide Offline — ให้ AI เป็นดวงตา</title>
-<meta name="description" content="แอปผู้ช่วยการมองเห็นสำหรับผู้พิการทางสายตา วิเคราะห์สภาพแวดล้อมด้วย AI บนเครื่อง ทำงานออฟไลน์ 100%">
+<title>VisionGuide Offline — เข้าใจสิ่งรอบตัว</title>
+<meta name="description" content="VisionGuide Offline — an on-device iPhone guide for scene awareness, spoken commands, and text reading, built with privacy and open source in mind.">
 <style>
   :root{
     --bg:#070b12; --bg-2:#0a1019; --surface:#0e1626; --surface-2:#121d30;
@@ -18,9 +18,7 @@
     --font-sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","Noto Sans Thai",system-ui,sans-serif;
     --font-mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
     --maxw:1180px;
-    --ease:cubic-bezier(.22,1,.36,1);
-    --ease-soft:cubic-bezier(.16,1,.3,1);
-    --glass:rgba(12,20,34,.62);
+    --ease:cubic-bezier(.4,0,.15,1);
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
@@ -35,24 +33,6 @@
   a{color:inherit;text-decoration:none}
   img,canvas{display:block;max-width:100%}
   :focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
-
-  /* Apple-like motion language */
-  .ambient{
-    position:absolute;inset:auto;pointer-events:none;filter:blur(50px);opacity:.24;
-    border-radius:50%;mix-blend-mode:screen;will-change:transform;
-  }
-  .ambient.a1{width:280px;height:280px;right:4%;top:18%;background:#2fe6c8}
-  .ambient.a2{width:360px;height:360px;right:22%;bottom:8%;background:#6a86ff;opacity:.14}
-  .magnetic{transition:transform .55s var(--ease-soft),box-shadow .55s var(--ease-soft)}
-  .magnetic:hover{transform:translateY(-3px) scale(1.012)}
-  .hero-copy{will-change:transform}
-  .hero-visual{will-change:transform}
-  .section-orbit{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-  .section-orbit::before,.section-orbit::after{
-    content:"";position:absolute;border:1px solid rgba(255,255,255,.05);border-radius:50%;
-    width:52vw;height:52vw;left:58%;top:40%;transform:translate(-50%,-50%);
-  }
-  .section-orbit::after{width:72vw;height:72vw;opacity:.45}
 
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
   .measure{max-width:62ch}
@@ -256,71 +236,160 @@
   .foot-brand{display:flex;align-items:center;gap:12px;font-weight:800}
   .foot-meta{font-family:var(--font-mono);font-size:.74rem;color:var(--dim);line-height:1.9;letter-spacing:.03em;text-align:right}
   .foot-meta .status{color:var(--amber)}
+  .opensource{background:radial-gradient(80% 100% at 90% 15%,rgba(160,116,255,.10),transparent 58%),linear-gradient(180deg,var(--bg),var(--bg-2))}
+  .oss-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:42px}
+  @media(max-width:760px){.oss-grid{grid-template-columns:1fr}}
+  .oss-card{padding:24px;border:1px solid var(--border);border-radius:16px;background:linear-gradient(180deg,var(--surface),rgba(11,17,28,.72))}
+  .oss-card h3{font-size:1.12rem}.oss-card p,.oss-card li{color:var(--muted);font-size:.91rem}
+  .oss-card p{margin-top:10px}.oss-card ul{padding-left:20px;margin-top:12px}.oss-card li+li{margin-top:7px}
+  .license-options{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+  @media(max-width:760px){.license-options{grid-template-columns:1fr}}
+  .license-option{padding:18px;border:1px solid var(--border);border-radius:14px;background:rgba(14,22,38,.72);transition:border-color .25s,transform .25s,background .25s}
+  .license-option.selected{border-color:var(--teal);background:rgba(47,230,200,.08);box-shadow:inset 0 0 0 1px rgba(47,230,200,.12)}
+  .license-option:hover,.license-option:focus-visible{border-color:var(--teal);transform:translateY(-3px);background:rgba(47,230,200,.07)}
+  .license-option strong{display:block;font-family:var(--font-mono);color:var(--teal);font-size:1rem}
+  .license-option span{display:block;color:var(--muted);font-size:.84rem;margin-top:8px}
+  .license-note{margin-top:16px;color:var(--dim);font-size:.82rem}
   @media(max-width:560px){.foot-grid{flex-direction:column;align-items:flex-start}.foot-meta{text-align:left}}
 
+  /* Field-guide redesign: clear paper, ink, and depth-map signals */
+  :root{
+    --bg:#f1f4f1;--bg-2:#e8eeeb;--surface:#fff;--surface-2:#e3ebe7;
+    --border:rgba(24,48,59,.13);--border-2:rgba(24,48,59,.25);
+    --text:#18303b;--muted:#52666a;--dim:#74858a;
+    --teal:#41685d;--teal-2:#34574e;--teal-soft:#e3eee8;
+    --amber:#c95c3f;--green:#41685d;--indigo:#5d7391;--violet:#74758c;
+    --font-sans:-apple-system,BlinkMacSystemFont,"Avenir Next","Helvetica Neue","Noto Sans Thai",system-ui,sans-serif;
+    --maxw:1240px;
+  }
+  body{background:var(--bg);line-height:1.7}
+  ::selection{background:#dce86b;color:var(--text)}
+  .topbar{height:72px;padding:0 max(28px,calc((100vw - 1240px)/2));background:rgba(241,244,241,.96);backdrop-filter:none;border-bottom:1px solid var(--border)}
+  .topbar.scrolled{background:rgba(241,244,241,.98);border-bottom-color:var(--border)}
+  .brand{font-size:1.02rem}.brand .glyph{filter:saturate(.55)}
+  .brand small{color:var(--muted);letter-spacing:.08em}
+  .navlinks{gap:2px}.navlinks a{color:var(--muted);border-radius:2px;padding:8px 10px}
+  .navlinks a:hover{color:var(--text);background:transparent;text-decoration:underline;text-decoration-color:#8fa49a;text-underline-offset:5px}
+  .language-switch{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid var(--border)}
+  .language-switch button{border:0;background:transparent;color:var(--muted);font:600 .76rem var(--font-sans);padding:7px 8px;cursor:pointer;border-radius:2px}
+  .language-switch button[aria-pressed="true"]{color:var(--text);background:#dce86b}
+  .language-switch button:hover{color:var(--text)}
+  .hero{min-height:760px;padding:144px 0 96px;background:#e8eeeb;overflow:hidden}
+  #depthfield,.hero-veil{display:none}
+  .hero .wrap{width:100%}.hero-grid{grid-template-columns:1fr 1.04fr;gap:clamp(40px,8vw,110px)}
+  @media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:44px}}
+  .eyebrow{font-family:var(--font-sans);font-size:.78rem;letter-spacing:.04em;text-transform:none;color:var(--teal);gap:11px}
+  .eyebrow::before{width:8px;height:8px;background:#dce86b;border-radius:50%}
+  h1,h2,h3{letter-spacing:-.035em}
+  .hero h1{font-size:clamp(3rem,6.8vw,6.3rem);font-weight:730;line-height:.99;letter-spacing:-.065em;margin-top:28px}
+  .hero h1 .grad{background:none;-webkit-text-fill-color:var(--teal);color:var(--teal)}
+  .lede{font-size:clamp(1rem,1.35vw,1.14rem);color:var(--muted);line-height:1.8;margin-top:26px;max-width:48ch}
+  .lede b{color:var(--text)}
+  .statrow{gap:0;margin-top:40px;border-top:1px solid var(--border);max-width:520px}
+  .stat{flex:1;min-width:120px;padding:16px 14px 0 0;background:none;border:0;border-radius:0}
+  .stat .n{font-family:var(--font-sans);font-size:1.24rem;font-weight:700;color:var(--teal)}
+  .stat .l{font-size:.74rem;line-height:1.35;color:var(--muted);max-width:14ch}
+  .panel{background:#fff;border:0;border-radius:3px;padding:28px;box-shadow:0 18px 42px rgba(24,48,59,.08);backdrop-filter:none;color:var(--text)}
+  .panel::before,.panel::after{display:none}
+  .panel-hd{padding-bottom:14px;border-bottom:1px solid var(--border);margin-bottom:0}
+  .panel-hd .t{font-family:var(--font-sans);font-size:.84rem;letter-spacing:0;text-transform:none;color:var(--muted)}
+  .live{font-family:var(--font-sans);letter-spacing:0;color:var(--teal)}
+  .live .dot{background:#dce86b;box-shadow:none;animation:none}
+  .scene-map{height:190px;position:relative;overflow:hidden;border-bottom:1px solid var(--border);background:#eaf0ec}
+  .scene-map svg{width:100%;height:100%;display:block}
+  .scene-caption{position:absolute;inset:auto 13px 10px;display:flex;justify-content:space-between;align-items:center;gap:12px;color:#52666a;font-size:.68rem;pointer-events:none}
+  .scene-caption span:last-child{font-size:.62rem;letter-spacing:.08em;color:#74858a}
+  .scene-map .scan{stroke-dasharray:5 9;animation:mapScan 8s linear infinite}
+  @keyframes mapScan{to{stroke-dashoffset:-84}}
+  .det{gap:14px;padding:12px 0;border-color:var(--border)}
+  .det .obj{min-width:82px;font-size:.88rem}.det .bar{height:3px;background:#e2e9e5}
+  .det .bar i{border-radius:0;background:var(--teal)!important}
+  .det:first-of-type{border-top:1px solid var(--border)}
+  .det .d{font-family:var(--font-sans);font-size:.78rem;color:var(--muted)}
+  .tag{font-family:var(--font-sans);font-size:.67rem;letter-spacing:0;text-transform:none;border-radius:2px}
+  .tag.near{color:#9d422e;background:#f7e5df}.tag.far{color:#4d6682;background:#e8edf3}
+  .speak{margin-top:14px;padding:14px 15px;border-radius:2px;background:#18303b;color:white;border:0;font-size:.87rem}
+  .speak .ic{color:#dce86b}
+  .scrollcue{color:var(--muted);font-family:var(--font-sans);letter-spacing:0;text-transform:none}
+  .scrollcue .line{background:#98aaa2}
+  section{padding:clamp(68px,9vw,116px) 0}
+  .sec-head{max-width:740px}.sec-head h2{font-size:clamp(2.1rem,4.5vw,4rem);font-weight:720;line-height:1.05;margin-top:18px;letter-spacing:-.05em}
+  .sec-head p{font-size:1rem;line-height:1.8;color:var(--muted);max-width:68ch;margin-top:20px}
+  .impact{background:#18303b;color:#f1f4f1}
+  .impact .eyebrow,.impact .ip .k{color:#dce86b}
+  .impact .big{font-size:clamp(1.9rem,3.6vw,3.2rem);letter-spacing:-.045em;max-width:19ch}
+  .impact .big em{color:#dce86b}
+  .impact .ip .b{color:#c7d1cc}.impact .ip .b strong{color:#fff}
+  .rule{border:0;background:var(--border)}
+  .caps{gap:0;margin-top:44px;border-top:1px solid var(--border);grid-template-columns:repeat(3,1fr)}
+  .cap{border:0;border-bottom:1px solid var(--border);border-radius:0;padding:26px 26px 28px 0;background:transparent;overflow:visible;transition:color .2s}
+  .cap:nth-child(3n+2),.cap:nth-child(3n){padding-left:26px;border-left:1px solid var(--border)}
+  .cap:hover{transform:none;box-shadow:none;border-color:var(--border);color:var(--teal)}
+  .cap .ic{width:36px;height:36px;border-radius:3px;background:#e3eee8;color:var(--teal);margin-bottom:18px}
+  .cap .k{top:28px;right:16px;font-family:var(--font-sans);letter-spacing:.04em;color:var(--dim)}
+  .cap h3{font-size:1.12rem;line-height:1.3}.cap p{font-size:.91rem;line-height:1.7;color:var(--muted)}
+  .pipe{grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
+  .pipe-track{display:none}.step{padding:18px 20px 18px 0;border-top:1px solid var(--border)}
+  .step:not(:last-child)::after{display:none}.step .num{font-family:var(--font-sans);color:var(--teal);letter-spacing:0}
+  .step .node{width:36px;height:36px;border-radius:3px;background:#e3eee8;border:0;color:var(--teal);margin:12px 0}
+  .step h3{font-size:1.03rem}.step p{font-size:.87rem;line-height:1.65;color:var(--muted)}
+  .step .eng{font-family:var(--font-sans);color:var(--dim);font-size:.75rem;letter-spacing:0}
+  #models{background:#e8eeeb}
+  .models{gap:0;margin-top:44px;border-top:1px solid var(--border);grid-template-columns:1fr 1fr}
+  .model{border:0;border-bottom:1px solid var(--border);border-radius:0;padding:24px 28px 24px 0;background:transparent;gap:10px}
+  .model:nth-child(even){padding-left:28px;border-left:1px solid var(--border)}
+  .model::before{display:none}.model-hd{align-items:flex-start;flex-direction:column;gap:2px}
+  .model-hd .name{font-family:var(--font-sans);font-size:1.2rem}.model-hd .role{font-size:.88rem}
+  .chip{font-family:var(--font-sans);font-size:.72rem;border-radius:2px;background:transparent;border-color:var(--border);letter-spacing:0}
+  .chip.lic{color:var(--teal);border-color:rgba(65,104,93,.3);background:#e3eee8}
+  .model .desc{font-size:.9rem;line-height:1.7;color:var(--muted)}
+  .privacy{background:#fff}
+  .privacy h2 .grad{background:none;-webkit-text-fill-color:var(--teal);color:var(--teal)}
+  .priv-grid{gap:0;margin-top:42px;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border)}
+  .priv{padding:22px 20px 18px 0;border:0;border-bottom:1px solid var(--border);border-radius:0;background:transparent}
+  .priv+.priv{padding-left:20px;border-left:1px solid var(--border)}
+  .priv .ic{color:var(--teal);margin-bottom:14px}.priv strong{font-size:.97rem}.priv span{font-size:.85rem;line-height:1.7;color:var(--muted)}
+  #engineering{background:#dfe8e3}
+  .eng-grid{gap:0;margin-top:40px;border-top:1px solid var(--border);grid-template-columns:repeat(4,1fr)}
+  .metric{padding:20px 16px 18px 0;border-bottom:1px solid var(--border)}.metric+.metric{padding-left:18px;border-left:1px solid var(--border)}
+  .metric .n{font-family:var(--font-sans);font-size:2rem;background:none;-webkit-text-fill-color:var(--teal);color:var(--teal)}
+  .stack{gap:8px;margin-top:26px}.stack .t{font-family:var(--font-sans);border-radius:2px;background:transparent;color:var(--muted);padding:6px 10px}
+  .opensource{background:#18303b;color:#f1f4f1}
+  .opensource .eyebrow{color:#dce86b}.opensource .eyebrow::before{background:#dce86b}
+  .opensource .sec-head p{color:#c7d1cc}.opensource h2 span{color:#dce86b!important}
+  .oss-grid{gap:0;margin-top:38px;border-top:1px solid rgba(255,255,255,.22);grid-template-columns:1fr 1fr}
+  .oss-card{padding:24px 28px 18px 0;border:0;border-radius:0;background:none}
+  .oss-card+.oss-card{padding-left:28px;border-left:1px solid rgba(255,255,255,.22)}
+  .oss-card p,.oss-card li{color:#c7d1cc;line-height:1.7}.oss-card strong{color:#dce86b!important}
+  .license-options{gap:0;margin-top:28px;border-top:1px solid rgba(255,255,255,.22);grid-template-columns:repeat(3,1fr)}
+  .license-option{padding:16px 20px 12px 0;border:0;border-radius:0;background:none;border-bottom:1px solid rgba(255,255,255,.22)}
+  .license-option+.license-option{padding-left:20px;border-left:1px solid rgba(255,255,255,.22)}
+  .license-option.selected{box-shadow:none;background:none;border-bottom:3px solid #dce86b}
+  .license-option strong{font-family:var(--font-sans);color:#dce86b}.license-option span{color:#c7d1cc;line-height:1.65}
+  .license-option:hover,.license-option:focus-visible{transform:none;background:rgba(255,255,255,.04)}
+  .license-note{margin-top:16px;color:#aebdb6;font-size:.82rem;line-height:1.7}
+  footer{background:#e8eeeb;border-color:var(--border)}.foot-meta{font-family:var(--font-sans);letter-spacing:0;color:var(--muted)}
+  .foot-meta .status{color:#9d422e}.foot-brand small{font-family:var(--font-sans)!important;color:var(--muted)!important;letter-spacing:.08em!important}
+  .reveal{opacity:1;transform:none;transition:none}.reveal.d1,.reveal.d2,.reveal.d3{transition-delay:0}
+  .scrollcue{display:none}
+  @media(max-width:900px){.topbar{height:auto;min-height:96px;flex-wrap:wrap;padding:10px 22px 8px}.brand{order:1}.language-switch{order:2;margin-left:auto}.navlinks{order:3;display:flex;flex-basis:100%;overflow-x:auto;white-space:nowrap;padding:4px 0 2px;margin:0 -8px}.navlinks a{flex:0 0 auto}.caps{grid-template-columns:repeat(2,1fr)}.cap:nth-child(n){padding:22px 18px 24px 0;border-left:0}.cap:nth-child(even){padding-left:20px;border-left:1px solid var(--border)}.cap:nth-child(3n+2){padding-left:20px;border-left:1px solid var(--border)}.pipe{grid-template-columns:repeat(2,1fr)}.priv-grid{grid-template-columns:repeat(2,1fr)}.priv:nth-child(odd){padding-left:0;border-left:0}.priv:nth-child(even){padding-left:20px;border-left:1px solid var(--border)}}
+  @media(max-width:600px){.hero{min-height:auto;padding:132px 0 68px}.hero h1{font-size:clamp(2.7rem,13vw,4.3rem)}.panel{padding:20px}.scene-map{height:158px}.stat{min-width:0;flex:1}.stat .l{font-size:.7rem}.caps,.pipe,.models,.eng-grid,.oss-grid,.license-options{grid-template-columns:1fr}.cap:nth-child(n),.model:nth-child(n),.step,.metric+.metric,.oss-card+.oss-card,.license-option+.license-option{padding-left:0;border-left:0}.model{padding-right:0}.priv-grid{grid-template-columns:1fr}.priv:nth-child(n){padding:18px 0;border-left:0}.metric{padding:16px 0}.oss-card{padding-right:0}.license-option{padding:16px 0}.topbar{height:auto;min-height:94px}.brand{font-size:.94rem}.brand .glyph{width:23px;height:23px}}
+  @media(prefers-reduced-motion:reduce){.scene-map .scan{animation:none}.live .dot{animation:none}}
+
   /* reveal */
-  .reveal{
-    opacity:0;transform:translate3d(0,42px,0) scale(.985);
-    filter:blur(4px);
-    transition:
-      opacity 1s var(--ease-soft),
-      transform 1s var(--ease-soft),
-      filter 1s var(--ease-soft);
-  }
-  .reveal.in{opacity:1;transform:none;filter:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .reveal.in{opacity:1;transform:none}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
-
-  /* Text that gently tracks the viewport like product landing pages */
-  .hero h1,.hero .lede,.hero .statrow{animation:heroIn 1.05s var(--ease-soft) both}
-  .hero .lede{animation-delay:.1s}
-  .hero .statrow{animation-delay:.18s}
-  .hero-visual{animation:heroCardIn 1.2s .12s var(--ease-soft) both}
-  @keyframes heroIn{
-    from{opacity:0;transform:translate3d(0,24px,0);filter:blur(5px)}
-    to{opacity:1;transform:none;filter:none}
-  }
-  @keyframes heroCardIn{
-    from{opacity:0;transform:translate3d(0,36px,0) scale(.965);filter:blur(7px)}
-    to{opacity:1;transform:none;filter:none}
-  }
-
-  /* Better depth + hover response */
-  .panel,.cap,.model,.priv,.stat{
-    transform:translateZ(0);
-    transition:
-      transform .65s var(--ease),
-      border-color .45s ease,
-      box-shadow .65s var(--ease),
-      background .45s ease;
-  }
-  .panel:hover{box-shadow:0 45px 100px -35px rgba(0,0,0,.88), inset 0 1px 0 rgba(255,255,255,.05)}
-  .cap:hover,.model:hover,.priv:hover{transform:translateY(-7px)}
-  .stat:hover{transform:translateY(-4px) scale(1.015)}
-
-  /* Scroll progress */
-  .progress{
-    position:fixed;z-index:120;left:0;top:0;width:100%;height:2px;
-    transform-origin:left center;transform:scaleX(0);
-    background:linear-gradient(90deg,var(--amber),#f6c85f,var(--teal),var(--indigo),var(--violet));
-    box-shadow:0 0 14px rgba(47,230,200,.35);pointer-events:none
-  }
-
-  @media(max-width:900px){
-    .section-orbit::before,.section-orbit::after{left:65%;width:95vw;height:95vw}
-  }
 
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;scroll-behavior:auto}
     .reveal{opacity:1;transform:none;transition:none}
     .pipe-track{transform:scaleX(1)}
     .det .bar i{transition:none}
-    .hero h1,.hero .lede,.hero .statrow,.hero-visual{animation:none}
-    .hero-copy,.hero-visual,.ambient{transform:none!important}
   }
 </style>
 </head>
 <body>
-<div class="progress" id="progress" aria-hidden="true"></div>
 
 <!-- SVG icon defs -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -343,52 +412,70 @@
 </svg>
 
 <header class="topbar" id="topbar">
-  <a class="brand" href="#top" aria-label="VisionGuide หน้าแรก">
+  <a class="brand" href="#top" aria-label="VisionGuide หน้าแรก" data-i18n-aria="VisionGuide หน้าแรก">
     <svg class="glyph" viewBox="0 0 40 40" aria-hidden="true">
       <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#ff7a59"/><stop offset=".5" stop-color="#2fe6c8"/><stop offset="1" stop-color="#6a86ff"/>
+        <stop offset="0" stop-color="#41685d"/><stop offset=".5" stop-color="#dce86b"/><stop offset="1" stop-color="#5d7391"/>
       </linearGradient></defs>
       <circle cx="20" cy="20" r="18" fill="none" stroke="url(#bg1)" stroke-width="2.4"/>
       <circle cx="20" cy="20" r="6.5" fill="none" stroke="url(#bg1)" stroke-width="2.4"/>
-      <circle cx="20" cy="20" r="2" fill="#2fe6c8"/>
+      <circle cx="20" cy="20" r="2" fill="#41685d"/>
     </svg>
     VisionGuide <small>OFFLINE</small>
   </a>
-  <nav class="navlinks" aria-label="ลิงก์ในหน้า">
+  <nav class="navlinks" aria-label="ลิงก์ในหน้า" data-i18n-aria="ลิงก์ในหน้า">
     <a href="#overview">ภาพรวม</a>
     <a href="#features">ความสามารถ</a>
     <a href="#how">วิธีทำงาน</a>
     <a href="#models">โมเดล AI</a>
     <a href="#privacy">ความเป็นส่วนตัว</a>
+    <a href="#opensource">โอเพนซอร์ส</a>
   </nav>
+  <div class="language-switch" role="group" aria-label="เลือกภาษา" data-i18n-aria="เลือกภาษา">
+    <button type="button" data-language="th" aria-pressed="true">TH</button>
+    <button type="button" data-language="en" aria-pressed="false">EN</button>
+  </div>
 </header>
 
 <main id="top">
 
 <!-- ================= HERO ================= -->
-<section class="hero" id="overview" style="padding-top:110px">
-  <canvas id="depthfield" aria-hidden="true"></canvas>
-  <div class="hero-veil"></div>
+  <section class="hero" id="overview">
   <div class="wrap">
     <div class="hero-grid">
-      <div class="hero-copy">
+      <div>
         <span class="eyebrow">ผู้ช่วยการมองเห็น · บนอุปกรณ์</span>
-        <h1>เปลี่ยนกล้องมือถือ<br>ให้เป็น<span class="grad">ดวงตา</span></h1>
-        <p class="lede">แอปสำหรับ<b>ผู้พิการทางสายตา</b> ที่วิเคราะห์สภาพแวดล้อมรอบตัวด้วยปัญญาประดิษฐ์บนเครื่อง — บอกว่ามีอะไรอยู่ตรงไหน ห่างแค่ไหน และอ่านข้อความให้ฟัง ทั้งหมดนี้<b>ทำงานได้แม้ไม่มีอินเทอร์เน็ตแม้แต่นิดเดียว</b></p>
+        <h1>เข้าใจสิ่งรอบตัว<br>ก้าวต่อไป<span class="grad">อย่างมั่นใจ</span></h1>
+        <p class="lede">แอปสำหรับ<b>ผู้พิการทางสายตา</b> ที่วิเคราะห์สภาพแวดล้อมบน iPhone — บอกว่ามีอะไรอยู่ตรงไหน ประเมินระยะ อ่านข้อความ และรับคำสั่งเสียง โดยออกแบบให้การประมวลผลหลักเกิดขึ้นบนอุปกรณ์</p>
 
         <div class="statrow">
-          <div class="stat"><span class="n">100<span class="u">%</span></span><span class="l">ทำงานออฟไลน์</span></div>
-          <div class="stat"><span class="n">4</span><span class="l">โมเดล AI บนเครื่อง</span></div>
+          <div class="stat"><span class="n">ON</span><span class="l">ประมวลผล AI บนอุปกรณ์</span></div>
           <div class="stat"><span class="n">2</span><span class="l">ภาษา (ไทย · อังกฤษ)</span></div>
-          <div class="stat"><span class="n">0</span><span class="l">ข้อมูลที่ส่งออกเครือข่าย</span></div>
+          <div class="stat"><span class="n">0</span><span class="l">การส่งภาพ/เสียงไปเซิร์ฟเวอร์</span></div>
         </div>
       </div>
 
       <!-- perception panel -->
-      <div class="panel" role="img" aria-label="ตัวอย่างผลวิเคราะห์ฉาก: พบคนที่ 1.4 เมตร เก้าอี้ที่ 2.8 เมตร ประตูที่ 4.1 เมตร และข้อความ 'ทางออก'">
+      <div class="panel" role="group" aria-label="ตัวอย่างผลวิเคราะห์ฉาก: พบคนที่ 1.4 เมตร เก้าอี้ที่ 2.8 เมตร ประตูที่ 4.1 เมตร และข้อความ 'ทางออก'" data-i18n-aria="ตัวอย่างผลวิเคราะห์ฉาก: พบคนที่ 1.4 เมตร เก้าอี้ที่ 2.8 เมตร ประตูที่ 4.1 เมตร และข้อความ 'ทางออก'">
         <div class="panel-hd">
-          <span class="t">SCENE ANALYSIS</span>
-          <span class="live"><span class="dot"></span>LIVE</span>
+          <span class="t">ตัวอย่างผลวิเคราะห์ฉาก</span>
+          <span class="live"><span class="dot"></span>ตัวอย่าง</span>
+        </div>
+        <div class="scene-map" aria-hidden="true">
+          <svg viewBox="0 0 520 220" role="presentation">
+            <path d="M0 8H520M0 48H520M0 88H520M0 128H520M0 168H520M0 208H520" fill="none" stroke="#d9e3dd" stroke-width="1"/>
+            <path d="M54 220 260 18 466 220M138 220 260 18 382 220M0 148 260 18 520 148" fill="none" stroke="#cbd8d1" stroke-width="1"/>
+            <path d="M260 206V34" fill="none" stroke="#41685d" stroke-width="2" stroke-dasharray="4 8" class="scan"/>
+            <path d="M78 60h55v94H78z" fill="none" stroke="#c95c3f" stroke-width="2"/>
+            <circle cx="106" cy="84" r="10" fill="#c95c3f" opacity=".85"/>
+            <path d="M91 98q15-12 30 0v42H91z" fill="#c95c3f" opacity=".18" stroke="#c95c3f" stroke-width="2"/>
+            <path d="M310 106h66v62h-66z" fill="none" stroke="#41685d" stroke-width="2"/>
+            <path d="M398 36h70v104h-70z" fill="none" stroke="#5d7391" stroke-width="2"/>
+            <path d="M415 52h36v70h-36z" fill="#d8e2dd"/>
+            <circle cx="260" cy="190" r="5" fill="#18303b"/>
+            <path d="M260 190 105 112M260 190 342 136M260 190 432 84" fill="none" stroke="#18303b" stroke-opacity=".16" stroke-width="1"/>
+          </svg>
+          <div class="scene-caption"><span>ตัวอย่างฉาก · ระยะโดยประมาณ</span><span>DEPTH MAP</span></div>
         </div>
         <div class="det"><span class="obj">คน</span><span class="bar"><i style="--v:.28;background:linear-gradient(90deg,#ff7a59,#ff9e73)"></i></span><span class="d">1.4 ม</span><span class="tag near">ใกล้</span></div>
         <div class="det"><span class="obj">เก้าอี้</span><span class="bar"><i style="--v:.52;background:linear-gradient(90deg,#f6c85f,#2fe6c8)"></i></span><span class="d">2.8 ม</span></div>
@@ -413,9 +500,9 @@
         <p class="big" style="margin-top:18px">การเดินทางในที่ที่ไม่คุ้นเคย ไม่ควรต้องพึ่ง<em>สัญญาณเน็ต</em> หรือแลกมาด้วย<em>ความเป็นส่วนตัว</em></p>
       </div>
       <div class="impact-points reveal d1">
-        <div class="ip"><span class="k">01</span><span class="b"><strong>อิสระในการเดินทาง</strong>รู้ว่ามีสิ่งกีดขวาง คน หรือทางเดินอยู่ตรงไหน โดยไม่ต้องรอใครช่วยบอก</span></div>
-        <div class="ip"><span class="k">02</span><span class="b"><strong>ใช้ได้ทุกที่ แม้ไม่มีเน็ต</strong>ในลิฟต์ ใต้ดิน ต่างจังหวัด หรือโหมดเครื่องบิน แอปก็ยังทำงานเต็มประสิทธิภาพ</span></div>
-        <div class="ip"><span class="k">03</span><span class="b"><strong>ภาพชีวิตประจำวันไม่รั่วไหล</strong>ทุกอย่างประมวลผลบนเครื่อง ไม่มีภาพหรือเสียงถูกอัปโหลดไปที่ใด</span></div>
+        <div class="ip"><span class="k" aria-hidden="true">↗</span><span class="b"><strong>อิสระในการเดินทาง</strong>รู้ว่ามีสิ่งกีดขวาง คน หรือทางเดินอยู่ตรงไหน โดยไม่ต้องรอใครช่วยบอก</span></div>
+        <div class="ip"><span class="k" aria-hidden="true">⌁</span><span class="b"><strong>ออกแบบให้ทำงานบนอุปกรณ์</strong>ฟีเจอร์หลักใช้โมเดลในเครื่อง; ตัวเลือก SpeechTranscriber ของ Apple อาจต้องดาวน์โหลด asset ภาษาก่อนใช้</span></div>
+        <div class="ip"><span class="k" aria-hidden="true">○</span><span class="b"><strong>ภาพชีวิตประจำวันไม่รั่วไหล</strong>ทุกอย่างประมวลผลบนเครื่อง ไม่มีภาพหรือเสียงถูกอัปโหลดไปที่ใด</span></div>
       </div>
     </div>
   </div>
@@ -444,18 +531,17 @@
 
 <!-- ================= HOW IT WORKS ================= -->
 <section id="how" style="background:linear-gradient(180deg,var(--bg),var(--bg-2))">
-  <div class="section-orbit" aria-hidden="true"></div>
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">วิธีทำงาน · ทุกอย่างบนเครื่อง</span>
       <h2>จากภาพหนึ่งเฟรม สู่เสียงบรรยาย ใน 6 ขั้นตอน</h2>
-      <p>ทุกขั้นตอนเชื่อมกันแบบ pipeline ด้วยการฉีดพึ่งพา (dependency injection) ที่ทดสอบแยกส่วนได้ และไม่มีขั้นตอนใดต้องออกอินเทอร์เน็ต</p>
+      <p>ทุกขั้นตอนเชื่อมกันแบบ pipeline ด้วย dependency injection และทดสอบแยกส่วนได้ การประมวลผลหลักใช้โมเดลในเครื่อง</p>
     </div>
     <div class="pipe reveal" id="pipe">
       <div class="pipe-track"></div>
       <div class="step"><span class="num">01</span><div class="node"><svg width="20" height="20"><use href="#i-cam"/></svg></div><h3>รับภาพจากกล้อง</h3><p>ดึงเฟรมและข้อมูลความลึกจากเฟรมเดียวกันผ่าน ARKit</p><div class="eng">ARKit · AVFoundation</div></div>
       <div class="step"><span class="num">02</span><div class="node"><svg width="20" height="20"><use href="#i-scan"/></svg></div><h3>ตรวจจับวัตถุ</h3><p>หาว่ามีวัตถุอะไรบ้างและอยู่ตำแหน่งใดในภาพ</p><div class="eng">YOLO26 · Core ML</div></div>
-      <div class="step"><span class="num">03</span><div class="node"><svg width="20" height="20"><use href="#i-ruler"/></svg></div><h3>ประเมินความลึก</h3><p>เลือกใช้ LiDAR หรือประเมินจากภาพแบบปรับตามสถานการณ์</p><div class="eng">LiDAR · Depth Anything V3</div></div>
+      <div class="step"><span class="num">03</span><div class="node"><svg width="20" height="20"><use href="#i-ruler"/></svg></div><h3>ประเมินความลึก</h3><p>เลือกใช้ LiDAR หรือโมเดล Metric สำหรับในอาคาร/กลางแจ้ง</p><div class="eng">LiDAR · Depth Anything Metric</div></div>
       <div class="step"><span class="num">04</span><div class="node"><svg width="20" height="20"><use href="#i-merge"/></svg></div><h3>หลอมรวมฉาก</h3><p>รวมวัตถุ ระยะ และความน่าเชื่อถือเข้าเป็นภาพฉากเดียว</p><div class="eng">Scene Fusion</div></div>
       <div class="step"><span class="num">05</span><div class="node"><svg width="20" height="20"><use href="#i-eye"/></svg></div><h3>เรียบเรียงคำบรรยาย</h3><p>ให้โมเดลภาษาเล่าเป็นประโยค หรือใช้คำบรรยายสำรอง</p><div class="eng">Qwen · llama.cpp</div></div>
       <div class="step"><span class="num">06</span><div class="node" style="border-color:rgba(47,230,200,.5);color:var(--teal)"><svg width="20" height="20"><use href="#i-speak"/></svg></div><h3>พูด · สั่น · เสียงเตือน</h3><p>ส่งออกเป็นเสียงบรรยาย การสั่น และสัญญาณเสียงบอกทิศ</p><div class="eng">TTS · Haptics · Audio</div></div>
@@ -467,9 +553,9 @@
 <section id="models">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">เครื่องยนต์ AI · 4 โมเดลบนอุปกรณ์</span>
+      <span class="eyebrow">เครื่องยนต์ AI · ประมวลผลบนอุปกรณ์</span>
       <h2>โมเดลระดับงานวิจัย ที่ถูกย่อให้รันในมือถือ</h2>
-      <p>ทุกโมเดลถูกควอนไทซ์และแพ็กลงในแอปโดยตรง โหลดจากในเครื่อง ไม่มีการเรียก API ภายนอก</p>
+      <p>โมเดลและ runtime ทำงานบนอุปกรณ์ โดยแอปไม่เรียกบริการ AI บนคลาวด์ โปรดดูสถานะสิทธิ์ใช้งานของแต่ละส่วนแยกกันด้านล่าง</p>
     </div>
     <div class="models">
       <div class="model reveal" style="--mc:#ff7a59">
@@ -478,18 +564,18 @@
         <p class="desc">โมเดลตรวจจับวัตถุรุ่นเล็กที่สุดของ Ultralytics ส่งออกเป็น Core ML เพื่อความเร็วบน Neural Engine</p>
       </div>
       <div class="model reveal d1" style="--mc:#2fe6c8">
-        <div class="model-hd"><span class="name">Depth Anything V3</span><span class="role">ประเมินความลึก</span></div>
-        <div class="meta"><span class="chip">Core ML · Small</span><span class="chip">518×392</span><span class="chip lic">Apache-2.0</span></div>
-        <p class="desc">ประเมินความลึกเชิงสัมพัทธ์จากภาพเดียว ใช้เป็นตัวสำรองเมื่ออุปกรณ์ไม่มีเซนเซอร์ LiDAR</p>
+        <div class="model-hd"><span class="name">Depth Anything V3 Metric</span><span class="role">ประเมินความลึก</span></div>
+        <div class="meta"><span class="chip">Core ML · INT8</span><span class="chip">Metric depth</span><span class="chip lic">Apache-2.0*</span></div>
+        <p class="desc">โมเดล Metric สำหรับประเมินความลึกจากภาพบนอุปกรณ์ ใช้เป็นเส้นทางสำหรับเครื่องที่ไม่มี LiDAR และเป็นทางเลือกเมื่อจำเป็น</p>
       </div>
       <div class="model reveal d1" style="--mc:#6a86ff">
-        <div class="model-hd"><span class="name">Whisper small</span><span class="role">ถอดเสียงเป็นข้อความ</span></div>
-        <div class="meta"><span class="chip">whisper.cpp</span><span class="chip">quant q5_0</span><span class="chip lic">MIT</span></div>
-        <p class="desc">ถอดเสียงพูดเป็นข้อความบนเครื่องผ่านบริดจ์ whisper.cpp ที่คอมไพล์เป็น native สำหรับ iPhone</p>
+        <div class="model-hd"><span class="name">Whisper small + VachanaTTS</span><span class="role">เสียงเข้าและเสียงออก</span></div>
+        <div class="meta"><span class="chip">whisper.cpp · ONNX Runtime</span><span class="chip">MIT*</span></div>
+        <p class="desc">รับคำสั่งด้วย Whisper และสังเคราะห์เสียงภาษาไทยด้วย VachanaTTS บนเครื่อง โดยรองรับเสียงระบบของ iOS เป็นทางเลือก</p>
       </div>
       <div class="model reveal d2" style="--mc:#a074ff">
         <div class="model-hd"><span class="name">Qwen3.5-2B</span><span class="role">บรรยายฉาก (LLM)</span></div>
-        <div class="meta"><span class="chip">llama.cpp · GGUF</span><span class="chip">Q4_K_M</span><span class="chip lic">Apache-2.0</span></div>
+        <div class="meta"><span class="chip">llama.cpp · GGUF</span><span class="chip">Q4_K_M</span><span class="chip lic">Apache-2.0*</span></div>
         <p class="desc">โมเดลภาษา 2 พันล้านพารามิเตอร์ ควอนไทซ์ 4-bit เรียบเรียงสิ่งที่ตรวจพบเป็นคำบรรยายภาษาไทย</p>
       </div>
     </div>
@@ -502,12 +588,12 @@
     <div class="sec-head reveal">
       <span class="eyebrow">ความเป็นส่วนตัว โดยการออกแบบ</span>
       <h2>ข้อมูลของคุณ<br><span class="grad">ไม่เคยออกจากเครื่อง</span></h2>
-      <p>แอปไม่มีเส้นทางเครือข่ายสำหรับส่งข้อมูลออกเลย ภาพ ความลึก เสียง และคำบรรยายทั้งหมดอยู่ในหน่วยความจำชั่วคราวของการวิเคราะห์นั้นเท่านั้น</p>
+      <p>ภาพ ความลึก เสียง และคำบรรยายประมวลผลในหน่วยความจำระหว่างใช้งาน แอปไม่มีบริการ AI บนคลาวด์ ทั้งนี้ SpeechTranscriber ของ Apple บนอุปกรณ์และรุ่นระบบที่รองรับอาจต้องดาวน์โหลด asset ภาษาที่ Apple จัดการก่อนใช้งานครั้งแรก</p>
     </div>
     <div class="priv-grid">
-      <div class="priv reveal"><div class="ic"><svg width="24" height="24"><use href="#i-plane"/></svg></div><strong>ทำงานในโหมดเครื่องบิน</strong><span>ไม่ต้องเชื่อมต่ออินเทอร์เน็ต ใช้งานได้แม้ไม่มีสัญญาณ</span></div>
+      <div class="priv reveal"><div class="ic"><svg width="24" height="24"><use href="#i-plane"/></svg></div><strong>ออกแบบให้ใช้แบบออฟไลน์</strong><span>โมเดลที่บรรจุในแอปประมวลผลบนเครื่อง; SpeechTranscriber ของ Apple อาจต้องเตรียม asset ภาษาก่อน</span></div>
       <div class="priv reveal d1"><div class="ic"><svg width="24" height="24"><use href="#i-mem"/></svg></div><strong>ประมวลผลในหน่วยความจำ</strong><span>ไม่บันทึกภาพ เสียง หรือเนื้อหาฉากลงในเครื่องหรือที่ใด</span></div>
-      <div class="priv reveal d2"><div class="ic"><svg width="24" height="24"><use href="#i-lock"/></svg></div><strong>ขอสิทธิ์เท่าที่จำเป็น</strong><span>ขอเพียงกล้องและไมโครโฟน ไม่ขอตำแหน่ง รูปภาพ หรือการติดตาม</span></div>
+      <div class="priv reveal d2"><div class="ic"><svg width="24" height="24"><use href="#i-lock"/></svg></div><strong>ขอสิทธิ์เท่าที่จำเป็น</strong><span>แอปขอใช้กล้องและไมโครโฟน ไม่ขอตำแหน่ง รูปภาพ หรือการติดตาม</span></div>
       <div class="priv reveal d3"><div class="ic"><svg width="24" height="24"><use href="#i-cpu"/></svg></div><strong>คำนวณบนอุปกรณ์</strong><span>ทุกโมเดลรันบนชิปของ iPhone เอง ไม่พึ่งเซิร์ฟเวอร์ภายนอก</span></div>
     </div>
   </div>
@@ -522,16 +608,48 @@
       <p>สถาปัตยกรรมแบบฉีดพึ่งพาผ่านโปรโตคอล ทำให้แต่ละบริการถูกจำลองและทดสอบแยกส่วนได้จริง รองรับทั้งอุปกรณ์ที่มีและไม่มี LiDAR</p>
     </div>
     <div class="eng-grid">
-      <div class="metric reveal"><div class="n">4</div><div class="l">โมเดล AI ทำงานร่วมกันบนเครื่อง</div></div>
-      <div class="metric reveal d1"><div class="n">118</div><div class="l">เทสต์อัตโนมัติ ครอบคลุมตรรกะหลัก</div></div>
+      <div class="metric reveal"><div class="n">5</div><div class="l">โมเดลและ runtime AI/เสียงบนอุปกรณ์</div></div>
+      <div class="metric reveal d1"><div class="n">QA</div><div class="l">มีชุดทดสอบอัตโนมัติ</div></div>
       <div class="metric reveal d2"><div class="n">2</div><div class="l">โหมดความลึก · LiDAR และประเมินจากภาพ</div></div>
-      <div class="metric reveal d3"><div class="n">0</div><div class="l">การเรียกใช้เครือข่ายขณะทำงาน</div></div>
+      <div class="metric reveal d3"><div class="n">0</div><div class="l">บริการ AI บนคลาวด์ในแอป</div></div>
     </div>
     <div class="stack reveal d1">
       <span class="t">SwiftUI</span><span class="t">Core ML</span><span class="t">ARKit</span><span class="t">Vision</span>
       <span class="t">llama.cpp</span><span class="t">whisper.cpp</span><span class="t">Swift ↔ C++ bridge</span>
       <span class="t">Protocol-based DI</span><span class="t">Neural Engine</span><span class="t">Haptics · AVAudio</span>
     </div>
+  </div>
+</section>
+
+<!-- ================= OPEN SOURCE ================= -->
+<section id="opensource" class="opensource">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">แนวทางโอเพนซอร์ส · พร้อมรับการมีส่วนร่วม</span>
+      <h2>เปิดซอร์สอย่างโปร่งใส<br><span style="color:var(--teal)">โค้ดโปรเจ็กต์ใช้ GPL-3.0</span></h2>
+      <p>โค้ดของโปรเจ็กต์นี้เผยแพร่ภายใต้ GNU General Public License รุ่น 3 ผู้ที่แจกจ่ายงานดัดแปลงที่อยู่ภายใต้ GPL ต้องให้สิทธิ์และซอร์สโค้ดตามเงื่อนไขของไลเซนส์ ไฟล์โมเดลและ dependency บุคคลที่สามยังใช้ไลเซนส์ของเจ้าของเดิม</p>
+    </div>
+    <div class="oss-grid">
+      <article class="oss-card reveal">
+        <h3>สิ่งที่การเปิดซอร์สช่วยได้</h3>
+        <ul>
+          <li>ให้ผู้ใช้และนักพัฒนาตรวจสอบแนวทางประมวลผลข้อมูลและการทำงานของฟีเจอร์</li>
+          <li>เปิดทางให้รายงานปัญหา ปรับปรุงการเข้าถึง และร่วมพัฒนาคำแปลหรือการทดสอบ</li>
+          <li>ทำซ้ำและศึกษาสถาปัตยกรรมแอป iOS ที่ใช้ Swift, Core ML และโมเดลบนอุปกรณ์</li>
+        </ul>
+      </article>
+      <article class="oss-card reveal d1">
+        <h3>สถานะปัจจุบัน</h3>
+        <p><strong style="color:var(--teal)">เลือก GNU GPL-3.0 แล้ว</strong> อ่านเงื่อนไขฉบับเต็มได้จากไฟล์ <span class="mono">LICENSE</span> ใน repository เอกสารโปรเจ็กต์บันทึกว่า YOLO26 ต้องตรวจสิทธิ์การแจกจ่ายเพิ่มเติม และไฟล์โมเดลอื่นมีเงื่อนไขของผู้พัฒนาแยกจากโค้ด</p>
+        <p>โปรดตรวจไฟล์ <span class="mono">Documentation/ThirdPartyLicenses.md</span> และใส่ attribution/ประกาศที่จำเป็นก่อนเผยแพร่จริง</p>
+      </article>
+    </div>
+    <div class="license-options" aria-label="เปรียบเทียบไลเซนส์โอเพนซอร์ส">
+      <article class="license-option"><strong>MIT</strong><span>สั้นและยืดหยุ่น ใช้ แก้ไข และแจกจ่ายต่อได้ รวมถึงใช้เชิงพาณิชย์ โดยคงประกาศลิขสิทธิ์และข้อความไลเซนส์</span></article>
+      <article class="license-option"><strong>Apache-2.0</strong><span>อนุญาตใช้งานและเชิงพาณิชย์ พร้อมข้อกำหนดเรื่องสิทธิบัตร การระบุการเปลี่ยนแปลง และประกาศ attribution</span></article>
+      <article class="license-option selected" aria-current="true"><strong>GPL-3.0 · เลือกใช้</strong><span>อนุญาตแก้ไขและแจกจ่าย แต่เมื่อแจกจ่ายงานดัดแปลงที่อยู่ในขอบเขตของ GPL ต้องเปิดซอร์สภายใต้เงื่อนไขเดียวกัน</span></article>
+    </div>
+    <p class="license-note">GPL-3.0 ใช้กับโค้ดโปรเจ็กต์ภายใต้สิทธิ์ของผู้ถือลิขสิทธิ์ ไม่ได้เปลี่ยนไลเซนส์ของโมเดลหรือ dependency โดยอัตโนมัติ โปรดตรวจรายการและเงื่อนไขของ third-party assets ก่อนแจกจ่ายแอป</p>
   </div>
 </section>
 
@@ -544,7 +662,7 @@
         <svg class="glyph" width="26" height="26" viewBox="0 0 40 40" aria-hidden="true">
           <circle cx="20" cy="20" r="18" fill="none" stroke="url(#bg1)" stroke-width="2.4"/>
           <circle cx="20" cy="20" r="6.5" fill="none" stroke="url(#bg1)" stroke-width="2.4"/>
-          <circle cx="20" cy="20" r="2" fill="#2fe6c8"/>
+          <circle cx="20" cy="20" r="2" fill="#41685d"/>
         </svg>
         VisionGuide <small style="font-family:var(--font-mono);color:var(--dim);font-weight:500;font-size:.62rem;letter-spacing:.14em">OFFLINE</small>
       </div>
@@ -553,127 +671,84 @@
     <div class="foot-meta">
       <div>PROJECT · SCiUS FORUMS 17</div>
       <div>ON-DEVICE · YOLO26 · DEPTH ANYTHING · WHISPER · QWEN</div>
-      <div class="status">STATUS · อยู่ระหว่างการทดสอบบนอุปกรณ์จริง</div>
+      <div class="status">STATUS · ตรวจสอบความถูกต้องและทดสอบบนอุปกรณ์จริงก่อนเผยแพร่</div>
     </div>
   </div>
 </footer>
 
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- cinematic scroll progress ---- */
-  var progress = document.getElementById('progress');
-  var updateProgress = function(){
-    var doc = document.documentElement;
-    var max = doc.scrollHeight - window.innerHeight;
-    progress.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+  var copy = {
+    'VisionGuide หน้าแรก':'VisionGuide home','ลิงก์ในหน้า':'Page navigation','เลือกภาษา':'Choose language',
+    'ภาพรวม':'Overview','ความสามารถ':'Features','วิธีทำงาน':'How it works','โมเดล AI':'AI models','ความเป็นส่วนตัว':'Privacy','โอเพนซอร์ส':'Open source',
+    'ผู้ช่วยการมองเห็น · บนอุปกรณ์':'An on-device guide for everyday mobility',
+    'เข้าใจสิ่งรอบตัว':'Understand what is around you','ก้าวต่อไป':'Move ahead','อย่างมั่นใจ':'with confidence',
+    'แอปสำหรับ':'A camera-based guide for ','ผู้พิการทางสายตา':'people with low or no vision',
+    'ที่วิเคราะห์สภาพแวดล้อมบน iPhone — บอกว่ามีอะไรอยู่ตรงไหน ประเมินระยะ อ่านข้อความ และรับคำสั่งเสียง โดยออกแบบให้การประมวลผลหลักเกิดขึ้นบนอุปกรณ์':'. It describes nearby objects, estimates distance, reads text, and responds to spoken questions, with core processing on iPhone.',
+    'ประมวลผล AI บนอุปกรณ์':'On-device AI','ภาษา (ไทย · อังกฤษ)':'supported languages: Thai and English','การส่งภาพ/เสียงไปเซิร์ฟเวอร์':'Images or audio sent to a server',
+    'คน':'Person','1.4 ม':'1.4 m','2.8 ม':'2.8 m','4.1 ม':'4.1 m','ใกล้':'Near','เก้าอี้':'Chair','ประตู':'Door','ไกล':'Far','ป้ายข้อความ':'Text on a sign','“ทางออก”':'“Exit”',
+    '“มีคนอยู่ข้างหน้าประมาณ 1.4 เมตร ด้านขวามีเก้าอี้ และมีประตูทางออกอยู่ไกลออกไป”':'“A person is about 1.4 metres ahead. There is a chair to your right and an exit farther away.”',
+    'มุมมองระยะ · ตัวอย่างฉาก':'Spatial view · sample scene','ตัวอย่างภาพจากกล้อง':'Camera view · example','ตัวอย่างผลวิเคราะห์ฉาก':'Scene analysis example','ตัวอย่าง':'Example','ตัวอย่างฉาก · ระยะโดยประมาณ':'Sample scene · estimated distance',
+    "ตัวอย่างผลวิเคราะห์ฉาก: พบคนที่ 1.4 เมตร เก้าอี้ที่ 2.8 เมตร ประตูที่ 4.1 เมตร และข้อความ 'ทางออก'":'Scene analysis example: a person at 1.4 metres, a chair at 2.8 metres, an exit at 4.1 metres, and the sign “Exit”',
+    'เลื่อนลง':'Scroll to explore','ทำไมต้องมีแอปนี้':'Why this guide exists',
+    'การเดินทางในที่ที่ไม่คุ้นเคย ไม่ควรต้องพึ่ง':'Getting around somewhere new should not depend on','สัญญาณเน็ต':'a signal','หรือแลกมาด้วย':'or cost you','ความเป็นส่วนตัว':'your privacy.',
+    'อิสระในการเดินทาง':'Move with more independence','รู้ว่ามีสิ่งกีดขวาง คน หรือทางเดินอยู่ตรงไหน โดยไม่ต้องรอใครช่วยบอก':'Hear about obstacles, people, and open paths without waiting for someone else to describe them.',
+    'ออกแบบให้ทำงานบนอุปกรณ์':'Designed for on-device use','ฟีเจอร์หลักใช้โมเดลในเครื่อง; ตัวเลือก SpeechTranscriber ของ Apple อาจต้องดาวน์โหลด asset ภาษาก่อนใช้':'Core features use bundled models. Apple SpeechTranscriber may need to download language assets before first use.',
+    'ภาพชีวิตประจำวันไม่รั่วไหล':'Your everyday scenes stay private','ทุกอย่างประมวลผลบนเครื่อง ไม่มีภาพหรือเสียงถูกอัปโหลดไปที่ใด':'Analysis happens on the device; images and audio are not uploaded by the app.',
+    'สิ่งที่แอปทำได้ ในปุ่มเดียว':'A simple way to ask what is around you','ออกแบบให้ควบคุมง่ายที่สุดสำหรับผู้ที่มองไม่เห็น — แตะหรือสั่งด้วยเสียง แล้วให้แอปเล่าสิ่งที่อยู่ตรงหน้าให้ฟัง':'Tap or ask by voice to hear a clear description of the scene ahead.',
+    'ตรวจจับวัตถุ & จัดลำดับความสำคัญ':'Object detection, with safety in mind','ระบุคน สิ่งของ และสิ่งกีดขวางในเฟรม พร้อมเลือกบอกสิ่งที่สำคัญต่อความปลอดภัยก่อน':'Find people, objects, and obstacles, then prioritize what may matter most for safety.',
+    'ประเมินระยะทาง':'Distance estimates','บอกว่าวัตถุอยู่ห่างกี่เมตร ใช้ LiDAR เมื่อมี และประเมินจากภาพเมื่อไม่มี โดยไม่เดาระยะทางแบบมั่ว':'Estimate how far objects are. Use LiDAR when available, or metric depth from the camera on other devices.',
+    'บรรยายฉากเป็นภาษาไทย':'Scene descriptions in Thai and English','โมเดลภาษาบนเครื่องเรียบเรียงสิ่งที่เห็นเป็นประโยคธรรมชาติ และมีคำบรรยายสำรองเมื่อโมเดลไม่พร้อม':'An on-device language model turns detected details into a short, natural description, with a fallback if the model is unavailable.',
+    'สั่งงานด้วยเสียง':'Voice questions and commands','ถอดเสียงพูดเป็นคำสั่งบนเครื่อง ถามได้ว่า “ข้างหน้ามีอะไร” หรือให้ช่วยหาสิ่งของที่ต้องการ':'Speak a question such as “What is ahead?” or ask the app to help locate an object.',
+    'อ่านข้อความให้ฟัง':'Read signs and printed text','จับภาพป้าย เมนู หรือเอกสาร แล้วอ่านออกเสียง เมื่อมีข้อความหลายจุดจะให้เลือกว่าจะอ่านอันไหน':'Capture a sign, menu, or document and hear it read aloud. Choose which text to read when several areas are found.',
+    'เตือนการชนด้วยการสั่น':'Obstacle alerts through haptics','สั่นเตือนอัตโนมัติเมื่อวัตถุเข้าใกล้เกินระยะที่ตั้งไว้ พร้อมสัญญาณเสียงบอกทิศทาง ปรับระยะเริ่มเตือนได้เอง':'Receive a vibration and directional audio cue as an obstacle gets close. Set the alert distance in the app.',
+    'วิธีทำงาน · ทุกอย่างบนเครื่อง':'How the on-device pipeline works','จากภาพหนึ่งเฟรม สู่เสียงบรรยาย ใน 6 ขั้นตอน':'From a camera frame to spoken guidance','ทุกขั้นตอนเชื่อมกันแบบ pipeline ด้วย dependency injection และทดสอบแยกส่วนได้ การประมวลผลหลักใช้โมเดลในเครื่อง':'Each service can be tested independently. The main analysis uses models that run on the device.',
+    'รับภาพจากกล้อง':'Capture a camera frame','ดึงเฟรมและข้อมูลความลึกจากเฟรมเดียวกันผ่าน ARKit':'Read a frame and its depth data through ARKit.','ตรวจจับวัตถุ':'Detect objects','หาว่ามีวัตถุอะไรบ้างและอยู่ตำแหน่งใดในภาพ':'Identify objects and their positions in the frame.','ประเมินความลึก':'Estimate depth','เลือกใช้ LiDAR หรือโมเดล Metric สำหรับในอาคาร/กลางแจ้ง':'Use LiDAR or metric depth estimation.','หลอมรวมฉาก':'Build a scene',
+    'รวมวัตถุ ระยะ และความน่าเชื่อถือเข้าเป็นภาพฉากเดียว':'Combine objects, distances, and confidence into one scene.','เรียบเรียงคำบรรยาย':'Write a description','ให้โมเดลภาษาเล่าเป็นประโยค หรือใช้คำบรรยายสำรอง':'Generate a natural sentence, or use a local fallback.','พูด · สั่น · เสียงเตือน':'Speak · vibrate · guide','ส่งออกเป็นเสียงบรรยาย การสั่น และสัญญาณเสียงบอกทิศ':'Provide spoken guidance, haptics, and directional cues.',
+    'เครื่องยนต์ AI · ประมวลผลบนอุปกรณ์':'Models run on the device','โมเดลระดับงานวิจัย ที่ถูกย่อให้รันในมือถือ':'Purpose-built models, adapted for iPhone','โมเดลและ runtime ทำงานบนอุปกรณ์ โดยแอปไม่เรียกบริการ AI บนคลาวด์ โปรดดูสถานะสิทธิ์ใช้งานของแต่ละส่วนแยกกันด้านล่าง':'Models and runtimes run on-device; the app does not call cloud AI services. Each component has its own license.','เสียงเข้าและเสียงออก':'Speech input and output','บรรยายฉาก (LLM)':'Scene description (LLM)',
+    'โมเดลตรวจจับวัตถุรุ่นเล็กที่สุดของ Ultralytics ส่งออกเป็น Core ML เพื่อความเร็วบน Neural Engine':'Ultralytics object detection model exported to Core ML for on-device inference.','โมเดล Metric สำหรับประเมินความลึกจากภาพบนอุปกรณ์ ใช้เป็นเส้นทางสำหรับเครื่องที่ไม่มี LiDAR และเป็นทางเลือกเมื่อจำเป็น':'Estimates metric depth from an image when LiDAR is unavailable or not selected.','รับคำสั่งด้วย Whisper และสังเคราะห์เสียงภาษาไทยด้วย VachanaTTS บนเครื่อง โดยรองรับเสียงระบบของ iOS เป็นทางเลือก':'Whisper handles speech input; VachanaTTS provides on-device Thai speech output, with iOS voices as an option.','โมเดลภาษา 2 พันล้านพารามิเตอร์ ควอนไทซ์ 4-bit เรียบเรียงสิ่งที่ตรวจพบเป็นคำบรรยายภาษาไทย':'A 2-billion-parameter, 4-bit model that turns scene details into a natural-language description.',
+    'ความเป็นส่วนตัว โดยการออกแบบ':'Privacy, built into the design','ข้อมูลของคุณ':'Your scene stays on your device','ไม่เคยออกจากเครื่อง':'during analysis','ภาพ ความลึก เสียง และคำบรรยายประมวลผลในหน่วยความจำระหว่างใช้งาน แอปไม่มีบริการ AI บนคลาวด์ ทั้งนี้ SpeechTranscriber ของ Apple บนอุปกรณ์และรุ่นระบบที่รองรับอาจต้องดาวน์โหลด asset ภาษาที่ Apple จัดการก่อนใช้งานครั้งแรก':'Images, depth, audio, and descriptions stay in memory during analysis. The app has no cloud AI service. On supported iOS versions, Apple SpeechTranscriber may download Apple-managed language assets before first use.',
+    'ออกแบบให้ใช้แบบออฟไลน์':'Made for offline use','โมเดลที่บรรจุในแอปประมวลผลบนเครื่อง; SpeechTranscriber ของ Apple อาจต้องเตรียม asset ภาษาก่อน':'Bundled models run on-device. Apple SpeechTranscriber may need language assets first.','ประมวลผลในหน่วยความจำ':'Temporary processing','ไม่บันทึกภาพ เสียง หรือเนื้อหาฉากลงในเครื่องหรือที่ใด':'The app does not save captured images, audio, or scene content.','ขอสิทธิ์เท่าที่จำเป็น':'Only essential permissions','แอปขอใช้กล้องและไมโครโฟน ไม่ขอตำแหน่ง รูปภาพ หรือการติดตาม':'Camera and microphone access only; no location, photos, or tracking permission.','คำนวณบนอุปกรณ์':'On-device inference','ทุกโมเดลรันบนชิปของ iPhone เอง ไม่พึ่งเซิร์ฟเวอร์ภายนอก':'Models run on iPhone; the app does not depend on an AI server.',
+    'เบื้องหลังทางวิศวกรรม':'How the app is built','สร้างแบบเนทีฟ ทดสอบได้ ตรวจสอบได้':'Native, testable, and inspectable','สถาปัตยกรรมแบบฉีดพึ่งพาผ่านโปรโตคอล ทำให้แต่ละบริการถูกจำลองและทดสอบแยกส่วนได้จริง รองรับทั้งอุปกรณ์ที่มีและไม่มี LiDAR':'Protocol-based services can be replaced with test doubles and checked independently. Depth support adapts to devices with or without LiDAR.','โมเดลและ runtime AI/เสียงบนอุปกรณ์':'On-device model and speech components','มีชุดทดสอบอัตโนมัติ':'Automated test suite','โหมดความลึก · LiDAR และประเมินจากภาพ':'Depth modes · LiDAR and image-based','บริการ AI บนคลาวด์ในแอป':'Cloud AI services in the app',
+    'แนวทางโอเพนซอร์ส · พร้อมรับการมีส่วนร่วม':'Open source · contributions welcome','เปิดซอร์สอย่างโปร่งใส':'Open source, with clear terms','โค้ดโปรเจ็กต์ใช้ GPL-3.0':'Project code is GPL-3.0','โค้ดของโปรเจ็กต์นี้เผยแพร่ภายใต้ GNU General Public License รุ่น 3 ผู้ที่แจกจ่ายงานดัดแปลงที่อยู่ภายใต้ GPL ต้องให้สิทธิ์และซอร์สโค้ดตามเงื่อนไขของไลเซนส์ ไฟล์โมเดลและ dependency บุคคลที่สามยังใช้ไลเซนส์ของเจ้าของเดิม':'Project source code is licensed under GNU General Public License v3. When distributing covered modified versions, recipients must receive the source and rights required by the license. Third-party models and dependencies keep their own terms.',
+    'สิ่งที่การเปิดซอร์สช่วยได้':'What open source makes possible','ให้ผู้ใช้และนักพัฒนาตรวจสอบแนวทางประมวลผลข้อมูลและการทำงานของฟีเจอร์':'Review how data is processed and how features work.','เปิดทางให้รายงานปัญหา ปรับปรุงการเข้าถึง และร่วมพัฒนาคำแปลหรือการทดสอบ':'Report issues and contribute to accessibility, translations, and testing.','ทำซ้ำและศึกษาสถาปัตยกรรมแอป iOS ที่ใช้ Swift, Core ML และโมเดลบนอุปกรณ์':'Study and build on an iOS architecture using Swift, Core ML, and on-device models.','สถานะปัจจุบัน':'Current status','เลือก GNU GPL-3.0 แล้ว':'GNU GPL-3.0 selected','อ่านเงื่อนไขฉบับเต็มได้จากไฟล์':'Read the full terms in','ใน repository เอกสารโปรเจ็กต์บันทึกว่า YOLO26 ต้องตรวจสิทธิ์การแจกจ่ายเพิ่มเติม และไฟล์โมเดลอื่นมีเงื่อนไขของผู้พัฒนาแยกจากโค้ด':'. Project records note that YOLO26 distribution rights still need review; other models carry their own terms.',
+    'โปรดตรวจไฟล์':'See','และใส่ attribution/ประกาศที่จำเป็นก่อนเผยแพร่จริง':'and include the required notices and attribution before redistribution.','สั้นและยืดหยุ่น ใช้ แก้ไข และแจกจ่ายต่อได้ รวมถึงใช้เชิงพาณิชย์ โดยคงประกาศลิขสิทธิ์และข้อความไลเซนส์':'Permissive and concise. Allows commercial use and redistribution when copyright and license notices are retained.','อนุญาตใช้งานและเชิงพาณิชย์ พร้อมข้อกำหนดเรื่องสิทธิบัตร การระบุการเปลี่ยนแปลง และประกาศ attribution':'Allows commercial use with patent terms, change notices, and attribution requirements.','GPL-3.0 · เลือกใช้':'GPL-3.0 · selected','อนุญาตแก้ไขและแจกจ่าย แต่เมื่อแจกจ่ายงานดัดแปลงที่อยู่ในขอบเขตของ GPL ต้องเปิดซอร์สภายใต้เงื่อนไขเดียวกัน':'Allows modification and redistribution. Distributed covered derivatives must remain under GPL terms.','GPL-3.0 ใช้กับโค้ดโปรเจ็กต์ภายใต้สิทธิ์ของผู้ถือลิขสิทธิ์ ไม่ได้เปลี่ยนไลเซนส์ของโมเดลหรือ dependency โดยอัตโนมัติ โปรดตรวจรายการและเงื่อนไขของ third-party assets ก่อนแจกจ่ายแอป':'GPL-3.0 applies to project code under its copyright holders. It does not relicense models or dependencies. Check third-party terms before distributing the app.',
+    'ผู้ช่วยการมองเห็นแบบออฟไลน์ สำหรับผู้พิการทางสายตา · ภาษาไทยเป็นค่าเริ่มต้น':'An on-device visual guide for people with low or no vision · Thai and English','STATUS · ตรวจสอบความถูกต้องและทดสอบบนอุปกรณ์จริงก่อนเผยแพร่':'STATUS · Validate and test on physical devices before release'
   };
-  window.addEventListener('scroll', updateProgress, {passive:true});
-  updateProgress();
-
-  /* ---- top bar shadow on scroll ---- */
-  var topbar = document.getElementById('topbar');
-  var onScroll = function(){ topbar.classList.toggle('scrolled', window.scrollY > 12); };
-  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-
-  /* ---- reveal on view ---- */
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  var title = {th:'VisionGuide Offline — เข้าใจสิ่งรอบตัว',en:'VisionGuide Offline — Understand your surroundings'};
+  var meta = {th:'VisionGuide Offline ผู้ช่วยการมองเห็นบน iPhone วิเคราะห์ฉาก อ่านข้อความ และสั่งงานด้วยเสียงบนอุปกรณ์ พร้อมออกแบบโดยคำนึงถึงความเป็นส่วนตัวและโอเพนซอร์ส',en:'VisionGuide Offline — an on-device iPhone guide for scene awareness, spoken commands, and text reading, built with privacy and open source in mind.'};
+  function preferredLanguage(){
+    try { var saved=localStorage.getItem('visionguide-language'); if(saved==='th'||saved==='en') return saved; } catch(e) {}
+    var device=(navigator.languages&&navigator.languages[0])||navigator.language||'en';
+    return /^th(?:-|$)/i.test(device)?'th':'en';
+  }
+  var nodes=[];
+  var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+  while(walker.nextNode()) nodes.push({node:walker.currentNode,source:walker.currentNode.nodeValue});
+  var attrs=[];
+  document.querySelectorAll('[data-i18n-aria]').forEach(function(el){attrs.push({el:el,source:el.getAttribute('aria-label')});});
+  function setLanguage(language,save){
+    document.documentElement.lang=language;
+    document.title=title[language];
+    document.querySelector('meta[name="description"]').content=meta[language];
+    nodes.forEach(function(item){
+      var raw=item.source, trimmed=raw.trim(), translated=language==='en'?(copy[trimmed]||trimmed):trimmed;
+      item.node.nodeValue=raw.replace(trimmed,translated);
     });
-  }, {threshold:.08, rootMargin:'0px 0px -14% 0px'});
-  document.querySelectorAll('.reveal, #pipe').forEach(function(el){ io.observe(el); });
-
-  /* ---- subtle parallax + pointer tilt ---- */
-  var hero = document.querySelector('.hero');
-  var copy = document.querySelector('.hero-copy');
-  var visual = document.querySelector('.hero-visual');
-  var a1 = document.querySelector('.ambient.a1');
-  var a2 = document.querySelector('.ambient.a2');
-
-  function parallax(){
-    if(reduce || !hero) return;
-    var rect = hero.getBoundingClientRect();
-    var p = Math.max(-1, Math.min(1, -rect.top / Math.max(1, hero.offsetHeight)));
-    if(copy) copy.style.transform = 'translate3d(0,' + (p*20) + 'px,0)';
-    if(visual) visual.style.transform = 'translate3d(0,' + (p*38) + 'px,0)';
-    if(a1) a1.style.transform = 'translate3d(' + (p*22) + 'px,' + (p*-34) + 'px,0)';
-    if(a2) a2.style.transform = 'translate3d(' + (p*-18) + 'px,' + (p*22) + 'px,0)';
-  }
-  window.addEventListener('scroll', parallax, {passive:true});
-  parallax();
-
-  if(!reduce && visual){
-    visual.addEventListener('pointermove', function(e){
-      var r = visual.getBoundingClientRect();
-      var x = (e.clientX-r.left)/r.width - .5;
-      var y = (e.clientY-r.top)/r.height - .5;
-      visual.style.transform = 'perspective(900px) rotateX(' + (-y*4) + 'deg) rotateY(' + (x*5) + 'deg) translateY(-2px)';
+    attrs.forEach(function(item){item.el.setAttribute('aria-label',language==='en'?(copy[item.source]||item.source):item.source);});
+    document.querySelectorAll('[data-language]').forEach(function(button){
+      var active=button.dataset.language===language;
+      button.setAttribute('aria-pressed',String(active));
     });
-    visual.addEventListener('pointerleave', function(){
-      visual.style.transform = 'translate3d(0,0,0)';
-    });
+    if(save){try{localStorage.setItem('visionguide-language',language);}catch(e){}}
   }
+  document.querySelectorAll('[data-language]').forEach(function(button){button.addEventListener('click',function(){setLanguage(button.dataset.language,true);});});
+  setLanguage(preferredLanguage(),false);
 
-  /* ---- hero depth field (dot grid + scan line) ---- */
-  var cv = document.getElementById('depthfield');
-  if(!cv) return;
-  var ctx = cv.getContext('2d');
-  var W=0, H=0, dpr = Math.min(window.devicePixelRatio||1, 2);
-  var STOPS = [[255,122,89],[246,200,95],[47,230,200],[106,134,255],[160,116,255]]; // ใกล้→ไกล
-  function lerp(a,b,t){return a+(b-a)*t;}
-  function depthColor(v){ // v in 0..1 → rgb across STOPS
-    v=Math.max(0,Math.min(1,v));
-    var seg=v*(STOPS.length-1), i=Math.floor(seg), t=seg-i;
-    var a=STOPS[i], b=STOPS[Math.min(i+1,STOPS.length-1)];
-    return [lerp(a[0],b[0],t),lerp(a[1],b[1],t),lerp(a[2],b[2],t)];
-  }
-  function resize(){
-    var r = cv.getBoundingClientRect();
-    W=r.width; H=r.height;
-    cv.width=Math.floor(W*dpr); cv.height=Math.floor(H*dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-  }
-  window.addEventListener('resize', resize); resize();
-
-  var GAP=30, R=2.1;
-  function frame(t){
-    ctx.clearRect(0,0,W,H);
-    var time=t*0.00016;
-    for(var y=GAP*0.5; y<H; y+=GAP){
-      for(var x=GAP*0.5; x<W; x+=GAP){
-        // smooth evolving depth value
-        var v = 0.5
-          + 0.34*Math.sin(x*0.0055 + time*1.3 + Math.cos(y*0.004+time))
-          + 0.30*Math.cos(y*0.0075 - time*1.0);
-        v = (v*0.5)+0.5;
-        var c = depthColor(v);
-        // fade toward left (keep text side calm) and edges
-        var edge = Math.min(1, (x/W)*1.5) ;
-        var a = 0.06 + 0.16*Math.pow(edge,1.3);
-        ctx.beginPath();
-        ctx.arc(x, y, R+(v*0.9), 0, 6.2832);
-        ctx.fillStyle='rgba('+(c[0]|0)+','+(c[1]|0)+','+(c[2]|0)+','+a+')';
-        ctx.fill();
-      }
-    }
-    // scan line
-    var sy = ((t*0.045) % (H+160)) - 80;
-    var g = ctx.createLinearGradient(0, sy-70, 0, sy+70);
-    g.addColorStop(0,'rgba(47,230,200,0)');
-    g.addColorStop(.5,'rgba(47,230,200,.10)');
-    g.addColorStop(1,'rgba(47,230,200,0)');
-    ctx.fillStyle=g; ctx.fillRect(0, sy-70, W, 140);
-    ctx.strokeStyle='rgba(47,230,200,.28)'; ctx.lineWidth=1;
-    ctx.beginPath(); ctx.moveTo(0,sy); ctx.lineTo(W,sy); ctx.stroke();
-    raf=requestAnimationFrame(frame);
-  }
-  var raf;
-  if(reduce){ frame(3000); cancelAnimationFrame(raf); }
-  else { raf=requestAnimationFrame(frame); }
+  var topbar=document.getElementById('topbar');
+  function updateTopbar(){topbar.classList.toggle('scrolled',window.scrollY>12);}
+  window.addEventListener('scroll',updateTopbar,{passive:true});updateTopbar();
 })();
 </script>
 </body>
 </html>
-ทำให้ UI เว็บนี้สวยขึ้นหน่อยอยากได้ animation เเบบเว็บ apple.com
