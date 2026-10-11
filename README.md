@@ -8,7 +8,7 @@
 
 <p><a href="https://shorturl.koomean.com/sourcecodevisionassistant"><img alt="Download project source code" src="https://img.shields.io/badge/%E2%AC%87%EF%B8%8F%20Download-Source%20code-41685d?style=for-the-badge"></a></p>
 
-Source code download: https://shorturl.koomean.com/sourcecodevisionassistant
+Registration Form to Request Source Code: https://shorturl.koomean.com/sourcecodevisionassistant
 
 ---
 
@@ -79,7 +79,7 @@ Models, generated resources, and third-party dependencies may have their own lic
 
 <p><a href="https://shorturl.koomean.com/sourcecodevisionassistant"><img alt="ดาวน์โหลดซอร์สโค้ดโปรเจ็กต์" src="https://img.shields.io/badge/%E2%AC%87%EF%B8%8F%20%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B9%8C%E0%B9%82%E0%B8%AB%E0%B8%A5%E0%B8%94-%E0%B8%8B%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AA%E0%B9%82%E0%B8%84%E0%B9%89%E0%B8%94-41685d?style=for-the-badge"></a></p>
 
-ลิงก์ดาวน์โหลดซอร์สโค้ด: https://shorturl.koomean.com/sourcecodevisionassistant
+แบบฟอร์มลงทะเบียนเพื่อขอซอร์สโค้ด: https://shorturl.koomean.com/sourcecodevisionassistant
 
 ### ✨ ทำอะไรได้บ้าง
 
