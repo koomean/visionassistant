@@ -1,125 +1,59 @@
-# 🌿 VisionGuide Offline
+# LunaV
 
-> **A little more awareness for every step.**
->
-> VisionGuide is an iPhone companion for people who are blind or have low vision. It uses the camera to describe nearby objects, estimate distance, read text, and answer spoken questions in Thai and English.
+An on-device visual question assistant for iPhone, developed as a SCiUS Forums project. LunaV accepts spoken Thai and English questions, reads text from photographs, and shows the transcript and answer on screen. Its current implementation uses Qwen3-VL-2B-Instruct through MLX/Metal, Whisper large-v3 turbo through Core ML, and Apple Vision OCR.
 
-**Thai and English · On-device AI · Privacy-minded · GPL-3.0**
+[Visit the project website](https://visionassistant.koomean.com/) · [Enquire about the iPhone app source](https://github.com/koomean/visionassistant/issues/new?title=Source%20code%20enquiry%20%E2%80%94%20LunaV)
 
-<p><a href="https://shorturl.koomean.com/sourcecodevisionassistant"><img alt="Download project source code" src="https://img.shields.io/badge/%E2%AC%87%EF%B8%8F%20Download-Source%20code-41685d?style=for-the-badge"></a></p>
+## Repository scope
 
-Registration Form to Request Source Code: https://shorturl.koomean.com/sourcecodevisionassistant
+This repository contains the **public project website and its licensing notices**. It does not contain the iPhone app, Xcode project, or model weights. Source enquiries open a public GitHub issue form; this is a contact channel, not an immediate app-source download. This repository does not provide an App Store release.
 
----
+The website describes the current LunaV implementation rather than the earlier VisionGuide design. Capability descriptions were checked against the supplied app documentation and source on 21 October 2026. They describe implementation, not a guarantee of accuracy or device compatibility.
 
-## ✨ What it can do
+## Current capabilities
 
-- 🧭 **Describe the scene** — identify people, objects, and obstacles, then summarize what matters.
-- 📏 **Estimate distance** — use LiDAR when available, or estimate metric depth from the camera on other devices.
-- 🎙️ **Listen to questions** — ask what is ahead or request help finding an object.
-- 🔎 **Read text aloud** — hear signs, menus, and printed text.
-- 📳 **Give obstacle alerts** — combine vibration with directional audio cues.
-- 🌏 **Speak Thai and English** — respond in the language of the question when it can be identified.
-- 🔐 **Keep analysis on the device** — core features use local models rather than a cloud AI service.
+- **Ask about a photograph.** Hold the shutter for about 0.35 seconds to capture a new image and its available depth data. Speak after the haptic cue. After speech recognition finishes, the app displays both the question and LunaV's answer.
+- **Thai and English voice input.** Bundled multilingual Whisper models transcribe questions locally. Silence can end recording automatically; transcription is not streamed live.
+- **Read and summarise text.** Apple Vision extracts text locally. Tools in Settings can select a region, group text from signs, menus, and labels, and summarise the selected OCR text.
+- **Measure supported LiDAR captures.** On a compatible rear LiDAR camera, the app can locate an object and read depth associated with that photograph. It reports a camera-to-surface distance at capture time. Without usable LiDAR data, it does not fabricate a metric distance; visual questions remain available.
+- **Keep inference on the phone.** The app bundles its image and speech models and does not require a cloud AI service or an API key. Temporary recordings are removed after transcription or cancellation. Temporary image files are kept in the app sandbox during use.
 
-## 🪄 From camera to guidance
+The current interface presents answers as text. It does not implement spoken answer playback, continuous obstacle alerts, directional guidance, or non-LiDAR metric depth estimation. LiDAR's accepted application range of 0.2–5 metres is a validation bound, not an accuracy certification. A new capture is needed for a new measurement.
 
-```text
-📷 Camera view
-      ↓
-🧩 Objects + distance
-      ↓
-🗺️ A clearer picture of the scene
-      ↓
-🗣️ Speech · 📳 haptics · 🔔 directional cues
+## Development requirements and status
+
+The supplied app project currently targets **iOS 27** and uses **Xcode 27 or later**. These are the project's configured targets, not a claim that every iPhone with that operating system can run the models. Sufficient available memory, the device's memory entitlement, and its thermal state affect model availability. Simulator checks do not replace validation of camera capture, LiDAR, microphone input, and model inference on a supported physical iPhone.
+
+LunaV is an active research prototype. The website does not claim an App Store release, certified distance accuracy, universal iPhone support, or real-world accessibility validation. Its descriptions and measurements should not replace established mobility aids or an independent measurement where accuracy matters.
+
+See [PROJECT-STATUS.md](PROJECT-STATUS.md) for the dated validation results and their limits.
+
+## Website development and deployment
+
+The website is static and needs no build step. Serve this directory with a local HTTP server, for example:
+
+```sh
+python3 -m http.server 8080
 ```
 
-The app combines object detection, depth estimation, scene analysis, and spoken output. If the language model is unavailable, a predictable local description can still provide guidance.
+GitHub Pages publishes the repository root from `main` to [visionassistant.koomean.com](https://visionassistant.koomean.com/). Keep `CNAME` when publishing changes. The existing GitHub Actions workflow purges the Cloudflare cache after a successful Pages build.
 
-## 🛠️ Getting started
+## Licence
 
-1. Open the VisionGuide Xcode project on a Mac with Xcode and the iOS SDK.
-2. Let Xcode resolve the project’s Swift packages.
-3. Choose the VisionGuide scheme and an iPhone simulator or connected iPhone, then build and run.
-4. Allow camera and microphone access, and wait for the model preparation step.
+Copyright © 2026 Wachirawich Kripindakul ([koomean](https://github.com/koomean)).
 
-The app targets **iOS 18 or later**. An Apple Silicon Mac is needed for the included arm64 simulator libraries. A physical iPhone is needed to assess real camera, LiDAR, speech, accessibility, memory, and thermal behavior.
+Unless a file identifies different terms, the original work in this repository is licensed under the **GNU Affero General Public License, version 3 or (at your option) any later version (`AGPL-3.0-or-later`)**. See [LICENSE](LICENSE) for the complete licence text.
 
-### 📦 About the models
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. It is distributed in the hope that it will be useful, but **WITHOUT ANY WARRANTY**; without even the implied warranty of **MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE**. You should have received a copy of the GNU Affero General Public License along with this program; see [LICENSE](LICENSE). The corresponding website source is available in [this public repository](https://github.com/koomean/visionassistant).
 
-VisionGuide uses local models and runtimes for object detection, depth estimation, speech recognition, scene descriptions, and Thai speech synthesis. These assets are large, so a source checkout may not include every model needed to run the app.
+AGPL permits commercial use when its terms are followed. An optional separate commercial licence may be available by written agreement for permissions beyond the AGPL; see [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md). This notice is not a signed commercial contract. Third-party models, libraries, and resources retain their own licences. No model weights are distributed by this repository.
 
-Model acquisition and conversion are development tasks. The app is designed to use bundled models; it does not automatically download model files during setup. On supported iOS versions, Apple SpeechTranscriber may download Apple-managed language assets before first use. Bundled Whisper remains available as the fully packaged speech-recognition option.
+## ภาษาไทย
 
-## 🛡️ Privacy and safety
+LunaV เป็นโครงการผู้ช่วยถามตอบจากภาพบน iPhone ประมวลผลโมเดลภาพ เสียง และ OCR บนอุปกรณ์ ผู้ใช้กดค้างที่ชัตเตอร์เพื่อถ่ายภาพใหม่ แล้วพูดคำถามภาษาไทยหรืออังกฤษหลังสัญญาณสั่น แอปแสดงข้อความที่ถอดเสียงและคำตอบบนหน้าจอ เครื่องมือในตั้งค่าสามารถอ่านข้อความ เลือกพื้นที่ แยกป้าย เมนู และฉลาก แล้วสรุปจาก OCR ได้
 
-Camera frames, depth maps, transcripts, prompts, and descriptions are handled in memory for the active analysis or command. The app does not provide a cloud AI analysis path and does not request location, contacts, photo library, tracking, or health data.
+การถามระยะใช้ข้อมูล LiDAR ที่จับคู่กับภาพจากกล้องที่รองรับ วัดจากกล้องถึงพื้นผิววัตถุ ณ เวลาถ่ายภาพ หากไม่มีข้อมูลที่เชื่อถือได้ แอปจะแจ้งข้อจำกัดโดยไม่เดาตัวเลข รุ่นไม่มี LiDAR ยังถามจากภาพได้ แต่ไม่มีการประมาณระยะเป็นเมตรแทนเซนเซอร์ ในเวอร์ชันปัจจุบันยังไม่มีการอ่านคำตอบออกเสียง การเตือนสิ่งกีดขวางต่อเนื่อง หรือเสียงบอกทิศทาง
 
-Distance estimates and obstacle alerts are assistive features. Their accuracy and timing can vary with the device, environment, lighting, and sensor availability. Do not treat them as a replacement for a cane, guide dog, or established mobility practices.
+Repo นี้เก็บ **เว็บไซต์โครงการ** ไม่ได้รวมซอร์สแอป Xcode หรือไฟล์โมเดล สามารถใช้[ช่องทางสอบถามซอร์สแอปบน GitHub](https://github.com/koomean/visionassistant/issues/new?title=Source%20code%20enquiry%20%E2%80%94%20LunaV)ได้ โดยเป็น issue สาธารณะ ไม่ใช่ลิงก์ดาวน์โหลดทันที โปรเจกต์แอปที่ตรวจสอบกำหนด iOS 27 และ Xcode 27 ขึ้นไป และยังต้องตรวจความพร้อมของหน่วยความจำกับฮาร์ดแวร์จริง
 
-## 🧪 Project status
-
-VisionGuide is under active development. Recorded checks include successful generic iOS builds and a unit-test run with **317 tests, 3 skipped, and 0 failures**. Some model inference paths have also been exercised through Core ML or ONNX Runtime.
-
-Physical-device validation is still needed for camera permissions, live detection and speech, LiDAR alignment, non-LiDAR distance accuracy, VoiceOver flows, memory, thermal behavior, and airplane-mode operation. Build and simulator results alone do not establish real-world performance or production readiness.
-
-## 🤝 Open source
-
-The project’s original source code is licensed under **GNU General Public License v3.0 (GPL-3.0)**. You may use, study, modify, and redistribute covered code under its terms. When distributing covered modified versions, the GPL’s source and license requirements apply.
-
-Models, generated resources, and third-party dependencies may have their own licenses. The project’s GPL license does not change those terms. In particular, the distribution terms for the bundled object-detection model still need review before redistribution.
-
-## 🇹🇭 ภาษาไทย
-
-> **เข้าใจสิ่งรอบตัว เพื่อก้าวต่อไปอย่างมั่นใจ**
->
-> VisionGuide เป็นผู้ช่วยบน iPhone สำหรับผู้พิการทางสายตา ใช้กล้องบรรยายสิ่งของและสิ่งกีดขวาง ประเมินระยะ อ่านข้อความ และตอบคำถามด้วยเสียง รองรับภาษาไทยและอังกฤษ
-
-**ไทยและอังกฤษ · AI บนอุปกรณ์ · คำนึงถึงความเป็นส่วนตัว · GPL-3.0**
-
-<p><a href="https://shorturl.koomean.com/sourcecodevisionassistant"><img alt="ดาวน์โหลดซอร์สโค้ดโปรเจ็กต์" src="https://img.shields.io/badge/%E2%AC%87%EF%B8%8F%20%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B9%8C%E0%B9%82%E0%B8%AB%E0%B8%A5%E0%B8%94-%E0%B8%8B%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AA%E0%B9%82%E0%B8%84%E0%B9%89%E0%B8%94-41685d?style=for-the-badge"></a></p>
-
-แบบฟอร์มลงทะเบียนเพื่อขอซอร์สโค้ด: https://shorturl.koomean.com/sourcecodevisionassistant
-
-### ✨ ทำอะไรได้บ้าง
-
-- 🧭 **บรรยายฉาก** — ตรวจจับคน วัตถุ และสิ่งกีดขวาง แล้วสรุปสิ่งที่ควรรู้
-- 📏 **ประเมินระยะ** — ใช้ LiDAR เมื่ออุปกรณ์รองรับ หรือประเมินความลึกจากภาพบนอุปกรณ์รุ่นอื่น
-- 🎙️ **ฟังคำถาม** — ถามได้ว่าข้างหน้ามีอะไร หรือให้ช่วยหาสิ่งของ
-- 🔎 **อ่านข้อความให้ฟัง** — ฟังป้าย เมนู และเอกสาร
-- 📳 **เตือนสิ่งกีดขวาง** — ใช้การสั่นร่วมกับเสียงบอกทิศทาง
-- 🌏 **รองรับไทยและอังกฤษ** — ตอบตามภาษาของคำถามเมื่อระบบตรวจจับได้
-- 🔐 **ประมวลผลบนอุปกรณ์** — ฟีเจอร์หลักใช้โมเดลในเครื่อง ไม่เรียกบริการ AI บนคลาวด์
-
-### 🛠️ เริ่มต้นใช้งาน
-
-1. เปิดโปรเจ็กต์ VisionGuide ด้วย Xcode บน Mac ที่มี iOS SDK
-2. ให้ Xcode เตรียม Swift packages ของโปรเจ็กต์
-3. เลือก scheme VisionGuide และ iPhone Simulator หรือ iPhone ที่เชื่อมต่อ แล้วสั่ง build และ run
-4. อนุญาตให้ใช้กล้องและไมโครโฟน แล้วรอขั้นตอนเตรียมโมเดล
-
-แอปรองรับ **iOS 18 ขึ้นไป** การ build ด้วยไลบรารี Simulator ที่เตรียมไว้ต้องใช้ Mac Apple Silicon ส่วนการตรวจสอบกล้อง LiDAR เสียง การเข้าถึง หน่วยความจำ และความร้อนต้องใช้อุปกรณ์จริง
-
-### 📦 โมเดลและการทำงาน
-
-แอปใช้โมเดลและ runtime ภายในเครื่องสำหรับตรวจจับวัตถุ ประเมินความลึก รู้จำเสียง บรรยายฉาก และสังเคราะห์เสียงภาษาไทย ไฟล์โมเดลมีขนาดใหญ่ จึงอาจไม่ได้รวมอยู่ใน source checkout ทุกชุด
-
-การดาวน์โหลดและแปลงโมเดลเป็นงานสำหรับผู้พัฒนา แอปไม่ได้ดาวน์โหลดไฟล์โมเดลเองระหว่างติดตั้งหรือเริ่มใช้งาน หากเลือก Apple SpeechTranscriber บน iOS ที่รองรับ Apple อาจดาวน์โหลด asset ภาษาที่ระบบจัดการก่อนใช้ครั้งแรก ส่วน Whisper เป็นตัวเลือกที่บรรจุโมเดลไว้ในแอป
-
-### 🛡️ ความเป็นส่วนตัวและความปลอดภัย
-
-ภาพจากกล้อง แผนที่ความลึก เสียงถอดข้อความ prompt และคำบรรยายจะอยู่ในหน่วยความจำระหว่างการวิเคราะห์ แอปไม่มีเส้นทางวิเคราะห์ AI บนคลาวด์ และไม่ขอสิทธิ์ตำแหน่ง รายชื่อ รูปภาพ การติดตาม หรือข้อมูลสุขภาพ
-
-ระยะทางและการเตือนเป็นตัวช่วย ความแม่นยำและจังหวะการเตือนขึ้นอยู่กับอุปกรณ์ สภาพแวดล้อม แสง และเซนเซอร์ อย่าใช้แทนไม้เท้า สุนัขนำทาง หรือวิธีเดินทางที่ใช้อยู่
-
-### 🧪 สถานะโครงการ
-
-VisionGuide ยังอยู่ระหว่างพัฒนา ผลการตรวจสอบที่บันทึกไว้ประกอบด้วย generic iOS builds ที่ผ่าน และ unit tests **317 รายการ ผ่าน 314 ข้าม 3 และไม่พบรายการล้มเหลว** มีการทดสอบเส้นทาง inference ของบางโมเดลผ่าน Core ML หรือ ONNX Runtime ด้วย
-
-ยังต้องทดสอบบน iPhone จริง ทั้งสิทธิ์กล้อง การตรวจจับและเสียง LiDAR ความแม่นยำของระยะในเครื่องที่ไม่มี LiDAR การใช้งาน VoiceOver หน่วยความจำ ความร้อน และโหมดเครื่องบิน ผล build หรือ simulator ยังยืนยันประสิทธิภาพจริงและความพร้อมสำหรับเผยแพร่ไม่ได้
-
-### 🤝 โอเพนซอร์ส
-
-โค้ดต้นฉบับของโปรเจ็กต์ใช้ **GNU General Public License รุ่น 3.0 (GPL-3.0)** สามารถใช้ ศึกษา แก้ไข และแจกจ่ายโค้ดส่วนที่อยู่ภายใต้ไลเซนส์ได้ตามเงื่อนไข เมื่อแจกจ่ายงานดัดแปลงที่ GPL ครอบคลุม ต้องทำตามข้อกำหนดเรื่องซอร์สโค้ดและไลเซนส์
-
-โมเดล ไฟล์ทรัพยากรที่สร้างขึ้น และ dependencies บุคคลที่สามอาจมีไลเซนส์ของตนเอง GPL ของโปรเจ็กต์ไม่ได้เปลี่ยนเงื่อนไขเหล่านั้น โดยเฉพาะโมเดลตรวจจับวัตถุที่รวมไว้ยังต้องตรวจสอบสิทธิ์การแจกจ่ายก่อนเผยแพร่ต่อ
+โค้ดต้นฉบับใน repo นี้ใช้ **AGPL-3.0-or-later** ตามไฟล์ [LICENSE](LICENSE) ใช้เชิงพาณิชย์ได้เมื่อปฏิบัติตามเงื่อนไข AGPL หากต้องการสิทธิ์เพิ่มเติมสามารถ[ติดต่อเรื่อง commercial licence](COMMERCIAL-LICENSE.md) โดยต้องตกลงเป็นลายลักษณ์อักษรแยกต่างหาก โมเดลและ dependencies บุคคลที่สามยังใช้ไลเซนส์ของตนเอง

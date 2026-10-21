@@ -1,0 +1,42 @@
+/* Copyright (C) 2026 Wachirawich Kripindakul. SPDX-License-Identifier: AGPL-3.0-or-later. See LICENSE. */
+.document-page{background:radial-gradient(ellipse at 88% 0,rgba(71,94,144,.16),transparent 36rem),#080f20;min-height:100vh;display:flex;flex-direction:column}
+.document-page .document-header{border-bottom:1px solid var(--line);background:rgba(8,15,32,.7)}
+.document-page .document-header-inner{min-height:94px;display:flex;align-items:center;justify-content:space-between;gap:28px;padding-block:18px}
+.document-page .document-brand-icon{width:34px;height:34px;flex-shrink:0}
+.document-page .document-header nav{display:flex;flex-wrap:wrap;gap:12px 30px;align-items:center}
+.document-page .document-header nav a{color:var(--muted);font-size:.8rem;padding-block:9px;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.document-page .document-header nav a:hover,.document-page .document-header nav a[aria-current=page]{color:var(--paper);border-color:var(--gold)}
+.document-page .document-main{max-width:1050px;flex:1;padding-top:42px;padding-bottom:75px}
+.document-page .document-back{display:inline-flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:.77rem;color:var(--blue);padding:7px 0;margin-bottom:45px}
+.document-page .document-back:hover{color:var(--gold)}
+.document-page .document-source{display:flex;flex-wrap:wrap;gap:9px 16px;margin-top:60px;padding-top:25px;border-top:1px solid var(--line);font-size:.74rem;color:var(--blue)}
+.document-page .document-source a:hover{color:var(--gold);text-decoration:underline;text-underline-offset:4px}
+.document-page .document-footer{background:#060c19;border-top:1px solid var(--line);padding-block:30px}
+.document-page .document-footer-inner{max-width:1050px;display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap}
+.document-page .document-footer p{font-size:.67rem;color:#94a4c0}
+.document-page .document-footer nav{display:flex;gap:12px 24px;flex-wrap:wrap;font-size:.7rem;color:#bac5d9}
+.document-page .document-footer a:hover{color:var(--gold)}
+.document{font-size:.94rem;line-height:1.95;color:#bdc7d9;overflow-wrap:anywhere}
+.document h1{font-size:clamp(2.6rem,5.4vw,4rem);letter-spacing:-.055em;line-height:1.2;font-weight:500;color:var(--paper);margin-bottom:30px;max-width:20ch}
+.document h2{font-size:clamp(1.6rem,3vw,2rem);letter-spacing:-.035em;line-height:1.45;color:var(--paper);margin-top:53px;margin-bottom:20px;padding-top:28px;border-top:1px solid var(--line);max-width:none;text-wrap:initial}
+.document h3{font-size:1.15rem;line-height:1.6;color:var(--paper);margin-top:32px;margin-bottom:15px}
+.document p{max-width:76ch;margin-top:17px}
+.document h1+p{font-size:1.02rem;max-width:72ch;color:#d1d8e5}
+.document strong{font-weight:650;color:#e6e9ef}
+.document a{color:var(--blue);text-decoration:underline;text-decoration-color:rgba(167,189,237,.4);text-underline-offset:4px;transition:color .2s,text-decoration-color .2s}
+.document a:hover{color:var(--gold);text-decoration-color:var(--gold)}
+.document ul{padding-left:24px;margin:20px 0 25px;max-width:78ch}
+.document li{padding-left:5px;margin:13px 0}
+.document li::marker{color:var(--gold)}
+.document code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.83em;line-height:1.6;color:#d0d8e8;background:rgba(167,189,237,.075);border:1px solid rgba(167,189,237,.09);border-radius:3px;padding:.13em .32em;overflow-wrap:anywhere}
+.document .document-table{width:100%;overflow-x:auto;overscroll-behavior-x:contain;margin:26px 0 28px;border:1px solid var(--line);border-radius:5px;scrollbar-color:#435779 #0c162c;scrollbar-width:thin}
+.document table{width:100%;border-collapse:collapse;min-width:640px;text-align:left;font-size:.81rem;line-height:1.85}
+.document th{color:var(--paper);font-weight:600;background:#111d35;padding:17px 19px;vertical-align:top;border-bottom:1px solid var(--line)}
+.document td{padding:19px;vertical-align:top;border-bottom:1px solid var(--line)}
+.document tr:last-child td{border-bottom:0}
+.document tbody tr:nth-child(even){background:rgba(167,189,237,.025)}
+.document th:first-child{width:20%}.document th:nth-child(2){width:39%}
+.document [lang=th]{line-height:2.05}
+.document h2[lang=th]{font-size:1.9rem;letter-spacing:-.02em}
+@media(max-width:640px){.document-page .document-header-inner{min-height:115px;flex-direction:column;align-items:flex-start;gap:12px;padding-block:20px 12px}.document-page .document-header nav{gap:8px 23px}.document-page .document-header nav a{font-size:.73rem}.document-page .document-main{padding-top:25px;padding-bottom:50px}.document-page .document-back{font-size:.71rem;margin-bottom:32px;gap:8px}.document{font-size:.86rem;line-height:1.95}.document h1{font-size:2.65rem;margin-bottom:23px}.document h1+p{font-size:.9rem}.document h2{font-size:1.65rem;margin-top:38px;margin-bottom:16px;padding-top:24px}.document h2[lang=th]{font-size:1.55rem}.document p{margin-top:15px}.document ul{padding-left:18px}.document table{font-size:.77rem;min-width:620px}.document th,.document td{padding:15px}.document-page .document-source{margin-top:40px;gap:8px 13px;font-size:.68rem}.document-page .document-footer-inner{align-items:flex-start;gap:18px}.document-page .document-footer nav{gap:11px 22px;font-size:.68rem}}
+@media print{.document-page{background:#fff;display:block}.document-page .document-header,.document-page .document-back,.document-page .document-source,.document-page .document-footer{display:none}.document-page .document-main{max-width:none;padding:0}.document{color:#222;font-size:10pt}.document h1,.document h2,.document h3,.document strong{color:#111}.document h1{font-size:26pt;max-width:none}.document h2{font-size:17pt;margin-top:22pt;padding-top:12pt;border-color:#ccc;break-after:avoid}.document p,.document ul{max-width:none}.document a{color:#222;text-decoration-color:#666}.document code{background:#f5f5f5;color:#222;border-color:#ddd}.document .document-table{overflow:visible;border-color:#bbb}.document table{min-width:0;font-size:9pt}.document th{color:#111;background:#eee}.document th,.document td{border-color:#ccc;padding:8pt}.document tr{break-inside:avoid}}
