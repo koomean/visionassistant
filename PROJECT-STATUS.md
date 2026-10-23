@@ -1,6 +1,6 @@
 # LunaV project status
 
-**Evidence reviewed: 21 October 2026.** LunaV is a research prototype. This report summarises the latest supplied app validation record; the app source and raw logs are not included in this website repository. Evidence filenames below identify the supplied app workspace records, not downloadable files in this repository. [App-source enquiries](https://github.com/koomean/visionassistant/issues/new?title=Source%20code%20enquiry%20%E2%80%94%20LunaV) open a public GitHub issue form, not an immediate source download.
+**Evidence reviewed: 21 October 2026.** LunaV is a research prototype. This report summarises the latest supplied app validation record; the app source and raw logs are not included in this website repository. Evidence filenames below identify the supplied app workspace records, not downloadable files in this repository. [Request the app source](https://shorturl.koomean.com/sourcecodevisionassistant) through the project’s registration/request form; this is not an immediate source download.
 
 ## Current implementation
 
@@ -37,4 +37,4 @@ The supplied app's `README.md`, `VALIDATION.md` (latest QA section), and `projec
 
 รุ่นล่าสุด **build และตรวจลายเซ็นสำหรับ iPhone ผ่าน** แต่ยังไม่ได้ยืนยันกล้อง ไมค์ LiDAR และ inference สดบนเครื่องจริง ผลบน Mac, Simulator, เสียงสังเคราะห์ และ depth จำลองไม่ใช่ผลความแม่นยำ ความเร็ว หรือความร้อนบน iPhone แอปกำหนด iOS 27 / Xcode 27 ขึ้นไปและต้องมีหน่วยความจำเพียงพอ ยังไม่มีการอ่านคำตอบออกเสียง เตือนสิ่งกีดขวางต่อเนื่อง เสียงนำทาง หรือเดาระยะเป็นเมตรในเครื่องไม่มี LiDAR
 
-หลักฐานมาจากเอกสารและไฟล์ที่ระบุด้านบนใน workspace แอป ไม่ได้รวมไฟล์เหล่านั้นไว้ใน repo เว็บไซต์ สามารถใช้[ช่องทางสอบถามซอร์สแอปบน GitHub](https://github.com/koomean/visionassistant/issues/new?title=Source%20code%20enquiry%20%E2%80%94%20LunaV)เพื่อติดต่อโครงการผ่าน issue สาธารณะได้ ช่องทางนี้ไม่ใช่ลิงก์ดาวน์โหลดซอร์สแอปทันที
+หลักฐานมาจากเอกสารและไฟล์ที่ระบุด้านบนใน workspace แอป ไม่ได้รวมไฟล์เหล่านั้นไว้ใน repo เว็บไซต์ สามารถใช้[แบบฟอร์มลงทะเบียนขอซอร์สแอป](https://shorturl.koomean.com/sourcecodevisionassistant)เพื่อติดต่อโครงการได้ ช่องทางนี้เป็นแบบฟอร์มคำขอ ไม่ใช่ลิงก์ดาวน์โหลดซอร์สแอปทันที

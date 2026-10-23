@@ -2,11 +2,11 @@
 
 An on-device visual question assistant for iPhone, developed as a SCiUS Forums project. LunaV accepts spoken Thai and English questions, reads text from photographs, and shows the transcript and answer on screen. Its current implementation uses Qwen3-VL-2B-Instruct through MLX/Metal, Whisper large-v3 turbo through Core ML, and Apple Vision OCR.
 
-[Visit the project website](https://visionassistant.koomean.com/) · [Enquire about the iPhone app source](https://github.com/koomean/visionassistant/issues/new?title=Source%20code%20enquiry%20%E2%80%94%20LunaV)
+[Visit the project website](https://visionassistant.koomean.com/) · [Request the iPhone app source](https://shorturl.koomean.com/sourcecodevisionassistant)
 
 ## Repository scope
 
-This repository contains the **public project website and its licensing notices**. It does not contain the iPhone app, Xcode project, or model weights. Source enquiries open a public GitHub issue form; this is a contact channel, not an immediate app-source download. This repository does not provide an App Store release.
+This repository contains the **public project website and its licensing notices**. It does not contain the iPhone app, Xcode project, or model weights. The source-request link is the project’s registration/request form, not an immediate app-source download. This repository does not provide an App Store release.
 
 The website describes the current LunaV implementation rather than the earlier VisionGuide design. Capability descriptions were checked against the supplied app documentation and source on 21 October 2026. They describe implementation, not a guarantee of accuracy or device compatibility.
 
@@ -54,6 +54,6 @@ LunaV เป็นโครงการผู้ช่วยถามตอบ�
 
 การถามระยะใช้ข้อมูล LiDAR ที่จับคู่กับภาพจากกล้องที่รองรับ วัดจากกล้องถึงพื้นผิววัตถุ ณ เวลาถ่ายภาพ หากไม่มีข้อมูลที่เชื่อถือได้ แอปจะแจ้งข้อจำกัดโดยไม่เดาตัวเลข รุ่นไม่มี LiDAR ยังถามจากภาพได้ แต่ไม่มีการประมาณระยะเป็นเมตรแทนเซนเซอร์ ในเวอร์ชันปัจจุบันยังไม่มีการอ่านคำตอบออกเสียง การเตือนสิ่งกีดขวางต่อเนื่อง หรือเสียงบอกทิศทาง
 
-Repo นี้เก็บ **เว็บไซต์โครงการ** ไม่ได้รวมซอร์สแอป Xcode หรือไฟล์โมเดล สามารถใช้[ช่องทางสอบถามซอร์สแอปบน GitHub](https://github.com/koomean/visionassistant/issues/new?title=Source%20code%20enquiry%20%E2%80%94%20LunaV)ได้ โดยเป็น issue สาธารณะ ไม่ใช่ลิงก์ดาวน์โหลดทันที โปรเจกต์แอปที่ตรวจสอบกำหนด iOS 27 และ Xcode 27 ขึ้นไป และยังต้องตรวจความพร้อมของหน่วยความจำกับฮาร์ดแวร์จริง
+Repo นี้เก็บ **เว็บไซต์โครงการ** ไม่ได้รวมซอร์สแอป Xcode หรือไฟล์โมเดล สามารถใช้[แบบฟอร์มลงทะเบียนขอซอร์สแอป](https://shorturl.koomean.com/sourcecodevisionassistant)ได้ โดยเป็นแบบฟอร์มคำขอ ไม่ใช่ลิงก์ดาวน์โหลดทันที โปรเจกต์แอปที่ตรวจสอบกำหนด iOS 27 และ Xcode 27 ขึ้นไป และยังต้องตรวจความพร้อมของหน่วยความจำกับฮาร์ดแวร์จริง
 
 โค้ดต้นฉบับใน repo นี้ใช้ **AGPL-3.0-or-later** ตามไฟล์ [LICENSE](LICENSE) ใช้เชิงพาณิชย์ได้เมื่อปฏิบัติตามเงื่อนไข AGPL หากต้องการสิทธิ์เพิ่มเติมสามารถ[ติดต่อเรื่อง commercial licence](COMMERCIAL-LICENSE.md) โดยต้องตกลงเป็นลายลักษณ์อักษรแยกต่างหาก โมเดลและ dependencies บุคคลที่สามยังใช้ไลเซนส์ของตนเอง
