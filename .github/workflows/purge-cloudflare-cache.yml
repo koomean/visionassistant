@@ -58,7 +58,12 @@ jobs:
           node <<'NODE'
           async function main() {
             if (!process.env.CLOUDFLARE_API_TOKEN) throw new Error('CLOUDFLARE_API_TOKEN secret is not configured');
-            const files = [`https://${process.env.SITE_HOST}/`, `https://${process.env.SITE_HOST}/index.html`];
+            const paths = [
+              '/', '/index.html', '/project-status.html', '/licensing.html',
+              '/credits.html', '/404.html', '/README.md', '/PROJECT-STATUS.md',
+              '/COMMERCIAL-LICENSE.md', '/LICENSE',
+            ];
+            const files = paths.map((path) => `https://${process.env.SITE_HOST}${path}`);
             const response = await fetch(`https://api.cloudflare.com/client/v4/zones/${process.env.CLOUDFLARE_ZONE_ID}/purge_cache`, {
               method: 'POST',
               headers: {
