@@ -8,15 +8,16 @@ An on-device visual question assistant for iPhone, developed as a SCiUS Forums p
 
 This repository contains the **public project website and its licensing notices**. It does not contain the iPhone app, Xcode project, or model weights. The source-request link is the project’s registration/request form, not an immediate app-source download. This repository does not provide an App Store release.
 
-The website describes the current LunaV implementation rather than the earlier VisionGuide design. Capability descriptions were checked against the supplied app documentation and source on 21 October 2026. They describe implementation, not a guarantee of accuracy or device compatibility.
+The website describes the current LunaV implementation rather than the earlier VisionGuide design. Capability descriptions were checked against the supplied app documentation and source on 23 October 2026. They describe implementation, not a guarantee of accuracy or device compatibility.
 
 ## Current capabilities
 
-- **Ask about a photograph.** Hold the shutter for about 0.35 seconds to capture a new image and its available depth data. Speak after the haptic cue. After speech recognition finishes, the app displays both the question and LunaV's answer.
-- **Thai and English voice input.** Bundled multilingual Whisper models transcribe questions locally. Silence can end recording automatically; transcription is not streamed live.
+- **Hold, speak, release.** Hold the centre button to start photo/depth capture and microphone recording together, after microphone permission is granted. Speak while holding, then release to stop recording and submit once the image is ready. A short tap takes a photograph only. The app displays both the transcript and LunaV's answer after transcription.
+- **Thai and English voice input.** Bundled multilingual Whisper models transcribe locally after release; silence while holding does not submit. Recordings can be up to 2 minutes. If that limit is exceeded, the request is rejected rather than submitting only the beginning. Transcription is not streamed live.
+- **Progress and cancellation.** The centre button cancels during preparation, transcription, or answering. Status shows the stage and elapsed time. Speech processing has a 120-second screen-wait limit, including model preparation; late results are discarded. Core ML cleanup may continue before a new model-dependent action can start.
 - **Read and summarise text.** Apple Vision extracts text locally. Tools in Settings can select a region, group text from signs, menus, and labels, and summarise the selected OCR text.
 - **Measure supported LiDAR captures.** On a compatible rear LiDAR camera, the app can locate an object and read depth associated with that photograph. It reports a camera-to-surface distance at capture time. Without usable LiDAR data, it does not fabricate a metric distance; visual questions remain available.
-- **Keep inference on the phone.** The app bundles its image and speech models and does not require a cloud AI service or an API key. Temporary recordings are removed after transcription or cancellation. Temporary image files are kept in the app sandbox during use.
+- **Keep inference on the phone.** The app bundles its image and speech models and does not require a cloud AI service or an API key. Temporary recordings are removed when transcription work actually ends. After cancellation or timeout, an unfinished Core ML job retains its recording until it can safely clean up. Temporary image files are kept in the app sandbox during use.
 
 The current interface presents answers as text. It does not implement spoken answer playback, continuous obstacle alerts, directional guidance, or non-LiDAR metric depth estimation. LiDAR's accepted application range of 0.2–5 metres is a validation bound, not an accuracy certification. A new capture is needed for a new measurement.
 
@@ -26,7 +27,7 @@ The supplied app project currently targets **iOS 27** and uses **Xcode 27 or lat
 
 LunaV is an active research prototype. The website does not claim an App Store release, certified distance accuracy, universal iPhone support, or real-world accessibility validation. Its descriptions and measurements should not replace established mobility aids or an independent measurement where accuracy matters.
 
-See [PROJECT-STATUS.md](PROJECT-STATUS.md) for the dated validation results and their limits.
+The 23 October Simulator suite passed **155/155 tests (144 unit + 11 UI)**. A signed iPhone Release build also passed verification, while this update’s live camera, microphone, LiDAR, and inference behaviour remain unverified on a physical iPhone. The earlier 21 October Mac model and synthetic-speech results are historical evidence, not a new accuracy evaluation. See [PROJECT-STATUS.md](PROJECT-STATUS.md) for the dated results and their limits.
 
 ## Website development and deployment
 
@@ -50,7 +51,9 @@ AGPL permits commercial use when its terms are followed. An optional separate co
 
 ## ภาษาไทย
 
-LunaV เป็นโครงการผู้ช่วยถามตอบจากภาพบน iPhone ประมวลผลโมเดลภาพ เสียง และ OCR บนอุปกรณ์ ผู้ใช้กดค้างที่ชัตเตอร์เพื่อถ่ายภาพใหม่ แล้วพูดคำถามภาษาไทยหรืออังกฤษหลังสัญญาณสั่น แอปแสดงข้อความที่ถอดเสียงและคำตอบบนหน้าจอ เครื่องมือในตั้งค่าสามารถอ่านข้อความ เลือกพื้นที่ แยกป้าย เมนู และฉลาก แล้วสรุปจาก OCR ได้
+LunaV เป็นโครงการผู้ช่วยถามตอบจากภาพบน iPhone ประมวลผลโมเดลภาพ เสียง และ OCR บนอุปกรณ์ ผู้ใช้กดปุ่มกลางค้างเพื่อเริ่มถ่ายภาพ/depth และรับเสียงพร้อมกัน พูดคำถามภาษาไทยหรืออังกฤษขณะถือ แล้วปล่อยเพื่อหยุดเสียงและส่งเมื่อภาพพร้อม ความเงียบระหว่างถือไม่ส่งเอง แอปแสดงข้อความที่ถอดเสียงและคำตอบบนหน้าจอ เครื่องมือในตั้งค่าสามารถอ่านข้อความ เลือกพื้นที่ แยกป้าย เมนู และฉลาก แล้วสรุปจาก OCR ได้
+
+คำถามยาวได้ไม่เกิน **2 นาที** หากเกินจะแจ้งให้ถามสั้นลงแทนการส่งเฉพาะต้นประโยค ระหว่างเตรียมโมเดล ถอดเสียง หรือตอบ ใช้ปุ่มกลางยกเลิกได้ พร้อมสถานะขั้นตอนและเวลาที่ผ่านไป การรอถอดเสียงรวมเตรียมโมเดลมีเพดาน 120 วินาที หากยกเลิกหรือหมดเวลา งาน Core ML เดิมอาจยังคืนทรัพยากรอยู่และถือไฟล์เสียงไว้จนสิ้นสุดจริงก่อนลบ ไม่รับประกันว่ากดยกเลิกแล้วไฟล์จะถูกลบทันที
 
 การถามระยะใช้ข้อมูล LiDAR ที่จับคู่กับภาพจากกล้องที่รองรับ วัดจากกล้องถึงพื้นผิววัตถุ ณ เวลาถ่ายภาพ หากไม่มีข้อมูลที่เชื่อถือได้ แอปจะแจ้งข้อจำกัดโดยไม่เดาตัวเลข รุ่นไม่มี LiDAR ยังถามจากภาพได้ แต่ไม่มีการประมาณระยะเป็นเมตรแทนเซนเซอร์ ในเวอร์ชันปัจจุบันยังไม่มีการอ่านคำตอบออกเสียง การเตือนสิ่งกีดขวางต่อเนื่อง หรือเสียงบอกทิศทาง
 

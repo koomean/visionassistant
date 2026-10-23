@@ -37,6 +37,11 @@ or results have been fabricated or composited.
 | `assets/app-settings.webp` | `App/Preview/Voice-Settings.png` |
 | `assets/app-text-sources.webp` | `App/Preview/Text-Sources.png` |
 
+The camera, answer, and settings previews were captured on **21 October 2026**;
+the text-source preview was captured on **20 October 2026**. These show the
+Simulator interface and OCR examples before the 23 October voice-flow update,
+not the new hold–talk–release gesture or cancellation states.
+
 The previews are from iOS Simulator. The answer and text-source previews show
 OCR of a synthetic test fixture. They do not establish live iPhone camera,
 microphone, visual-model, or LiDAR performance. The camera preview explicitly
