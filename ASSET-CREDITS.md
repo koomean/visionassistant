@@ -67,7 +67,8 @@ license. See the files and source links above for their respective terms.
 ## Intro and interface motion
 
 The LunaVision-to-LunaV introduction uses the existing crescent-and-star website
-symbol, as selected by the project owner. The wordmark, animated red pen stroke,
-and transition to the header are original SVG/CSS/JavaScript interface work.
+symbol, as selected by the project owner. The wordmark, animated wavy red pen stroke,
+`assets/red-pen.svg`, and transition to the header are original
+SVG/CSS/JavaScript interface work.
 They do not replace or depict the camera-and-moon iPhone app icon. Scroll motion
-respects reduced-motion settings; the introduction can be skipped or replayed.
+respects reduced-motion settings; the introduction can be replayed, with no on-screen skip button.

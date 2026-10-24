@@ -32,7 +32,7 @@ An iPhone 14 Pro / iOS 27.0.1 was used for local Dictation file tests, installed
 
 ## Website development and deployment
 
-The website includes a skippable LunaVision-to-LunaV introduction and passive scroll effects. Replay the introduction from the footer; reduced-motion preferences skip it. The sequence is in `intro.js` and `motion.css`, while `script.js` controls language, tabs, and scroll motion.
+The website includes a LunaVision-to-LunaV introduction with a visible red pen and wavy strikeout, plus passive scroll effects. Replay the introduction from the footer; reduced-motion preferences skip it. The sequence is in `intro.js` and `motion.css`, while `script.js` controls language, tabs, and scroll motion.
 
 The website is static and needs no runtime build step. Serve this directory locally, for example:
 

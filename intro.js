@@ -13,7 +13,6 @@
   const path = screen.querySelector('.intro-crossout path');
   const pen = screen.querySelector('.intro-pen');
   const curtain = screen.querySelector('.intro-curtain');
-  const skip = screen.querySelector('.intro-skip');
   const protectedNodes = [...document.querySelectorAll('.site-header, main, .site-footer, .skip-link')];
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const animations = new Set();
@@ -33,7 +32,7 @@
       signal.addEventListener('abort', abort, { once: true });
     });
   }
-  function finish(completed = false) {
+  function finish() {
     if (!controller) return;
     controller.abort(); controller = null;
     clearTimeout(failSafe);
@@ -42,7 +41,6 @@
     if (returnFocus && !keyboardInteraction) document.activeElement.blur();
     screen.hidden = true; screen.dataset.stage = 'complete';
     root.classList.remove('intro-playing');
-    if (completed && !reduced()) root.classList.add('intro-finished');
     savedInert.forEach(([node, wasInert]) => { node.inert = wasInert; }); savedInert = [];
     if (returnFocus && keyboardInteraction) {
       const destination = previousFocus && previousFocus !== document.body && previousFocus.isConnected ? previousFocus : target;
@@ -51,9 +49,8 @@
     window.dispatchEvent(new Event('lunav:introcomplete'));
   }
   function reset() {
-    [lockup, moon, word, retired, path, pen, curtain, skip].forEach(el => el.removeAttribute('style'));
+    [lockup, moon, word, retired, path, pen, curtain].forEach(el => el.removeAttribute('style'));
     lockup.classList.remove('is-inline');
-    root.classList.remove('intro-finished');
   }
   async function start(fromKeyboard = false) {
     if (controller || reduced() || document.hidden) return;
@@ -74,11 +71,28 @@
       await animate(lockup, [{ opacity: 0, translate: '0 10px', scale: .97 }, { opacity: 1, translate: '0 0', scale: 1 }], { duration: 380 });
       await pause(430, signal);
       screen.dataset.stage = 'strike';
-      const inkWidth = retired.getBoundingClientRect().width + 8;
+      // The nib and ink share the same arc-length timeline, including each wave.
+      // Screen-space SVG coordinates keep the tip aligned at every viewport size.
+      const inkLength = path.getTotalLength();
+      const inkMatrix = path.getScreenCTM();
+      const writingArea = retired.getBoundingClientRect();
+      const pointAt = fraction => {
+        const point = path.getPointAtLength(inkLength * fraction);
+        const screenPoint = new DOMPoint(point.x, point.y).matrixTransform(inkMatrix);
+        return { x: screenPoint.x - writingArea.left, y: screenPoint.y - writingArea.top };
+      };
+      const at = (point, dx = 0, dy = 0) => `translate(${point.x + dx}px, ${point.y + dy}px)`;
+      const firstPoint = pointAt(0), lastPoint = pointAt(1);
+      await animate(pen, [{ opacity: 0, transform: at(firstPoint, 12, -18) }, { opacity: 1, transform: at(firstPoint) }], { duration: 180 });
+      const tipFrames = Array.from({ length: 101 }, (_, index) => {
+        const fraction = index / 100;
+        return { offset: fraction, opacity: 1, transform: at(pointAt(fraction)) };
+      });
       await Promise.all([
-        animate(path, [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], { duration: 520, easing: 'cubic-bezier(.35,.1,.7,1)' }),
-        animate(pen, [{ opacity: 0, transform: 'translate(0, 5px) rotate(-35deg)' }, { opacity: 1, offset: .1, transform: 'translate(8px, 3px) rotate(-35deg)' }, { opacity: 1, offset: .9, transform: `translate(${inkWidth}px, -5px) rotate(-35deg)` }, { opacity: 0, transform: `translate(${inkWidth + 5}px, -9px) rotate(-35deg)` }], { duration: 600, easing: 'linear' })
+        animate(path, [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], { duration: 780, easing: 'linear' }),
+        animate(pen, tipFrames, { duration: 780, easing: 'linear' })
       ]);
+      await animate(pen, [{ opacity: 1, transform: at(lastPoint) }, { opacity: 0, transform: at(lastPoint, 14, -22) }], { duration: 180 });
       await pause(350, signal);
       screen.dataset.stage = 'erase';
       await animate(retired, [{ width: `${retired.getBoundingClientRect().width}px`, opacity: 1, filter: 'blur(0px)' }, { width: '0px', opacity: 0, filter: 'blur(5px)' }], { duration: 440 });
@@ -109,19 +123,17 @@
       lockup.style.transform = 'none'; lockup.style.transformOrigin = '0 0';
       await Promise.all([
         animate(lockup, [{ transform: 'translate(0,0) scale(1)' }, { transform: `translate(${destination.left - from.left}px, ${destination.top - from.top}px) scale(${destination.width / from.width})` }], { duration: 900, easing: 'cubic-bezier(.65,0,.2,1)' }),
-        animate(curtain, [{ opacity: 1 }, { opacity: 0 }], { duration: 800, delay: 100, easing: 'ease-in-out' }),
-        animate(skip, [{ opacity: 1 }, { opacity: 0 }], { duration: 200 })
+        animate(curtain, [{ opacity: 1 }, { opacity: 0 }], { duration: 800, delay: 100, easing: 'ease-in-out' })
       ]);
-      finish(true);
+      finish();
     } catch (error) {
       if (!signal.aborted) finish();
     }
   }
-  skip.addEventListener('click', () => finish());
   document.addEventListener('keydown', event => {
     if (!controller) return;
     keyboardInteraction = true;
-    if (event.key === 'Tab') { event.preventDefault(); skip.focus({ preventScroll: true }); }
+    if (event.key === 'Tab') { event.preventDefault(); screen.focus({ preventScroll: true }); }
     if (event.key === 'Escape') { event.preventDefault(); finish(); }
   });
   document.addEventListener('visibilitychange', () => { if (document.hidden) finish(); });
