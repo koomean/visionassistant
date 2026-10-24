@@ -13,8 +13,8 @@
     return [...document.querySelectorAll(`[${key}]`)].map(el => ({ el, attr, th: el.getAttribute(attr), en: el.getAttribute(key) }));
   });
   const metadata = {
-    th: { title: 'LunaV — แสงเล็ก ๆ เพื่อโลกที่ชัดขึ้น', description: 'LunaV ผู้ช่วยมองภาพบน iPhone ถามด้วยเสียงไทยและอังกฤษ อ่านข้อความ และถามระยะด้วย LiDAR ที่รองรับ ประมวลผล AI บนเครื่อง โปรเจกต์วิจัย SCiUS Forums 17', locale: 'th_TH' },
-    en: { title: 'LunaV — A little light. A clearer world.', description: 'Meet LunaV, an on-device iPhone vision research prototype. Ask about photos in Thai or English, read text, and explore distance with compatible LiDAR.', locale: 'en_US' }
+    th: { title: 'LunaV — แสงเล็ก ๆ เพื่อโลกที่ชัดขึ้น', description: 'LunaV ผู้ช่วยมองภาพบน iPhone ถามด้วยเสียง อ่านและฟังคำตอบ วัดระยะด้วย LiDAR หรือประมาณจาก Depth Anything 3 ประมวลผลบนเครื่อง โปรเจกต์วิจัย SCiUS Forums 17', locale: 'th_TH' },
+    en: { title: 'LunaV — A little light. A clearer world.', description: 'Meet LunaV, an on-device iPhone vision research prototype. Ask in your selected Thai or English language, hear Apple-voice answers, and explore LiDAR or DA3 distance estimates. Initial speech-language setup may require an Apple download.', locale: 'en_US' }
   };
   let language = 'th';
   function setLanguage(next, persist = false) {
@@ -31,6 +31,7 @@
     document.querySelector('meta[property="og:locale"]')?.setAttribute('content', metadata[language].locale);
     if (persist) safeStorage.set('lunav-language', language);
     requestRender();
+    requestAnimationFrame(updateTabMarker);
   }
   document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language, true)));
 
@@ -51,6 +52,13 @@
   matchMedia('(min-width: 881px)').addEventListener('change', event => { if (event.matches) setMenu(false); });
 
   const tabs = [...document.querySelectorAll('[role="tab"]')];
+  const tabList = document.querySelector('.feature-tabs');
+  function updateTabMarker() {
+    const active = tabs.find(tab => tab.getAttribute('aria-selected') === 'true');
+    if (!tabList || !active) return;
+    tabList.style.setProperty('--tab-left', `${active.offsetLeft}px`);
+    tabList.style.setProperty('--tab-width', `${active.offsetWidth}px`);
+  }
   function activateTab(tab, focus = false) {
     tabs.forEach(item => {
       const active = item === tab;
@@ -61,6 +69,7 @@
       if (panel) { panel.classList.toggle('is-active', active); panel.hidden = !active; }
     });
     if (focus) tab.focus();
+    updateTabMarker();
     requestRender();
   }
   tabs.forEach((tab, index) => {
@@ -97,6 +106,7 @@
     motionButton?.setAttribute('aria-pressed', String(reduced));
     if (motionButton) motionButton.disabled = systemMotion.matches;
     if (reduced) { root.style.setProperty('--hero-shift', '0px'); root.style.setProperty('--moon-turn', '0deg'); }
+    window.dispatchEvent(new CustomEvent('lunav:motionchange', { detail: { reduced } }));
     requestRender();
   }
   motionButton?.addEventListener('click', () => { manualReduced = !manualReduced; safeStorage.set('lunav-reduce-motion', String(manualReduced)); applyMotion(); });
@@ -106,7 +116,11 @@
   const context = canvas?.getContext('2d');
   const hero = document.querySelector('.hero');
   const journey = document.querySelector('.journey');
+  const privacyArt = document.querySelector('.privacy-art');
+  const activePreview = () => document.querySelector('.feature-panel.is-active .app-preview');
+  const journeySteps = [...document.querySelectorAll('.journey > li')];
   let width = 0, height = 0, stars = [], frame = 0, ticking = false;
+  let visualScroll = Math.max(0, window.scrollY), lastFrame = 0;
   let pageVisible = !document.hidden;
   // A repeatable sky avoids layout changes between visits. Motion is scroll-driven;
   // the sky does not run a continuous animation loop while the page is idle.
@@ -132,15 +146,21 @@
       if (star.r > 1.2) { context.strokeStyle = `rgba(197,211,239,${star.a * .45})`; context.lineWidth = .5; context.beginPath(); context.moveTo(star.x - 3, y); context.lineTo(star.x + 3, y); context.moveTo(star.x, y - 3); context.lineTo(star.x, y + 3); context.stroke(); }
     }
   }
-  function render() {
+  function render(timestamp) {
     ticking = false;
     if (!pageVisible) return;
     const scroll = Math.max(0, window.scrollY);
+    const delta = lastFrame ? Math.min(64, Math.max(1, timestamp - lastFrame)) : 16.67;
+    lastFrame = timestamp;
+    const difference = scroll - visualScroll;
+    if (reduced || Math.abs(difference) > innerHeight * 2) visualScroll = scroll;
+    else visualScroll += difference * (1 - Math.exp(-delta / 85));
+    if (Math.abs(scroll - visualScroll) < .15) visualScroll = scroll;
     const maxScroll = document.documentElement.scrollHeight - innerHeight;
     root.style.setProperty('--scroll', maxScroll > 0 ? Math.min(1, scroll / maxScroll).toFixed(4) : '0');
     header?.classList.toggle('scrolled', scroll > 20);
     if (!reduced && hero) {
-      const progress = Math.min(1.4, scroll / hero.offsetHeight);
+      const progress = Math.min(1.4, visualScroll / hero.offsetHeight);
       root.style.setProperty('--hero-shift', `${(progress * -55).toFixed(2)}px`);
       root.style.setProperty('--moon-turn', `${(progress * 16).toFixed(2)}deg`);
     }
@@ -148,13 +168,26 @@
       const rect = journey.getBoundingClientRect();
       const progress = Math.min(1, Math.max(0, (innerHeight * .85 - rect.top) / (rect.height + innerHeight * .25)));
       root.style.setProperty('--journey', reduced ? '1' : progress.toFixed(4));
+      journeySteps.forEach((step, index) => step.classList.toggle('is-reached', reduced || progress >= (index + .25) / journeySteps.length));
     }
-    drawSky(scroll);
+    if (privacyArt) {
+      const rect = privacyArt.getBoundingClientRect();
+      const offset = Math.max(-18, Math.min(18, (innerHeight / 2 - (rect.top + rect.height / 2)) * .04));
+      privacyArt.style.setProperty('--privacy-shift', reduced ? '0px' : `${offset.toFixed(2)}px`);
+    }
+    const preview = activePreview();
+    if (preview) {
+      const rect = preview.getBoundingClientRect();
+      const offset = Math.max(-12, Math.min(12, (innerHeight / 2 - (rect.top + rect.height / 2)) * .025));
+      preview.style.setProperty('--preview-shift', reduced ? '0px' : `${offset.toFixed(2)}px`);
+    }
+    drawSky(visualScroll);
+    if (!reduced && Math.abs(scroll - visualScroll) > .15) requestRender();
   }
   function requestRender() { if (!ticking) { ticking = true; frame = requestAnimationFrame(render); } }
   window.addEventListener('scroll', requestRender, { passive: true });
-  window.addEventListener('resize', () => { sizeSky(); requestRender(); }, { passive: true });
-  document.addEventListener('visibilitychange', () => { pageVisible = !document.hidden; if (!pageVisible) { cancelAnimationFrame(frame); ticking = false; } else requestRender(); });
+  window.addEventListener('resize', () => { sizeSky(); updateTabMarker(); requestRender(); }, { passive: true });
+  document.addEventListener('visibilitychange', () => { pageVisible = !document.hidden; if (!pageVisible) { cancelAnimationFrame(frame); ticking = false; } else { lastFrame = 0; requestRender(); } });
   if ('ResizeObserver' in window) new ResizeObserver(requestRender).observe(document.body);
   if ('IntersectionObserver' in window && navigation) {
     const sections = [...document.querySelectorAll('main section[id]')];
@@ -174,4 +207,7 @@
   setLanguage(requestedLanguage || safeStorage.get('lunav-language') || 'th');
   applyMotion();
   sizeSky();
+  updateTabMarker();
+  document.fonts.ready.then(() => { updateTabMarker(); requestRender(); });
+  window.addEventListener('lunav:introcomplete', () => { lastFrame = 0; requestRender(); });
 })();

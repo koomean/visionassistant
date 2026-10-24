@@ -31,92 +31,111 @@
     <a class="document-back" href="./"><span aria-hidden="true">←</span> Back to LunaV <span lang="th">/ กลับหน้าหลัก</span></a>
     <article class="document" aria-label="Project status">
 <h1>LunaV project status</h1>
-<p><strong>Evidence reviewed: 23 October 2026.</strong> LunaV is a research prototype. This report separates the current hold-to-talk update from the earlier 21 October model and speech fixtures. The app source and raw logs are not included in this website repository. Evidence filenames below identify the supplied app workspace records, not downloadable files here. <a href="https://shorturl.koomean.com/sourcecodevisionassistant">Request the app source</a> through the project’s registration/request form; this is not an immediate source download.</p>
-<h2>Current implementation</h2>
-<p><strong>Hold the centre button, speak while holding, then release to submit.</strong> Pressing starts photo/depth capture and microphone recording together, after microphone permission has been granted. Releasing stops recording immediately; transcription waits for the image to be ready. Silence while holding does not submit the question. A short tap still takes a photograph without submitting a voice question.</p>
-<p>Recordings can be up to <strong>2 minutes</strong>. Longer recordings are rejected with a request to ask a shorter question, rather than submitting only the beginning. During speech preparation, transcription, and answering, the centre button can cancel the request. Status messages show the current stage and elapsed time. The transcription screen waits no more than 120 seconds for the whole speech-processing task, including model preparation. Cancelling or reaching that deadline returns control without showing a late answer. Core ML may still need time to finish internally; model-dependent actions wait for that cleanup before starting another large model.</p>
-<p>LunaV displays the transcript and answer as text. It uses bundled Whisper large-v3 turbo/Core ML for transcription, Qwen3-VL-2B-Instruct/MLX/Metal for visual questions, and Apple Vision for OCR. Settings contains region selection, text reading and summarisation, grouping for signs/menus/labels, and optional manual LiDAR-point selection.</p>
-<p>On a supported rear LiDAR camera, distance questions use depth associated with the captured photograph. The reported distance is from the camera to an object&#x27;s surface at capture time. The app rejects unavailable or ambiguous measurements instead of inventing a metric distance. Its accepted 0.2–5 metre range is an application validation bound, not a certified accuracy range. Non-LiDAR cameras still support visual questions. The current project targets iOS 27 and Xcode 27 or later; available memory and hardware determine whether models can run.</p>
-<h2>Latest recorded checks — 23 October 2026</h2>
-<div class="document-table" role="region" tabindex="0" aria-label="Latest recorded checks — 23 October 2026 table"><table><thead><tr>
+<p><strong>Evidence reviewed: 24 October 2026.</strong> LunaV is a research prototype. The current app uses Apple Dictation, automatic Apple-voice answer reading, and model-based depth on devices without LiDAR. Earlier Whisper results below are historical. This repository contains the website, not the app or its raw logs. <a href="https://shorturl.koomean.com/sourcecodevisionassistant">Request the app source</a> through the project’s registration/request form; this is not an immediate download.</p>
+<h2>Ask, read, and listen</h2>
+<p>Hold the centre button to start photo/depth capture and microphone recording together, after microphone permission is granted. Speak while holding, then release to stop recording and submit when the image is ready. Silence while holding does not submit. A short tap takes a photo only. Recordings over the <strong>2-minute limit</strong> are explicitly rejected.</p>
+<p><strong>Apple DictationTranscriber through SpeechAnalyzer now handles speech input.</strong> Thai is the default; select English in Settings. A request uses one selected language, without an automatic language-switching claim. The app checks device/locale support and installed assets. A missing Apple language asset may require an initial download. Question transcription uses installed assets locally and has a <strong>45-second deadline</strong>. Whisper is no longer in the current app bundle.</p>
+<p>Completed AI, OCR, summary, and distance answers are read automatically by default with <strong>installed Apple voices</strong>. Settings can turn reading off, select Thai/English voices, and play a voice preview. Reading stops before new capture/recording, cancellation, context clearing, or backgrounding. The app does not promise access to the user&#x27;s Siri voice. Additional enhanced/premium voices can be installed through iOS Settings; the app uses voices already available on that device.</p>
+<p>Apple Vision OCR and the existing Qwen3-VL-2B-Instruct/MLX/Metal visual-question pipeline remain local. Settings tools support region selection, text grouping for signs/menus/labels, and summarisation of selected OCR text. The app has no continuous obstacle-alert or directional-navigation feature.</p>
+<h2>Distance and its source</h2>
+<p>On a <strong>LiDAR-equipped device</strong>, supported captures use sensor depth paired with the photograph. The reading is camera-to-surface distance at capture time. These devices skip Depth Anything 3 loading, including front-camera use or a failed LiDAR capture; a failed sensor reading is not silently replaced with a model estimate labelled as LiDAR.</p>
+<p>On a <strong>device without LiDAR</strong>, bundled <strong>Depth Anything 3 Metric</strong> estimates a depth map from the newly captured image. Image alignment and lens focal information are used to produce metre estimates; missing lens information, sky, and invalid values can prevent a reading. Answers identify the model source and round estimates to 0.1 metre. This is an estimate, not a LiDAR measurement or a certified accuracy figure. Imported images without paired depth do not produce numeric distances.</p>
+<p>Settings can fit a per-camera scale from a measured camera-to-surface reference of <strong>0.3–8 metres</strong> near the centre of the captured image. A scale adjustment can reduce a consistent bias for that camera, but does not validate other scenes or establish an uncertainty bound. <strong>DA3 has not been compared against measured physical reference distances on the delivered iPhone app.</strong></p>
+<h2>Preparation and availability</h2>
+<p>The app prepares visual models before enabling questions, and automatically retries transient preparation failures while in the foreground. DA3 is prepared only when the device has no LiDAR. Model residency depends on memory headroom and the limits iOS grants the app; warming does not mean weights remain in RAM indefinitely.</p>
+<p>Speech preparation has a <strong>30-second deadline</strong>. If the selected Dictation language is unavailable or preparation fails, the app reports it and retries speech separately. Photos, typed questions, OCR, and summaries remain usable once their required visual models are ready. Finishing cleanup of a cancelled native-speech request does not block typed visual questions.</p>
+<p>The project currently targets <strong>iOS 27 and Xcode 27 or later</strong>. Dictation support varies by device and language; Qwen and DA3 still require sufficient memory and supported hardware. No claim is made that every iPhone meeting the operating-system target has passed testing.</p>
+<h2>Current recorded checks — 24 October 2026</h2>
+<div class="document-table" role="region" tabindex="0" aria-label="Current recorded checks — 24 October 2026 table"><table><thead><tr>
 <th scope="col">Check</th>
 <th scope="col">Recorded result</th>
-<th scope="col">What it establishes</th>
+<th scope="col">Scope and limit</th>
 </tr></thead><tbody>
 <tr>
-<td>iOS 27 Simulator suite</td>
-<td><strong>155/155 passed: 144 unit tests and 11 UI tests</strong>, with no skips, failures, or recorded runtime warnings</td>
-<td>The exercised software and UI paths passed on Simulator. These results supersede the earlier 134-test suite.</td>
+<td>Latest answer-speech unit checks</td>
+<td><strong>224/224 unit tests passed</strong></td>
+<td>This is the unit result, not a claim that one combined 235-test run passed.</td>
 </tr>
 <tr>
-<td>Hold/release and cancellation UI</td>
-<td>Three UI cases exercised hold then release, short tap without a voice submission, cancellation, rejection of a late result, and retry</td>
-<td>The real screen and request flow were exercised with simulated camera, audio, and transcription boundaries in Debug Simulator; these are not live microphone or camera results.</td>
+<td>Answer-speech UI checks</td>
+<td>The first full run passed <strong>10/11 UI tests</strong>. An old idle-state expectation was revised for automatic answer reading; the focused OCR/two-button rerun passed <strong>2/2</strong></td>
+<td>The initial full run was 234 passed and 1 failed. The targeted correction is reported separately rather than rewriting that run as 235/235.</td>
 </tr>
 <tr>
-<td>Unresponsive speech work</td>
-<td>Tests covered prompt return on cancellation/deadline, deletion of audio after the worker actually finishes, and preventing overlapping model loads</td>
-<td>Software lifecycle checks, not a reproduction of a physical iPhone stall.</td>
+<td>Dictation regression checks</td>
+<td><strong>220/220 passed: 209 unit + 11 UI</strong>, with no skips/failures; <strong>6/6</strong> native-integration checks passed in a separate run</td>
+<td>Earlier runs for the Dictation update, separate from the latest answer-speech suite. Counts must not be added into one full-suite total.</td>
 </tr>
 <tr>
-<td>Offline Core ML transcription on Mac</td>
-<td>Two short English/Thai transcripts matched their earlier baseline; a 41-second synthetic recording retained the question at both its beginning and end; silence/noise were rejected; a 121-second recording was explicitly rejected</td>
-<td>The local speech path was exercised with network access denied. Matching the Thai baseline does not mean its earlier spelling errors were corrected. This is not real-voice or iPhone validation.</td>
+<td>Dictation on iPhone 14 Pro / iOS 27.0.1</td>
+<td><strong>7/7 expected outcomes:</strong> five synthetic Thai/English speech files returned text and silence/white-noise files were rejected</td>
+<td>Real device, synthetic audio files. This is not a seven-question accuracy score or live human-microphone validation.</td>
 </tr>
 <tr>
-<td>Transcription timeout recovery</td>
-<td>Two consecutive short-budget calls timed out without leaving model access permanently occupied</td>
-<td>The timeout and cleanup path recovered in this controlled check; it is not a guarantee that Core ML stops immediately.</td>
+<td>Longer Dictation file on that iPhone</td>
+<td>A 41-second synthetic file retained the questions before and after the 30-second point</td>
+<td>Confirms that test file&#x27;s later speech reached the transcript; it is not proof that every two-minute question reaches AI without other limits.</td>
 </tr>
 <tr>
-<td>Signed iPhone Release</td>
-<td>Build and strict code-signature verification succeeded; Simulator-only voice-test flags were absent from the executable</td>
-<td>A signed device build was produced. The latest live camera, microphone, LiDAR, inference speed, memory, and thermal behaviour remain <strong>unverified on a physical iPhone</strong>.</td>
+<td>Normal iPhone 14 Pro startup</td>
+<td>Image and selected-language speech preparation reported ready; DA3 was skipped for LiDAR hardware; no pending worker or injected validation error</td>
+<td>The language assets were already installed on this device. This does not establish first-use offline readiness on another phone.</td>
+</tr>
+<tr>
+<td>Apple answer reading on iPhone 14 Pro</td>
+<td><strong>3/3 synthesis completion callbacks</strong>, using installed Kanya Enhanced and Allison Enhanced; stopping before record-session activation and session release succeeded</td>
+<td>The check exercised actual system speech/session paths but did not record microphone input. No human-heard playback or Silent-switch behaviour was verified.</td>
+</tr>
+<tr>
+<td>Signed latest iPhone Release</td>
+<td>Build and strict deep code-signature checks passed; installed and launched normally on iPhone 14 Pro</td>
+<td>Build/startup evidence does not certify all live camera, human speech, physical distance, thermal, or accessibility behaviour.</td>
 </tr>
 </tbody></table></div>
-<p>The user&#x27;s iPhone was unavailable during this validation run. The current hold/release interaction and speech fixes have not been reproduced on that physical device. Simulator and Mac results, synthetic speech, and simulated depth must not be presented as measured iPhone performance.</p>
-<h2>Earlier model and speech fixtures — 21 October 2026</h2>
-<p>These recorded results describe the earlier evaluation corpus. They are retained as historical evidence and have not been relabelled as new 23 October accuracy tests.</p>
-<div class="document-table" role="region" tabindex="0" aria-label="Earlier model and speech fixtures — 21 October 2026 table"><table><thead><tr>
-<th scope="col">Check</th>
-<th scope="col">Earlier recorded result</th>
+<p>The current device evidence replaces the earlier statement that no physical phone was available. It still has the specific limits above. In particular, model, OCR, transcription, and object-selection errors remain possible.</p>
+<h2>DA3 checks and earlier evidence</h2>
+<p>The DA3 pipeline has run locally with the actual model and Qwen/Vision object selection on controlled fixtures. In three automatic-fusion cases, two target objects were located in their expected regions and an absent object was rejected. Those tests used an explicit <strong>test focal value</strong>. They establish routing and geometry for the fixture, not physical distance accuracy. An earlier physical iPhone 14 startup/retry check established model preparation and recovery for that version; its old Whisper-loading timings do not describe the current Dictation engine.</p>
+<p>Earlier results are retained with their original context:</p>
+<div class="document-table" role="region" tabindex="0" aria-label="DA3 checks and earlier evidence table"><table><thead><tr>
+<th scope="col">Earlier check</th>
+<th scope="col">Recorded result</th>
 <th scope="col">Limit</th>
 </tr></thead><tbody>
 <tr>
-<td>VLM/OCR on Mac</td>
-<td><strong>29 controlled cases: 22 correct concrete answers and 7 abstentions</strong>; no incorrect concrete answers in that set</td>
-<td>Seven abstentions are not seven successful factual answers. Six declined despite visible information; one correctly declined a price not printed in the image. The fixtures do not establish general accuracy.</td>
+<td>23 October hold/release version</td>
+<td><strong>155/155 Simulator tests: 144 unit + 11 UI</strong></td>
+<td>A historical version using the former Whisper speech path, superseded by later suites.</td>
 </tr>
 <tr>
-<td>Follow-up stability</td>
-<td>24 turns completed without recorded looping, truncation, or recovery failure</td>
-<td>Stability for that sequence, not 24 factually correct answers.</td>
+<td>21 October VLM/OCR on Mac</td>
+<td><strong>29 controlled cases: 22 correct concrete answers + 7 abstentions</strong>; no incorrect concrete answers in that set</td>
+<td>Six abstentions missed visible information; one declined an absent price. They are not 29 successful factual answers or a new 24 October evaluation.</td>
 </tr>
 <tr>
-<td>Offline synthetic speech on Mac</td>
-<td>12/12 speech inputs accepted; <strong>10/12 exact transcriptions</strong> after ignoring whitespace/punctuation; 4/4 non-speech inputs rejected, with network denied by sandbox</td>
-<td>Two Thai inaccuracies remained. This corpus did not validate human voices or all accents.</td>
+<td>21 October Whisper synthetic speech</td>
+<td>12/12 speech inputs accepted; <strong>10/12 exact transcriptions</strong> after ignoring whitespace/punctuation; 4/4 non-speech inputs rejected</td>
+<td>Former engine and synthetic Mac corpus; not current Apple Dictation accuracy.</td>
 </tr>
 <tr>
-<td>LiDAR object/depth fusion</td>
-<td>3/3 controlled cases using the real model and Vision with <strong>simulated depth</strong></td>
-<td>Controlled matching and rejection paths, not a physical LiDAR accuracy measurement.</td>
+<td>21 October follow-up and sensor-fusion fixtures</td>
+<td>24 turns without recorded loop/truncation/recovery failure; 3/3 LiDAR object/depth cases with simulated depth</td>
+<td>Sequence stability and controlled routing, not 24 correct answers or measured physical LiDAR accuracy.</td>
 </tr>
 </tbody></table></div>
-<p>OCR, object selection, transcription, and generated answers can still be wrong. The current project does not implement spoken answer playback, continuous obstacle alerts, directional audio guidance, or non-LiDAR metric depth estimation.</p>
 <h2>Data handling</h2>
-<p>App inference runs locally and does not require a cloud AI service or an API key. Speech is recorded to a temporary file in the app sandbox. The file is removed when the transcription worker actually finishes. If cancellation or a timeout returns control before Core ML has finished, that worker keeps the file until it can safely clean up; cancellation does not promise instant deletion.</p>
-<p>Compressed images, previews, and crops can also be stored temporarily in the sandbox during use; the implementation cleans up superseded images. This is not a claim that all data stays only in RAM or that the operating system never writes temporary files. This paragraph describes the iPhone app, not the hosting and external links of this website.</p>
+<p>Image/depth inference, OCR, installed-asset question transcription, and installed-voice answer synthesis run locally without a cloud AI service or API key. <strong>Initial Apple language-asset downloads may need network access.</strong> The app bundles its Qwen and DA3 models; iOS manages Dictation assets and Apple voices. Fresh-install offline use is not guaranteed before required assets are present.</p>
+<p>Audio is recorded to a temporary WAV file in the app sandbox. Its worker removes it when processing actually ends; cancellation or a timeout does not promise immediate deletion if cleanup is still running. Compressed images, previews, and crops can also be stored temporarily during use, and superseded images are cleaned up. This is not a claim that all data stays only in RAM. These statements describe the app, not the website&#x27;s hosting or external links.</p>
 <h2>Evidence provenance</h2>
-<p>The supplied app&#x27;s <code>README.md</code>, <code>VALIDATION.md</code> (23 October update and separate 21 October history), and <code>project.yml</code> describe the implementation and configured targets. Current results were cross-checked with <code>Logs/ptt-delivery-summary.json</code>, <code>Logs/ptt-asr-fixed-summary.json</code>, and <code>Logs/ptt-release-test-hook-check.json</code>. The app validation record also identifies <code>Logs/ptt-delivery-iphone-build.log</code>, <code>Logs/ptt-delivery-signature.log</code>, and the speech deadline and ASR audits.</p>
-<p>The 21 October figures come from <code>Logs/qa-delivery-native-summary.json</code>, <code>Logs/qa-voice-final-summary.json</code>, <code>Logs/qa-context-fixed-stress.json</code>, and <code>Logs/qa-object-fusion-native.json</code>. Hold/release behaviour and audio cleanup were checked against <code>LunaV/VoiceCameraFlow.swift</code>, <code>LunaV/LocalSpeechRecognizer.swift</code>, and <code>LunaV/LocalSpeechDecoder.swift</code>; image temporary-file behaviour is in <code>LunaV/PhotoStore.swift</code>.</p>
+<p>Current descriptions were checked against the supplied app&#x27;s <code>README.md</code>, the 24 October sections of <code>VALIDATION.md</code>, and current speech, model-preparation, depth, and calibration sources. Logs are provenance names from that app workspace; they are not files included in this website repository.</p>
+<p>The latest speech checks use <code>Logs/answer-speech-full-summary.json</code>, <code>Logs/answer-speech-delivery-summary.json</code>, <code>Logs/answer-speech-ui-readiness-summary.json</code>, and <code>Logs/answer-speech-device-result.json</code>. Dictation results use <code>Logs/native-dictation-fixed-tests-summary.json</code>, <code>Logs/native-pending-observation-summary.json</code>, <code>Logs/pro-native-fixed-validation.json</code>, <code>Logs/pro-native-long-validation.json</code>, and <code>Logs/pro-native-final-normal-preparation.json</code>. Device build/signature/normal-launch records are identified in the app validation report.</p>
+<p>DA3 scope is supported by <code>Logs/da3-automatic-fusion-proof.json</code>, <code>Logs/da3-automatic-fusion-geometry-check.json</code>, and the app&#x27;s depth-conversion/geometry audits. Historical figures retain their <code>ptt-*</code>, <code>qa-delivery-native-summary.json</code>, and <code>qa-voice-final-summary.json</code> provenance.</p>
 <h2 lang="th">สรุปภาษาไทย</h2>
-<p lang="th"><strong>ตรวจหลักฐาน ณ วันที่ 23 ตุลาคม 2026</strong> โครงการยังเป็นต้นแบบวิจัย วิธีถามปัจจุบันคือ <strong>กดปุ่มกลางค้างไว้ พูดระหว่างถือ แล้วปล่อยเพื่อส่ง</strong> แอปเริ่มถ่าย RGB/depth และรับเสียงพร้อมกันหลังได้รับสิทธิ์ไมค์ ไม่ต้องรอเตรียมภาพเสร็จ ปล่อยแล้วหยุดรับเสียงทันทีและรอภาพพร้อมก่อนถอดเสียง ความเงียบระหว่างถือไม่ส่งคำถามเอง แตะสั้นยังใช้ถ่ายภาพอย่างเดียวได้</p>
-<p lang="th">คำถามยาวได้ไม่เกิน <strong>2 นาที</strong> หากเกินจะแจ้งให้ถามสั้นลงและไม่ส่งเฉพาะต้นประโยค ระหว่างเตรียมเสียง ถอดเสียง หรือตอบ ปุ่มกลางใช้ยกเลิกได้ หน้าจอแสดงขั้นตอนและเวลาที่ผ่านไป การรอถอดเสียงรวมเตรียมโมเดลมีเพดาน 120 วินาที ยกเลิกหรือหมดเวลาแล้วไม่รับผลเก่ามาแสดง แต่ Core ML อาจยังทำงานภายใน จึงต้องรอคืนทรัพยากรก่อนเริ่มโมเดลใหญ่งานใหม่ ไฟล์เสียงชั่วคราวถูกลบเมื่องานเดิมสิ้นสุดจริง ไม่ได้รับประกันว่าจะลบทันทีที่กดยกเลิก</p>
-<p lang="th">ผลล่าสุดวันที่ 23 ตุลาคมคือ Simulator <strong>155/155 ผ่าน (unit 144 + UI 11)</strong> ไม่มี skip/fail หรือ runtime warning ที่บันทึกไว้ การกดค้าง/ปล่อยและยกเลิกทดสอบผ่านหน้าจอจริงใน Simulator โดยจำลองขอบเขตกล้อง เสียง และ ASR ส่วน Core ML บน Mac ที่ปิดเครือข่ายเก็บทั้งคำถามต้นและท้ายของไฟล์เสียงสังเคราะห์ 41 วินาทีได้ ปฏิเสธไฟล์ 121 วินาทีอย่างชัดเจน และตรวจการคืนทรัพยากรหลัง timeout แล้ว</p>
-<p lang="th">ผล <strong>Mac VLM/OCR 29 กรณี: ตอบตรง 22 และปฏิเสธตอบ 7</strong> กับ <strong>เสียงสังเคราะห์ถอดตรง 10/12</strong> เป็นหลักฐานเดิมวันที่ <strong>21 ตุลาคม</strong> ไม่ใช่ผลทดสอบความแม่นยำชุดใหม่ ผล 7 กรณีที่ปฏิเสธไม่ใช่คำตอบข้อเท็จจริงสำเร็จ และคำถอดเสียงไทยที่คลาดเคลื่อนยังไม่ได้รับการรับรองว่าแก้แล้ว</p>
-<p lang="th">รุ่นล่าสุด <strong>build และตรวจลายเซ็นสำหรับ iPhone ผ่าน</strong> แต่เครื่องจริง unavailable จึงยังไม่ได้ยืนยันกล้อง ไมค์ LiDAR หรือ inference สดของรุ่นนี้ ผลบน Mac, Simulator, เสียงสังเคราะห์ และ depth จำลองไม่ใช่ผลความแม่นยำ ความเร็ว หรือความร้อนบน iPhone แอปกำหนด iOS 27 / Xcode 27 ขึ้นไปและต้องมีหน่วยความจำเพียงพอ ยังไม่มีการอ่านคำตอบออกเสียง เตือนสิ่งกีดขวางต่อเนื่อง เสียงนำทาง หรือเดาระยะเป็นเมตรในเครื่องไม่มี LiDAR</p>
-<p lang="th">หลักฐานมาจากเอกสารและไฟล์ที่ระบุด้านบนใน workspace แอป ไม่ได้รวมไฟล์เหล่านั้นไว้ใน repo เว็บไซต์ สามารถใช้<a href="https://shorturl.koomean.com/sourcecodevisionassistant">แบบฟอร์มลงทะเบียนขอซอร์สแอป</a>เพื่อติดต่อโครงการได้ ช่องทางนี้เป็นแบบฟอร์มคำขอ ไม่ใช่ลิงก์ดาวน์โหลดซอร์สแอปทันที</p>
+<p lang="th"><strong>ตรวจหลักฐานถึงวันที่ 24 ตุลาคม 2026</strong> รุ่นปัจจุบันใช้ <strong>Apple Dictation บนเครื่องแทน Whisper</strong> ค่าเริ่มต้นไทย เปลี่ยน English ได้ในตั้งค่า โดยใช้ภาษาที่เลือกทีละภาษา กดปุ่มกลางค้าง พูดระหว่างถือ แล้วปล่อยเพื่อส่ง ความเงียบไม่ส่งเอง รับเสียงไม่เกิน 2 นาที ถ้าเกินจะแจ้งข้อผิดพลาด การถอดเสียงมีเส้นตาย 45 วินาที หากไม่มี asset ภาษาของ Apple อาจต้องดาวน์โหลดตอนเตรียมครั้งแรก จึงไม่รับรองว่าเพิ่งติดตั้งแล้วจะใช้เสียงออฟไลน์ได้ทันที</p>
+<p lang="th"><strong>อ่านคำตอบอัตโนมัติเป็นค่าเริ่มต้น</strong> ใช้เสียง Apple ที่ติดตั้งแล้ว อ่านเมื่อคำตอบ AI/OCR/สรุป/ระยะเสร็จ หยุดก่อนรับเสียงหรือถ่ายใหม่ ปิดหรือเลือกเสียงไทย/อังกฤษได้ในตั้งค่า ไม่อ้างว่าใช้เสียง Siri การทดสอบบน iPhone 14 Pro ได้ completion callback <strong>3/3</strong> และตรวจการส่งต่อ audio session แล้ว แต่ยังไม่ได้ยืนยันการได้ยินด้วยหูหรือผลสวิตช์ Silent</p>
+<p lang="th">เครื่องไม่มี LiDAR ใช้ <strong>Depth Anything 3 Metric จากภาพใหม่และข้อมูลเลนส์</strong> ระบุว่าเป็นค่าประมาณ ปัดเป็น 0.1 เมตร ปรับสเกลแยกกล้องด้วยระยะอ้างอิงกลางภาพ 0.3–8 เมตรได้ แต่ยังไม่มีผลเทียบ DA3 กับระยะกายภาพจริงของรุ่นส่งมอบ เครื่องมี LiDAR ข้าม DA3 รวมทั้งตอนใช้กล้องหน้าหรือจับ depth ไม่สำเร็จ ภาพนำเข้าที่ไม่มีคู่ depth ไม่ตอบระยะเป็นตัวเลข</p>
+<p lang="th">รุ่นอ่านคำตอบล่าสุด <strong>unit 224/224 ผ่าน</strong>; UI รอบแรกผ่าน 10/11 อีกข้อใช้ expectation เดิมที่รอข้อความ idle ขณะกำลังอ่านคำตอบ จึงแก้แล้วตรวจ OCR/หน้าหลักสองปุ่มซ้ำผ่าน <strong>2/2</strong> ไม่เรียกรอบแรกว่า 235/235 ผ่าน ส่วนชุด Dictation ก่อนหน้านั้นผ่าน <strong>220/220 (unit 209 + UI 11)</strong> และ native integration เพิ่ม 6/6 แยกรอบกัน บน iPhone 14 Pro / iOS 27.0.1 ไฟล์เสียงสังเคราะห์ไทย/อังกฤษได้ข้อความ 5 ไฟล์ และ silence/noise ถูกปฏิเสธ 2 ไฟล์ รวม 7 ผลตามคาด ไม่ใช่คะแนนความแม่นยำเสียงคน 7/7</p>
+<p lang="th">รุ่นล่าสุด build เซ็น ติดตั้ง และเปิดปกติบน iPhone 14 Pro แล้ว สถานะภาพ/เสียงพร้อมและข้าม DA3 ตามฮาร์ดแวร์ แต่ยังไม่รับรอง iPhone ทุกรุ่น ความแม่นยำเสียงคน ระยะจริง ความร้อน หรือการเข้าถึงครบทุกกรณี แอปยังต้องมี iOS 27 และ RAM/Metal เพียงพอ หากเสียงไม่พร้อมยังใช้ภาพ พิมพ์ถาม และ OCR ได้เมื่อโมเดลที่ต้องใช้พร้อม งานเสียงเก่าที่กำลังคืนทรัพยากรไม่บล็อกคำถามพิมพ์ ไฟล์เสียงถูกลบเมื่องานเดิมจบจริง ไม่ได้รับประกันลบทันทีที่ยกเลิก</p>
+<p lang="th">ผล VLM/OCR <strong>22 คำตอบตรง + 7 ปฏิเสธ จาก 29 กรณี</strong> และ Whisper <strong>ถอดตรง 10/12</strong> เป็นประวัติวันที่ 21 ตุลาคม ไม่ใช่ผลของ Dictation รุ่นปัจจุบัน หลักฐานที่ระบุเป็นไฟล์ใน workspace แอปและไม่ได้รวมใน repo เว็บไซต์ ติดต่อผ่าน<a href="https://shorturl.koomean.com/sourcecodevisionassistant">แบบฟอร์มลงทะเบียนขอซอร์สแอป</a>ได้ โดยไม่ใช่ลิงก์ดาวน์โหลดทันที</p>
     </article>
     <div class="document-source"><a href="PROJECT-STATUS.md">Read the original Markdown</a><span aria-hidden="true">·</span><a href="https://github.com/koomean/visionassistant/blob/main/PROJECT-STATUS.md">View document source on GitHub</a></div>
   </main>

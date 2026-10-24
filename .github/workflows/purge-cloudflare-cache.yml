@@ -61,7 +61,7 @@ jobs:
             const paths = [
               '/', '/index.html', '/project-status.html', '/licensing.html',
               '/credits.html', '/404.html', '/README.md', '/PROJECT-STATUS.md',
-              '/COMMERCIAL-LICENSE.md', '/LICENSE',
+              '/COMMERCIAL-LICENSE.md', '/ASSET-CREDITS.md', '/LICENSE',
             ];
             const files = paths.map((path) => `https://${process.env.SITE_HOST}${path}`);
             const response = await fetch(`https://api.cloudflare.com/client/v4/zones/${process.env.CLOUDFLARE_ZONE_ID}/purge_cache`, {
