@@ -2,15 +2,17 @@
 
 An on-device visual question assistant for iPhone, developed as a SCiUS Forums project. Hold to ask about a photograph, read and summarise text, estimate supported distances, and hear completed answers. The current app uses Qwen3-VL-2B-Instruct through MLX/Metal, Apple Dictation for speech input, Apple system voices for answer playback, and Depth Anything 3 Metric on devices without LiDAR.
 
-[Visit the project website](https://visionassistant.koomean.com/) · [Request the iPhone app source](https://shorturl.koomean.com/sourcecodevisionassistant)
+[Visit the project website](https://visionassistant.koomean.com/) · [View the project on GitHub](https://github.com/koomean/visionassistant)
 
 ## Repository scope
 
-This repository contains the **public project website and its licensing notices**. It does not contain the iPhone app, Xcode project, or model weights. The source-request link is the project’s registration/request form, not an immediate app-source download. This repository does not provide an App Store release.
+This repository contains the **public project website and its licensing notices**. It does not contain the iPhone app, Xcode project, or model weights. This repository does not provide an App Store release.
 
-Capability descriptions were checked against the supplied app documentation and source on **25 October 2026**. They describe the current research implementation, not a guarantee of accuracy or compatibility with every iPhone.
+Capability descriptions were checked against the supplied app documentation and source on **29 October 2026**. They describe the current research implementation, not a guarantee of accuracy or compatibility with every iPhone.
 
 ## Current capabilities
+
+- **A shared lunar identity.** The current SwiftUI interface uses the website’s navy, warm-white, pale-blue/gold palette, Noto Sans Thai, and Manrope. Its icon now shares the crescent-and-star symbol. A native LunaVision-to-LunaV introduction runs for about 4.22 seconds while model preparation proceeds; Reduce Motion uses a brief static mark. Settings puts language and answer voices first, then testing tools. The camera retains two main buttons; the camera-switch menu has been removed.
 
 - **Hold, speak, release.** Hold the centre button to start photo/depth capture and microphone recording together, after microphone permission is granted. Speak while holding, then release to stop recording and submit once the image is ready. Silence while holding does not submit. A short tap takes a photograph only. Recordings over the 2-minute limit are rejected rather than submitting only their beginning.
 - **Thai or English Dictation on the phone.** Apple DictationTranscriber through SpeechAnalyzer replaces bundled Whisper. Thai is the default; choose English in Settings. Each request uses the selected language, without automatic language switching. If its Apple language asset is missing, initial preparation may need a download; question transcription then uses installed assets locally.
@@ -27,15 +29,15 @@ LunaV does not provide continuous obstacle alerts or directional navigation. Mod
 
 The app project targets **iOS 27** and uses **Xcode 27 or later**. Speech support depends on the device and selected language. Qwen and DA3 also need sufficient available memory and supported hardware; warming a model does not guarantee its weights remain resident in memory.
 
-The resource-optimisation regression suite recorded on **24 October** passed **259/259 (248 unit + 11 UI)**, with no failures or skips. The signed iPhone Release build passed strict signature verification. Review of this evidence was updated on 25 October; these are not newly run app tests.
+The latest UI regression recorded on **29 October 2026** passed **262/262 (249 unit + 13 UI)**, with no failures, skips, or recorded runtime warnings. A signed generic-iOS Release built and passed strict deep signature verification. The physical iPhone 14 install attempt failed with CoreDevice 4000 / transport peer no longer reachable, so this UI build has **not** been validated running on a physical phone. Simulator camera/microphone/ASR boundaries are simulated; it does not run the real VLM or sensors. These are existing app records reviewed for the website, not newly run tests during this website edit.
 
-The subsequent functional check on a non-LiDAR **iPhone 14 / iOS 27.2** installed the Release and finished two real-camera question cycles using recorded speech fixtures and TTS, plus two fixed-image OCR questions. Ordinary photos did not run DA3; manual depth followed by an automatic distance question reused one prediction for the same photo. The app was returned to normal ready mode. These are a few functional cases, not a new long-duration, battery, thermal, or distance-accuracy benchmark.
+The preceding resource-optimisation build passed **259/259 (248 unit + 11 UI)** on 24 October. Its non-LiDAR **iPhone 14 / iOS 27.2** functional check installed that Release and completed two real-camera question cycles using recorded speech fixtures and TTS, plus two fixed-image OCR questions. Ordinary photos did not run DA3; manual depth followed by an automatic distance question reused one prediction for the same photo. Those checks belong to the preceding build, not the 29 October UI. Neither update establishes a new long-duration, battery, thermal, human speech, or physical-distance accuracy benchmark.
 
 An earlier compact-memory build completed 30 cycles on iPhone 14 Pro with real captures, recorded speech input, and TTS enabled; **15 cycles returned a safe fallback**, so this is not 30 correct answers or a guarantee of unlimited operation. See [PROJECT-STATUS.md](PROJECT-STATUS.md) for the separate builds, measured scope, prior speech checks, and remaining limits.
 
 ## Website development and deployment
 
-The website includes a LunaVision-to-LunaV introduction with a visible red pen and wavy strikeout, plus passive scroll effects. Replay the introduction from the footer; reduced-motion preferences skip it. The sequence is in `intro.js` and `motion.css`, while `script.js` controls language, tabs, and scroll motion.
+The website includes a LunaVision-to-LunaV introduction with a visible red pen and wavy strikeout, plus passive scroll effects. Replay the introduction from the footer; reduced-motion preferences skip it. The sequence is in `intro.js` and `motion.css`, while `script.js` controls homepage language, tabs, and scroll motion. The project-status, licensing, and credits pages offer the same Thai/English choice; `docs-language.js` remembers it across pages and supports `?lang=th` / `?lang=en`. Complete Thai document sources live in `docs/th/`, alongside the English Markdown originals at the repository root.
 
 The website is static and needs no runtime build step. Serve this directory locally, for example:
 
@@ -43,7 +45,7 @@ The website is static and needs no runtime build step. Serve this directory loca
 python3 -m http.server 8080
 ```
 
-After editing the Markdown notices, regenerate their readable HTML pages with:
+After editing both language versions of a Markdown notice, regenerate their readable HTML pages with:
 
 ```sh
 python3 scripts/render-docs.py
@@ -63,18 +65,22 @@ AGPL permits commercial use when its terms are followed. An optional separate co
 
 ## ภาษาไทย
 
-LunaV เป็นผู้ช่วยถามตอบจากภาพบน iPhone ในโครงการ SCiUS Forums ข้อมูลปัจจุบันตรวจถึง **25 ตุลาคม 2026** กดปุ่มกลางค้างเพื่อถ่ายภาพ/depth และรับเสียงพร้อมกัน พูดระหว่างถือแล้วปล่อยเพื่อส่ง ความเงียบไม่ส่งเอง คำถามยาวได้ไม่เกิน 2 นาที หากเกินจะแจ้งให้ถามสั้นลง แทนการส่งเฉพาะต้นประโยค
+LunaV เป็นผู้ช่วยถามตอบจากภาพบน iPhone ในโครงการ SCiUS Forums ตรวจข้อมูลปัจจุบันถึง **29 ตุลาคม 2026** กดปุ่มกลางค้างเพื่อถ่ายภาพ/depth และรับเสียงพร้อมกัน พูดระหว่างถือแล้วปล่อยเพื่อส่ง ความเงียบไม่ส่งเอง แตะสั้นถ่ายภาพอย่างเดียว รับเสียงไม่เกิน 2 นาที หากเกินจะปฏิเสธแทนการส่งเฉพาะต้นประโยค
 
-รุ่นปัจจุบันใช้ **Apple Dictation บนเครื่องแทน Whisper** ค่าเริ่มต้นภาษาไทยและเลือก English ได้ในตั้งค่า ใช้ภาษาที่เลือกทีละภาษา ไม่ได้ตรวจสลับภาษาอัตโนมัติ หากไม่มีโมเดลภาษาของ Apple อาจต้องดาวน์โหลดระหว่างเตรียมครั้งแรก จึงยังไม่รับประกันว่าเพิ่งติดตั้งแล้วจะถามด้วยเสียงแบบออฟไลน์ได้ทันที การถอดคำถามหลังติดตั้ง asset แล้วทำในเครื่อง มีเส้นตาย 45 วินาทีและยกเลิกได้
+แอป SwiftUI ใช้ธีม ฟอนต์ และตราจันทร์เสี้ยว/ดาวเดียวกับเว็บแล้ว มี intro LunaVision-to-LunaV ประมาณ 4.22 วินาทีพร้อมเตรียมโมเดลคู่ขนาน รองรับ Reduce Motion หน้า Settings วางภาษาและเสียงก่อนเครื่องมือทดสอบ และนำเมนูสลับกล้องออก หน้าหลักยังมีสองปุ่ม
 
-**อ่านคำตอบออกเสียงอัตโนมัติเป็นค่าเริ่มต้น** ใช้เสียง Apple ที่ติดตั้งแล้ว อ่านเมื่อคำตอบ AI/OCR/สรุป/ระยะเสร็จ และหยุดก่อนเริ่มถ่ายหรือรับเสียงใหม่ เปลี่ยนเสียงไทย/อังกฤษหรือปิดการอ่านได้ในตั้งค่า ไม่อ้างว่าใช้เสียง Siri ที่ผู้ใช้เลือกไว้
+ใช้ **Apple Dictation ในเครื่องแทน Whisper** ค่าเริ่มต้นไทย เลือก English ได้ใน Settings ใช้ภาษาที่เลือกทีละภาษา ไม่สลับภาษาอัตโนมัติ หากไม่มี asset ภาษา Apple อาจต้องดาวน์โหลดครั้งแรก จึงไม่รับรองว่าเพิ่งติดตั้งแล้วใช้เสียงออฟไลน์ได้ทันที การถอดคำถามด้วย asset ที่ติดตั้งแล้วทำในเครื่อง มีเส้นตาย 45 วินาทีและยกเลิกได้
 
-เครื่องไม่มี LiDAR เก็บภาพใหม่และข้อมูลเลนส์ไว้ แล้วใช้ **Depth Anything 3 Metric** เมื่อถามระยะหรือเปิดเลือกจุดเอง หากสำเร็จจะใช้แผนที่เดิมกับคำถามต่อในภาพนั้น ภาพปกติจึงไม่ต้องคำนวณ depth ทุกครั้ง ระบุแหล่งว่าเป็นค่าประมาณ ปัดเป็น 0.1 เมตร และปรับสเกลแยกตามกล้องได้ในตั้งค่า แต่ยังไม่รับรองความแม่นยำเท่า LiDAR เครื่องที่มี LiDAR ใช้ข้อมูลเซนเซอร์และข้าม DA3 แม้ถ่ายด้วยกล้องหน้าหรือจับ depth ไม่สำเร็จ ภาพนำเข้าที่ไม่มีคู่ depth ไม่รายงานระยะเป็นตัวเลข ยังไม่มีการเตือนสิ่งกีดขวางต่อเนื่องหรือเสียงนำทาง
+**อ่านคำตอบอัตโนมัติเป็นค่าเริ่มต้น** ด้วยเสียง Apple ที่ติดตั้ง อ่านเมื่อคำตอบ AI/OCR/สรุป/ระยะเสร็จ หยุดก่อนถ่ายหรือรับเสียงใหม่ เปลี่ยนเสียงไทย/อังกฤษหรือปิดได้ใน Settings ไม่รับรองว่าใช้เสียง Siri ที่ผู้ใช้เลือกไว้
 
-แอปอุ่นโมเดลและลองเตรียมใหม่อัตโนมัติเมื่อเกิดปัญหาชั่วคราว เครื่อง RAM น้อยคืน weights เมื่อว่างและเก็บเฉพาะบริบท/OCR/cache แบบมีขอบเขต จึงอาจต้องโหลด weights ใหม่ระหว่างคำถาม โดยไม่เปลี่ยนโมเดลหรือความละเอียดเพื่อแลก RAM หากเสียงไม่พร้อมยังใช้ภาพ พิมพ์ถาม และ OCR ได้เมื่อโมเดลภาพพร้อม ภาพและเสียงมีไฟล์ชั่วคราวใน sandbox เสียงถูกลบเมื่องานเดิมสิ้นสุดจริง การยกเลิกไม่รับประกันคืน RAM หรือลบไฟล์ทันทีขณะ inference ยังไม่จบ
+เครื่องไม่มี LiDAR เก็บภาพใหม่และข้อมูลเลนส์ แล้วใช้ **Depth Anything 3 Metric** เมื่อถามระยะหรือเลือกจุดเอง หากสำเร็จใช้แผนที่เดิมกับภาพนั้น คำถามทั่วไปไม่คำนวณ depth ทุกครั้ง ระบุแหล่งว่าเป็นค่าประมาณ ปัดเป็น 0.1 เมตร และปรับสเกลแยกกล้องได้ แต่ไม่รับรองความแม่นยำเท่า LiDAR เครื่องที่มี LiDAR ใช้เซ็นเซอร์และข้าม DA3 แม้ไม่มีข้อมูล depth ภาพนำเข้าที่ไม่มีคู่ depth ไม่ตอบระยะตัวเลข ไม่มีการเตือนสิ่งกีดขวางต่อเนื่องหรือนำทาง
 
-ผล regression ที่บันทึกวันที่ 24 ตุลาคมผ่าน **259/259 (unit 248 + UI 11)** และ build/ตรวจลายเซ็นผ่าน ต่อมาติดตั้งและตรวจฟังก์ชันบางกรณีบน iPhone 14 ที่ไม่มี LiDAR แล้ว รวมกล้องจริง 2 รอบโดยใช้ไฟล์เสียงตัวอย่าง และ OCR ภาพทดสอบ 2 คำถาม ไม่มีผล soak/แบตเตอรี่/ความร้อนชุดใหม่ ผลรอบยาว 30 รอบของรุ่น compact ก่อนหน้านี้มี safe fallback 15 รอบ จึงไม่ใช่คำตอบถูก 30/30 หรือการรับประกันใช้ได้ไม่สิ้นสุด
+เครื่อง RAM น้อยคืน weights เมื่อว่างและเก็บบริบท/OCR/cache แบบมีขอบเขต จึงอาจต้องรอโหลดใหม่ระหว่างคำถาม โดยคงโมเดลและความละเอียดเดิม หากเสียงไม่พร้อมยังใช้ภาพ พิมพ์ถาม และ OCR ได้เมื่อโมเดลพร้อม ภาพและเสียงมีไฟล์ชั่วคราวใน sandbox เสียงลบเมื่องานเดิมจบจริง การยกเลิกไม่รับประกันคืน RAM หรือลบไฟล์ทันทีขณะ inference ยังทำงาน
 
-Repo นี้เก็บ **เว็บไซต์โครงการ** ไม่ได้รวมซอร์สแอป Xcode หรือไฟล์โมเดล ใช้[แบบฟอร์มลงทะเบียนขอซอร์สแอป](https://shorturl.koomean.com/sourcecodevisionassistant)เพื่อติดต่อได้ โดยเป็นแบบฟอร์มคำขอ ไม่ใช่ลิงก์ดาวน์โหลดทันที แอปกำหนด iOS 27 / Xcode 27 ขึ้นไป และยังขึ้นกับภาษา ฮาร์ดแวร์ และหน่วยความจำของแต่ละเครื่อง อ่าน[สถานะและผลทดสอบ](PROJECT-STATUS.md)เพื่อดูขอบเขตหลักฐาน
+ผล UI regression ล่าสุดวันที่ **29 ตุลาคมผ่าน 262/262 (unit 249 + UI 13)** ไม่มี fail/skip/runtime warning และ signed generic-iOS Release build/ตรวจลายเซ็นผ่าน แต่ติดตั้งบน iPhone 14 ไม่สำเร็จเพราะ CoreDevice 4000 ติดต่อเครื่องไม่ได้ จึงยังไม่ยืนยัน UI รุ่นนี้บนเครื่องจริง Simulator จำลองขอบเขตกล้อง/ไมค์/ASR และไม่รัน VLM หรือเซ็นเซอร์จริง
 
-โค้ดต้นฉบับใน repo นี้ใช้ **AGPL-3.0-or-later** ตามไฟล์ [LICENSE](LICENSE) ใช้เชิงพาณิชย์ได้เมื่อปฏิบัติตามเงื่อนไข AGPL หากต้องการสิทธิ์เพิ่มเติมสามารถ[ติดต่อเรื่อง commercial licence](COMMERCIAL-LICENSE.md) โดยต้องตกลงเป็นลายลักษณ์อักษรแยกต่างหาก โมเดลและ dependencies บุคคลที่สามยังใช้ไลเซนส์ของตนเอง
+ผลรุ่นลดงานซ้ำ **259/259** และการติดตั้ง/ตรวจฟังก์ชัน iPhone 14 ไม่มี LiDAR เป็นหลักฐาน **24 ตุลาคมของรุ่นก่อนหน้า** รวมกล้องจริง 2 รอบที่ใช้ไฟล์เสียงตัวอย่าง และ OCR ภาพทดสอบ 2 คำถาม ไม่ใช่ผลตรวจ UI ล่าสุดบนเครื่องจริง ไม่มีผล soak/แบตเตอรี่/ความร้อน หรือความแม่นยำเสียงคน/ระยะกายภาพชุดใหม่ ผลรอบยาว 30 รอบของรุ่น compact ก่อนหน้านั้นมี safe fallback 15 รอบ จึงไม่ใช่คำตอบถูก 30/30 หรือการรับประกันใช้ได้ไม่สิ้นสุด
+
+Repo นี้เก็บ **เว็บไซต์โครงการ** ไม่ได้รวมซอร์สแอป Xcode หรือไฟล์โมเดล ดู[โครงการบน GitHub](https://github.com/koomean/visionassistant)ได้ แอปกำหนด iOS 27 / Xcode 27 ขึ้นไป และยังขึ้นกับภาษา ฮาร์ดแวร์ และหน่วยความจำ อ่าน[สถานะและผลทดสอบ](PROJECT-STATUS.md)เพื่อดูขอบเขตหลักฐาน หน้าสถานะ การอนุญาตใช้สิทธิ และเครดิตมีตัวสลับไทย–อังกฤษครบทั้งเนื้อหา โดยจำภาษาร่วมกับหน้าหลัก
+
+โค้ดต้นฉบับใน repo ใช้ **AGPL-3.0-or-later** ตามไฟล์ [LICENSE](LICENSE) ใช้เชิงพาณิชย์ได้เมื่อทำตามเงื่อนไข AGPL หากต้องการสิทธิ์เพิ่มเติมสามารถ[ติดต่อเรื่อง commercial licence](COMMERCIAL-LICENSE.md) โดยต้องตกลงเป็นลายลักษณ์อักษรแยกต่างหาก โมเดลและ dependencies บุคคลที่สามยังใช้ไลเซนส์ของตนเอง

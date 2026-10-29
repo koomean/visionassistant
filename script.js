@@ -29,7 +29,19 @@
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', metadata[language].title);
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', metadata[language].description);
     document.querySelector('meta[property="og:locale"]')?.setAttribute('content', metadata[language].locale);
-    if (persist) safeStorage.set('lunav-language', language);
+    if (persist) {
+      safeStorage.set('lunav-language', language);
+      const url = new URL(location.href);
+      url.searchParams.set('lang', language);
+      try { history.replaceState(history.state, '', url); } catch { /* A restricted browser may deny URL changes. */ }
+    }
+    document.querySelectorAll('a[href]').forEach(link => {
+      const url = new URL(link.href, location.href);
+      if (url.origin === location.origin && /\/(project-status|licensing|credits)\.html$/.test(url.pathname)) {
+        url.searchParams.set('lang', language);
+        link.href = url.pathname + url.search + url.hash;
+      }
+    });
     requestRender();
     requestAnimationFrame(updateTabMarker);
   }
@@ -204,7 +216,7 @@
   }
   const requestedLanguage = new URLSearchParams(location.search).get('lang');
   if (tabs.length) activateTab(tabs[0]);
-  setLanguage(requestedLanguage || safeStorage.get('lunav-language') || 'th');
+  setLanguage(requestedLanguage || safeStorage.get('lunav-language') || 'th', requestedLanguage === 'en' || requestedLanguage === 'th');
   applyMotion();
   sizeSky();
   updateTabMarker();

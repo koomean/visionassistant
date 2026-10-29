@@ -32,20 +32,21 @@ or results have been fabricated or composited.
 
 | Website asset | Original preview |
 | --- | --- |
-| `assets/app-camera.webp` | `App/Preview/Voice-Camera.png` |
-| `assets/app-answer.webp` | `App/Preview/Voice-Inline-Answer.png` |
-| `assets/app-settings.webp` | `App/Preview/Voice-Settings.png` |
-| `assets/app-text-sources.webp` | `App/Preview/Text-Sources.png` |
+| `assets/app-camera-20261029.webp` | `App/Preview/Website-Camera.png` |
+| `assets/app-answer-20261029.webp` | `App/Preview/Website-Inline-Answer.png` |
+| `assets/app-settings-20261029.webp` | `App/Preview/Website-Settings.png` |
+| `assets/app-text-sources-20261029.webp` | `App/Preview/Website-Text-Sources.png` |
 
-The camera, answer, and settings previews were captured on **21 October 2026**;
-the text-source preview was captured on **20 October 2026**. These show the
-Simulator interface and OCR examples before the 23 October voice-flow update,
-not the new hold–talk–release gesture or cancellation states.
+All four previews were captured on **29 October 2026**. They show the current
+lunar-themed SwiftUI interface, reorganised Settings, and OCR examples. Still
+images do not demonstrate the hold–talk–release gesture or cancellation timing.
 
 The previews are from iOS Simulator. The answer and text-source previews show
 OCR of a synthetic test fixture. They do not establish live iPhone camera,
 microphone, visual-model, or LiDAR performance. The camera preview explicitly
 shows the Simulator test-image state.
+
+The earlier unversioned `assets/app-*.webp` previews remain in the repository as historical assets from 20–21 October 2026; the current pages use the dated previews listed above.
 
 ## Fonts
 
@@ -64,11 +65,16 @@ them from Google Fonts or a third-party font CDN.
 The NASA imagery and font licenses are separate from the repository's AGPL
 license. See the files and source links above for their respective terms.
 
+## GitHub mark
+
+The GitHub mark identifies buttons linking to this project on GitHub. GitHub and its logo are trademarks of GitHub, Inc.; they are separate from the project’s original artwork and AGPL licence. [GitHub brand reference](https://brand.github.com/foundations/logo).
+
 ## Intro and interface motion
 
 The LunaVision-to-LunaV introduction uses the existing crescent-and-star website
 symbol, as selected by the project owner. The wordmark, animated wavy red pen stroke,
 `assets/red-pen.svg`, and transition to the header are original
 SVG/CSS/JavaScript interface work.
-They do not replace or depict the camera-and-moon iPhone app icon. Scroll motion
-respects reduced-motion settings; the introduction can be replayed, with no on-screen skip button.
+The current iPhone app icon also uses the same crescent-and-star geometry. The
+app implements its introduction natively in SwiftUI, while the website uses
+SVG/CSS/JavaScript. Scroll motion respects reduced-motion settings; the introduction can be replayed, with no on-screen skip button.
