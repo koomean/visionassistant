@@ -37,11 +37,14 @@
     <a class="document-back" href="./"><span aria-hidden="true">←</span><span data-en="Back to LunaV">กลับหน้า LunaV</span></a>
     <article class="document" data-document-language="th" lang="th">
 <h1 lang="th">สถานะโครงการ LunaV</h1>
-<p lang="th"><strong>ตรวจหลักฐานถึงวันที่ 29 ตุลาคม 2026</strong> LunaV เป็นต้นแบบวิจัยบน iPhone ที่ประมวลผลในเครื่อง แอปรุ่นล่าสุดนำอัตลักษณ์ดวงจันทร์ของเว็บมาใช้กับหน้าจอ SwiftUI จัดหน้า Settings ใหม่ และเพิ่มแอนิเมชัน LunaVision-to-LunaV แบบเนทีฟ ส่วนการประมวลผลภาพ เสียง ระยะ และหน่วยความจำยังใช้ระบบเดิม Repo นี้เก็บเว็บไซต์และประกาศสิทธิ ไม่ได้รวมแอป iPhone โปรเจกต์ Xcode ไฟล์โมเดล หรือ log ดิบของแอป <a href="https://github.com/koomean/visionassistant">ดูโครงการบน GitHub</a></p>
+<p lang="th"><strong>ตรวจหลักฐานถึงวันที่ 29 ตุลาคม 2026</strong> LunaV เป็นต้นแบบวิจัยบน iPhone ที่ประมวลผลในเครื่อง แอปปัจจุบันคือ <strong>3.0.0 (บิลด์ 3)</strong> เพิ่มตัวเลือกหน้าจอไทย/อังกฤษที่จำค่าไว้และหน้าเกี่ยวกับในแอป SwiftUI ธีมดวงจันทร์ ส่วนการประมวลผลภาพ เสียง ระยะ และหน่วยความจำยังใช้ระบบเดิม Repo นี้เก็บเว็บไซต์และประกาศสิทธิ ไม่ได้รวมแอป iPhone โปรเจกต์ Xcode ไฟล์โมเดล หรือ log ดิบของแอป <a href="https://github.com/koomean/visionassistant">ดูโครงการบน GitHub</a></p>
+<h2 lang="th">ภาษาแอปและหน้าเกี่ยวกับ</h2>
+<p lang="th">ใช้ <strong>ตั้งค่า → ภาษาแอพ</strong> เพื่อสลับหน้าจอไทย/อังกฤษทันทีและจำค่าข้ามการเปิดแอปใหม่ ครอบคลุมกล้อง ตั้งค่า เกี่ยวกับ ปุ่มในบทสนทนา เครื่องมือพื้นที่/กลุ่มข้อความ/ระยะ ข้อมูลการทำงาน สถานะ และข้อผิดพลาด แยกจากภาษา Dictation ภาษาคำตอบ และเสียงอ่านที่เลือกไว้ คำถาม คำตอบ และข้อความ OCR เดิมยังคงเดิม ไม่ได้แปลตามหน้าจอ ชื่อภาษาและชื่อผู้จัดทำใช้การสะกดเดิม</p>
+<p lang="th">ส่วนสุดท้ายใน Settings เปิด <strong>เกี่ยวกับ → เกี่ยวกับ LunaV</strong> แสดงรุ่นจาก bundle จริง <strong>3.0.0 / บิลด์ 3</strong> ผู้จัดทำ <strong>วชิรวิช ไกรพิณดากุล / Wachirawich kripindakul (koomean)</strong> และลิงก์เว็บไซต์ LunaV ใน bundle มี catalog หน้าจอและคำอธิบายขอสิทธิ์ทั้งไทย/อังกฤษ ส่วนหน้าระบบ iOS ใช้ภาษาที่ระบบเลือกเอง</p>
 <h2 lang="th">หน้าตาแอปปัจจุบัน</h2>
 <p lang="th">หน้ากล้อง ตั้งค่า บทสนทนา เลือกพื้นที่ กลุ่มข้อความ และระยะ ใช้กรมท่าเข้ม ขาวอุ่น ฟ้า/ทองอ่อน และฟอนต์ Noto Sans Thai กับ Manrope ไอคอนแอปใช้รูปจันทร์เสี้ยวและดาวจากเว็บแล้ว Settings วางภาษา การรับเสียง และเสียงอ่านคำตอบก่อนเครื่องมือทดสอบ พร้อมรายละเอียดเสียงและการเทียบระยะที่เปิดดูเพิ่มได้ หน้ากล้องยังมีสองปุ่มหลัก และนำเมนูสลับกล้องหน้า/หลังออกจาก Settings แล้ว</p>
 <p lang="th">แอนิเมชัน SwiftUI แสดง <strong>LunaVision → ปากกาแดงขีด “ision” → LunaV. → หัวหน้ากล้อง</strong> ใช้เวลาประมาณ <strong>4.22 วินาที</strong> งานเตรียมโมเดลเริ่มพร้อมกันและทำงานต่อใต้แอนิเมชัน ถ้ายังไม่พร้อม แอปจะแสดงสถานะเตรียมหรือลองใหม่ตามจริงหลังภาพเคลื่อนไหวจบ Reduce Motion ใช้ตรานิ่งสั้น ๆ แทน และไม่เล่นซ้ำเพียงเพราะกลับจาก background ลำดับนี้ไม่ได้ใช้ WebView หรือวิดีโอ</p>
-<p lang="th">ภาพแอปปัจจุบันบนเว็บไซต์ถ่ายจาก <strong>iOS Simulator วันที่ 29 ตุลาคม 2026</strong> ภาพคำตอบและกลุ่มข้อความใช้ภาพทดสอบ OCR สังเคราะห์ ภาพเหล่านี้แสดงหน้าตาแอป ไม่ใช่หลักฐานประสิทธิภาพกล้อง ไมโครโฟน โมเดลภาพ หรือระยะบนเครื่องจริง</p>
+<p lang="th">ภาพกล้อง บทสนทนา Settings และหน้าเกี่ยวกับไทย/อังกฤษของเวอร์ชัน 3 ถ่ายจาก <strong>iOS Simulator วันที่ 29 ตุลาคม 2026</strong> บทสนทนาใน UI อังกฤษยังคงคำถามภาษาไทยและข้อความ OCR ต้นฉบับ แสดงว่าภาษาหน้าจอไม่ได้เขียนเนื้อหาเก่าใหม่ ภาพกลุ่มข้อความที่ยังใช้บนเว็บเป็นของธีมดวงจันทร์รุ่นก่อน ภาพเหล่านี้เป็นตัวอย่างหน้าจอ/OCR fixture ไม่ใช่หลักฐานประสิทธิภาพกล้อง ไมโครโฟน โมเดลภาพ หรือระยะบนเครื่องจริง</p>
 <h2 lang="th">ผลตรวจล่าสุด — 29 ตุลาคม 2026</h2>
 <div class="document-table" role="region" tabindex="0" aria-label="ตาราง: ผลตรวจล่าสุด — 29 ตุลาคม 2026"><table><thead><tr>
 <th scope="col">การตรวจ</th>
@@ -50,29 +53,34 @@
 </tr></thead><tbody>
 <tr>
 <td>Regression บน iOS 27 Simulator</td>
-<td><strong>ผ่าน 262/262: unit 249 + UI 13</strong> ไม่มี fail/skip และไม่มี runtime warning ที่บันทึกไว้</td>
-<td>ครอบคลุม intro เต็ม/Reduce Motion สองปุ่มหลัก Settings กดค้าง/ปล่อย/ยกเลิก OCR/พื้นที่/กลุ่มข้อความ ล้างบริบท และไม่ตอบระยะตัวเลขเมื่อไม่มี depth ขอบเขตกล้อง/ไมค์/ASR จำลอง และ Simulator ไม่รัน VLM หรือเซ็นเซอร์จริง</td>
+<td><strong>ผ่าน 269/269: unit 253 + UI 16</strong> ไม่มี fail/skip และไม่มี runtime warning ที่บันทึกไว้</td>
+<td>รวมหน้าเกี่ยวกับสองภาษา รุ่น/ผู้จัดทำ/ลิงก์เว็บ การจำภาษา คงภาษารับเสียงและคำถาม/คำตอบ OCR เดิม พร้อม flow กล้อง/เสียง/OCR/context ขอบเขตกล้อง/ไมค์/ASR จำลอง และ Simulator ไม่รัน VLM หรือเซ็นเซอร์จริง</td>
+</tr>
+<tr>
+<td>ตรวจ catalog และ metadata สุดท้าย</td>
+<td><strong>ผ่านเฉพาะจุด 2/2</strong> ไม่มี fail/skip/runtime warning หลังเก็บคำแปลหัวข้อข้อมูลการทำงานอีกสองรายการ</td>
+<td>รันเฉพาะจุดหลังชุดเต็ม 269 กรณี ไม่ใช่การรันชุดเต็มอีกครั้งและไม่นำมารวมยอดนั้น</td>
 </tr>
 <tr>
 <td>Signed generic-iOS Release</td>
-<td>Build สำเร็จและตรวจลายเซ็นแบบ deep/strict ผ่าน</td>
+<td>Build และตรวจลายเซ็นแบบ deep/strict ผ่าน bundle ระบุ <strong>3.0.0 / บิลด์ 3</strong> พร้อมทรัพยากรภาษาอังกฤษและไทย</td>
 <td>มี build ที่ลงลายเซ็นแล้ว แต่ยังไม่ยืนยันการติดตั้งหรือทำงานบน iPhone จริง</td>
 </tr>
 <tr>
 <td>ความพยายามติดตั้งบน iPhone 14 จริง</td>
-<td><strong>ยังไม่ได้ติดตั้ง</strong> CoreDevice 4000 แจ้งว่า transport peer ติดต่อไม่ได้แล้ว</td>
-<td>ยังไม่ได้ตรวจ UI รุ่น 29 ตุลาคมขณะทำงานบนเครื่องจริง ผล iPhone 14 วันที่ 24 ตุลาคมด้านล่างเป็นของรุ่นลดงานซ้ำก่อนหน้านี้</td>
+<td><strong>ยังยืนยันการติดตั้งไม่ได้</strong> ยกเลิกคำสั่งหลังเกินสามนาทีโดยไม่มีความคืบหน้าการเชื่อมต่อหรือถ่ายโอนไฟล์</td>
+<td>ยังไม่ตรวจเวอร์ชัน 3 ขณะทำงานบนเครื่องจริง ผล CoreDevice 4000 และผลเครื่องจริงวันที่ 24 ตุลาคมเป็นของรุ่นก่อน</td>
 </tr>
 <tr>
-<td>ซอร์สและทรัพยากรใน bundle</td>
-<td>hash ซอร์ส UI สุดท้าย 7 ไฟล์และ Shared 18 ไฟล์ตรง manifest ที่บันทึกไว้ ตรวจฟอนต์ เวกเตอร์ และประกาศ OFL ใน bundle แล้ว</td>
-<td>ซอร์ส runtime หลักคง baseline งาน UI นี้ไม่เปลี่ยนโมเดล นโยบายหน่วยความจำ หรืออัลกอริทึมระยะ และไม่ได้รัน memory stress หรือ soak ชุดใหม่</td>
+<td>ตรวจซอร์สหลักและคำแปล</td>
+<td><strong>hash ซอร์สหลัก 26 ไฟล์ไม่เปลี่ยน</strong> ผลตรวจ source/catalog ที่บันทึกไว้ไม่มีคำแปลอังกฤษที่ขาดหรือไม่ถูกต้อง</td>
+<td>รุ่นนี้เปลี่ยนหน้าจอและ metadata ไม่เปลี่ยนอัลกอริทึมโมเดล เสียง ระยะ หรือหน่วยความจำ การตรวจซอร์ส/catalog แยกจากความครอบคลุมหน้าจอขณะรัน และไม่ได้รัน memory stress หรือ soak ชุดใหม่</td>
 </tr>
 </tbody></table></div>
 <p lang="th">ข้อมูลนี้เป็นผลแอปที่บันทึกไว้และนำมาตรวจสำหรับอัปเดตเว็บไซต์ ไม่ได้รันชุดทดสอบแอปใหม่ระหว่างแก้เว็บ ผลล่าสุดไม่ยืนยันความแม่นยำ AI ระยะกายภาพ เสียงคนจริง อายุแบตเตอรี่ หรือประสิทธิภาพด้านความร้อน</p>
 <h2 lang="th">ถาม อ่าน และฟังคำตอบ</h2>
 <p lang="th">หลังให้สิทธิ์ไมโครโฟน กดปุ่มกลางค้างเพื่อเริ่มถ่ายภาพ/depth และบันทึกเสียงพร้อมกัน พูดระหว่างถือ แล้วปล่อยเพื่อหยุดบันทึกและส่งเมื่อภาพพร้อม ความเงียบระหว่างถือไม่ส่งเอง แตะสั้นจะถ่ายภาพอย่างเดียว เสียงที่ยาวเกิน <strong>2 นาที</strong> จะถูกปฏิเสธ แทนการส่งเฉพาะต้นประโยค</p>
-<p lang="th">ใช้ <strong>Apple DictationTranscriber ผ่าน SpeechAnalyzer</strong> ถอดคำถามในเครื่องด้วย asset ภาษาของ Apple ที่ติดตั้งแล้ว ค่าเริ่มต้นไทย เลือก English ได้ใน Settings คำขอใช้ภาษาที่เลือกทีละภาษา ไม่สลับภาษาอัตโนมัติ แอปตรวจการรองรับของอุปกรณ์/ภาษา หากไม่มี asset อาจต้องดาวน์โหลดครั้งแรก จึงไม่รับรองว่าเพิ่งติดตั้งแล้วจะใช้เสียงออฟไลน์ได้ทันที การถอดเสียงมีเส้นตาย <strong>45 วินาที</strong> และไม่มี Whisper ใน bundle แอปปัจจุบันแล้ว</p>
+<p lang="th">ใช้ <strong>Apple DictationTranscriber ผ่าน SpeechAnalyzer</strong> ถอดคำถามในเครื่องด้วย asset ภาษาของ Apple ที่ติดตั้งแล้ว ค่าเริ่มต้นไทย เลือก English ได้ด้วยตัวเลือกภาษาเสียงใน Settings ซึ่งแยกจากภาษาแอป คำขอใช้ภาษาที่เลือกทีละภาษา ไม่สลับภาษาอัตโนมัติ แอปตรวจการรองรับของอุปกรณ์/ภาษา หากไม่มี asset อาจต้องดาวน์โหลดครั้งแรก จึงไม่รับรองว่าเพิ่งติดตั้งแล้วจะใช้เสียงออฟไลน์ได้ทันที การถอดเสียงมีเส้นตาย <strong>45 วินาที</strong> และไม่มี Whisper ใน bundle แอปปัจจุบันแล้ว</p>
 <p lang="th">อ่านคำตอบ AI/OCR/สรุป/ระยะที่เสร็จแล้วอัตโนมัติเป็นค่าเริ่มต้น ด้วย <strong>เสียง Apple ที่ติดตั้งในเครื่อง</strong> ปิดการอ่าน เลือกเสียงไทย/อังกฤษ และฟังตัวอย่างได้ใน Settings หยุดอ่านก่อนถ่าย/รับเสียงใหม่ ยกเลิก ล้างบริบท หรือเข้า background ไม่รับรองการใช้เสียง Siri ที่ผู้ใช้เลือกไว้ ติดตั้งเสียงเพิ่มเติมได้ผ่านการตั้งค่าของ iOS</p>
 <p lang="th">Apple Vision OCR และ Qwen3-VL-2B-Instruct 4-bit ผ่าน MLX/Metal ทำงานในเครื่อง เครื่องมือใน Settings ใช้เลือกพื้นที่ จัดกลุ่มป้าย/เมนู/ฉลาก สรุปข้อความ OCR ที่เลือก และถามต่อด้วยบริบทที่มีขอบเขต LunaV ไม่มีการเตือนสิ่งกีดขวางต่อเนื่องหรือการบอกทิศทางนำทาง OCR การถอดเสียง ค่าประมาณ และคำตอบที่สร้างขึ้นยังผิดได้</p>
 <h2 lang="th">ระยะและแหล่งข้อมูล</h2>
@@ -83,6 +91,8 @@
 <p lang="th">แอปกำหนด <strong>iOS 27 / Xcode 27 ขึ้นไป</strong> การรองรับ Dictation ขึ้นกับเครื่องและภาษา ส่วนโมเดลภาพ/depth ยังต้องมีหน่วยความจำและฮาร์ดแวร์ที่รองรับ แอปเตรียมโมเดลภาพก่อนเปิดให้ถาม และลองใหม่เมื่อเกิดปัญหาชั่วคราวขณะอยู่ foreground เตรียม DA3 เฉพาะเครื่องไม่มี LiDAR การเตรียมเสียงมีเส้นตาย <strong>30 วินาที</strong> และลองใหม่แยกได้ หากเสียงไม่พร้อม ยังใช้ภาพ พิมพ์ถาม OCR และสรุปได้เมื่อโมเดลที่ต้องใช้พร้อม</p>
 <p lang="th">นโยบาย compact ใช้เมื่อ <strong>RAM กายภาพไม่เกิน 6 GiB</strong> หรือ process headroom ที่รายงานเป็นบวกแต่ต่ำกว่า <strong>1 GiB</strong> คืน weights โมเดลภาพเมื่อว่างก่อนถ่ายใหม่และหลังตอบ เก็บเฉพาะตัวอ้างอิงภาพและ cache ข้อความ/OCR/tokenizer ที่มีขอบเขต จัด OCR ก่อนโหลดโมเดลภาพที่ยังไม่อยู่ใน RAM การคืน weights ทำให้คำถามถัดไปอาจต้องรอโหลดใหม่ แยกการจำขั้น warmup ที่เสร็จแล้วออกจาก weights ที่อยู่ใน RAM เพื่อไม่ทำทุกขั้นซ้ำเมื่อกลับจาก background</p>
 <p lang="th">การยกเลิกและการจัดการ memory warning ต้องติดตามให้งานที่กำลังใช้ทรัพยากรจบก่อนโหลดโมเดลใหม่ inference ที่ยังทำงานอาจถือ buffer จนจบ จึงไม่รับประกันคืน RAM ทันทีหรือทั้งหมด การเก็บกวาดเสียงเนทีฟไม่ขวางคำถามภาพแบบพิมพ์ งานลดทรัพยากรคง weights การ quantise ความละเอียดภาพ การตรวจคำตอบ และเกณฑ์รับงานตามหน่วยความจำเดิม การ warmup ไม่รับประกันว่า weights จะค้างใน RAM หรือทุกเครื่องรัน inference ได้</p>
+<h2 lang="th">ธีมดวงจันทร์รุ่นก่อน — 29 ตุลาคม 2026</h2>
+<p lang="th">งานธีมดวงจันทร์ก่อนหน้านี้ผ่าน <strong>262/262 บน Simulator (unit 249 + UI 13)</strong> และ signed Release ตรวจลายเซ็นผ่าน การติดตั้ง build นั้นบน iPhone 14 ไม่สำเร็จด้วย <strong>CoreDevice 4000 / transport peer ติดต่อไม่ได้แล้ว</strong> hash ซอร์ส UI 7 ไฟล์และ Shared 18 ไฟล์ตรง manifest ของงานนั้น ผลเหล่านี้เป็นของ UI รุ่นก่อน แยกจากชุด 269/269 และความพยายามติดตั้งที่ยกเลิกภายหลังของเวอร์ชัน 3</p>
 <h2 lang="th">รุ่นลดงานซ้ำก่อนหน้า — 24 ตุลาคม 2026</h2>
 <p lang="th">ผลเหล่านี้เป็นของรุ่นลดงานซ้ำก่อนหน้า ไม่ใช่ผลตรวจ UI ใหม่บนเครื่องจริง</p>
 <div class="document-table" role="region" tabindex="0" aria-label="ตาราง: รุ่นลดงานซ้ำก่อนหน้า — 24 ตุลาคม 2026"><table><thead><tr>
@@ -93,12 +103,12 @@
 <tr>
 <td>Regression บน Simulator</td>
 <td><strong>259/259: unit 248 + UI 11</strong> ไม่มี fail/skip/runtime warning</td>
-<td>บันทึกก่อนเพิ่ม diagnostics เครื่องจริงและลำดับตรวจ headroom ใน signed build สุดท้าย ปัจจุบันชุด Simulator ล่าสุดคือ 262/262 วันที่ 29 ตุลาคม</td>
+<td>บันทึกก่อนเพิ่ม diagnostics เครื่องจริงและลำดับตรวจ headroom ใน signed build สุดท้าย ปัจจุบันชุด Simulator ล่าสุดคือ 269/269 ของเวอร์ชัน 3</td>
 </tr>
 <tr>
 <td>iPhone 14 / iOS 27.2</td>
 <td>ติดตั้ง signed Release และคืนสู่โหมดพร้อมใช้ปกติแล้ว</td>
-<td>เครื่องไม่มี LiDAR ไม่ใช่การติดตั้ง UI วันที่ 29 ตุลาคมหรือการตรวจ iPhone 14 Pro ชุดใหม่</td>
+<td>เครื่องไม่มี LiDAR ไม่ใช่การติดตั้งเวอร์ชัน 3 หรือธีมดวงจันทร์รุ่นก่อนวันที่ 29 ตุลาคม และไม่ใช่การตรวจ iPhone 14 Pro ชุดใหม่</td>
 </tr>
 <tr>
 <td>กล้องจริง 2 รอบถาม</td>
@@ -136,15 +146,19 @@
 <p lang="th">ไฟล์ WAV ชั่วคราว ภาพบีบอัด ภาพตัวอย่าง และภาพ crop อาจเก็บใน sandbox แอป ไฟล์เสียงลบเมื่องานที่ใช้จบจริง รวมถึงหลังยกเลิก/หมดเวลา จึงอาจไม่ลบทันทีขณะงานยังทำต่อ ภาพที่ถูกแทนจะได้รับการเก็บกวาด ไม่ได้หมายความว่าข้อมูลอยู่เฉพาะใน RAM ข้อความนี้อธิบายแอป ไม่ใช่โฮสติ้งเว็บไซต์หรือลิงก์ภายนอก</p>
 <h2 lang="th">ที่มาของหลักฐาน</h2>
 <p lang="th">ตรวจคำอธิบายกับ <code>README.md</code>, <code>VALIDATION.md</code>, ซอร์ส UI/runtime และ log ของแอปปัจจุบัน ชื่อหลักฐานเหล่านี้อ้างถึง workspace แอป ไม่ใช่ไฟล์ที่แจกใน repo เว็บไซต์นี้</p>
-<p lang="th">หลักฐาน UI ล่าสุดใช้ <code>Logs/website-ui-delivery-test-summary.json</code>, <code>Logs/website-ui-source-summary.json</code>, <code>Logs/website-ui-anchor-release-build.log</code>, <code>Logs/website-ui-delivery-signature.log</code> และ <code>Logs/website-ui-device-install.log</code> ส่วนบันทึก session UI และภาพ Simulator ระบุการตรวจภาพหน้าจอ</p>
+<p lang="th">หลักฐานเวอร์ชัน 3 ใช้ <code>Logs/v3-language-delivery-test-summary.json</code>, <code>Logs/v3-catalog-final-test-summary.json</code>, <code>Logs/v3-language-source-summary.json</code>, <code>Logs/ui-localization-audit.json</code>, <code>Logs/v3-language-final-release-build.log</code>, <code>Logs/v3-language-final-signature.log</code> และ <code>Logs/v3-language-device-install.log</code> ใช้ <code>project.yml</code> เป็นแหล่งเลขเวอร์ชันแอป ส่วนบันทึก session UI และภาพ V3 จาก Simulator ระบุการตรวจหน้าจอ</p>
+<p lang="th">หลักฐานธีมดวงจันทร์รุ่นก่อนยังคงใช้ <code>Logs/website-ui-delivery-test-summary.json</code>, <code>Logs/website-ui-source-summary.json</code> และผล release/ลายเซ็น/ติดตั้งเครื่องจริงของงานนั้น</p>
 <p lang="th">ผลทรัพยากรก่อนหน้าใช้ <code>Logs/resource-optimization-tests-summary.json</code>, <code>Logs/resource-optimization-delivery-summary.json</code>, <code>Logs/resource-device-delivery-summary.json</code> และผลเครื่องจริง functional/OCR/native/TTS/normal-preparation ผล compact-memory ใช้ <code>Logs/memory-delivery-summary.json</code>, <code>Logs/memory-final-soak.json</code> และ <code>Logs/memory-constrained-fixed.json</code> ผลเสียง/เรขาคณิตก่อนหน้ายังคงที่มาชุด <code>answer-speech-*</code>, <code>native-dictation-*</code>, <code>da3-*</code>, <code>qa-*</code> และ <code>ptt-*</code></p>
 </article><article class="document" data-document-language="en" lang="en">
 <h1>LunaV project status</h1>
-<p><strong>Evidence reviewed: 29 October 2026.</strong> LunaV is an on-device iPhone research prototype. The latest app update brings the website&#x27;s lunar identity into the SwiftUI interface, reorganises Settings, and adds a native LunaVision-to-LunaV introduction. The image, speech, depth, and memory-processing paths retain the earlier implementation. This repository contains the website and its notices; it does not contain the iPhone app, Xcode project, model weights, or raw app logs. <a href="https://github.com/koomean/visionassistant">Visit the project on GitHub</a>.</p>
+<p><strong>Evidence reviewed: 29 October 2026.</strong> LunaV is an on-device iPhone research prototype. The current app is <strong>3.0.0 (build 3)</strong>. It adds a persistent Thai/English interface choice and an About page to the lunar-themed SwiftUI app. The image, speech, depth, and memory-processing paths retain the earlier implementation. This repository contains the website and its notices; it does not contain the iPhone app, Xcode project, model weights, or raw app logs. <a href="https://github.com/koomean/visionassistant">Visit the project on GitHub</a>.</p>
+<h2>App language and About</h2>
+<p>Use <strong>Settings → App language</strong> to switch the interface immediately between Thai and English. The choice persists across relaunches and covers the camera, Settings, About, conversation controls, region/text-group/distance tools, runtime information, status, and errors. It is independent of the selected Dictation language, answer language, and reading voice. Existing questions, answers, and original OCR text are preserved rather than translated when the interface changes. Language names and the creator&#x27;s name keep their original spelling.</p>
+<p lang="th">The final Settings group opens <strong>About → About LunaV</strong>, showing the actual bundle version <strong>3.0.0 / build 3</strong>, creator <strong>วชิรวิช ไกรพิณดากุล / Wachirawich kripindakul (koomean)</strong>, and a link to the LunaV website. Thai/English interface catalogs and permission-description translations are included in the bundle; iOS system screens follow the language chosen by the system.</p>
 <h2>Current interface</h2>
 <p>The camera, Settings, conversation, region-selection, text-grouping, and distance screens use midnight blue, warm white, pale blue/gold, Noto Sans Thai, and Manrope. The app icon now uses the website&#x27;s crescent-and-star geometry. Settings puts language, speech input, and answer voices before testing tools, with expandable speech and calibration details. The camera screen retains its two main buttons; the front/rear camera-switch menu has been removed from Settings.</p>
 <p>A native SwiftUI introduction shows <strong>LunaVision → red pen over “ision” → LunaV. → camera header</strong> in about <strong>4.22 seconds</strong>. Model preparation starts alongside it and continues underneath. If preparation is still incomplete, the app shows its actual preparation/retry state after the animation. Reduce Motion uses a brief static mark instead; returning from the background does not replay the introduction. The app does not use a WebView or video for this sequence.</p>
-<p>Current website screenshots were captured from <strong>iOS Simulator on 29 October 2026</strong>. The answer and text-grouping images use a synthetic OCR fixture. They show the interface, not physical-camera, microphone, visual-model, or distance performance.</p>
+<p>Current version 3 camera, conversation, Settings, and Thai/English About previews were captured from <strong>iOS Simulator on 29 October 2026</strong>. The English conversation preserves its original Thai question and source OCR text, demonstrating that interface language does not rewrite existing content. The text-grouping preview retained on the website belongs to the earlier lunar UI. These are interface/OCR-fixture examples, not physical-camera, microphone, visual-model, or distance-performance evidence.</p>
 <h2>Latest validation — 29 October 2026</h2>
 <div class="document-table" role="region" tabindex="0" aria-label="Latest validation — 29 October 2026 table"><table><thead><tr>
 <th scope="col">Check</th>
@@ -153,29 +167,34 @@
 </tr></thead><tbody>
 <tr>
 <td>iOS 27 Simulator regression</td>
-<td><strong>262/262 passed: 249 unit + 13 UI</strong>, zero failures/skips and no recorded runtime warnings</td>
-<td>Covers full/reduced-motion intro, two main buttons, Settings, hold/release/cancel, OCR/regions/text groups, context clearing, and refusing numeric distance without depth. Camera/microphone/ASR boundaries are simulated; Simulator does not run the real VLM or sensors.</td>
+<td><strong>269/269 passed: 253 unit + 16 UI</strong>, zero failures/skips and no recorded runtime warnings</td>
+<td>Includes both About languages, version/creator/website link, language persistence, unchanged speech selection and existing OCR question/answer, plus camera/voice/OCR/context flows. Camera/microphone/ASR boundaries are simulated; Simulator does not run the real VLM or sensors.</td>
+</tr>
+<tr>
+<td>Final catalog and metadata check</td>
+<td><strong>2/2 focused tests passed</strong>, zero failures/skips/runtime warnings, after two runtime-information heading translations were adjusted</td>
+<td>This focused rerun followed the full 269-test suite; it is not another full-suite run and is not added to that total.</td>
 </tr>
 <tr>
 <td>Signed generic-iOS Release</td>
-<td>Build succeeded and strict deep code-signature verification passed</td>
+<td>Build and strict deep code-signature verification passed; bundle identifies <strong>3.0.0 / build 3</strong>, with English and Thai localization resources</td>
 <td>A signed build is available; this does not establish successful installation or runtime behaviour on a physical iPhone.</td>
 </tr>
 <tr>
 <td>Physical iPhone 14 installation attempt</td>
-<td><strong>Not installed.</strong> CoreDevice 4000 reported the transport peer was no longer reachable</td>
-<td>The 29 October UI build has not been checked running on a physical phone. The 24 October iPhone 14 results below belong to the preceding resource-optimisation build.</td>
+<td><strong>Installation not confirmed.</strong> The command was cancelled after more than three minutes without connection or transfer progress</td>
+<td>Version 3 has not been validated running on a physical phone. Earlier CoreDevice 4000 and 24 October device results belong to previous builds.</td>
 </tr>
 <tr>
-<td>Source and bundled resources</td>
-<td>Seven final UI source hashes and 18 Shared source hashes match the recorded manifest; fonts, vectors, and OFL notices were checked in the bundle</td>
-<td>The core runtime sources retained their baseline. This UI update did not change models, memory policy, or distance algorithms, and did not run a new memory stress test or soak.</td>
+<td>Core source and localization review</td>
+<td><strong>26 core source hashes unchanged</strong>; recorded source/catalog audit found no missing or invalid English entries</td>
+<td>This version changes interface localization and metadata, not model, speech, depth, or memory algorithms. Source/catalog auditing is distinct from runtime presentation coverage; no new memory stress test or soak was run.</td>
 </tr>
 </tbody></table></div>
 <p>These are recorded app results, reviewed for this website update. No new app test suite was run while editing the website. The latest update does not establish AI accuracy, physical distance accuracy, human speech accuracy, battery life, or thermal performance.</p>
 <h2>Ask, read, and listen</h2>
 <p>Hold the centre button to start photo/depth capture and microphone recording together, after microphone permission is granted. Speak while holding, then release to stop recording and submit once the image is ready. Silence while holding does not submit. A short tap takes a photograph only. Recordings over the <strong>2-minute limit</strong> are rejected rather than submitting only their beginning.</p>
-<p><strong>Apple DictationTranscriber through SpeechAnalyzer</strong> handles speech input locally using installed Apple language assets. Thai is the default; select English in Settings. Each request uses one selected language, without automatic language switching. The app checks device/locale support. Missing language assets may need an initial download; fresh-install offline speech is not guaranteed. Transcription has a <strong>45-second deadline</strong>. Whisper is no longer in the current app bundle.</p>
+<p><strong>Apple DictationTranscriber through SpeechAnalyzer</strong> handles speech input locally using installed Apple language assets. Thai is the default; select English with the separate speech-language setting in Settings. Each request uses one selected language, without automatic language switching. The app checks device/locale support. Missing language assets may need an initial download; fresh-install offline speech is not guaranteed. Transcription has a <strong>45-second deadline</strong>. Whisper is no longer in the current app bundle.</p>
 <p>Completed AI, OCR, summary, and distance answers are read automatically by default with <strong>installed Apple voices</strong>. Settings can disable reading, select Thai/English voices, and preview a voice. Reading stops before new capture/recording, cancellation, context clearing, or backgrounding. This does not promise access to the user&#x27;s selected Siri voice. Additional voices can be installed through iOS Settings.</p>
 <p>Apple Vision OCR and Qwen3-VL-2B-Instruct 4-bit through MLX/Metal run locally. Settings tools support region selection, grouping signs/menus/labels, summarising selected OCR text, and bounded follow-up context. LunaV does not provide continuous obstacle alerts or directional navigation. OCR, transcription, estimates, and generated answers can be wrong.</p>
 <h2>Distance and its source</h2>
@@ -186,6 +205,8 @@
 <p>The app targets <strong>iOS 27 / Xcode 27 or later</strong>. Dictation support depends on device and language; image/depth inference still needs sufficient memory and supported hardware. It prepares visual models before enabling questions and retries temporary failures in the foreground. DA3 preparation applies only to devices without LiDAR. Speech preparation has a <strong>30-second deadline</strong> and can retry separately. If speech is unavailable, photos, typed questions, OCR, and summaries remain available once their required visual models are ready.</p>
 <p>The compact policy applies at <strong>6 GiB physical RAM or below</strong>, or when reported positive process headroom is below <strong>1 GiB</strong>. It releases idle visual-model weights before a new capture and after answers, and retains lightweight image references and bounded text/OCR/tokenizer caches. OCR runs before a cold visual-model load. Releasing weights can add another load before the next answer. Successful warmup stages are tracked separately from resident weights so returning from the background does not repeat every completed stage.</p>
 <p>Cancellation and memory-warning cleanup follow running work before models reload. In-flight inference may own buffers until it returns; cancellation does not guarantee immediate or complete RAM release. Native-speech cleanup does not block typed visual questions. The optimisation retained model weights, quantisation, image resolution, answer checks, and memory-admission safeguards. Warmup does not guarantee that weights remain in RAM or every device can run inference.</p>
+<h2>Earlier lunar interface — 29 October 2026</h2>
+<p>The preceding lunar-theme update passed <strong>262/262 Simulator tests (249 unit + 13 UI)</strong> and its signed Release passed verification. That build&#x27;s physical iPhone 14 install failed with <strong>CoreDevice 4000 / transport peer no longer reachable</strong>. Its seven UI source hashes and 18 Shared hashes matched its recorded manifest. These are earlier UI results, distinct from version 3&#x27;s 269/269 suite and later cancelled installation attempt.</p>
 <h2>Earlier resource build — 24 October 2026</h2>
 <p>These results belong to the earlier resource-optimisation build, not the new UI&#x27;s physical-device validation.</p>
 <div class="document-table" role="region" tabindex="0" aria-label="Earlier resource build — 24 October 2026 table"><table><thead><tr>
@@ -196,12 +217,12 @@
 <tr>
 <td>Simulator regression</td>
 <td><strong>259/259: 248 unit + 11 UI</strong>, no failures/skips/runtime warnings</td>
-<td>Recorded before later device diagnostics and headroom-check ordering entered the final signed build. Superseded as the latest Simulator suite by the 29 October 262/262 run.</td>
+<td>Recorded before later device diagnostics and headroom-check ordering entered the final signed build. Superseded as the latest Simulator suite by the version 3 run of 269/269.</td>
 </tr>
 <tr>
 <td>iPhone 14 / iOS 27.2</td>
 <td>Signed Release installed and returned to normal ready mode</td>
-<td>Non-LiDAR phone; not an installation of the 29 October UI build or a new iPhone 14 Pro run.</td>
+<td>Non-LiDAR phone; not an installation of version 3 or the earlier 29 October lunar UI build or a new iPhone 14 Pro run.</td>
 </tr>
 <tr>
 <td>Two real-camera question cycles</td>
@@ -239,7 +260,8 @@
 <p>Temporary WAV recordings, compressed images, previews, and crops can be stored in the app sandbox. Audio is removed when its worker actually finishes, including after cancellation/timeout; deletion is not necessarily immediate while work continues. Superseded images are cleaned up. This is not a claim that data stays only in RAM. These statements describe the app, not website hosting or external links.</p>
 <h2>Evidence provenance</h2>
 <p>Descriptions were checked against the supplied app&#x27;s current <code>README.md</code>, <code>VALIDATION.md</code>, UI/runtime source, and recorded logs. These provenance names refer to the app workspace, not files distributed in this website repository.</p>
-<p>The latest UI evidence uses <code>Logs/website-ui-delivery-test-summary.json</code>, <code>Logs/website-ui-source-summary.json</code>, <code>Logs/website-ui-anchor-release-build.log</code>, <code>Logs/website-ui-delivery-signature.log</code>, and <code>Logs/website-ui-device-install.log</code>. The UI session ledger and Simulator previews record visual checks.</p>
+<p>Version 3 evidence uses <code>Logs/v3-language-delivery-test-summary.json</code>, <code>Logs/v3-catalog-final-test-summary.json</code>, <code>Logs/v3-language-source-summary.json</code>, <code>Logs/ui-localization-audit.json</code>, <code>Logs/v3-language-final-release-build.log</code>, <code>Logs/v3-language-final-signature.log</code>, and <code>Logs/v3-language-device-install.log</code>. <code>project.yml</code> is the app version source; the UI session ledger and V3 Simulator previews record visual checks.</p>
+<p>Earlier lunar-UI evidence retains <code>Logs/website-ui-delivery-test-summary.json</code>, <code>Logs/website-ui-source-summary.json</code>, and its release/signature/device-install records.</p>
 <p>Earlier resource results use <code>Logs/resource-optimization-tests-summary.json</code>, <code>Logs/resource-optimization-delivery-summary.json</code>, <code>Logs/resource-device-delivery-summary.json</code>, and the functional/OCR/native/TTS/normal-preparation device records. Compact-memory results use <code>Logs/memory-delivery-summary.json</code>, <code>Logs/memory-final-soak.json</code>, and <code>Logs/memory-constrained-fixed.json</code>. Earlier speech/geometry results retain their <code>answer-speech-*</code>, <code>native-dictation-*</code>, <code>da3-*</code>, <code>qa-*</code>, and <code>ptt-*</code> provenance.</p>
 </article>
     <div class="document-source"><a href="docs/th/PROJECT-STATUS.md" data-document-original="PROJECT-STATUS.md" data-en="Read the English Markdown original">อ่านต้นฉบับ Markdown ภาษาไทย</a><span aria-hidden="true">·</span><a href="https://github.com/koomean/visionassistant/blob/main/docs/th/PROJECT-STATUS.md" data-document-github="PROJECT-STATUS.md" data-en="View document source on GitHub">ดูซอร์สเอกสารบน GitHub</a></div>

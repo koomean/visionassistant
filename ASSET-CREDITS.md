@@ -26,9 +26,35 @@ It is a share preview, not a screenshot of the iPhone app.
 
 ## LunaV screenshots
 
-These images come from the project owner's current local LunaV app previews.
-They have been resized to 720 × 1565 pixels and encoded as WebP. No app interface
-or results have been fabricated or composited.
+These images come from the project owner's local LunaV app previews. They have
+been resized to 720 × 1565 pixels and encoded as WebP. No app interface or results
+have been fabricated or composited.
+
+### Current version 3.0.0 (build 3)
+
+The following previews were captured on **29 October 2026** from the current
+version 3.0.0 (build 3) interface, including its separate app-language setting and
+About page.
+
+| Website asset | Original preview |
+| --- | --- |
+| `assets/app-v3-camera-en.webp` | `App/Preview/V3-Camera-English.png` |
+| `assets/app-v3-answer-en.webp` | `App/Preview/V3-Conversation-English.png` |
+| `assets/app-v3-settings-en.webp` | `App/Preview/V3-Settings-English.png` |
+| `assets/app-v3-about-th.webp` | `App/Preview/V3-About-Thai.png` |
+| `assets/app-v3-about-en.webp` | `App/Preview/V3-About-English.png` |
+
+Switching the app interface to English does not translate existing questions or
+answers. The English conversation preview therefore retains its original Thai
+question and source OCR text; these have not been translated or replaced for the
+website.
+
+### Earlier lunar-interface previews
+
+These four images were also captured on **29 October 2026**, before the version
+3.0.0 language/About update. They show the earlier lunar-themed interface and are
+retained as historical assets. A text-grouping preview may still illustrate that
+specific tool; it is not a screenshot of the current version 3.0.0 interface.
 
 | Website asset | Original preview |
 | --- | --- |
@@ -37,16 +63,14 @@ or results have been fabricated or composited.
 | `assets/app-settings-20261029.webp` | `App/Preview/Website-Settings.png` |
 | `assets/app-text-sources-20261029.webp` | `App/Preview/Website-Text-Sources.png` |
 
-All four previews were captured on **29 October 2026**. They show the current
-lunar-themed SwiftUI interface, reorganised Settings, and OCR examples. Still
-images do not demonstrate the hold–talk–release gesture or cancellation timing.
+All these previews are from iOS Simulator. Conversation and text-grouping images
+show OCR of a synthetic test fixture. They do not establish live iPhone camera,
+microphone, visual-model, or LiDAR performance. Still images do not demonstrate
+the hold–talk–release gesture or cancellation timing. Camera previews explicitly
+show the Simulator test-image state.
 
-The previews are from iOS Simulator. The answer and text-source previews show
-OCR of a synthetic test fixture. They do not establish live iPhone camera,
-microphone, visual-model, or LiDAR performance. The camera preview explicitly
-shows the Simulator test-image state.
-
-The earlier unversioned `assets/app-*.webp` previews remain in the repository as historical assets from 20–21 October 2026; the current pages use the dated previews listed above.
+The unversioned `assets/app-*.webp` previews remain in the repository as historical
+assets from 20–21 October 2026.
 
 ## Fonts
 

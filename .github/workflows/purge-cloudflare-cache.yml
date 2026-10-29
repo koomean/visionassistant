@@ -62,6 +62,8 @@ jobs:
               '/', '/index.html', '/project-status.html', '/licensing.html',
               '/credits.html', '/404.html', '/README.md', '/PROJECT-STATUS.md',
               '/COMMERCIAL-LICENSE.md', '/ASSET-CREDITS.md', '/LICENSE',
+              '/docs/th/PROJECT-STATUS.md', '/docs/th/COMMERCIAL-LICENSE.md',
+              '/docs/th/ASSET-CREDITS.md',
             ];
             const files = paths.flatMap((path) => {
               const url = `https://${process.env.SITE_HOST}${path}`;
