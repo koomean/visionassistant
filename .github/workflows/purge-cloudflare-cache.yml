@@ -59,7 +59,7 @@ jobs:
           async function main() {
             if (!process.env.CLOUDFLARE_API_TOKEN) throw new Error('CLOUDFLARE_API_TOKEN secret is not configured');
             const paths = [
-              '/', '/index.html', '/project-status.html', '/licensing.html',
+              '/', '/index.html', '/project-status.html', '/licensing.html', '/contact.html',
               '/credits.html', '/404.html', '/README.md', '/PROJECT-STATUS.md',
               '/COMMERCIAL-LICENSE.md', '/ASSET-CREDITS.md', '/LICENSE',
               '/docs/th/PROJECT-STATUS.md', '/docs/th/COMMERCIAL-LICENSE.md',
