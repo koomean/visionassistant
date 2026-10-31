@@ -2,7 +2,7 @@
 
 An on-device visual question assistant for iPhone, developed as a SCiUS Forums project. Hold to ask about a photograph, read and summarise text, estimate supported distances, and hear completed answers. The current app is **3.0.0 (build 3)** and uses Qwen3-VL-2B-Instruct through MLX/Metal, Apple Dictation for speech input, Apple system voices for answer playback, and Depth Anything 3 Metric on devices without LiDAR.
 
-[Visit the project website](https://visionassistant.koomean.com/) · [View the project on GitHub](https://github.com/koomean/visionassistant)
+[Visit the project website](https://lunavision.koomean.com/) · [View the project on GitHub](https://github.com/koomean/visionassistant)
 
 ## Repository scope
 
@@ -55,7 +55,7 @@ After editing both language versions of a Markdown notice, regenerate their read
 python3 scripts/render-docs.py
 ```
 
-GitHub Pages publishes the repository root from `main` to [visionassistant.koomean.com](https://visionassistant.koomean.com/). Keep `CNAME` when publishing changes. The existing GitHub Actions workflow purges the Cloudflare cache after a successful Pages build.
+GitHub Pages publishes the repository root from `main` to [lunavision.koomean.com](https://lunavision.koomean.com/). Keep `CNAME` when publishing changes. The existing GitHub Actions workflow purges the Cloudflare cache after a successful Pages build.
 
 ## Licence
 

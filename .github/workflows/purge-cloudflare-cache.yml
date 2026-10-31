@@ -53,7 +53,7 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ZONE_ID: e18e4081ccde88866bbe5c44a1053568
-          SITE_HOST: visionassistant.koomean.com
+          SITE_HOST: lunavision.koomean.com
         run: |
           node <<'NODE'
           async function main() {

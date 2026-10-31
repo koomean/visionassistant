@@ -146,8 +146,8 @@ def render_page(source, target, title_en, title_th, description_en, description_
   <meta property="og:title" content="{escape(title_th, quote=True)} — LunaV">
   <meta property="og:description" content="{escape(description_th, quote=True)}">
   <meta property="og:locale" content="th_TH">
-  <meta property="og:url" content="https://visionassistant.koomean.com/{target}">
-  <link rel="canonical" href="https://visionassistant.koomean.com/{target}">
+  <meta property="og:url" content="https://lunavision.koomean.com/{target}">
+  <link rel="canonical" href="https://lunavision.koomean.com/{target}">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <script>(()=>{{let saved;try{{saved=localStorage.getItem('lunav-language')}}catch{{}}const requested=new URLSearchParams(location.search).get('lang');document.documentElement.lang=(requested||saved)==='en'?'en':'th'}})();</script>
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
