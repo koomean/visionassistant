@@ -5,6 +5,7 @@
 
 Run from any directory: python3 /path/to/website/scripts/render-docs.py
 Uses only Python's standard library. Edit the Markdown originals, then rerun.
+Also synchronises index.html and 404.html with partials/site-header.html.
 The small escaped renderer supports this project's headings, paragraphs, lists,
 links, code spans, bold text, and pipe tables; it never passes through raw HTML.
 """
@@ -129,6 +130,7 @@ def render_page(source, target, title_en, title_th, description_en, description_
     for _, href, label_en, label_th, _, _ in PAGES:
         current = ' aria-current="page"' if href == target else ''
         navigation.append(f'<a href="{href}"{current}>{translated(label_th, label_en)}</a>')
+    header = (ROOT / 'partials' / 'site-header.html').read_text().rstrip()
     articles = []
     for locale, path in [('th', ROOT / 'docs' / 'th' / source), ('en', ROOT / source)]:
         body = render_markdown(path.read_text(), locale)
@@ -153,23 +155,20 @@ def render_page(source, target, title_en, title_th, description_en, description_
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css?v=luna-20261029">
-  <link rel="stylesheet" href="docs.css?v=luna-20261029">
-  <script src="docs-language.js?v=luna-20261029" defer></script>
+  <link rel="stylesheet" href="site-shell.css?v=luna-20261031-nav">
+  <link rel="stylesheet" href="docs.css?v=luna-20261031-nav">
+  <script src="site-shell.js?v=luna-20261031-nav" defer></script>
+  <script src="docs-language.js?v=luna-20261031-nav" defer></script>
   <title data-title-th="{escape(title_th, quote=True)} — LunaV" data-title-en="{escape(title_en, quote=True)} — LunaV">{escape(title_th)} — LunaV</title>
 </head>
 <body class="document-page">
   <a href="#main" class="skip-link" data-en="Skip to content">ข้ามไปยังเนื้อหา</a>
-  <header class="document-header">
-    <div class="wrap document-header-inner">
-      <a class="brand" href="./" aria-label="LunaV หน้าแรก" data-en-aria="LunaV home"><img class="document-brand-icon" src="assets/favicon.svg" width="34" height="34" alt=""><span>LunaV<span class="brand-dot">.</span></span></a>
-      <nav aria-label="เอกสารโครงการ" data-en-aria="Project documents">{''.join(navigation)}</nav>
-      <div class="language-switch" role="group" aria-label="เลือกภาษา" data-en-aria="Choose language">
-        <button type="button" data-language="th" aria-pressed="true" lang="th">TH</button><span aria-hidden="true">/</span><button type="button" data-language="en" aria-pressed="false" lang="en">EN</button>
-      </div>
-    </div>
-  </header>
+  <!-- site-header:start -->
+{header}
+  <!-- site-header:end -->
   <main id="main" class="wrap document-main">
     <a class="document-back" href="./"><span aria-hidden="true">←</span>{translated('กลับหน้า LunaV', 'Back to LunaV')}</a>
+    <nav class="document-navigation" aria-label="เอกสาร" data-en-aria="Project documents">{''.join(navigation)}</nav>
     {''.join(articles)}
     <div class="document-source"><a href="docs/th/{source}" data-document-original="{source}" data-en="Read the English Markdown original">อ่านต้นฉบับ Markdown ภาษาไทย</a><span aria-hidden="true">·</span><a href="https://github.com/koomean/visionassistant/blob/main/docs/th/{source}" data-document-github="{source}" data-en="View document source on GitHub">ดูซอร์สเอกสารบน GitHub</a></div>
   </main>
@@ -184,7 +183,20 @@ def render_page(source, target, title_en, title_th, description_en, description_
 '''
 
 
+def sync_site_headers():
+    header = (ROOT / 'partials' / 'site-header.html').read_text().rstrip()
+    replacement = '  <!-- site-header:start -->\n' + header + '\n  <!-- site-header:end -->'
+    for name in ['index.html', '404.html']:
+        path = ROOT / name
+        source = path.read_text()
+        updated, count = re.subn(r'  <!-- site-header:start -->.*?  <!-- site-header:end -->', lambda _: replacement, source, flags=re.S)
+        if count != 1:
+            raise ValueError(f'{name}: expected one shared header block, found {count}')
+        path.write_text(updated)
+
+
 def main():
+    sync_site_headers()
     for page in PAGES:
         (ROOT / page[1]).write_text(render_page(*page))
         print(f'{page[0]} + docs/th/{page[0]} -> {page[1]}')

@@ -1,6 +1,73 @@
 <!doctype html>
-<!-- Copyright (C) 2026 Wachirawich Kripindakul. SPDX-License-Identifier: AGPL-3.0-or-later. -->
+<!-- Copyright (C) 2026 Wachirawich Kripindakul. SPDX-License-Identifier: AGPL-3.0-or-later. See LICENSE. -->
 <html lang="th">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#080f20"><title>ไม่พบหน้านี้ · LunaV</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css?v=luna-20261021"><style>main{min-height:100svh;display:flex;align-items:center;text-align:center;padding:60px 0;background:radial-gradient(ellipse at top,#1c31594d,transparent 65%)}.lost-moon{width:200px;margin:0 auto 35px}.lost-label{color:var(--gold);font-size:.8rem;margin-bottom:15px}h1{font-size:2.7rem!important;line-height:1.5!important}p{margin:18px auto 28px;color:var(--muted);font-size:.9rem;max-width:40ch}.english{font-size:.78rem;color:#8b9ab5}.button{margin-top:6px}.source{display:block;margin-top:30px;font-size:.72rem;color:var(--blue)}</style></head>
-<body><main><div class="wrap"><img class="lost-moon" src="/assets/moon.webp" width="1400" height="1400" alt=""><div class="lost-label">LunaV · 404</div><h1>หลงทางท่ามกลางดวงดาว</h1><p>ไม่พบหน้าที่คุณเปิด ลองกลับไปเริ่มต้นจากหน้าแรกของ LunaV</p><p class="english" lang="en">This page is somewhere beyond our orbit. Return home to explore LunaV.</p><a href="/" class="button button-primary">กลับหน้าแรก · Back to LunaV</a><a href="https://github.com/koomean/visionassistant" class="source">GitHub · Website source</a></div></main></body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#080f20">
+  <meta name="description" content="ไม่พบหน้านี้ กลับไปสำรวจ LunaV หรือใช้เมนูเพื่อเลือกหน้าที่ต้องการ" data-description-th="ไม่พบหน้านี้ กลับไปสำรวจ LunaV หรือใช้เมนูเพื่อเลือกหน้าที่ต้องการ" data-description-en="We could not find this page. Return to LunaV or use the menu to find your way.">
+  <meta property="og:title" content="ไม่พบหน้านี้ — LunaV">
+  <meta property="og:description" content="กลับไปสำรวจ LunaV หรือใช้เมนูเพื่อเลือกหน้าที่ต้องการ">
+  <meta property="og:locale" content="th_TH">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <script>(()=>{let saved;try{saved=localStorage.getItem('lunav-language')}catch{}const requested=new URLSearchParams(location.search).get('lang');document.documentElement.lang=(requested||saved)==='en'?'en':'th'})();</script>
+  <link rel="preload" href="/assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css?v=luna-20261029">
+  <link rel="stylesheet" href="/site-shell.css?v=luna-20261031-nav">
+  <link rel="stylesheet" href="/404.css?v=luna-20261031-nav">
+  <script src="/site-shell.js?v=luna-20261031-nav" defer></script>
+  <script src="/docs-language.js?v=luna-20261031-nav" defer></script>
+  <title data-title-th="ไม่พบหน้านี้ — LunaV" data-title-en="Page not found — LunaV">ไม่พบหน้านี้ — LunaV</title>
+</head>
+<body class="not-found-page">
+  <a href="#main" class="skip-link" data-en="Skip to content">ข้ามไปยังเนื้อหา</a>
+  <!-- site-header:start -->
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="/#overview" data-home-anchor="overview" aria-label="LunaV หน้าแรก" data-en-aria="LunaV home"><svg class="brand-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M26 19.1A12 12 0 0 1 12.9 6 12 12 0 1 0 26 19.1Z"/><path d="m23 3 .9 3.1L27 7l-3.1.9L23 11l-.9-3.1L19 7l3.1-.9Z"/></svg><span>LunaV<span class="brand-dot">.</span></span></a>
+      <nav id="navigation" aria-label="เมนูหลัก" data-en-aria="Main navigation">
+        <a href="/#features" data-home-anchor="features" data-en="Explore">ความสามารถ</a>
+        <a href="/#how" data-home-anchor="how" data-en="How it works">วิธีทำงาน</a>
+        <a href="/#models" data-home-anchor="models" data-en="Technology">เทคโนโลยี</a>
+        <a href="/#privacy" data-home-anchor="privacy" data-en="Privacy">ความเป็นส่วนตัว</a>
+        <a href="/#opensource" data-home-anchor="opensource" data-en="Open source">โอเพนซอร์ส</a>
+      </nav>
+      <div class="header-actions">
+        <div class="language-switch" role="group" aria-label="เลือกภาษา" data-en-aria="Choose language">
+          <button type="button" data-language="th" aria-pressed="true" lang="th">TH</button><span aria-hidden="true">/</span><button type="button" data-language="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+        <a class="github-link" href="https://github.com/koomean/visionassistant" aria-label="LunaV บน GitHub" data-en-aria="LunaV on GitHub"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 .5a12 12 0 0 0-3.793 23.385c.6.11.82-.26.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.839 1.237 1.839 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.776.418-1.305.762-1.605-2.665-.304-5.467-1.333-5.467-5.932 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.52 11.52 0 0 1 12 6.3c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.654 1.652.243 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.625-5.479 5.922.43.372.823 1.102.823 2.222v3.293c0 .32.216.694.825.576A12 12 0 0 0 12 .5Z"/></svg></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="เปิดเมนู" data-en-aria="Toggle menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <!-- site-header:end -->
+  <main id="main" class="lost-main">
+    <div class="wrap lost-layout">
+      <div class="lost-copy">
+        <p class="lost-label" data-en="404 · Page not found">404 · ไม่พบหน้านี้</p>
+        <h1 data-en="A little off orbit.">หน้านี้อยู่นอกวงโคจร</h1>
+        <p class="lost-description" data-en="We couldn’t find the page you opened. Head back to LunaV, or use the menu above to find what you need.">ไม่พบหน้าที่คุณเปิด กลับไปสำรวจ LunaV หรือใช้เมนูด้านบนเพื่อเลือกส่วนที่ต้องการ</p>
+        <div class="lost-actions">
+          <a href="/" class="button button-primary" data-home-anchor="overview"><span data-en="Back to LunaV">กลับหน้าแรก</span><span aria-hidden="true">↗</span></a>
+          <a href="/#features" class="button button-outline" data-home-anchor="features" data-en="Explore features">สำรวจความสามารถ</a>
+        </div>
+        <nav class="lost-help" aria-label="หน้าอื่นของ LunaV" data-en-aria="More LunaV pages">
+          <a href="/project-status.html" data-en="Project status">สถานะโครงการ</a>
+          <a href="/licensing.html" data-en="Licensing">การอนุญาตใช้สิทธิ</a>
+          <a href="/credits.html" data-en="Credits">เครดิต</a>
+        </nav>
+      </div>
+      <div class="lost-scene" aria-hidden="true">
+        <div class="lost-orbit"></div><div class="lost-orbit lost-orbit-inner"></div>
+        <div class="lost-moon-body"><img class="lost-moon" src="/assets/moon.webp" width="1400" height="1400" alt=""><div class="lost-moon-shadow"></div></div>
+        <span class="lost-star">+</span><span class="lost-star lost-star-small">✦</span>
+        <span class="lost-coordinate" data-en="A familiar orbit is one click away.">กลับสู่วงโคจรที่คุ้นเคยได้ในคลิกเดียว</span>
+      </div>
+    </div>
+  </main>
+  <footer class="lost-footer"><div class="wrap"><span>© 2026 Wachirawich Kripindakul</span><a href="https://github.com/koomean/visionassistant" data-en="Project on GitHub">โครงการบน GitHub</a></div></footer>
+</body>
 </html>

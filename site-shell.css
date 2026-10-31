@@ -1,0 +1,7 @@
+/* Copyright (C) 2026 Wachirawich Kripindakul. SPDX-License-Identifier: AGPL-3.0-or-later. See LICENSE. */
+:root{--site-header-height:92px}
+.document-page .site-header,.not-found-page .site-header{background:rgba(8,15,32,.96);border-bottom-color:var(--line);backdrop-filter:blur(18px)}
+@media(max-width:880px){:root{--site-header-height:78px}}
+@media(max-width:640px){:root{--site-header-height:74px}}
+/* Without JavaScript, the compact navigation remains available as ordinary links. */
+@media(max-width:880px){html:not(.navigation-ready) .site-header{position:sticky}html:not(.navigation-ready) .header-inner{height:auto;min-height:var(--site-header-height);flex-wrap:wrap;padding-block:12px}html:not(.navigation-ready) .header-inner nav{position:static;display:flex;flex-basis:100%;order:3;flex-direction:row;flex-wrap:wrap;gap:0 22px;padding:0;border:0;box-shadow:none;background:transparent}html:not(.navigation-ready) .header-inner nav a{font-size:.75rem;padding-block:8px}html:not(.navigation-ready) .menu-toggle{display:none}}

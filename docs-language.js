@@ -36,6 +36,7 @@
       url.searchParams.set('lang', language);
       try { history.replaceState(history.state, '', url); } catch { /* Navigation links retain the chosen language if history access is denied. */ }
     }
+    window.dispatchEvent(new CustomEvent('lunav:languagechange', { detail: { language } }));
   }
   document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language, true)));
   const requested = new URLSearchParams(location.search).get('lang');

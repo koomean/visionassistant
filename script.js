@@ -42,26 +42,14 @@
         link.href = url.pathname + url.search + url.hash;
       }
     });
+    window.dispatchEvent(new CustomEvent('lunav:languagechange', { detail: { language } }));
     requestRender();
     requestAnimationFrame(updateTabMarker);
   }
   document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language, true)));
 
   const header = document.querySelector('.site-header');
-  const menuToggle = document.querySelector('.menu-toggle');
   const navigation = document.querySelector('#navigation');
-  function setMenu(open) {
-    menuToggle?.setAttribute('aria-expanded', String(open));
-    header?.classList.toggle('menu-open', open);
-    navigation?.classList.toggle('is-open', open);
-  }
-  menuToggle?.addEventListener('click', () => setMenu(menuToggle.getAttribute('aria-expanded') !== 'true'));
-  navigation?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && menuToggle?.getAttribute('aria-expanded') === 'true') { setMenu(false); menuToggle.focus(); }
-  });
-  document.addEventListener('click', event => { if (!header?.contains(event.target)) setMenu(false); });
-  matchMedia('(min-width: 881px)').addEventListener('change', event => { if (event.matches) setMenu(false); });
 
   const tabs = [...document.querySelectorAll('[role="tab"]')];
   const tabList = document.querySelector('.feature-tabs');

@@ -49,7 +49,9 @@ The website is static and needs no runtime build step. Serve this directory loca
 python3 -m http.server 8080
 ```
 
-After editing both language versions of a Markdown notice, regenerate their readable HTML pages with:
+The five HTML pages share their main navigation from `partials/site-header.html`. The compact menu is handled by `site-shell.js`; links return to the correct homepage section and preserve the chosen language, including from nested missing URLs.
+
+After editing the shared header or either language version of a Markdown notice, regenerate the pages with:
 
 ```sh
 python3 scripts/render-docs.py
