@@ -150,5 +150,5 @@
   window.addEventListener('lunav:motionchange', () => { if (replay) replay.hidden = reduced(); });
   motion.addEventListener('change', () => { if (replay) replay.hidden = reduced(); });
   const restoringHistory = performance.getEntriesByType('navigation')[0]?.type === 'back_forward';
-  if (!restoringHistory && (!location.hash || location.hash === '#overview') && window.scrollY < 10) start();
+  if (!root.dataset.pageTransitionArrival && !restoringHistory && (!location.hash || location.hash === '#overview') && window.scrollY < 10) start();
 })();

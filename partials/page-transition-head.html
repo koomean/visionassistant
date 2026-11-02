@@ -1,0 +1,4 @@
+  <!-- page-transition:start -->
+  <script>(()=>{const root=document.documentElement;let reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;try{reduced=reduced||localStorage.getItem('lunav-reduce-motion')==='true'}catch{}if(!reduced&&location.pathname==='/contact.html'){root.classList.add('contact-entry-pending');setTimeout(()=>root.classList.remove('contact-entry-pending'),1200)}try{const key='lunav-page-transition',pending=JSON.parse(sessionStorage.getItem(key)||'null');sessionStorage.removeItem(key);if(!pending||pending.to!==location.href||Date.now()-pending.time>7000||reduced)return;root.dataset.pageTransitionArrival='true';root.classList.add('page-arriving');setTimeout(()=>root.classList.remove('page-arriving','page-arrival-reveal'),1500)}catch{}})();</script>
+  <script src="/page-transition.js?v=luna-20261102-polish" defer></script>
+  <!-- page-transition:end -->

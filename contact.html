@@ -14,13 +14,18 @@
   <meta property="og:image" content="assets/social.jpg">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <script>(()=>{let saved;try{saved=localStorage.getItem('lunav-language')}catch{}const requested=new URLSearchParams(location.search).get('lang');document.documentElement.lang=(requested||saved)==='en'?'en':'th'})();</script>
+  <!-- page-transition:start -->
+  <script>(()=>{const root=document.documentElement;let reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;try{reduced=reduced||localStorage.getItem('lunav-reduce-motion')==='true'}catch{}if(!reduced&&location.pathname==='/contact.html'){root.classList.add('contact-entry-pending');setTimeout(()=>root.classList.remove('contact-entry-pending'),1200)}try{const key='lunav-page-transition',pending=JSON.parse(sessionStorage.getItem(key)||'null');sessionStorage.removeItem(key);if(!pending||pending.to!==location.href||Date.now()-pending.time>7000||reduced)return;root.dataset.pageTransitionArrival='true';root.classList.add('page-arriving');setTimeout(()=>root.classList.remove('page-arriving','page-arrival-reveal'),1500)}catch{}})();</script>
+  <script src="/page-transition.js?v=luna-20261102-polish" defer></script>
+  <!-- page-transition:end -->
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css?v=luna-20261029">
-  <link rel="stylesheet" href="site-shell.css?v=luna-20261031-nav">
-  <link rel="stylesheet" href="contact.css?v=luna-20261031">
+  <link rel="stylesheet" href="site-shell.css?v=luna-20261102-polish">
+  <link rel="stylesheet" href="contact.css?v=luna-20261102-polish">
   <script src="site-shell.js?v=luna-20261031-nav" defer></script>
   <script src="docs-language.js?v=luna-20261031-nav" defer></script>
+  <script src="contact.js?v=luna-20261102-polish" defer></script>
   <title data-title-th="ติดต่อ LunaV" data-title-en="Contact LunaV">ติดต่อ LunaV</title>
 </head>
 <body class="contact-page">
@@ -54,7 +59,8 @@
       <section class="contact-hero wrap" aria-labelledby="page-title">
         <div class="contact-hero-copy">
           <div class="contact-project-label"><span class="status-light" aria-hidden="true"></span><span data-en="Contact LunaV">ช่องทางติดต่อ LunaV</span></div>
-          <h1 id="page-title" data-en="Let’s talk&#10;soon">มาคุยกัน<br>ได้เลย</h1>
+          <h1 id="page-title" data-en="Let’s talk&#10;soon">มาคุยกัน
+ได้เลย</h1>
           <p class="contact-hero-description" data-en="Have an idea or just want to say hello? Choose a channel that works for you.">มีไอเดียหรืออยากทักทาย เลือกช่องทางที่สะดวกได้เลย</p>
         </div>
         <div class="contact-lunar-scene" aria-hidden="true">
@@ -101,44 +107,6 @@
 
     <footer class="contact-footer wrap"><span class="footer-brand">LunaV</span><span data-en="A little light. A clearer world.">แสงเล็ก ๆ เพื่อโลกที่ชัดขึ้น</span></footer>
   </div>
-  <script>
-    (() => {
-      const canvas = document.getElementById("starfield");
-      const context = canvas?.getContext("2d");
-      if (!context) return;
-      const random = (seed) => () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
-      function draw() {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        const dpr = Math.min(window.devicePixelRatio || 1, 1.8);
-        canvas.width = Math.round(width * dpr);
-        canvas.height = Math.round(height * dpr);
-        context.setTransform(dpr, 0, 0, dpr, 0, 0);
-        context.clearRect(0, 0, width, height);
-        const next = random(17072026);
-        const count = Math.min(150, Math.round(width * height / 7500));
-        for (let i = 0; i < count; i++) {
-          const x = next() * width;
-          const y = next() * height;
-          const radius = .45 + next() * .9;
-          const alpha = .2 + next() * .55;
-          context.beginPath();
-          context.arc(x, y, radius, 0, Math.PI * 2);
-          context.fillStyle = `rgba(197,211,239,${alpha})`;
-          context.fill();
-          if (radius > 1.2) {
-            context.strokeStyle = `rgba(197,211,239,${alpha * .45})`;
-            context.lineWidth = .5;
-            context.beginPath();
-            context.moveTo(x - 3, y); context.lineTo(x + 3, y);
-            context.moveTo(x, y - 3); context.lineTo(x, y + 3);
-            context.stroke();
-          }
-        }
-      }
-      window.addEventListener("resize", draw, { passive: true });
-      draw();
-    })();
-  </script>
+
 </body>
 </html>

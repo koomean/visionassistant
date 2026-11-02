@@ -16,6 +16,7 @@ import re
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
+TRANSITION_HEAD = (ROOT / 'partials' / 'page-transition-head.html').read_text().rstrip()
 PAGES = [
     ('PROJECT-STATUS.md', 'project-status.html', 'Project status', 'สถานะโครงการ',
      'Current LunaV implementation, recorded validation results, and their limits.',
@@ -152,10 +153,11 @@ def render_page(source, target, title_en, title_th, description_en, description_
   <link rel="canonical" href="https://lunavision.koomean.com/{target}">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <script>(()=>{{let saved;try{{saved=localStorage.getItem('lunav-language')}}catch{{}}const requested=new URLSearchParams(location.search).get('lang');document.documentElement.lang=(requested||saved)==='en'?'en':'th'}})();</script>
+{TRANSITION_HEAD}
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css?v=luna-20261029">
-  <link rel="stylesheet" href="site-shell.css?v=luna-20261031-nav">
+  <link rel="stylesheet" href="site-shell.css?v=luna-20261102-polish">
   <link rel="stylesheet" href="docs.css?v=luna-20261031-nav">
   <script src="site-shell.js?v=luna-20261031-nav" defer></script>
   <script src="docs-language.js?v=luna-20261031-nav" defer></script>
@@ -167,7 +169,7 @@ def render_page(source, target, title_en, title_th, description_en, description_
 {header}
   <!-- site-header:end -->
   <main id="main" class="wrap document-main">
-    <a class="document-back" href="./"><span aria-hidden="true">←</span>{translated('กลับหน้า LunaV', 'Back to LunaV')}</a>
+    <a class="document-back" href="./"><svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>{translated('กลับหน้า LunaV', 'Back to LunaV')}</a>
     <nav class="document-navigation" aria-label="เอกสาร" data-en-aria="Project documents">{''.join(navigation)}</nav>
     {''.join(articles)}
     <div class="document-source"><a href="docs/th/{source}" data-document-original="{source}" data-en="Read the English Markdown original">อ่านต้นฉบับ Markdown ภาษาไทย</a><span aria-hidden="true">·</span><a href="https://github.com/koomean/visionassistant/blob/main/docs/th/{source}" data-document-github="{source}" data-en="View document source on GitHub">ดูซอร์สเอกสารบน GitHub</a></div>
@@ -193,6 +195,15 @@ def sync_site_headers():
         if count != 1:
             raise ValueError(f'{name}: expected one shared header block, found {count}')
         path.write_text(updated)
+
+    for name in ['index.html', '404.html', 'contact.html']:
+        page = ROOT / name
+        source = page.read_text()
+        if '<!-- page-transition:start -->' in source:
+            source = re.sub(r'  <!-- page-transition:start -->.*?  <!-- page-transition:end -->', lambda _: TRANSITION_HEAD, source, flags=re.S)
+        else:
+            source = source.replace('  <link rel="preload"', TRANSITION_HEAD + '\n  <link rel="preload"', 1)
+        page.write_text(source)
 
 
 def main():

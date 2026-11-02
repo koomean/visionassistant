@@ -37,7 +37,7 @@
     }
     document.querySelectorAll('a[href]').forEach(link => {
       const url = new URL(link.href, location.href);
-      if (url.origin === location.origin && /\/(project-status|licensing|credits)\.html$/.test(url.pathname)) {
+      if (url.origin === location.origin && /\/(project-status|licensing|credits|contact)\.html$/.test(url.pathname)) {
         url.searchParams.set('lang', language);
         link.href = url.pathname + url.search + url.hash;
       }

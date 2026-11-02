@@ -15,10 +15,14 @@
   <link rel="canonical" href="https://lunavision.koomean.com/licensing.html">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <script>(()=>{let saved;try{saved=localStorage.getItem('lunav-language')}catch{}const requested=new URLSearchParams(location.search).get('lang');document.documentElement.lang=(requested||saved)==='en'?'en':'th'})();</script>
+  <!-- page-transition:start -->
+  <script>(()=>{const root=document.documentElement;let reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;try{reduced=reduced||localStorage.getItem('lunav-reduce-motion')==='true'}catch{}if(!reduced&&location.pathname==='/contact.html'){root.classList.add('contact-entry-pending');setTimeout(()=>root.classList.remove('contact-entry-pending'),1200)}try{const key='lunav-page-transition',pending=JSON.parse(sessionStorage.getItem(key)||'null');sessionStorage.removeItem(key);if(!pending||pending.to!==location.href||Date.now()-pending.time>7000||reduced)return;root.dataset.pageTransitionArrival='true';root.classList.add('page-arriving');setTimeout(()=>root.classList.remove('page-arriving','page-arrival-reveal'),1500)}catch{}})();</script>
+  <script src="/page-transition.js?v=luna-20261102-polish" defer></script>
+  <!-- page-transition:end -->
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css?v=luna-20261029">
-  <link rel="stylesheet" href="site-shell.css?v=luna-20261031-nav">
+  <link rel="stylesheet" href="site-shell.css?v=luna-20261102-polish">
   <link rel="stylesheet" href="docs.css?v=luna-20261031-nav">
   <script src="site-shell.js?v=luna-20261031-nav" defer></script>
   <script src="docs-language.js?v=luna-20261031-nav" defer></script>
@@ -49,7 +53,7 @@
   </header>
   <!-- site-header:end -->
   <main id="main" class="wrap document-main">
-    <a class="document-back" href="./"><span aria-hidden="true">←</span><span data-en="Back to LunaV">กลับหน้า LunaV</span></a>
+    <a class="document-back" href="./"><svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg><span data-en="Back to LunaV">กลับหน้า LunaV</span></a>
     <nav class="document-navigation" aria-label="เอกสาร" data-en-aria="Project documents"><a href="project-status.html"><span data-en="Project status">สถานะโครงการ</span></a><a href="licensing.html" aria-current="page"><span data-en="Commercial licensing">การอนุญาตใช้สิทธิ</span></a><a href="credits.html"><span data-en="Asset credits">เครดิตทรัพยากร</span></a></nav>
     <article class="document" data-document-language="th" lang="th">
 <h1 lang="th">การอนุญาตใช้สิทธิเชิงพาณิชย์ของ LunaV</h1>

@@ -60,7 +60,7 @@
     for (const property of ['fontFamily', 'fontSize', 'fontWeight', 'fontStyle', 'letterSpacing', 'lineHeight', 'color']) copy.style[property] = style[property];
     Object.assign(copy.style, { left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px` });
     copies.push(copy);
-    return { copy, rect, fontSize: parseFloat(style.fontSize), color: style.color };
+    return { copy, rect, style, fontSize: parseFloat(style.fontSize), color: style.color };
   }
 
   async function enter() {
@@ -72,23 +72,31 @@
       const height = window.innerHeight;
       const headerHeight = document.querySelector('.site-header').getBoundingClientRect().bottom;
       const desiredSizes = [Math.min(240, width * .38, (height - headerHeight) * .34), Math.min(38, width * .075)];
-      const scales = items.map((item, index) => Math.min(desiredSizes[index] / item.fontSize, (width - 48) / item.rect.width));
+      const scales = items.map((item, index) => Math.max(1, Math.min(desiredSizes[index] / item.fontSize, (width - 48) / item.rect.width)));
       const gap = 14;
       const totalHeight = items.reduce((sum, item, index) => sum + item.rect.height * scales[index], gap);
       let top = headerHeight + Math.max(20, (height - headerHeight - totalHeight) / 2);
 
       items.forEach((item, index) => {
-        const { copy, rect, color } = item;
+        const { copy, rect, style, color, fontSize } = item;
         const scale = scales[index];
+        // Typeset at the largest displayed size. WebKit can magnify a small
+        // composited text layer as a bitmap when a transform scales it up.
+        copy.style.fontSize = `${fontSize * scale}px`;
+        copy.style.lineHeight = `${parseFloat(style.lineHeight) * scale}px`;
+        if (style.letterSpacing !== 'normal') copy.style.letterSpacing = `${parseFloat(style.letterSpacing) * scale}px`;
+        copy.style.width = `${rect.width * scale}px`;
+        copy.style.height = `${rect.height * scale}px`;
         const left = (width - rect.width * scale) / 2;
-        const from = `translate(${left - rect.left}px, ${top - rect.top}px) scale(${scale})`;
+        const from = `translate(${left - rect.left}px, ${top - rect.top}px) scale(1)`;
+        const to = `translate(0px, 0px) scale(${1 / scale})`;
         const startColor = index === 0 ? '#f2f0e9' : color;
         copy.style.transform = from;
         document.body.append(copy);
         animations.push(copy.animate([
           { transform: from, color: startColor, offset: 0 },
           { transform: from, color: startColor, offset: .3, easing: 'cubic-bezier(.22,1,.36,1)' },
-          { transform: 'translate(0px, 0px) scale(1)', color, offset: 1 }
+          { transform: to, color, offset: 1 }
         ], { duration: 2200, easing: 'linear', fill: 'both' }));
         top += rect.height * scale + gap;
       });
