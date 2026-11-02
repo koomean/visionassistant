@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080f20">
-  <meta name="description" content="LunaV ผู้ช่วยมองภาพบน iPhone ถามด้วยเสียง อ่านและฟังคำตอบ วัดระยะด้วย LiDAR หรือประมาณจาก Depth Anything 3 ประมวลผลบนเครื่อง โปรเจกต์วิจัย SCiUS Forums 17">
+  <meta name="description" content="LunaV ผู้ช่วยมองภาพบน iPhone ถามด้วยเสียง อ่านและฟังคำตอบ วัดระยะด้วย LiDAR หรือประมาณจาก Depth Anything 3 ประมวลผลบนเครื่อง แอปต้นแบบงานวิจัย">
   <meta property="og:type" content="website">
   <meta property="og:title" content="LunaV — แสงเล็ก ๆ เพื่อโลกที่ชัดขึ้น">
   <meta property="og:description" content="ผู้ช่วยมองภาพบน iPhone ถาม อ่าน ฟังคำตอบ และสำรวจระยะ ด้วย AI บนอุปกรณ์">
@@ -26,11 +26,11 @@
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/moon.webp" as="image" fetchpriority="high">
   <link rel="preload" href="assets/red-pen.svg" as="image" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=luna-20261029">
+  <link rel="stylesheet" href="styles.css?v=luna-20261102-steps">
   <link rel="stylesheet" href="site-shell.css?v=luna-20261102-polish">
   <link rel="stylesheet" href="motion.css?v=luna-20261024-pen2">
   <script src="site-shell.js?v=luna-20261031-nav" defer></script>
-  <script src="script.js?v=luna-20261102-polish" defer></script>
+  <script src="script.js?v=luna-20261102-steps" defer></script>
   <script src="intro.js?v=luna-20261102-polish" defer></script>
   <title>LunaV — แสงเล็ก ๆ เพื่อโลกที่ชัดขึ้น</title>
 </head>
@@ -95,7 +95,7 @@
             <a class="button button-primary" href="#features"><span data-en="Explore LunaV">สำรวจ LunaV</span><svg class="icon"><use href="#icon-arrow"/></svg></a>
             <a class="button button-github" href="https://github.com/koomean/visionassistant" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg><span data-en="View project on GitHub">ดูโปรเจกต์บน GitHub</span></a>
           </div>
-          <p class="hero-footnote" data-en="LunaV 3.0.0 · An iPhone research prototype · SCiUS Forums 17">LunaV 3.0.0 · ต้นแบบงานวิจัยสำหรับ iPhone · SCiUS Forums 17</p>
+          <p class="hero-footnote" data-en="LunaV 3.0.0 · An iPhone research prototype">LunaV 3.0.0 · ต้นแบบงานวิจัยสำหรับ iPhone</p>
         </div>
         <div class="lunar-scene" aria-hidden="true">
           <div class="lunar-orbit orbit-outer"><span class="orbit-satellite"></span></div>
@@ -136,8 +136,8 @@
     </section>
 
     <section id="how" class="how-section section-space" aria-labelledby="how-title">
-      <div class="wrap">
-        <div class="section-heading centered reveal"><div class="section-kicker"><svg class="icon"><use href="#icon-star"/></svg><span data-en="From a moment to understanding">จากภาพตรงหน้า สู่ความเข้าใจ</span></div><h2 id="how-title" data-en="Hold to talk.&#10;Release to send.">กดค้างแล้วพูด&#10;ปล่อยปุ่มเพื่อส่ง</h2><p data-en="Each question captures a fresh photo while you speak. Release to submit; silence while holding does not send the question.">แต่ละคำถามถ่ายภาพใหม่พร้อมรับเสียง ปล่อยปุ่มเพื่อส่ง ความเงียบระหว่างกดค้างไม่ทำให้ส่งเอง</p></div>
+      <div class="wrap how-layout">
+        <div class="how-intro"><div class="section-heading reveal"><div class="section-kicker"><svg class="icon"><use href="#icon-star"/></svg><span data-en="From a moment to understanding">จากภาพตรงหน้า สู่ความเข้าใจ</span></div><h2 id="how-title" data-en="Hold to talk.&#10;Release to send.">กดค้างแล้วพูด&#10;ปล่อยปุ่มเพื่อส่ง</h2><p data-en="Each question captures a fresh photo while you speak. Release to submit; silence while holding does not send the question.">แต่ละคำถามถ่ายภาพใหม่พร้อมรับเสียง ปล่อยปุ่มเพื่อส่ง ความเงียบระหว่างกดค้างไม่ทำให้ส่งเอง</p></div></div>
         <ol class="journey">
           <li><span class="journey-node"><svg class="icon"><use href="#icon-camera"/></svg></span><span class="step-number">01</span><h3 data-en="Hold and talk">กดค้างแล้วพูด</h3><p data-en="Hold the centre button to capture a photo and record your voice together. Speak while holding; first allow camera and microphone access.">กดปุ่มกลางค้างเพื่อถ่ายภาพและรับเสียงพร้อมกัน พูดขณะถือปุ่มได้ ครั้งแรกต้องอนุญาตกล้องและไมโครโฟน</p></li>
           <li><span class="journey-node"><svg class="icon"><use href="#icon-voice"/></svg></span><span class="step-number">02</span><h3 data-en="Release to send">ปล่อยเพื่อส่ง</h3><p data-en="Release to stop recording and submit once the photo is ready. Record for up to two minutes; over-limit recordings are rejected.">ปล่อยปุ่มเพื่อหยุดเสียงและส่งเมื่อภาพพร้อม รับเสียงได้ไม่เกิน 2 นาที หากยาวเกินกำหนด ระบบจะแจ้งให้พูดสั้นลง</p></li>
@@ -199,6 +199,6 @@
     </section>
   </main>
 
-  <footer class="site-footer"><div class="wrap"><div class="footer-main"><div><a class="brand" href="#overview"><svg class="brand-icon"><use href="#icon-moon"/></svg><span>LunaV<span class="brand-dot">.</span></span></a><p data-en="A little light for a clearer world.">แสงเล็ก ๆ เพื่อโลกที่ชัดขึ้น</p></div><div class="footer-links"><a href="https://github.com/koomean/visionassistant">GitHub</a><a href="project-status.html" data-en="Project status">สถานะโปรเจกต์</a><a href="LICENSE" data-en="Licence">ไลเซนส์</a><a href="credits.html" data-en="Credits">เครดิต</a></div></div><div class="footer-sources"><span data-en="Built with">เทคโนโลยีที่ใช้</span><a href="https://github.com/QwenLM/Qwen3-VL">Qwen3-VL</a><a href="https://developer.apple.com/documentation/speech/dictationtranscriber">Apple Dictation</a><a href="https://github.com/ByteDance-Seed/Depth-Anything-3">Depth Anything 3</a><a href="https://developer.apple.com/documentation/avfaudio/avspeechsynthesizer">Apple speech</a><a href="https://github.com/ml-explore/mlx-swift-lm">MLX Swift</a><a href="https://developer.apple.com/documentation/vision">Apple Vision</a></div><div class="footer-bottom"><span>© 2026 Wachirawich Kripindakul · SCiUS Forums 17</span><button class="intro-replay" id="intro-replay" type="button" hidden><svg class="icon"><use href="#icon-moon"/></svg><span data-en="Replay introduction">ดูแอนิเมชันอีกครั้ง</span></button><button type="button" id="motion-toggle" aria-pressed="false"><span class="motion-indicator" aria-hidden="true"></span><span data-en="Reduce motion">ลดการเคลื่อนไหว</span></button><a href="#overview" class="back-top"><span data-en="Back to the stars">กลับไปดูดวงดาว</span><svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V4m-7 7 7-7 7 7"/></svg></a></div></div></footer>
+  <footer class="site-footer"><div class="wrap"><div class="footer-main"><div><a class="brand" href="#overview"><svg class="brand-icon"><use href="#icon-moon"/></svg><span>LunaV<span class="brand-dot">.</span></span></a><p data-en="A little light for a clearer world.">แสงเล็ก ๆ เพื่อโลกที่ชัดขึ้น</p></div><div class="footer-links"><a href="https://github.com/koomean/visionassistant">GitHub</a><a href="project-status.html" data-en="Project status">สถานะโปรเจกต์</a><a href="LICENSE" data-en="Licence">ไลเซนส์</a><a href="credits.html" data-en="Credits">เครดิต</a></div></div><div class="footer-sources"><span data-en="Built with">เทคโนโลยีที่ใช้</span><a href="https://github.com/QwenLM/Qwen3-VL">Qwen3-VL</a><a href="https://developer.apple.com/documentation/speech/dictationtranscriber">Apple Dictation</a><a href="https://github.com/ByteDance-Seed/Depth-Anything-3">Depth Anything 3</a><a href="https://developer.apple.com/documentation/avfaudio/avspeechsynthesizer">Apple speech</a><a href="https://github.com/ml-explore/mlx-swift-lm">MLX Swift</a><a href="https://developer.apple.com/documentation/vision">Apple Vision</a></div><div class="footer-bottom"><span>© 2026 Wachirawich Kripindakul</span><button class="intro-replay" id="intro-replay" type="button" hidden><svg class="icon"><use href="#icon-moon"/></svg><span data-en="Replay introduction">ดูแอนิเมชันอีกครั้ง</span></button><button type="button" id="motion-toggle" aria-pressed="false"><span class="motion-indicator" aria-hidden="true"></span><span data-en="Reduce motion">ลดการเคลื่อนไหว</span></button><a href="#overview" class="back-top"><span data-en="Back to the stars">กลับไปดูดวงดาว</span><svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V4m-7 7 7-7 7 7"/></svg></a></div></div></footer>
 </body>
 </html>

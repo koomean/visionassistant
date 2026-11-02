@@ -1,6 +1,6 @@
 # LunaV
 
-An on-device visual question assistant for iPhone, developed as a SCiUS Forums project. Hold to ask about a photograph, read and summarise text, estimate supported distances, and hear completed answers. The current app is **3.0.0 (build 3)** and uses Qwen3-VL-2B-Instruct through MLX/Metal, Apple Dictation for speech input, Apple system voices for answer playback, and Depth Anything 3 Metric on devices without LiDAR.
+An on-device visual question assistant and research prototype for iPhone. Hold to ask about a photograph, read and summarise text, estimate supported distances, and hear completed answers. The current app is **3.0.0 (build 3)** and uses Qwen3-VL-2B-Instruct through MLX/Metal, Apple Dictation for speech input, Apple system voices for answer playback, and Depth Anything 3 Metric on devices without LiDAR.
 
 [Visit the project website](https://lunavision.koomean.com/) · [View the project on GitHub](https://github.com/koomean/visionassistant)
 
@@ -71,7 +71,7 @@ AGPL permits commercial use when its terms are followed. An optional separate co
 
 ## ภาษาไทย
 
-LunaV เป็นผู้ช่วยถามตอบจากภาพบน iPhone ในโครงการ SCiUS Forums รุ่นปัจจุบัน **3.0.0 (บิลด์ 3)** ตรวจข้อมูลถึง **29 ตุลาคม 2026** กดปุ่มกลางค้างเพื่อถ่ายภาพ/depth และรับเสียงพร้อมกัน พูดระหว่างถือแล้วปล่อยเพื่อส่ง ความเงียบไม่ส่งเอง แตะสั้นถ่ายภาพอย่างเดียว รับเสียงไม่เกิน 2 นาที หากเกินจะปฏิเสธแทนการส่งเฉพาะต้นประโยค
+LunaV เป็นต้นแบบงานวิจัยผู้ช่วยถามตอบจากภาพบน iPhone รุ่นปัจจุบัน **3.0.0 (บิลด์ 3)** ตรวจข้อมูลถึง **29 ตุลาคม 2026** กดปุ่มกลางค้างเพื่อถ่ายภาพ/depth และรับเสียงพร้อมกัน พูดระหว่างถือแล้วปล่อยเพื่อส่ง ความเงียบไม่ส่งเอง แตะสั้นถ่ายภาพอย่างเดียว รับเสียงไม่เกิน 2 นาที หากเกินจะปฏิเสธแทนการส่งเฉพาะต้นประโยค
 
 ใช้ **ตั้งค่า → ภาษาแอพ** สลับหน้าจอไทย/อังกฤษทันทีและจำค่าข้ามการเปิดใหม่ ครอบคลุมป้าย สถานะ ข้อผิดพลาด และเครื่องมือต่าง ๆ แยกจากภาษา Dictation ภาษาคำตอบ และเสียงอ่านที่เลือกไว้ คำถาม คำตอบ และ OCR เดิมไม่ถูกแปล ส่วนสุดท้ายของ Settings เปิดหน้าเกี่ยวกับ แสดงรุ่นจาก bundle จริง 3.0.0/บิลด์ 3 ผู้จัดทำ และลิงก์เว็บไซต์
 

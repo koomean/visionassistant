@@ -13,7 +13,7 @@
     return [...document.querySelectorAll(`[${key}]`)].map(el => ({ el, attr, th: el.getAttribute(attr), en: el.getAttribute(key) }));
   });
   const metadata = {
-    th: { title: 'LunaV — แสงเล็ก ๆ เพื่อโลกที่ชัดขึ้น', description: 'LunaV ผู้ช่วยมองภาพบน iPhone ถามด้วยเสียง อ่านและฟังคำตอบ วัดระยะด้วย LiDAR หรือประมาณจาก Depth Anything 3 ประมวลผลบนเครื่อง โปรเจกต์วิจัย SCiUS Forums 17', locale: 'th_TH' },
+    th: { title: 'LunaV — แสงเล็ก ๆ เพื่อโลกที่ชัดขึ้น', description: 'LunaV ผู้ช่วยมองภาพบน iPhone ถามด้วยเสียง อ่านและฟังคำตอบ วัดระยะด้วย LiDAR หรือประมาณจาก Depth Anything 3 ประมวลผลบนเครื่อง แอปต้นแบบงานวิจัย', locale: 'th_TH' },
     en: { title: 'LunaV — A little light. A clearer world.', description: 'Meet LunaV, an on-device iPhone vision research prototype. Ask in your selected Thai or English language, hear Apple-voice answers, and explore LiDAR or DA3 distance estimates. Initial speech-language setup may require an Apple download.', locale: 'en_US' }
   };
   let language = 'th';
@@ -166,6 +166,8 @@
     }
     if (journey) {
       const rect = journey.getBoundingClientRect();
+      const trackHeight = journeySteps.length ? journeySteps[journeySteps.length - 1].offsetTop - journeySteps[0].offsetTop : 0;
+      journey.style.setProperty('--journey-track-height', `${trackHeight}px`);
       const progress = Math.min(1, Math.max(0, (innerHeight * .85 - rect.top) / (rect.height + innerHeight * .25)));
       root.style.setProperty('--journey', reduced ? '1' : progress.toFixed(4));
       journeySteps.forEach((step, index) => step.classList.toggle('is-reached', reduced || progress >= (index + .25) / journeySteps.length));
