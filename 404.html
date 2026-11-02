@@ -11,14 +11,15 @@
   <meta property="og:description" content="กลับไปสำรวจ LunaV หรือใช้เมนูเพื่อเลือกหน้าที่ต้องการ">
   <meta property="og:locale" content="th_TH">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <script>(()=>{let saved;try{saved=localStorage.getItem('lunav-language')}catch{}const requested=new URLSearchParams(location.search).get('lang');document.documentElement.lang=(requested||saved)==='en'?'en':'th'})();</script>
+  <script>(()=>{const root=document.documentElement;let saved,reduced=false;try{saved=localStorage.getItem('lunav-language');reduced=localStorage.getItem('lunav-reduce-motion')==='true'}catch{}const requested=new URLSearchParams(location.search).get('lang');root.lang=(requested||saved)==='en'?'en':'th';reduced=reduced||matchMedia('(prefers-reduced-motion: reduce)').matches;root.classList.toggle('lost-motion-reduced',reduced);if(!reduced&&typeof Element.prototype.animate==='function'){root.classList.add('lost-intro-pending');setTimeout(()=>root.classList.remove('lost-intro-pending'),4000)}})();</script>
   <link rel="preload" href="/assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css?v=luna-20261029">
   <link rel="stylesheet" href="/site-shell.css?v=luna-20261031-nav">
-  <link rel="stylesheet" href="/404.css?v=luna-20261031-nav">
+  <link rel="stylesheet" href="/404.css?v=luna-20261102-orbit">
   <script src="/site-shell.js?v=luna-20261031-nav" defer></script>
   <script src="/docs-language.js?v=luna-20261031-nav" defer></script>
+  <script src="/404.js?v=luna-20261102-orbit" defer></script>
   <title data-title-th="ไม่พบหน้านี้ — LunaV" data-title-en="Page not found — LunaV">ไม่พบหน้านี้ — LunaV</title>
 </head>
 <body class="not-found-page">
@@ -48,7 +49,7 @@
   <main id="main" class="lost-main">
     <div class="wrap lost-layout">
       <div class="lost-copy">
-        <p class="lost-label" data-en="404 · Page not found">404 · ไม่พบหน้านี้</p>
+        <p class="lost-label"><span class="lost-label-code">404</span><span class="lost-label-divider" aria-hidden="true">·</span><span class="lost-label-message" data-en="Page not found">ไม่พบหน้านี้</span></p>
         <h1 data-en="A little off orbit.">หน้านี้อยู่นอกวงโคจร</h1>
         <p class="lost-description" data-en="We couldn’t find the page you opened. Head back to LunaV, or use the menu above to find what you need.">ไม่พบหน้าที่คุณเปิด กลับไปสำรวจ LunaV หรือใช้เมนูด้านบนเพื่อเลือกส่วนที่ต้องการ</p>
         <div class="lost-actions">
@@ -64,7 +65,7 @@
       <div class="lost-scene" aria-hidden="true">
         <div class="lost-orbit"></div><div class="lost-orbit lost-orbit-inner"></div>
         <div class="lost-moon-body"><img class="lost-moon" src="/assets/moon.webp" width="1400" height="1400" alt=""><div class="lost-moon-shadow"></div></div>
-        <span class="lost-star">+</span><span class="lost-star lost-star-small">✦</span>
+        <div class="lost-star-track"><span class="lost-star">+</span></div><div class="lost-star-track lost-star-track-inner"><span class="lost-star lost-star-small">✦</span></div>
         <span class="lost-coordinate" data-en="A familiar orbit is one click away.">กลับสู่วงโคจรที่คุ้นเคยได้ในคลิกเดียว</span>
       </div>
     </div>
