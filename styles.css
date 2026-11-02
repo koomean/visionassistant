@@ -38,8 +38,9 @@ html:not(.js) .feature-tabs{display:none}
 @media(max-width:1100px){.how-layout{gap:65px}}
 @media(max-width:760px){
   .how-layout{grid-template-columns:1fr;gap:30px}
-  .how-intro{top:calc(var(--site-header-height,78px) + 12px);z-index:3;padding:12px 0 18px;background:var(--night)}
-  .how-intro::after{content:'';position:absolute;left:0;right:0;bottom:-20px;height:20px;background:linear-gradient(var(--night),transparent);pointer-events:none}
+  .how-intro{top:var(--site-header-height,78px);z-index:3;padding:12px 0 18px;background:var(--night)}
+  .how-intro::before{content:'';position:absolute;inset:0 calc((100% - 100vw)/2);z-index:-1;background:var(--night);pointer-events:none}
+  .how-intro::after{content:'';position:absolute;left:calc((100% - 100vw)/2);right:calc((100% - 100vw)/2);bottom:-20px;height:20px;background:linear-gradient(var(--night),transparent);pointer-events:none}
   .how-intro .section-kicker{font-size:.7rem;margin-bottom:10px}
   .how-intro h2{font-size:1.7rem}
   html[lang=th] .how-intro h2{font-size:1.65rem;line-height:1.45}
@@ -51,7 +52,7 @@ html:not(.js) .feature-tabs{display:none}
   .how-section .journey h3{font-size:1.02rem;margin-top:7px}
   .how-section .journey p{font-size:.8rem;margin-top:10px}
 }
-@media(max-width:760px) and (max-height:560px){.how-intro{position:static;padding:0}.how-intro::after{display:none}}
-@media print{.how-layout{display:block}.how-intro{position:static;background:none;padding:0}.how-intro::after{display:none}.how-section .journey{margin-top:25px}.how-section .journey>li{min-height:0;padding-bottom:25px;break-inside:avoid}.how-section .journey::before,.how-section .journey::after{display:none}}
+@media(max-width:760px) and (max-height:560px){.how-intro{position:static;padding:0}.how-intro::before,.how-intro::after{display:none}}
+@media print{.how-layout{display:block}.how-intro{position:static;background:none;padding:0}.how-intro::before,.how-intro::after{display:none}.how-section .journey{margin-top:25px}.how-section .journey>li{min-height:0;padding-bottom:25px;break-inside:avoid}.how-section .journey::before,.how-section .journey::after{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}.lunar-scene,.moon-body{transform:none!important}.js .reveal{opacity:1!important;transform:none!important}}
 @media print{.site-header,#starfield,.reading-progress,.lunar-scene,.privacy-art,.feature-tabs,.hero-bottom,#motion-toggle{display:none!important}body{background:#fff;color:#111;font-size:11pt}.wrap{width:100%}p,.section-heading>p,.section-lead,.feature-copy>p,.feature-note,.feature-points,.technology-row p,.privacy-list dt,.privacy-list dd,.status-heading>p,.validation-grid p,.license-grid p,.license-footnote,.opensource-heading>p,.footer-main p,.footer-sources,.footer-bottom,.faq-answer p{color:#333}.section-space{padding:25pt 0}h1,h2,h3{color:#111}.hero{min-height:0;padding:0}.hero-layout{display:block;padding:20pt 0}.js .feature-panel{display:grid!important;grid-template-columns:1fr 180px;min-height:0;gap:20px;break-inside:avoid}.app-preview img{width:130px}.app-preview figcaption{color:#333}.feature-panel{margin-top:20pt}.reveal{opacity:1!important;transform:none!important}.technology-layout,.privacy-layout,.status-heading,.faq-layout{display:block}.technology .section-heading{position:static}.technology-list{margin-top:25px}.privacy{background:none}.site-footer{background:none}.opensource{background:none}.button{color:#111;border:1px solid #555;background:transparent}.faq details .faq-answer{display:block}.license-grid{gap:30px;margin-top:30px}}

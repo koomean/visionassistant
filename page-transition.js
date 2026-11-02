@@ -7,6 +7,28 @@
   const contact = path => path === '/contact.html';
   const pages = new Set(['/', '/index.html', '/contact.html', '/project-status.html', '/licensing.html', '/credits.html', '/404.html']);
   let departing = false, navigationTimer, resetTimer;
+  const status = document.createElement('div');
+  status.className = 'page-transition-status';
+  status.setAttribute('role', 'status');
+  status.setAttribute('aria-live', 'polite');
+  status.setAttribute('aria-atomic', 'true');
+  status.setAttribute('aria-hidden', 'true');
+  const orbit = document.createElement('span');
+  orbit.className = 'page-transition-orbit';
+  orbit.setAttribute('aria-hidden', 'true');
+  const message = document.createElement('span');
+  message.className = 'page-transition-message';
+  status.append(orbit, message);
+  document.body.append(status);
+  function label(language) {
+    const english = language === 'en';
+    root.dataset.pageTransitionLabel = english ? 'Finding a path to the stars' : 'กำลังหาเส้นทางไปยังดวงดาว';
+    status.lang = english ? 'en' : 'th';
+    message.textContent = root.dataset.pageTransitionLabel;
+  }
+  // The head already knows the destination language before homepage translation runs.
+  label(root.dataset.pageTransitionLanguage || root.lang);
+  root.classList.add('page-transition-ready');
   function reduced() {
     try { return motion.matches || localStorage.getItem('lunav-reduce-motion') === 'true'; }
     catch { return motion.matches; }
@@ -16,8 +38,10 @@
     clearTimeout(resetTimer);
     departing = false;
     root.classList.remove('page-leaving', 'page-arriving', 'page-arrival-reveal');
+    status.setAttribute('aria-hidden', 'true');
   }
   if (root.classList.contains('page-arriving')) {
+    status.setAttribute('aria-hidden', 'false');
     // The head bootstrap covers the first paint. Reveal the fully parsed page.
     requestAnimationFrame(() => requestAnimationFrame(() => {
       root.classList.add('page-arrival-reveal');
@@ -34,16 +58,35 @@
     event.preventDefault();
     if (departing) return;
     departing = true;
+    label(root.lang);
+    status.setAttribute('aria-hidden', 'false');
     clearTimeout(resetTimer);
     root.classList.remove('page-arriving', 'page-arrival-reveal');
     root.classList.add('page-leaving');
     try { sessionStorage.setItem(key, JSON.stringify({ to: url.href, time: Date.now() })); } catch { /* Ordinary navigation works without storage. */ }
-    navigationTimer = setTimeout(() => location.assign(url.href), 180);
+    // Let the short status settle into view before the next document replaces it.
+    navigationTimer = setTimeout(() => {
+      location.assign(url.href);
+    }, 360);
     // A cancelled or failed navigation must not leave a curtain over the page.
     resetTimer = setTimeout(reset, 2200);
   });
   window.addEventListener('pageshow', event => { if (event.persisted) reset(); });
   window.addEventListener('pagehide', () => { clearTimeout(navigationTimer); clearTimeout(resetTimer); });
   window.addEventListener('beforeprint', reset);
-  motion.addEventListener('change', () => { if (motion.matches && !departing) reset(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && departing) reset(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && !departing) reset(); });
+  window.addEventListener('lunav:languagechange', event => label(event.detail?.language || root.lang));
+  function updateMotion() {
+    if (!reduced()) return;
+    if (!departing) reset();
+    else {
+      // Keep a requested navigation, but remove its visual motion immediately.
+      root.classList.remove('page-leaving', 'page-arriving', 'page-arrival-reveal');
+      status.setAttribute('aria-hidden', 'true');
+    }
+  }
+  motion.addEventListener('change', updateMotion);
+  window.addEventListener('storage', event => { if (event.key === 'lunav-reduce-motion') updateMotion(); });
+  window.addEventListener('lunav:motionchange', updateMotion);
 })();

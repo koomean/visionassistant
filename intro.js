@@ -14,9 +14,10 @@
   const pen = screen.querySelector('.intro-pen');
   const curtain = screen.querySelector('.intro-curtain');
   const protectedNodes = [...document.querySelectorAll('.site-header, main, .site-footer, .skip-link')];
+  const revealNodes = [...protectedNodes, document.querySelector('#starfield')].filter(Boolean);
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const animations = new Set();
-  let controller = null, failSafe = null, previousFocus = null, savedInert = [], keyboardInteraction = false;
+  let controller = null, failSafe = null, previousFocus = null, savedInert = [], keyboardInteraction = false, introWidth = 0;
   const reduced = () => motion.matches || root.classList.contains('motion-reduced');
 
   function animate(element, keyframes, options) {
@@ -40,7 +41,7 @@
     const returnFocus = screen.contains(document.activeElement);
     if (returnFocus && !keyboardInteraction) document.activeElement.blur();
     screen.hidden = true; screen.dataset.stage = 'complete';
-    root.classList.remove('intro-playing');
+    root.classList.remove('intro-playing', 'intro-revealing');
     savedInert.forEach(([node, wasInert]) => { node.inert = wasInert; }); savedInert = [];
     if (returnFocus && keyboardInteraction) {
       const destination = previousFocus && previousFocus !== document.body && previousFocus.isConnected ? previousFocus : target;
@@ -60,6 +61,8 @@
     keyboardInteraction = fromKeyboard;
     try {
       reset(); screen.hidden = false; screen.dataset.stage = 'wordmark';
+      const revealTargets = revealNodes.map(element => ({ element, opacity: getComputedStyle(element).opacity }));
+      introWidth = window.innerWidth;
       savedInert = protectedNodes.map(node => [node, node.inert]);
       savedInert.forEach(([node]) => { node.inert = true; });
       root.classList.add('intro-playing');
@@ -121,9 +124,11 @@
       const destination = target.getBoundingClientRect();
       lockup.style.left = `${from.left}px`; lockup.style.top = `${from.top}px`;
       lockup.style.transform = 'none'; lockup.style.transformOrigin = '0 0';
+      root.classList.add('intro-revealing');
       await Promise.all([
         animate(lockup, [{ transform: 'translate(0,0) scale(1)' }, { transform: `translate(${destination.left - from.left}px, ${destination.top - from.top}px) scale(${destination.width / from.width})` }], { duration: 900, easing: 'cubic-bezier(.65,0,.2,1)' }),
-        animate(curtain, [{ opacity: 1 }, { opacity: 0 }], { duration: 800, delay: 100, easing: 'ease-in-out' })
+        animate(curtain, [{ opacity: 1 }, { opacity: 0 }], { duration: 800, delay: 100, easing: 'ease-in-out' }),
+        ...revealTargets.map(({ element, opacity }) => animate(element, [{ opacity: 0 }, { opacity }], { duration: 800, delay: 100, easing: 'ease-in-out' }))
       ]);
       finish();
     } catch (error) {
@@ -137,7 +142,10 @@
     if (event.key === 'Escape') { event.preventDefault(); finish(); }
   });
   document.addEventListener('visibilitychange', () => { if (document.hidden) finish(); });
-  window.addEventListener('resize', () => { if (controller) finish(); }, { passive: true });
+  window.addEventListener('beforeprint', finish);
+  // Browser controls can change only the viewport height on iPhone. Keep playing;
+  // a width/orientation change still stops an intro whose docking geometry moved.
+  window.addEventListener('resize', () => { if (controller && Math.abs(innerWidth - introWidth) > 1) finish(); }, { passive: true });
   motion.addEventListener('change', () => { if (reduced()) finish(); });
   window.addEventListener('lunav:motionchange', () => { if (reduced()) finish(); });
   replay?.addEventListener('click', async event => {

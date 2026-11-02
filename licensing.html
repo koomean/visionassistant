@@ -16,13 +16,38 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <script>(()=>{let saved;try{saved=localStorage.getItem('lunav-language')}catch{}const requested=new URLSearchParams(location.search).get('lang');document.documentElement.lang=(requested||saved)==='en'?'en':'th'})();</script>
   <!-- page-transition:start -->
-  <script>(()=>{const root=document.documentElement;let reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;try{reduced=reduced||localStorage.getItem('lunav-reduce-motion')==='true'}catch{}if(!reduced&&location.pathname==='/contact.html'){root.classList.add('contact-entry-pending');setTimeout(()=>root.classList.remove('contact-entry-pending'),1200)}try{const key='lunav-page-transition',pending=JSON.parse(sessionStorage.getItem(key)||'null');sessionStorage.removeItem(key);if(!pending||pending.to!==location.href||Date.now()-pending.time>7000||reduced)return;root.dataset.pageTransitionArrival='true';root.classList.add('page-arriving');setTimeout(()=>root.classList.remove('page-arriving','page-arrival-reveal'),1500)}catch{}})();</script>
-  <script src="/page-transition.js?v=luna-20261102-polish" defer></script>
+  <script>(()=>{
+    const root=document.documentElement,key='lunav-page-transition';
+    let reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,saved,pending,storage=true;
+    try{saved=localStorage.getItem('lunav-language');reduced=reduced||localStorage.getItem('lunav-reduce-motion')==='true'}catch{}
+    const requested=new URLSearchParams(location.search).get('lang');
+    const language=(requested||saved||root.lang)==='en'?'en':'th';
+    root.dataset.pageTransitionLanguage=language;
+    root.dataset.pageTransitionLabel=language==='en'?'Finding a path to the stars':'กำลังหาเส้นทางไปยังดวงดาว';
+    if(!reduced&&location.pathname==='/contact.html'){root.classList.add('contact-entry-pending');setTimeout(()=>root.classList.remove('contact-entry-pending'),1200)}
+    try{
+      const value=sessionStorage.getItem(key);sessionStorage.removeItem(key);
+      if(value)try{pending=JSON.parse(value)}catch{}
+      if(!pending){sessionStorage.setItem(key+'-probe','1');sessionStorage.removeItem(key+'-probe')}
+    }catch{storage=false}
+    let fallback=false;
+    if(!storage)try{
+      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|404\.html)?$/.test(path);
+      fallback=from.origin===location.origin&&known(from.pathname)&&known(location.pathname)&&((from.pathname==='/contact.html')!==(location.pathname==='/contact.html'));
+    }catch{}
+    const age=pending?Date.now()-pending.time:Infinity;
+    if(!(pending&&pending.to===location.href&&age>=0&&age<7000)&&!fallback)return;
+    root.dataset.pageTransitionArrival='true';
+    if(reduced)return;
+    root.classList.add('page-arriving');
+    setTimeout(()=>root.classList.remove('page-arriving','page-arrival-reveal'),1500);
+  })();</script>
+  <script src="/page-transition.js?v=luna-20261103-stars" defer></script>
   <!-- page-transition:end -->
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=luna-20261102-steps">
-  <link rel="stylesheet" href="site-shell.css?v=luna-20261102-polish">
+  <link rel="stylesheet" href="styles.css?v=luna-20261103-safari">
+  <link rel="stylesheet" href="site-shell.css?v=luna-20261103-stars">
   <link rel="stylesheet" href="docs.css?v=luna-20261031-nav">
   <script src="site-shell.js?v=luna-20261031-nav" defer></script>
   <script src="docs-language.js?v=luna-20261031-nav" defer></script>

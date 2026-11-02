@@ -2,8 +2,14 @@
 html{scrollbar-gutter:stable}
 html.intro-playing{overflow:hidden;scroll-behavior:auto}
 .intro-screen[hidden]{display:none!important}
-.intro-screen{position:fixed;inset:0;z-index:200;isolation:isolate;overflow:hidden}
-.intro-curtain{position:absolute;inset:0;background:#080f20;will-change:opacity}
+.intro-screen{position:fixed;inset:0;z-index:200;isolation:isolate;overflow:visible}
+.intro-curtain{position:absolute;inset:0;background:var(--intro-backdrop,#080f20);will-change:opacity}
+.intro-curtain::after{content:'';position:absolute;inset:-100vmax -2px;background:var(--intro-backdrop,#080f20);z-index:-1;pointer-events:none}
+/* Safari may show document pixels beneath its glass controls, outside fixed layers.
+   Keep those pixels dark too, then reveal the document with one shared fade. */
+.intro-playing :is(.site-header,main,.site-footer,.skip-link,#starfield){opacity:0;visibility:hidden}
+.intro-revealing{--intro-backdrop:transparent}
+.intro-revealing :is(.site-header,main,.site-footer,.skip-link,#starfield){visibility:visible}
 .intro-curtain::before{content:'';position:absolute;width:min(90vw,680px);aspect-ratio:1;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(83,107,162,.15),transparent 67%)}
 .intro-orbit{position:absolute;left:50%;top:50%;width:min(84vw,510px);aspect-ratio:1;transform:translate(-50%,-50%) rotate(-24deg);border:1px solid rgba(167,189,237,.1);border-radius:50%;pointer-events:none}
 .intro-orbit::before{content:'';position:absolute;inset:25px;border:1px dashed rgba(167,189,237,.055);border-radius:50%}
@@ -38,7 +44,7 @@ html.intro-playing{overflow:hidden;scroll-behavior:auto}
 .motion-reduced .privacy-art,.motion-reduced .app-preview img{transform:none!important;will-change:auto}
 @media(max-width:640px){.intro-lockup{gap:24px;top:47%}.intro-moon{width:72px;height:72px}.intro-orbit{width:88vw}.app-preview img{transform:translateY(var(--preview-shift,0px)) rotate(1deg)}.footer-bottom .intro-replay{margin-right:15px}}
 @media(prefers-reduced-motion:reduce){.intro-screen{display:none!important}.privacy-art,.app-preview img{transform:none!important;will-change:auto}}
-@media print{.intro-screen,.intro-replay{display:none!important}.privacy-art,.app-preview img{transform:none!important}}
+@media print{.intro-screen,.intro-replay{display:none!important}.intro-playing main,.intro-playing .site-footer{opacity:1!important;visibility:visible!important}.privacy-art,.app-preview img{transform:none!important}}
 .intro-replay[hidden]{display:none!important}
 
 .intro-screen:focus{outline:none}
