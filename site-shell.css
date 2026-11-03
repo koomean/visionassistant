@@ -7,6 +7,7 @@
 html::before,html::after{content:'';position:fixed;inset:0;z-index:1000;pointer-events:none;opacity:0;transition:opacity 180ms ease-in-out}
 html::before{inset:-96px calc(-96px - env(safe-area-inset-right,0px)) calc(-96px - env(safe-area-inset-bottom,0px)) calc(-96px - env(safe-area-inset-left,0px));top:calc(-96px - env(safe-area-inset-top,0px));background:#080f20}
 html::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480' viewBox='0 0 480 480'%3E%3Cg fill='%23c5d3ef' fill-opacity='.55'%3E%3Ccircle cx='28' cy='62' r='1'/%3E%3Ccircle cx='153' cy='30' r='.7'/%3E%3Ccircle cx='309' cy='93' r='1.1'/%3E%3Ccircle cx='438' cy='38' r='.8'/%3E%3Ccircle cx='91' cy='193' r='.8'/%3E%3Ccircle cx='230' cy='158' r='.7'/%3E%3Ccircle cx='399' cy='223' r='1'/%3E%3Ccircle cx='39' cy='332' r='.8'/%3E%3Ccircle cx='183' cy='289' r='1.1'/%3E%3Ccircle cx='332' cy='361' r='.8'/%3E%3Ccircle cx='115' cy='451' r='.7'/%3E%3Ccircle cx='437' cy='433' r='1'/%3E%3C/g%3E%3Cg stroke='%23dac7a0' stroke-opacity='.5' stroke-width='.7'%3E%3Cpath d='M358 145v8m-4-4h8M264 416v7m-3.5-3.5h7'/%3E%3C/g%3E%3C/svg%3E")}
+html.page-positioning{scroll-behavior:auto!important}
 html.page-leaving::before,html.page-arriving::before{opacity:1}
 html.page-leaving::after,html.page-arriving::after{opacity:1}
 html.page-arriving.page-arrival-reveal::before,html.page-arriving.page-arrival-reveal::after{opacity:0;transition-duration:240ms}

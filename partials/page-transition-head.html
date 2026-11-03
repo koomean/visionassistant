@@ -20,10 +20,16 @@
     }catch{}
     const age=pending?Date.now()-pending.time:Infinity;
     if(!(pending&&pending.to===location.href&&age>=0&&age<7000)&&!fallback)return;
+    const direction=location.pathname==='/contact.html'?'outbound':'return';
+    const returnHome=direction==='return'&&(location.pathname==='/'||location.pathname==='/index.html');
+    root.dataset.pageTransitionDirection=direction;
+    root.dataset.pageTransitionLabel=direction==='return'?(language==='en'?'Taking you back to the stars':'กำลังพากลับสู่ดวงดาว'):(language==='en'?'Finding a path to the stars':'กำลังหาเส้นทางไปยังดวงดาว');
+    if(returnHome)root.dataset.pageTransitionReturnHome='true';
     root.dataset.pageTransitionArrival='true';
     if(reduced)return;
     root.classList.add('page-arriving');
-    setTimeout(()=>root.classList.remove('page-arriving','page-arrival-reveal'),1500);
+    if(returnHome)root.classList.add('page-positioning');
+    setTimeout(()=>{if(!root.dataset.pageTransitionManaged)root.classList.remove('page-arriving','page-arrival-reveal','page-positioning')},returnHome?5000:1500);
   })();</script>
-  <script src="/page-transition.js?v=luna-20261103-stars" defer></script>
+  <script src="/page-transition.js?v=luna-20261103-return" defer></script>
   <!-- page-transition:end -->
