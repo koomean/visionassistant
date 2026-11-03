@@ -157,9 +157,9 @@ def render_page(source, target, title_en, title_th, description_en, description_
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css?v=luna-20261103-safari">
-  <link rel="stylesheet" href="site-shell.css?v=luna-20261103-safearea">
+  <link rel="stylesheet" href="site-shell.css?v=luna-20261103-paint">
   <link rel="stylesheet" href="docs.css?v=luna-20261031-nav">
-  <script src="site-shell.js?v=luna-20261031-nav" defer></script>
+  <script src="site-shell.js?v=luna-20261103-paint" defer></script>
   <script src="docs-language.js?v=luna-20261031-nav" defer></script>
   <title data-title-th="{escape(title_th, quote=True)} — LunaV" data-title-en="{escape(title_en, quote=True)} — LunaV">{escape(title_th)} — LunaV</title>
 </head>
