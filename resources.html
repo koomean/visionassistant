@@ -1,0 +1,190 @@
+<!doctype html>
+<!-- Copyright (C) 2026 Wachirawich Kripindakul. SPDX-License-Identifier: AGPL-3.0-or-later. See LICENSE. -->
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080f20">
+  <meta name="description" content="แผนผังการทำงาน สถานะโครงการ สิทธิ์ใช้งาน และข้อมูลเบื้องหลัง LunaV" data-description-th="แผนผังการทำงาน สถานะโครงการ สิทธิ์ใช้งาน และข้อมูลเบื้องหลัง LunaV" data-description-en="Explore LunaV's system flow, project status, licensing, and the people and tools behind it.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ข้อมูลเพิ่มเติม — LunaV">
+  <meta property="og:description" content="แผนผังการทำงาน สถานะโครงการ สิทธิ์ใช้งาน และข้อมูลเบื้องหลัง LunaV">
+  <meta property="og:locale" content="th_TH">
+  <meta property="og:url" content="https://lunavision.koomean.com/resources.html">
+  <meta property="og:image" content="https://lunavision.koomean.com/assets/social.jpg">
+  <link rel="canonical" href="https://lunavision.koomean.com/resources.html">
+  <!-- page-transition:start -->
+  <script>(()=>{
+    const root=document.documentElement,key='lunav-page-transition';
+    let reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,saved,pending,storage=true;
+    try{saved=localStorage.getItem('lunav-language');reduced=reduced||localStorage.getItem('lunav-reduce-motion')==='true'}catch{}
+    const requested=new URLSearchParams(location.search).get('lang');
+    const language=(requested||saved||root.lang)==='en'?'en':'th';
+    root.dataset.pageTransitionLanguage=language;
+    root.dataset.pageTransitionLabel=language==='en'?'Finding a path to the stars':'กำลังหาเส้นทางไปยังดวงดาว';
+    if(!reduced&&location.pathname==='/contact.html'){root.classList.add('contact-entry-pending');setTimeout(()=>root.classList.remove('contact-entry-pending'),1200)}
+    try{
+      const value=sessionStorage.getItem(key);sessionStorage.removeItem(key);
+      if(value)try{pending=JSON.parse(value)}catch{}
+      if(!pending){sessionStorage.setItem(key+'-probe','1');sessionStorage.removeItem(key+'-probe')}
+    }catch{storage=false}
+    let fallback=false;
+    if(!storage)try{
+      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|404\.html)?$/.test(path);
+      fallback=from.origin===location.origin&&known(from.pathname)&&known(location.pathname)&&((from.pathname==='/contact.html')!==(location.pathname==='/contact.html'));
+    }catch{}
+    const age=pending?Date.now()-pending.time:Infinity;
+    if(!(pending&&pending.to===location.href&&age>=0&&age<7000)&&!fallback)return;
+    const direction=location.pathname==='/contact.html'?'outbound':'return';
+    const returnHome=direction==='return'&&(location.pathname==='/'||location.pathname==='/index.html');
+    root.dataset.pageTransitionDirection=direction;
+    root.dataset.pageTransitionLabel=direction==='return'?(language==='en'?'Taking you back to the stars':'กำลังพากลับสู่ดวงดาว'):(language==='en'?'Finding a path to the stars':'กำลังหาเส้นทางไปยังดวงดาว');
+    if(returnHome)root.dataset.pageTransitionReturnHome='true';
+    root.dataset.pageTransitionArrival='true';
+    if(reduced)return;
+    root.classList.add('page-arriving');
+    if(returnHome)root.classList.add('page-positioning');
+    setTimeout(()=>{if(!root.dataset.pageTransitionManaged)root.classList.remove('page-arriving','page-arrival-reveal','page-positioning')},returnHome?5000:1500);
+  })();</script>
+  <script src="/page-transition.js?v=luna-20261110-more" defer></script>
+  <!-- page-transition:end -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>(()=>{let saved;try{saved=localStorage.getItem('lunav-language')}catch{}const requested=new URLSearchParams(location.search).get('lang');document.documentElement.lang=(requested||saved)==='en'?'en':'th'})();</script>
+  <link rel="stylesheet" href="styles.css?v=luna-20261103-safari">
+  <link rel="stylesheet" href="site-shell.css?v=luna-20261110-more">
+  <link rel="stylesheet" href="resources.css">
+  <script src="site-shell.js?v=luna-20261110-more" defer></script>
+  <script src="docs-language.js?v=luna-20261031-nav" defer></script>
+  <title data-title-th="ข้อมูลเพิ่มเติม — LunaV" data-title-en="Resources — LunaV">ข้อมูลเพิ่มเติม — LunaV</title>
+</head>
+<body class="resources-page">
+  <a class="skip-link" href="#main" data-en="Skip to content">ข้ามไปยังเนื้อหา</a>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="resource-moon" viewBox="0 0 32 32"><path d="M26 19.1A12 12 0 0 1 12.9 6 12 12 0 1 0 26 19.1Z"/><path d="m23 3 .9 3.1L27 7l-3.1.9L23 11l-.9-3.1L19 7l3.1-.9Z"/></symbol>
+    <symbol id="resource-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="resource-flow" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="7" height="6" rx="1.5"/><rect x="15" y="16" width="7" height="6" rx="1.5"/><path d="M12 8v4M5.5 16v-4h13v4"/></symbol>
+    <symbol id="resource-status" viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l4-5 4 2 4-7"/></symbol>
+    <symbol id="resource-license" viewBox="0 0 24 24"><path d="M12 3 3 7v6c0 4 9 8 9 8s9-4 9-8V7Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="resource-star" viewBox="0 0 24 24"><path d="m12 2 2.3 7.7L22 12l-7.7 2.3L12 22l-2.3-7.7L2 12l7.7-2.3Z"/></symbol>
+    <symbol id="resource-contact" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="resource-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="resource-voice" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11v1a7 7 0 0 0 14 0v-1m-7 8v3m-3 0h6"/></symbol>
+    <symbol id="resource-text" viewBox="0 0 24 24"><path d="M4 8V4h4m8 0h4v4M4 16v4h4m8 0h4v-4M8 9h8m-8 4h8m-8 4h4"/></symbol>
+    <symbol id="resource-depth" viewBox="0 0 24 24"><path d="m3 8 9-5 9 5-9 5-9-5Zm0 4 9 5 9-5M3 16l9 5 9-5"/></symbol>
+  </svg>
+  <!-- site-header:start -->
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="/#overview" data-home-anchor="overview" aria-label="LunaV หน้าแรก" data-en-aria="LunaV home"><svg class="brand-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M26 19.1A12 12 0 0 1 12.9 6 12 12 0 1 0 26 19.1Z"/><path d="m23 3 .9 3.1L27 7l-3.1.9L23 11l-.9-3.1L19 7l3.1-.9Z"/></svg><span>LunaV<span class="brand-dot">.</span></span></a>
+      <nav id="navigation" aria-label="เมนูหลัก" data-en-aria="Main navigation">
+        <a href="/#features" data-home-anchor="features" data-en="Explore">ความสามารถ</a>
+        <a href="/#how" data-home-anchor="how" data-en="How it works">วิธีทำงาน</a>
+        <a href="/#models" data-home-anchor="models" data-en="Technology">เทคโนโลยี</a>
+        <a href="/#privacy" data-home-anchor="privacy" data-en="Privacy">ความเป็นส่วนตัว</a>
+        <a href="/#opensource" data-home-anchor="opensource" data-en="Open source">โอเพนซอร์ส</a>
+        <a href="/contact.html" data-en="Contact">ติดต่อ</a>
+        <div class="nav-more">
+          <button class="nav-more-toggle" type="button" aria-expanded="false" aria-controls="more-navigation"><span data-en="More">อื่น ๆ</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
+          <div class="nav-more-panel" id="more-navigation" hidden>
+            <div class="nav-more-heading"><span data-en="A closer look at LunaV">รู้จัก LunaV ให้มากขึ้น</span><p data-en="Project details, documentation and credits.">ข้อมูลโครงการ เอกสาร และที่มาของสิ่งที่ใช้</p></div>
+            <div class="nav-more-grid">
+              <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="System architecture">แผนผังการทำงาน</strong><small data-en="From an image to an on-device answer">จากภาพสู่คำตอบบน iPhone</small></span></a>
+              <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Implementation and recorded checks">สิ่งที่ทำได้และผลการตรวจที่บันทึกไว้</small></span></a>
+              <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="Open source and commercial enquiries">โอเพนซอร์สและข้อตกลงเชิงพาณิชย์</small></span></a>
+              <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, imagery and typefaces">โมเดล ภาพประกอบ และฟอนต์</small></span></a>
+            </div>
+            <a class="nav-more-all" href="/resources.html" data-secondary-link><span data-en="All project resources">ดูข้อมูลเพิ่มเติมทั้งหมด</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <noscript><a class="nav-more-fallback" href="/resources.html">ข้อมูลเพิ่มเติม / Resources</a></noscript>
+      </nav>
+      <div class="header-actions">
+        <div class="language-switch" role="group" aria-label="เลือกภาษา" data-en-aria="Choose language">
+          <button type="button" data-language="th" aria-pressed="true" lang="th">TH</button><span aria-hidden="true">/</span><button type="button" data-language="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+        <a class="github-link" href="https://github.com/koomean/visionassistant" aria-label="LunaV บน GitHub" data-en-aria="LunaV on GitHub"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 .5a12 12 0 0 0-3.793 23.385c.6.11.82-.26.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.839 1.237 1.839 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.776.418-1.305.762-1.605-2.665-.304-5.467-1.333-5.467-5.932 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.52 11.52 0 0 1 12 6.3c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.654 1.652.243 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.625-5.479 5.922.43.372.823 1.102.823 2.222v3.293c0 .32.216.694.825.576A12 12 0 0 0 12 .5Z"/></svg></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="เปิดเมนู" data-en-aria="Toggle menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <!-- site-header:end -->
+
+  <main class="resources-main" id="main">
+    <div class="wrap">
+      <header class="resources-intro">
+        <div class="resources-intro-copy">
+          <p class="section-kicker"><span class="tiny-orbit" aria-hidden="true"></span><span data-en="Behind LunaV">เบื้องหลัง LunaV</span></p>
+          <h1 data-en="A closer look at LunaV.">รู้จัก LunaV
+ให้ลึกขึ้นอีกนิด</h1>
+          <p class="resources-lead" data-en="The details behind the app: how it works, where the project stands, and what you need to know before building on it.">รวมรายละเอียดเบื้องหลังแอป ตั้งแต่วิธีทำงานและสถานะโครงการ ไปจนถึงข้อมูลสำหรับนำไปใช้และพัฒนาต่อ</p>
+        </div>
+        <div class="resources-lunar" aria-hidden="true"><div class="resources-orbit"></div><img src="assets/moon.webp" width="1400" height="1400" alt=""><span class="resources-spark">✦</span><span class="resources-small-spark">✧</span></div>
+      </header>
+
+      <section class="resource-directory" aria-labelledby="directory-title">
+        <div class="resources-directory-heading">
+          <h2 id="directory-title" data-en="Explore the details">เลือกอ่านเรื่องที่สนใจ</h2>
+          <p data-en="One place for project information and references.">ข้อมูลโครงการและเอกสารอ้างอิงในที่เดียว</p>
+        </div>
+
+        <a class="resource-feature" href="lunavision-architecture.html">
+          <div class="resource-feature-copy">
+            <span class="resource-category" data-en="Inside the app">การทำงานของแอป</span>
+            <h3 data-en="From a photo to a spoken answer">จากภาพหนึ่งภาพ
+สู่คำตอบที่ฟังได้</h3>
+            <p data-en="Follow the path from camera and voice to on-device image understanding, text reading, distance information, and an answer.">ตามเส้นทางจากกล้องและเสียง สู่การเข้าใจภาพ อ่านข้อความ สำรวจระยะ และตอบกลับบน iPhone</p>
+            <span class="resource-open"><span data-en="Explore the system flow">ดูแผนผังการทำงาน</span><svg class="icon" aria-hidden="true"><use href="#resource-arrow"/></svg></span>
+          </div>
+          <div class="resource-system" aria-hidden="true">
+            <span class="resource-system-center"><svg class="resource-system-moon" viewBox="0 0 32 32"><use href="#resource-moon"/></svg><span>LunaV<span class="brand-dot">.</span></span></span>
+            <span class="resource-tool resource-tool-voice"><svg class="icon"><use href="#resource-voice"/></svg><span>Apple Dictation</span></span>
+            <span class="resource-tool resource-tool-eye"><svg class="icon"><use href="#resource-eye"/></svg><span>Qwen3-VL</span></span>
+            <span class="resource-tool resource-tool-text"><svg class="icon"><use href="#resource-text"/></svg><span>Apple Vision</span></span>
+            <span class="resource-tool resource-tool-depth"><svg class="icon"><use href="#resource-depth"/></svg><span>LiDAR / DA3</span></span>
+          </div>
+        </a>
+
+        <div class="resource-grid">
+          <a class="resource-link" href="project-status.html">
+            <span class="resource-glyph"><svg class="icon" aria-hidden="true"><use href="#resource-status"/></svg></span>
+            <div><h3 data-en="Project status">สถานะโครงการ</h3><p data-en="Current implementation, recorded checks, and the limits of the available evidence.">สิ่งที่แอปทำได้ในปัจจุบัน ผลตรวจที่บันทึกไว้ และขอบเขตของหลักฐาน</p><span class="resource-link-caption" data-en="Implementation &amp; validation">การพัฒนาและผลตรวจ</span></div>
+            <svg class="icon resource-link-arrow" aria-hidden="true"><use href="#resource-arrow"/></svg>
+          </a>
+          <a class="resource-link" href="licensing.html">
+            <span class="resource-glyph"><svg class="icon" aria-hidden="true"><use href="#resource-license"/></svg></span>
+            <div><h3 data-en="Licensing">สิทธิ์การใช้งาน</h3><p data-en="Read the AGPL-3.0 terms and information about commercial licensing.">อ่านเงื่อนไข AGPL-3.0 และข้อมูลเกี่ยวกับการขอสิทธิ์ใช้งานเชิงพาณิชย์</p><span class="resource-link-caption" data-en="Use, share &amp; build">ใช้งาน แบ่งปัน และพัฒนาต่อ</span></div>
+            <svg class="icon resource-link-arrow" aria-hidden="true"><use href="#resource-arrow"/></svg>
+          </a>
+          <a class="resource-link" href="credits.html">
+            <span class="resource-glyph"><svg class="icon" aria-hidden="true"><use href="#resource-star"/></svg></span>
+            <div><h3 data-en="Credits &amp; sources">เครดิตและแหล่งที่มา</h3><p data-en="Models, libraries, fonts, and visual assets that help make LunaV possible.">โมเดล ไลบรารี ฟอนต์ และภาพประกอบที่เป็นส่วนหนึ่งของ LunaV</p><span class="resource-link-caption" data-en="People &amp; tools behind the project">ผู้สร้างและเครื่องมือเบื้องหลัง</span></div>
+            <svg class="icon resource-link-arrow" aria-hidden="true"><use href="#resource-arrow"/></svg>
+          </a>
+          <a class="resource-link" href="contact.html">
+            <span class="resource-glyph"><svg class="icon" aria-hidden="true"><use href="#resource-contact"/></svg></span>
+            <div><h3 data-en="Get in touch">ติดต่อผู้พัฒนา</h3><p data-en="Ask about the project, share feedback, or discuss using LunaV in your work.">สอบถามข้อมูล ส่งข้อเสนอแนะ หรือพูดคุยเรื่องการนำ LunaV ไปใช้กับงานของคุณ</p><span class="resource-link-caption" data-en="Questions &amp; collaboration">คำถามและความร่วมมือ</span></div>
+            <svg class="icon resource-link-arrow" aria-hidden="true"><use href="#resource-arrow"/></svg>
+          </a>
+        </div>
+      </section>
+
+      <aside class="resources-source">
+        <svg class="icon" aria-hidden="true"><use href="#resource-flow"/></svg>
+        <div><h2 data-en="Want to explore the source?">อยากดูรายละเอียดในซอร์สโค้ด?</h2><p data-en="The website source, project notices, and supporting documentation are available on GitHub.">ซอร์สเว็บไซต์ ประกาศของโครงการ และเอกสารประกอบเปิดให้อ่านได้บน GitHub</p></div>
+        <a class="text-link" href="https://github.com/koomean/visionassistant"><span data-en="Open GitHub">เปิด GitHub</span><svg class="icon" aria-hidden="true"><use href="#resource-arrow"/></svg></a>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-main">
+        <div><a class="brand" href="index.html" aria-label="LunaV หน้าแรก" data-en-aria="LunaV home"><svg class="brand-icon" viewBox="0 0 32 32" aria-hidden="true"><use href="#resource-moon"/></svg><span>LunaV<span class="brand-dot">.</span></span></a><p data-en="A little light for a clearer world.">แสงเล็ก ๆ เพื่อโลกที่ชัดขึ้น</p></div>
+        <nav class="footer-links" aria-label="ลิงก์ท้ายหน้า" data-en-aria="Footer navigation"><a href="index.html" data-en="Home">หน้าแรก</a><a href="resources.html" aria-current="page" data-en="Resources">ข้อมูลเพิ่มเติม</a><a href="contact.html" data-en="Contact">ติดต่อ</a><a href="https://github.com/koomean/visionassistant">GitHub</a></nav>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Wachirawich Kripindakul</span><a class="back-top" href="#main"><span data-en="Back to top">กลับไปด้านบน</span><svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V4m-7 7 7-7 7 7"/></svg></a></div>
+    </div>
+  </footer>
+</body>
+</html>
+

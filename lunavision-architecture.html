@@ -1,0 +1,294 @@
+<!doctype html>
+<!-- Copyright (C) 2026 Wachirawich Kripindakul. SPDX-License-Identifier: AGPL-3.0-or-later. See LICENSE. -->
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080f20">
+  <meta name="description" content="LunaV เปลี่ยนภาพและคำถามให้เป็นคำตอบบน iPhone ด้วย AI, OCR และการวัดระยะบนอุปกรณ์" data-description-th="LunaV เปลี่ยนภาพและคำถามให้เป็นคำตอบบน iPhone ด้วย AI, OCR และการวัดระยะบนอุปกรณ์" data-description-en="How LunaV turns photos and questions into answers on iPhone using on-device AI, OCR, and depth.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LunaV — จากภาพรอบตัว สู่คำตอบที่ฟังได้">
+  <meta property="og:description" content="แผนผังการทำงานของ LunaV บน iPhone">
+  <meta property="og:image" content="https://lunavision.koomean.com/assets/social.jpg">
+  <meta property="og:locale" content="th_TH">
+  <meta property="og:url" content="https://lunavision.koomean.com/lunavision-architecture.html">
+  <link rel="canonical" href="https://lunavision.koomean.com/lunavision-architecture.html">
+  <!-- page-transition:start -->
+  <script>(()=>{
+    const root=document.documentElement,key='lunav-page-transition';
+    let reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,saved,pending,storage=true;
+    try{saved=localStorage.getItem('lunav-language');reduced=reduced||localStorage.getItem('lunav-reduce-motion')==='true'}catch{}
+    const requested=new URLSearchParams(location.search).get('lang');
+    const language=(requested||saved||root.lang)==='en'?'en':'th';
+    root.dataset.pageTransitionLanguage=language;
+    root.dataset.pageTransitionLabel=language==='en'?'Finding a path to the stars':'กำลังหาเส้นทางไปยังดวงดาว';
+    if(!reduced&&location.pathname==='/contact.html'){root.classList.add('contact-entry-pending');setTimeout(()=>root.classList.remove('contact-entry-pending'),1200)}
+    try{
+      const value=sessionStorage.getItem(key);sessionStorage.removeItem(key);
+      if(value)try{pending=JSON.parse(value)}catch{}
+      if(!pending){sessionStorage.setItem(key+'-probe','1');sessionStorage.removeItem(key+'-probe')}
+    }catch{storage=false}
+    let fallback=false;
+    if(!storage)try{
+      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|404\.html)?$/.test(path);
+      fallback=from.origin===location.origin&&known(from.pathname)&&known(location.pathname)&&((from.pathname==='/contact.html')!==(location.pathname==='/contact.html'));
+    }catch{}
+    const age=pending?Date.now()-pending.time:Infinity;
+    if(!(pending&&pending.to===location.href&&age>=0&&age<7000)&&!fallback)return;
+    const direction=location.pathname==='/contact.html'?'outbound':'return';
+    const returnHome=direction==='return'&&(location.pathname==='/'||location.pathname==='/index.html');
+    root.dataset.pageTransitionDirection=direction;
+    root.dataset.pageTransitionLabel=direction==='return'?(language==='en'?'Taking you back to the stars':'กำลังพากลับสู่ดวงดาว'):(language==='en'?'Finding a path to the stars':'กำลังหาเส้นทางไปยังดวงดาว');
+    if(returnHome)root.dataset.pageTransitionReturnHome='true';
+    root.dataset.pageTransitionArrival='true';
+    if(reduced)return;
+    root.classList.add('page-arriving');
+    if(returnHome)root.classList.add('page-positioning');
+    setTimeout(()=>{if(!root.dataset.pageTransitionManaged)root.classList.remove('page-arriving','page-arrival-reveal','page-positioning')},returnHome?5000:1500);
+  })();</script>
+  <script src="/page-transition.js?v=luna-20261110-more" defer></script>
+  <!-- page-transition:end -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/moon.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/app-v3-camera-en.webp" as="image" fetchpriority="high">
+  <title data-title-th="วิธีทำงานของ LunaV — จากภาพรอบตัว สู่คำตอบที่ฟังได้" data-title-en="How LunaV works — From a photo to an answer you can hear">วิธีทำงานของ LunaV — จากภาพรอบตัว สู่คำตอบที่ฟังได้</title>
+  <link rel="stylesheet" href="lunavision-architecture.css">
+  <link rel="stylesheet" href="site-shell.css?v=luna-20261110-more">
+  <script>(()=>{let saved;try{saved=localStorage.getItem('lunav-language')}catch{}const requested=new URLSearchParams(location.search).get('lang');document.documentElement.lang=(requested||saved)==='en'?'en':'th'})();</script>
+  <script src="site-shell.js?v=luna-20261110-more" defer></script>
+  <script src="docs-language.js?v=luna-20261031-nav" defer></script>
+</head>
+<body class="architecture-page">
+  <a class="skip-link" href="#main"><span data-en="Skip to content">ข้ามไปยังเนื้อหา</span></a>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-moon" viewBox="0 0 32 32"><path d="M26 19.1A12 12 0 0 1 12.9 6 12 12 0 1 0 26 19.1Z"/><path d="m23 3 .9 3.1L27 7l-3.1.9L23 11l-.9-3.1L19 7l3.1-.9Z"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="icon-camera" viewBox="0 0 24 24"><path d="M8 5 9.5 3h5L16 5h4a2 2 0 0 1 2 2v12H2V7a2 2 0 0 1 2-2Z"/><circle cx="12" cy="12" r="4"/></symbol>
+    <symbol id="icon-voice" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11v1a7 7 0 0 0 14 0v-1m-7 8v3m-3 0h6"/></symbol>
+    <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="icon-text" viewBox="0 0 24 24"><path d="M4 8V4h4m8 0h4v4M4 16v4h4m8 0h4v-4M8 9h8m-8 4h8m-8 4h4"/></symbol>
+    <symbol id="icon-depth" viewBox="0 0 24 24"><path d="m3 8 9-5 9 5-9 5-9-5Zm0 4 9 5 9-5M3 16l9 5 9-5"/></symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol>
+    <symbol id="icon-speaker" viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6l-5 4zM17 9a5 5 0 0 1 0 6m2-9a9 9 0 0 1 0 12"/></symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24"><path d="m12 2 2.3 7.7L22 12l-7.7 2.3L12 22l-2.3-7.7L2 12l7.7-2.3Z"/></symbol>
+  </svg>
+
+  <!-- site-header:start -->
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="/#overview" data-home-anchor="overview" aria-label="LunaV หน้าแรก" data-en-aria="LunaV home"><svg class="brand-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M26 19.1A12 12 0 0 1 12.9 6 12 12 0 1 0 26 19.1Z"/><path d="m23 3 .9 3.1L27 7l-3.1.9L23 11l-.9-3.1L19 7l3.1-.9Z"/></svg><span>LunaV<span class="brand-dot">.</span></span></a>
+      <nav id="navigation" aria-label="เมนูหลัก" data-en-aria="Main navigation">
+        <a href="/#features" data-home-anchor="features" data-en="Explore">ความสามารถ</a>
+        <a href="/#how" data-home-anchor="how" data-en="How it works">วิธีทำงาน</a>
+        <a href="/#models" data-home-anchor="models" data-en="Technology">เทคโนโลยี</a>
+        <a href="/#privacy" data-home-anchor="privacy" data-en="Privacy">ความเป็นส่วนตัว</a>
+        <a href="/#opensource" data-home-anchor="opensource" data-en="Open source">โอเพนซอร์ส</a>
+        <a href="/contact.html" data-en="Contact">ติดต่อ</a>
+        <div class="nav-more">
+          <button class="nav-more-toggle" type="button" aria-expanded="false" aria-controls="more-navigation"><span data-en="More">อื่น ๆ</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
+          <div class="nav-more-panel" id="more-navigation" hidden>
+            <div class="nav-more-heading"><span data-en="A closer look at LunaV">รู้จัก LunaV ให้มากขึ้น</span><p data-en="Project details, documentation and credits.">ข้อมูลโครงการ เอกสาร และที่มาของสิ่งที่ใช้</p></div>
+            <div class="nav-more-grid">
+              <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="System architecture">แผนผังการทำงาน</strong><small data-en="From an image to an on-device answer">จากภาพสู่คำตอบบน iPhone</small></span></a>
+              <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Implementation and recorded checks">สิ่งที่ทำได้และผลการตรวจที่บันทึกไว้</small></span></a>
+              <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="Open source and commercial enquiries">โอเพนซอร์สและข้อตกลงเชิงพาณิชย์</small></span></a>
+              <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, imagery and typefaces">โมเดล ภาพประกอบ และฟอนต์</small></span></a>
+            </div>
+            <a class="nav-more-all" href="/resources.html" data-secondary-link><span data-en="All project resources">ดูข้อมูลเพิ่มเติมทั้งหมด</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <noscript><a class="nav-more-fallback" href="/resources.html">ข้อมูลเพิ่มเติม / Resources</a></noscript>
+      </nav>
+      <div class="header-actions">
+        <div class="language-switch" role="group" aria-label="เลือกภาษา" data-en-aria="Choose language">
+          <button type="button" data-language="th" aria-pressed="true" lang="th">TH</button><span aria-hidden="true">/</span><button type="button" data-language="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+        <a class="github-link" href="https://github.com/koomean/visionassistant" aria-label="LunaV บน GitHub" data-en-aria="LunaV on GitHub"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 .5a12 12 0 0 0-3.793 23.385c.6.11.82-.26.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.839 1.237 1.839 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.776.418-1.305.762-1.605-2.665-.304-5.467-1.333-5.467-5.932 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.52 11.52 0 0 1 12 6.3c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.654 1.652.243 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.625-5.479 5.922.43.372.823 1.102.823 2.222v3.293c0 .32.216.694.825.576A12 12 0 0 0 12 .5Z"/></svg></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="เปิดเมนู" data-en-aria="Toggle menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <!-- site-header:end -->
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="orbit-dot" aria-hidden="true"></span><span data-en="How LunaV works">แผนผังการทำงานของ LunaV</span></div>
+          <h1 id="hero-title"><span data-en="From the scene ahead">จากภาพตรงหน้า</span><br><span data-en="to an answer you can hear">สู่คำตอบที่ฟังได้</span></h1>
+          <p><span data-en="Hold to capture a photo and ask a question. LunaV turns that moment into an answer you can read or hear, processed on your iPhone.">กดค้างเพื่อถ่ายภาพและถามด้วยเสียง แล้ว LunaV จะเปลี่ยนข้อมูลจากช่วงเวลานั้นเป็นคำตอบที่อ่านและฟังได้ โดยประมวลผลบน iPhone</span></p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#journey"><span data-en="Explore the workflow">ดูเส้นทางการทำงาน</span> <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            <a class="button button-secondary" href="#screens"><span data-en="Explore the app">ดูหน้าจอแอปจริง</span> <svg class="icon" aria-hidden="true"><use href="#icon-camera"/></svg></a>
+          </div>
+          <div class="hero-proof" aria-label="คุณสมบัติหลัก" data-en-aria="Key features">
+            <span><svg class="icon" aria-hidden="true"><use href="#icon-lock"/></svg><span data-en="AI on iPhone">AI บน iPhone</span></span>
+            <span><svg class="icon" aria-hidden="true"><use href="#icon-voice"/></svg><span data-en="Thai and English questions">ถามด้วยเสียงไทยและอังกฤษ</span></span>
+            <span><svg class="icon" aria-hidden="true"><use href="#icon-depth"/></svg><span data-en="Distance from the captured photo">ระยะจากภาพที่ถ่าย</span></span>
+          </div>
+        </div>
+        <div class="hero-art">
+        <div class="hero-visual" aria-label="ภาพหน้ากล้องของ LunaV บน iPhone" data-en-aria="LunaV camera screen on iPhone">
+          <div class="lunar-orbit" aria-hidden="true"></div>
+          <div class="hero-moon" aria-hidden="true"></div>
+          <svg class="constellation" viewBox="0 0 540 550" aria-hidden="true"><path d="m26 150 93-46 81 62M386 440l82-82 52 29"/><g><circle cx="26" cy="150" r="3"/><circle cx="119" cy="104" r="2"/><circle cx="200" cy="166" r="3"/><circle cx="386" cy="440" r="2"/><circle cx="468" cy="358" r="3"/><circle cx="520" cy="387" r="2"/></g></svg>
+          <figure class="hero-phone"><div class="phone-shell"><img src="assets/app-v3-camera-en.webp" width="720" height="1565" alt="หน้ากล้อง LunaV ที่ใช้ปุ่มชัตเตอร์กลางเพื่อถ่ายและถามด้วยเสียง" data-en-alt="LunaV camera screen with the central shutter for capturing a photo and asking by voice"></div></figure>
+          <div class="hero-screen-label" aria-hidden="true"><b><span data-en="Hold to ask">กดค้างเพื่อถาม</span></b><span><span data-en="Photo and voice start together">ภาพ + เสียง เริ่มพร้อมกัน</span></span></div>
+          <div class="hero-answer-chip" aria-hidden="true"><svg class="icon"><use href="#icon-speaker"/></svg><span data-en="An answer in text and speech">คำตอบกลับเป็นข้อความและเสียง</span></div>
+        </div>
+        <p class="hero-image-source"><span data-en="LunaV 3.0.0 · Simulator in test-image mode">LunaV 3.0.0 · หน้าจอ Simulator ในโหมดภาพทดสอบ</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="journey section" id="journey" aria-labelledby="journey-title">
+      <div class="wrap journey-shell">
+        <div class="section-heading-wide">
+          <div class="section-heading">
+            <div class="eyebrow"><span class="orbit-dot" aria-hidden="true"></span><span data-en="One question, from start to finish">เรื่องราวของคำถามหนึ่งครั้ง</span></div>
+            <h2 id="journey-title"><span data-en="From the shutter">จากชัตเตอร์</span><br><span data-en="to an answer">ไปถึงคำตอบ</span></h2>
+          </div>
+          <p><span data-en="LunaV chooses the tools your question needs, avoids unnecessary processing, and makes the source of each result clear.">แกนกลางของ LunaV เลือกใช้เครื่องมือให้ตรงกับสิ่งที่คุณถาม เพื่อไม่ประมวลผลเกินความจำเป็นและบอกที่มาของข้อมูลได้ชัดเจน</span></p>
+        </div>
+
+        <div class="story-grid" aria-label="แผนผังการทำงานของ LunaV" data-en-aria="LunaV workflow">
+          <article class="story-side">
+            <div class="story-step"><span class="step-number">01</span><span data-en="Capture a photo and question">รับภาพและคำถาม</span></div>
+            <div class="signal-card">
+              <span class="signal-icon" aria-hidden="true"><svg class="icon"><use href="#icon-camera"/></svg></span>
+              <h3><span data-en="Camera and microphone">กล้องกับไมโครโฟน</span><br><span data-en="start together">เริ่มพร้อมกัน</span></h3>
+              <p><span data-en="Hold to take a new photo and speak your question. When you release, iOS transcribes your voice on the device.">กดค้างเพื่อถ่ายภาพใหม่และพูดคำถาม เมื่อปล่อยปุ่ม iOS จะถอดเสียงเป็นข้อความบนเครื่อง</span></p>
+              <span class="micro-line"><span data-en="Photo and question in the same capture">ภาพ + คำถามในรอบเดียวกัน</span></span>
+            </div>
+          </article>
+
+          <article class="story-core" aria-labelledby="core-title">
+            <div class="story-step"><span class="step-number">02</span><span data-en="Choose the processing path">เลือกเส้นทางประมวลผล</span></div>
+            <div class="core-title"><h3 id="core-title"><span data-en="Understanding on iPhone">ทำความเข้าใจบน iPhone</span></h3><p><span data-en="The photo, question, and relevant information share one context.">ภาพ คำถาม และข้อมูลที่เกี่ยวข้อง อยู่ในบริบทเดียวกัน</span></p></div>
+            <p class="core-route-label"><span data-en="Tools selected for your question">เลือกเครื่องมือตามคำถาม</span></p>
+            <div class="core-path">
+              <div class="core-job"><span class="signal-icon" aria-hidden="true"><svg class="icon"><use href="#icon-text"/></svg></span><h4><span data-en="Read text">อ่านข้อความ</span></h4><p>Apple Vision<br>OCR</p></div>
+              <div class="core-job"><span class="signal-icon" aria-hidden="true"><svg class="icon"><use href="#icon-eye"/></svg></span><h4><span data-en="Understand images">เข้าใจภาพ</span></h4><p>Qwen3‑VL‑2B<br><span data-en="on MLX">บน MLX</span></p></div>
+              <div class="core-job"><span class="signal-icon" aria-hidden="true"><svg class="icon"><use href="#icon-depth"/></svg></span><h4><span data-en="Explore distance">สำรวจระยะ</span></h4><p><span data-en="LiDAR or">LiDAR หรือ</span><br>Depth Anything 3</p></div>
+            </div>
+            <p class="core-footer"><svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg><span data-en="Original text can be read with OCR without running the vision model. Depth estimation runs only for a distance question or a selected point.">อ่านต้นฉบับด้วย OCR ได้โดยไม่เรียกโมเดลภาพ ส่วนการประมาณระยะจะทำเมื่อถามระยะหรือเลือกจุดเท่านั้น</span></p>
+          </article>
+
+          <article class="story-side story-side--out">
+            <div class="story-step"><span class="step-number">03</span><span data-en="Return your answer">ตอบกลับให้คุณ</span></div>
+            <div class="signal-card">
+              <span class="signal-icon" aria-hidden="true"><svg class="icon"><use href="#icon-speaker"/></svg></span>
+              <h3><span data-en="Read text">อ่านข้อความ</span><br><span data-en="or hear the answer">หรือฟังคำตอบ</span></h3>
+              <p><span data-en="The screen shows the transcribed question and its answer. An installed Apple voice can read the completed answer aloud.">หน้าจอแสดงคำถามที่ถอดเสียงพร้อมคำตอบ และใช้เสียง Apple ในเครื่องเพื่ออ่านคำตอบที่เสร็จแล้ว</span></p>
+              <span class="output-badge"><svg class="icon" aria-hidden="true"><use href="#icon-lock"/></svg><span data-en="Data stays on iPhone">ข้อมูลอยู่บน iPhone</span></span>
+            </div>
+          </article>
+        </div>
+        <p class="journey-note"><svg class="icon" aria-hidden="true"><use href="#icon-depth"/></svg><span data-en="Distance refers to the captured moment. The app does not provide continuous obstacle alerts or walking navigation.">ระยะอ้างอิงภาพที่ถ่ายในขณะนั้น แอปไม่มีระบบเตือนสิ่งกีดขวางต่อเนื่องหรือการนำทางขณะเดิน</span></p>
+      </div>
+    </section>
+
+    <section class="feature-area section" id="screens" aria-labelledby="screens-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow"><span class="orbit-dot" aria-hidden="true"></span><span data-en="Inside the app">หน้าจอจริงของแอป</span></div>
+          <h2 id="screens-title"><span data-en="Explore what LunaV can help with">เลือกดูสิ่งที่ LunaV ช่วยได้</span></h2>
+          <p><span data-en="Each path starts with the captured photo and uses only the information your question needs.">แต่ละเส้นทางเริ่มจากภาพเดียวกัน และเรียกใช้เฉพาะข้อมูลที่คำถามต้องการ</span></p>
+        </div>
+
+        <div class="feature-tabs" role="tablist" aria-label="ความสามารถของ LunaV" data-en-aria="LunaV features">
+          <button class="feature-tab" id="tab-ask" type="button" role="tab" aria-selected="true" aria-controls="panel-ask"><svg class="icon" aria-hidden="true"><use href="#icon-eye"/></svg><span data-en="Ask about a photo">ถามจากภาพ</span></button>
+          <button class="feature-tab" id="tab-read" type="button" role="tab" aria-selected="false" aria-controls="panel-read" tabindex="-1"><svg class="icon" aria-hidden="true"><use href="#icon-text"/></svg><span data-en="Read text">อ่านข้อความ</span></button>
+          <button class="feature-tab" id="tab-distance" type="button" role="tab" aria-selected="false" aria-controls="panel-distance" tabindex="-1"><svg class="icon" aria-hidden="true"><use href="#icon-depth"/></svg><span data-en="Ask about distance">ถามระยะ</span></button>
+          <button class="feature-tab" id="tab-answer" type="button" role="tab" aria-selected="false" aria-controls="panel-answer" tabindex="-1"><svg class="icon" aria-hidden="true"><use href="#icon-speaker"/></svg><span data-en="Hear the answer">ฟังคำตอบ</span></button>
+        </div>
+
+        <div class="feature-stage">
+          <article class="feature-panel is-active" id="panel-ask" role="tabpanel" aria-labelledby="tab-ask" tabindex="0">
+            <div class="feature-copy"><span class="feature-caption"><span data-en="The scene ahead">สิ่งที่อยู่ตรงหน้า</span></span><h3><span data-en="Take a new photo">ถ่ายใหม่ แล้วถาม</span><br><span data-en="and ask in one gesture">ในจังหวะเดียวกัน</span></h3><p><span data-en="While you hold, LunaV captures the photo and voice together. Releasing stops recording, transcribes your question, and lets Qwen3-VL interpret the image on iPhone.">ขณะกดค้าง LunaV รับภาพและเสียงไปพร้อมกัน เมื่อปล่อยปุ่ม ระบบหยุดรับเสียง ถอดคำถาม และส่งความหมายของภาพให้ Qwen3‑VL บน iPhone</span></p><ul class="feature-list"><li><span data-en="Tap to take a photo, or hold to capture and ask.">แตะสั้นเพื่อถ่ายภาพอย่างเดียว หรือกดค้างเพื่อถ่ายและถาม</span></li><li><span data-en="Each new photo starts fresh, without reusing distance from an earlier capture.">ภาพใหม่ทุกครั้งจึงไม่ดึงระยะจากรอบก่อนมาใช้</span></li><li><span data-en="Press the same button while processing to cancel.">ระหว่างทำงานกดปุ่มเดิมเพื่อยกเลิกได้</span></li></ul><span class="feature-note"><span data-en="Image answers are designed to stay concise, so you can ask a follow-up sooner.">คำตอบจากภาพออกแบบให้กระชับ เพื่อให้คุณถามต่อได้เร็วขึ้น</span></span></div>
+            <figure class="feature-visual"><div class="feature-phone"><div class="phone-shell"><img src="assets/app-v3-camera-en.webp" width="720" height="1565" alt="หน้ากล้อง LunaV สำหรับถ่ายภาพและถามด้วยเสียง" data-en-alt="LunaV camera screen for taking photos and asking by voice"></div></div><figcaption class="visual-callout"><svg class="icon" aria-hidden="true"><use href="#icon-camera"/></svg>LunaV 3.0.0 · Simulator<br><span data-en="Test-image mode">โหมดภาพทดสอบ</span></figcaption></figure>
+          </article>
+          <article class="feature-panel" id="panel-read" role="tabpanel" aria-labelledby="tab-read" tabindex="0" hidden>
+            <div class="feature-copy"><span class="feature-caption"><span data-en="Text around you">ข้อความที่อยู่รอบตัว</span></span><h3><span data-en="Read the text you choose">อ่านข้อความที่คุณเลือก</span><br><span data-en="and keep its context">และเก็บบริบทไว้</span></h3><p><span data-en="Apple Vision reads text on the device. Select a region or a text group from a sign, menu, label, or document, then read the original or summarize the part you need.">Apple Vision อ่านข้อความบนเครื่อง แล้วให้คุณเลือกกรอบหรือกลุ่มข้อความจากป้าย เมนู ฉลาก หรือเอกสาร ก่อนอ่านต้นฉบับหรือสรุปเฉพาะส่วนที่ต้องการ</span></p><ul class="feature-list"><li><span data-en="Organize text into groups based on the photo.">แยกข้อความเป็นกลุ่มตามสิ่งที่อยู่ในภาพ</span></li><li><span data-en="Show the original OCR text alongside its summary.">แสดงข้อความ OCR ต้นฉบับคู่กับสรุป</span></li><li><span data-en="Choose a smaller region when the text is dense or too long.">เลือกกรอบเล็กลงเมื่อข้อความแน่นหรือยาวเกินไป</span></li></ul><span class="feature-note"><span data-en="Small print, tilted images, and handwriting can be misread. Check the original text as well.">ตัวเล็ก ภาพเอียง และลายมืออาจอ่านผิด ควรตรวจข้อความต้นฉบับประกอบ</span></span></div>
+            <figure class="feature-visual"><div class="feature-phone"><div class="phone-shell"><img src="assets/app-text-sources-20261029.webp" width="720" height="1565" loading="lazy" alt="หน้าจอแยกกลุ่มข้อความจากป้าย เมนู และฉลากของ LunaV" data-en-alt="LunaV screen showing text groups from signs, menus, and labels"></div></div><figcaption class="visual-callout"><svg class="icon" aria-hidden="true"><use href="#icon-text"/></svg><span data-en="Text-group example · Previous theme">ตัวอย่างกลุ่มข้อความ · ธีมรุ่นก่อน</span><br>Simulator</figcaption></figure>
+          </article>
+          <article class="feature-panel" id="panel-distance" role="tabpanel" aria-labelledby="tab-distance" tabindex="0" hidden>
+            <div class="feature-copy"><span class="feature-caption"><span data-en="Know where distance comes from">รู้ที่มาของระยะ</span></span><h3><span data-en="Use the available sensor">ใช้เซ็นเซอร์เมื่อมี</span><br><span data-en="and label estimates clearly">และระบุค่าประมาณให้ชัด</span></h3><p><span data-en="For a distance question, LunaV uses LiDAR paired with a supported rear-camera photo, or Depth Anything 3 Metric with lens information on devices without LiDAR.">เมื่อถามถึงระยะ LunaV ใช้ LiDAR จากภาพที่ถ่ายบนกล้องหลังที่รองรับ หรือใช้ Depth Anything 3 Metric พร้อมข้อมูลเลนส์สำหรับอุปกรณ์ที่ไม่มี LiDAR</span></p><ul class="feature-list"><li><span data-en="LiDAR uses sensor depth paired with that photo.">LiDAR อ้างอิงความลึกจากเซ็นเซอร์ในภาพนั้น</span></li><li><span data-en="DA3 results are estimates, identified separately from LiDAR.">DA3 เป็นค่าประมาณและแสดงแยกจาก LiDAR</span></li><li><span data-en="Without usable depth or lens information, the app does not give a numeric distance.">เมื่อไม่มี depth หรือข้อมูลเลนส์ที่ใช้ได้ แอปจะไม่ให้ตัวเลขระยะ</span></li></ul><span class="feature-note"><span data-en="Distance refers to the capture time and does not update continuously while walking.">ระยะอ้างอิงช่วงเวลาที่ถ่ายภาพ ไม่อัปเดตต่อเนื่องระหว่างเดิน</span></span></div>
+            <figure class="feature-visual"><div class="feature-phone"><div class="phone-shell"><img src="assets/app-v3-camera-en.webp" width="720" height="1565" loading="lazy" alt="หน้ากล้อง LunaV ซึ่งใช้เป็นจุดเริ่มต้นของการถามระยะ" data-en-alt="LunaV camera screen, the starting point for a distance question"></div></div><figcaption class="visual-callout"><svg class="icon" aria-hidden="true"><use href="#icon-depth"/></svg><span data-en="Start a distance question">จุดเริ่มต้นของการถามระยะ</span><br><span data-en="Simulator screenshot">ภาพหน้าจอ Simulator</span></figcaption></figure>
+          </article>
+          <article class="feature-panel" id="panel-answer" role="tabpanel" aria-labelledby="tab-answer" tabindex="0" hidden>
+            <div class="feature-copy"><span class="feature-caption"><span data-en="Answers you can read or hear">คำตอบที่มองและฟังได้</span></span><h3><span data-en="Read it yourself">อ่านข้อความเอง</span><br><span data-en="or let LunaV read it aloud">หรือให้ LunaV อ่านให้ฟัง</span></h3><p><span data-en="Your transcribed question and answer appear together. When the answer is complete, the selected Apple voice can read it aloud.">คำถามที่ถอดเสียงและคำตอบจะแสดงร่วมกันบนหน้าจอ เมื่อคำตอบเสร็จ เสียง Apple ที่ตั้งค่าไว้สามารถอ่านคำตอบกลับให้ฟังได้</span></p><ul class="feature-list"><li><span data-en="Choose a voice, turn speech off, or listen to a sample in Settings.">เลือก ปิด หรือทดลองฟังเสียงอ่านได้ในการตั้งค่า</span></li><li><span data-en="Start a new question and the previous speech stops automatically.">เริ่มถามใหม่ได้ทันที โดยระบบหยุดเสียงเดิมให้</span></li><li><span data-en="Interface language is separate from question and speech language.">ภาษา UI แยกจากภาษาคำถามและเสียงอ่าน</span></li></ul><span class="feature-note"><span data-en="Speech uses installed Apple voices and does not send the answer to a server for speech generation.">เสียงอ่านใช้เสียงที่มีในระบบของ Apple ไม่ใช่เสียงที่ส่งข้อมูลออกไปประมวลผลบนเซิร์ฟเวอร์</span></span></div>
+            <figure class="feature-visual"><div class="feature-phone"><div class="phone-shell"><img src="assets/app-v3-answer-en.webp" width="720" height="1565" loading="lazy" alt="หน้าคำตอบของ LunaV ที่แสดงคำถามและคำตอบ" data-en-alt="LunaV answer screen showing the question and answer"></div></div><figcaption class="visual-callout"><svg class="icon" aria-hidden="true"><use href="#icon-speaker"/></svg><span data-en="English interface · OCR test text">หน้าจออังกฤษ · ข้อความ OCR ทดสอบ</span><br>Simulator</figcaption></figure>
+          </article>
+        </div>
+        <p class="screens-source"><span data-en="Simulator screenshots from 29 October 2026 illustrate the interface and app workflow.">ภาพหน้าจอจาก Simulator วันที่ 29 ตุลาคม 2026 ใช้แสดงหน้าตาและลำดับการใช้งานของแอป</span></p>
+      </div>
+    </section>
+
+    <section class="trust section" id="privacy" aria-labelledby="privacy-title">
+      <div class="wrap trust-grid">
+        <div class="privacy-orbit" aria-hidden="true"><span class="privacy-lock"><svg class="icon"><use href="#icon-lock"/></svg></span><span class="privacy-star one">✦</span><span class="privacy-star two">✧</span></div>
+        <div class="trust-copy">
+          <div class="eyebrow"><span class="orbit-dot" aria-hidden="true"></span><span data-en="On your device, with you">อยู่กับคุณบนอุปกรณ์</span></div>
+          <h2 id="privacy-title"><span data-en="Photos, questions, and answers">ภาพ คำถาม และคำตอบ</span><br><span data-en="stay within your iPhone">เดินทางใน iPhone</span></h2>
+          <p><span data-en="Image understanding, OCR, transcription, and answers run on the device. LunaV's photo-question workflow needs no server or API key.">การเข้าใจภาพ การอ่าน OCR การถอดเสียง และการตอบคำถามทำบนเครื่อง ไม่มี server หรือ API key สำหรับเส้นทางถามภาพของ LunaV</span></p>
+          <dl class="trust-list">
+            <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-lock"/></svg><span data-en="Process what the question needs">ประมวลผลตามสิ่งที่ถาม</span></dt><dd><span data-en="Vision and depth models run when needed, then release memory according to the app's resource policy.">โมเดลภาพและโมเดลระยะจะถูกใช้เมื่อจำเป็น แล้วคืนหน่วยความจำตามนโยบายของแอป</span></dd></div>
+            <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-voice"/></svg><span data-en="First-time voice preparation">การเตรียมเสียงครั้งแรก</span></dt><dd><span data-en="If the speech language is not installed in iOS, a one-time Apple language-asset download may be needed before use.">หากภาษาเสียงยังไม่มีใน iOS ระบบอาจให้ดาวน์โหลด asset ภาษาจาก Apple หนึ่งครั้งก่อนใช้</span></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-main">
+        <div class="footer-brand"><a class="brand" href="index.html" aria-label="LunaV หน้าแรก" data-en-aria="LunaV home"><img src="assets/favicon.svg" alt=""><span>LunaV<span class="brand-dot">.</span></span></a><p><span data-en="A little light. A clearer world.">แสงเล็ก ๆ เพื่อโลกที่ชัดขึ้น</span></p></div>
+        <nav class="footer-links" aria-label="ลิงก์ท้ายหน้า" data-en-aria="Footer links"><a href="index.html"><span data-en="Home">หน้าแรก</span></a><a href="index.html#features"><span data-en="Explore">ความสามารถ</span></a><a href="project-status.html"><span data-en="Project status">สถานะโปรเจกต์</span></a><a href="https://github.com/koomean/visionassistant">GitHub</a></nav>
+      </div>
+      <div class="footer-sources"><span><span data-en="Technologies">เทคโนโลยีที่ใช้</span></span><a href="https://github.com/QwenLM/Qwen3-VL">Qwen3‑VL</a><a href="https://developer.apple.com/documentation/speech/dictationtranscriber">Apple Dictation</a><a href="https://developer.apple.com/documentation/vision">Apple Vision</a><a href="https://github.com/ByteDance-Seed/Depth-Anything-3">Depth Anything 3</a><a href="https://developer.apple.com/documentation/avfaudio/avspeechsynthesizer">Apple speech</a><a href="https://github.com/ml-explore/mlx-swift-lm">MLX Swift</a></div>
+      <div class="footer-bottom"><span>© 2026 Wachirawich Kripindakul · LunaV 3.0.0</span><a href="#main"><span data-en="Back to top">กลับไปด้านบน</span></a></div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const imageLabels = [...document.querySelectorAll('[data-en-alt]')].map(el => ({ el, th: el.alt, en: el.dataset.enAlt }));
+      addEventListener('lunav:languagechange', event => imageLabels.forEach(item => { item.el.alt = item[event.detail.language === 'en' ? 'en' : 'th']; }));
+      const tabs = [...document.querySelectorAll('[role="tab"]')];
+      const panels = [...document.querySelectorAll('[role="tabpanel"]')];
+      const activate = tab => {
+        tabs.forEach(item => { const active = item === tab; item.setAttribute('aria-selected', String(active)); item.tabIndex = active ? 0 : -1; });
+        panels.forEach(panel => { const active = panel.id === tab.getAttribute('aria-controls'); panel.hidden = !active; panel.classList.toggle('is-active', active); });
+      };
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activate(tab));
+        tab.addEventListener('keydown', event => {
+          if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+          event.preventDefault();
+          const target = event.key === 'Home' ? tabs[0] : event.key === 'End' ? tabs.at(-1) : tabs[(index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length];
+          target.focus(); activate(target);
+        });
+      });
+      const canvas = document.querySelector('#starfield');
+      const context = canvas.getContext('2d');
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let points = [];
+      const drawStars = () => {
+        const scale = Math.min(devicePixelRatio || 1, 2);
+        canvas.width = innerWidth * scale; canvas.height = innerHeight * scale;
+        canvas.style.width = `${innerWidth}px`; canvas.style.height = `${innerHeight}px`;
+        context.setTransform(scale, 0, 0, scale, 0, 0); context.clearRect(0, 0, innerWidth, innerHeight);
+        const count = Math.min(135, Math.max(64, Math.round(innerWidth * innerHeight / 13000)));
+        const random = value => { const seed = Math.sin(value * 127.1 + 311.7) * 43758.5453; return seed - Math.floor(seed); };
+        points = Array.from({ length: count }, (_, i) => ({ x: random(i + 1) * innerWidth, y: random(i + 204) * innerHeight, r: i % 11 === 0 ? 1.2 : .55, a: .14 + (i % 7) * .055 }));
+        points.forEach(point => { context.beginPath(); context.arc(point.x, point.y, point.r, 0, Math.PI * 2); context.fillStyle = `rgba(196,211,240,${point.a})`; context.fill(); });
+      };
+      drawStars(); addEventListener('resize', drawStars, { passive: true });
+      if (!reduceMotion) { let frame; const shimmer = time => { context.clearRect(0, 0, innerWidth, innerHeight); points.forEach((point, i) => { context.beginPath(); context.arc(point.x, point.y, point.r, 0, Math.PI * 2); context.fillStyle = `rgba(196,211,240,${Math.max(.08, point.a + Math.sin(time / 1300 + i) * .06)})`; context.fill(); }); frame = requestAnimationFrame(shimmer); }; frame = requestAnimationFrame(shimmer); addEventListener('pagehide', () => cancelAnimationFrame(frame), { once: true }); }
+    })();
+  </script>
+</body>
+</html>

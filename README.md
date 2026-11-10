@@ -49,7 +49,7 @@ The website is static and needs no runtime build step. Serve this directory loca
 python3 -m http.server 8080
 ```
 
-The five HTML pages share their main navigation from `partials/site-header.html`. The compact menu is handled by `site-shell.js`; links return to the correct homepage section and preserve the chosen language, including from nested missing URLs.
+All eight HTML pages share their main navigation from `partials/site-header.html`. The compact menu and the **More / อื่น ๆ** disclosure are handled by `site-shell.js`; links preserve the chosen language. Secondary pages live in the dropdown and the bilingual `resources.html` directory: system architecture, project status, licensing, and credits. `lunavision-architecture.html` explains the current on-device flow with real Simulator screenshots. These are ordinary public project pages, grouped outside the primary navigation.
 
 After editing the shared header or either language version of a Markdown notice, regenerate the pages with:
 

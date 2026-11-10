@@ -5,7 +5,7 @@
 
 Run from any directory: python3 /path/to/website/scripts/render-docs.py
 Uses only Python's standard library. Edit the Markdown originals, then rerun.
-Also synchronises index.html and 404.html with partials/site-header.html.
+Also synchronises custom pages with partials/site-header.html.
 The small escaped renderer supports this project's headings, paragraphs, lists,
 links, code spans, bold text, and pipe tables; it never passes through raw HTML.
 """
@@ -127,7 +127,10 @@ def translated(th, en):
 
 
 def render_page(source, target, title_en, title_th, description_en, description_th):
-    navigation = []
+    navigation = [
+        '<a href="resources.html">' + translated('ข้อมูลเพิ่มเติม', 'All resources') + '</a>',
+        '<a href="lunavision-architecture.html">' + translated('แผนผังการทำงาน', 'System architecture') + '</a>',
+    ]
     for _, href, label_en, label_th, _, _ in PAGES:
         current = ' aria-current="page"' if href == target else ''
         navigation.append(f'<a href="{href}"{current}>{translated(label_th, label_en)}</a>')
@@ -157,9 +160,9 @@ def render_page(source, target, title_en, title_th, description_en, description_
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css?v=luna-20261103-safari">
-  <link rel="stylesheet" href="site-shell.css?v=luna-20261103-paint">
+  <link rel="stylesheet" href="site-shell.css?v=luna-20261110-more">
   <link rel="stylesheet" href="docs.css?v=luna-20261031-nav">
-  <script src="site-shell.js?v=luna-20261103-paint" defer></script>
+  <script src="site-shell.js?v=luna-20261110-more" defer></script>
   <script src="docs-language.js?v=luna-20261031-nav" defer></script>
   <title data-title-th="{escape(title_th, quote=True)} — LunaV" data-title-en="{escape(title_en, quote=True)} — LunaV">{escape(title_th)} — LunaV</title>
 </head>
@@ -188,21 +191,25 @@ def render_page(source, target, title_en, title_th, description_en, description_
 def sync_site_headers():
     header = (ROOT / 'partials' / 'site-header.html').read_text().rstrip()
     replacement = '  <!-- site-header:start -->\n' + header + '\n  <!-- site-header:end -->'
-    for name in ['index.html', '404.html']:
+    custom_pages = ['index.html', '404.html', 'contact.html', 'resources.html', 'lunavision-architecture.html']
+    for name in custom_pages:
         path = ROOT / name
         source = path.read_text()
         updated, count = re.subn(r'  <!-- site-header:start -->.*?  <!-- site-header:end -->', lambda _: replacement, source, flags=re.S)
         if count != 1:
             raise ValueError(f'{name}: expected one shared header block, found {count}')
+        updated = re.sub(r'site-shell\.(css|js)(?:\?v=[^"\s]*)?', lambda match: f'site-shell.{match[1]}?v=luna-20261110-more', updated)
+        if name == 'contact.html':
+            updated = updated.replace('<a href="/contact.html" data-en="Contact">', '<a href="/contact.html" aria-current="page" data-en="Contact">')
         path.write_text(updated)
 
-    for name in ['index.html', '404.html', 'contact.html']:
+    for name in custom_pages:
         page = ROOT / name
         source = page.read_text()
         if '<!-- page-transition:start -->' in source:
             source = re.sub(r'  <!-- page-transition:start -->.*?  <!-- page-transition:end -->', lambda _: TRANSITION_HEAD, source, flags=re.S)
         else:
-            source = source.replace('  <link rel="preload"', TRANSITION_HEAD + '\n  <link rel="preload"', 1)
+            source = source.replace('  <link rel="icon"', TRANSITION_HEAD + '\n  <link rel="icon"', 1)
         page.write_text(source)
 
 

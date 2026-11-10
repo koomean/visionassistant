@@ -5,7 +5,7 @@
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const key = 'lunav-page-transition';
   const contact = path => path === '/contact.html';
-  const pages = new Set(['/', '/index.html', '/contact.html', '/project-status.html', '/licensing.html', '/credits.html', '/404.html']);
+  const pages = new Set(['/', '/index.html', '/contact.html', '/project-status.html', '/licensing.html', '/credits.html', '/resources.html', '/lunavision-architecture.html', '/404.html']);
   let departing = false, navigationTimer, resetTimer, arrivalFrame;
   let direction = root.dataset.pageTransitionDirection || 'outbound';
   let cancelPositioning = () => {};

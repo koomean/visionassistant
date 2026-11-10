@@ -49,3 +49,84 @@ html.page-transition-ready::after{display:none}
 /* Without JavaScript, the compact navigation remains available as ordinary links. */
 @media(max-width:880px){html:not(.navigation-ready) .site-header{position:sticky}html:not(.navigation-ready) .header-inner{height:auto;min-height:var(--site-header-bar-height);flex-wrap:wrap;padding-block:12px}html:not(.navigation-ready) .header-inner nav{position:static;display:flex;flex-basis:100%;order:3;flex-direction:row;flex-wrap:wrap;gap:0 22px;padding:0;border:0;box-shadow:none;background:transparent}html:not(.navigation-ready) .header-inner nav a{font-size:.75rem;padding-block:8px}html:not(.navigation-ready) .menu-toggle{display:none}}
 @media print{html{background-color:#fff}.wrap{padding-inline:0}.hero{padding:0}.site-footer{padding-bottom:24px}.navigation-ready :is(main,.site-footer,.document-footer,.contact-footer,.lost-footer){clip-path:none}}
+
+/* Shared navigation also serves standalone project pages. */
+.site-header{position:fixed;top:0;inset-inline:0;z-index:100;border-bottom:1px solid transparent;transition:background .25s,border-color .25s}
+.site-header.scrolled,.site-header.menu-open{background:rgba(8,15,32,.95);border-bottom-color:var(--line);backdrop-filter:blur(18px)}
+.site-header .header-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;height:var(--site-header-bar-height)}
+.site-header .brand{display:inline-flex;align-items:center;gap:10px;flex-shrink:0;font-size:1.65rem;font-weight:650;letter-spacing:-.06em;line-height:1.4;color:var(--paper)}
+.site-header .brand-icon{width:34px;height:34px;fill:var(--paper)}
+.site-header .brand-dot{color:var(--gold)}
+.site-header #navigation{display:flex;align-items:center;gap:24px;margin-left:auto}
+.site-header #navigation>a,.site-header .nav-more-toggle{position:relative;color:#b4bfd2;font-size:.8rem;white-space:nowrap;transition:color .2s}
+.site-header #navigation>a:hover,.site-header .nav-more-toggle:hover,.site-header .nav-more-toggle.is-current{color:var(--paper)}
+.site-header .header-actions{display:flex;align-items:center;gap:20px}
+.site-header .language-switch{display:flex;align-items:center;gap:6px;font-family:Manrope,sans-serif;font-size:.71rem;font-weight:600}
+.site-header .language-switch button{border:0;background:transparent;color:#8f9bb2;padding:8px 4px;min-height:44px;min-width:28px;font:inherit;cursor:pointer}
+.site-header .language-switch button[aria-pressed=true]{color:var(--paper)}
+.site-header .language-switch>span{color:#53627e}
+.site-header .github-link{display:block;padding:10px 0 10px 20px;border-left:1px solid var(--line)}
+.site-header .github-link .icon{width:20px;height:20px}
+.site-header .menu-toggle{display:none;position:relative;width:44px;height:44px;background:transparent;border:0;flex-shrink:0;cursor:pointer}
+.site-header .menu-toggle span{position:absolute;left:11px;display:block;width:22px;height:1px;background:var(--paper);transition:transform .25s,top .25s}
+.site-header .menu-toggle span:first-child{top:17px}.site-header .menu-toggle span:last-child{top:25px}
+.site-header .menu-toggle[aria-expanded=true] span:first-child{top:21px;transform:rotate(45deg)}
+.site-header .menu-toggle[aria-expanded=true] span:last-child{top:21px;transform:rotate(-45deg)}
+.site-header .nav-more{position:relative}
+html:not(.navigation-ready) .site-header .nav-more{display:none}
+.site-header .nav-more-fallback{font-size:.76rem;color:var(--blue)}
+.site-header .nav-more-toggle{display:flex;align-items:center;gap:7px;min-height:44px;padding:0;border:0;background:transparent;font-family:inherit;cursor:pointer}
+.site-header .nav-more-toggle svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.site-header .nav-more-toggle[aria-expanded=true]{color:var(--paper)}
+.site-header .nav-more-toggle[aria-expanded=true] svg{transform:rotate(180deg)}
+.site-header .nav-more-panel{position:absolute;top:calc(100% + 12px);right:-20px;width:530px;padding:25px;border:1px solid #a7bded38;border-radius:12px;background:#0c162c;box-shadow:0 24px 65px #0005}
+.site-header .nav-more-panel[hidden]{display:none}
+.site-header .nav-more-heading{padding:0 3px 18px;border-bottom:1px solid var(--line);font-size:.9rem;color:var(--paper)}
+.site-header .nav-more-heading p{margin:4px 0 0;font-size:.72rem;color:var(--muted);line-height:1.8}
+.site-header .nav-more-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;padding-block:13px}
+.site-header #navigation .nav-more-link{display:flex;align-items:flex-start;gap:12px;padding:13px 9px;border-radius:6px;color:var(--paper);white-space:normal;line-height:1.6;transition:background .2s}
+.site-header #navigation .nav-more-link:hover,.site-header #navigation .nav-more-link[aria-current]{background:#a7bded0d}
+.site-header #navigation .nav-more-link::after,.site-header #navigation .nav-more-all::after{display:none}
+.site-header .nav-more-link>svg{width:21px;height:21px;flex-shrink:0;margin-top:3px;color:var(--blue);fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
+.site-header .nav-more-link strong{display:block;font-size:.79rem;font-weight:500}
+.site-header .nav-more-link small{display:block;margin-top:5px;font-size:.66rem;color:var(--muted);line-height:1.75}
+.site-header #navigation .nav-more-all{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:16px 3px 0;border-top:1px solid var(--line);font-size:.76rem;color:var(--gold);white-space:normal}
+.site-header .nav-more-all svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:1200px){.site-header .header-inner{gap:20px}.site-header #navigation{gap:18px}.site-header #navigation>a,.site-header .nav-more-toggle{font-size:.74rem}.site-header .header-actions{gap:12px}.site-header .github-link{padding-left:14px}}
+@media(max-width:1050px){
+  :root{--site-header-bar-height:78px}
+  .site-header .header-inner{height:var(--site-header-bar-height)}
+  .site-header #navigation{position:absolute;top:var(--site-header-height);inset-inline:0;display:none;align-items:stretch;flex-direction:column;gap:0;margin:0;padding:18px 32px 28px;border-bottom:1px solid var(--line);background:#0a1326;max-height:calc(100dvh - var(--site-header-height) - var(--safe-area-bottom));overflow-y:auto;box-shadow:0 20px 30px #0004}
+  .site-header #navigation.is-open{display:flex}
+  .site-header #navigation>a{font-size:.95rem;padding:12px 0;line-height:1.7}
+  .site-header #navigation>a::after{display:none}
+  .site-header .menu-toggle{display:block}
+  .site-header .header-actions{gap:18px}
+  .site-header .github-link{border:0;padding:10px}
+  .site-header .nav-more-toggle{font-size:.95rem;justify-content:space-between;width:100%;min-height:50px;padding:12px 0}
+  .site-header .nav-more-panel{position:static;width:100%;margin:4px 0 10px;padding:20px;border-radius:8px;box-shadow:none;background:#0e1a30}
+  .site-header .nav-more-grid{padding-block:12px;gap:4px 12px}
+  .site-header #navigation .nav-more-link{padding:12px 4px}
+  html:not(.navigation-ready) .site-header{position:sticky}
+  html:not(.navigation-ready) .site-header .header-inner{height:auto;min-height:var(--site-header-bar-height);flex-wrap:wrap;padding-block:12px}
+  html:not(.navigation-ready) .site-header #navigation{position:static;display:flex;flex-basis:100%;order:3;flex-direction:row;flex-wrap:wrap;gap:0 22px;padding:0;border:0;box-shadow:none;background:transparent}
+  html:not(.navigation-ready) .site-header #navigation>a{font-size:.75rem;padding-block:8px}
+  html:not(.navigation-ready) .site-header .menu-toggle{display:none}
+}
+@media(max-width:640px){
+  :root{--site-header-bar-height:74px}
+  .site-header .header-inner{gap:12px}
+  .site-header .brand{font-size:1.4rem}
+  .site-header .brand-icon{width:29px;height:29px}
+  .site-header .header-actions{gap:13px}
+  .site-header .github-link{display:none}
+  .site-header #navigation{padding-inline:24px}
+  .site-header .nav-more-panel{padding:16px}
+  .site-header .nav-more-grid{grid-template-columns:minmax(0,1fr);gap:0}
+  .site-header .nav-more-heading{font-size:.84rem}
+  .site-header .nav-more-heading p{font-size:.68rem}
+  .site-header .nav-more-link strong{font-size:.82rem}
+  .site-header .nav-more-link small{font-size:.69rem}
+}
+@media(prefers-reduced-motion:reduce){.site-header,.site-header *{transition:none!important}}
+@media print{.site-header{display:none!important}}

@@ -32,7 +32,7 @@
     }catch{storage=false}
     let fallback=false;
     if(!storage)try{
-      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|404\.html)?$/.test(path);
+      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|404\.html)?$/.test(path);
       fallback=from.origin===location.origin&&known(from.pathname)&&known(location.pathname)&&((from.pathname==='/contact.html')!==(location.pathname==='/contact.html'));
     }catch{}
     const age=pending?Date.now()-pending.time:Infinity;
@@ -48,14 +48,14 @@
     if(returnHome)root.classList.add('page-positioning');
     setTimeout(()=>{if(!root.dataset.pageTransitionManaged)root.classList.remove('page-arriving','page-arrival-reveal','page-positioning')},returnHome?5000:1500);
   })();</script>
-  <script src="/page-transition.js?v=luna-20261103-return" defer></script>
+  <script src="/page-transition.js?v=luna-20261110-more" defer></script>
   <!-- page-transition:end -->
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css?v=luna-20261103-safari">
-  <link rel="stylesheet" href="site-shell.css?v=luna-20261103-paint">
+  <link rel="stylesheet" href="site-shell.css?v=luna-20261110-more">
   <link rel="stylesheet" href="docs.css?v=luna-20261031-nav">
-  <script src="site-shell.js?v=luna-20261103-paint" defer></script>
+  <script src="site-shell.js?v=luna-20261110-more" defer></script>
   <script src="docs-language.js?v=luna-20261031-nav" defer></script>
   <title data-title-th="การอนุญาตใช้สิทธิ — LunaV" data-title-en="Commercial licensing — LunaV">การอนุญาตใช้สิทธิ — LunaV</title>
 </head>
@@ -72,6 +72,20 @@
         <a href="/#privacy" data-home-anchor="privacy" data-en="Privacy">ความเป็นส่วนตัว</a>
         <a href="/#opensource" data-home-anchor="opensource" data-en="Open source">โอเพนซอร์ส</a>
         <a href="/contact.html" data-en="Contact">ติดต่อ</a>
+        <div class="nav-more">
+          <button class="nav-more-toggle" type="button" aria-expanded="false" aria-controls="more-navigation"><span data-en="More">อื่น ๆ</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
+          <div class="nav-more-panel" id="more-navigation" hidden>
+            <div class="nav-more-heading"><span data-en="A closer look at LunaV">รู้จัก LunaV ให้มากขึ้น</span><p data-en="Project details, documentation and credits.">ข้อมูลโครงการ เอกสาร และที่มาของสิ่งที่ใช้</p></div>
+            <div class="nav-more-grid">
+              <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="System architecture">แผนผังการทำงาน</strong><small data-en="From an image to an on-device answer">จากภาพสู่คำตอบบน iPhone</small></span></a>
+              <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Implementation and recorded checks">สิ่งที่ทำได้และผลการตรวจที่บันทึกไว้</small></span></a>
+              <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="Open source and commercial enquiries">โอเพนซอร์สและข้อตกลงเชิงพาณิชย์</small></span></a>
+              <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, imagery and typefaces">โมเดล ภาพประกอบ และฟอนต์</small></span></a>
+            </div>
+            <a class="nav-more-all" href="/resources.html" data-secondary-link><span data-en="All project resources">ดูข้อมูลเพิ่มเติมทั้งหมด</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <noscript><a class="nav-more-fallback" href="/resources.html">ข้อมูลเพิ่มเติม / Resources</a></noscript>
       </nav>
       <div class="header-actions">
         <div class="language-switch" role="group" aria-label="เลือกภาษา" data-en-aria="Choose language">
@@ -85,7 +99,7 @@
   <!-- site-header:end -->
   <main id="main" class="wrap document-main">
     <a class="document-back" href="./"><svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg><span data-en="Back to LunaV">กลับหน้า LunaV</span></a>
-    <nav class="document-navigation" aria-label="เอกสาร" data-en-aria="Project documents"><a href="project-status.html"><span data-en="Project status">สถานะโครงการ</span></a><a href="licensing.html" aria-current="page"><span data-en="Commercial licensing">การอนุญาตใช้สิทธิ</span></a><a href="credits.html"><span data-en="Asset credits">เครดิตทรัพยากร</span></a></nav>
+    <nav class="document-navigation" aria-label="เอกสาร" data-en-aria="Project documents"><a href="resources.html"><span data-en="All resources">ข้อมูลเพิ่มเติม</span></a><a href="lunavision-architecture.html"><span data-en="System architecture">แผนผังการทำงาน</span></a><a href="project-status.html"><span data-en="Project status">สถานะโครงการ</span></a><a href="licensing.html" aria-current="page"><span data-en="Commercial licensing">การอนุญาตใช้สิทธิ</span></a><a href="credits.html"><span data-en="Asset credits">เครดิตทรัพยากร</span></a></nav>
     <article class="document" data-document-language="th" lang="th">
 <h1 lang="th">การอนุญาตใช้สิทธิเชิงพาณิชย์ของ LunaV</h1>
 <p lang="th">เอกสารนี้อธิบายวิธีขอใบอนุญาตเชิงพาณิชย์แยกต่างหาก เป็นประกาศเรื่องการใช้สิทธิของโครงการ ไม่ใช่สัญญาอนุญาตใช้สิทธิเชิงพาณิชย์ฉบับสมบูรณ์</p>

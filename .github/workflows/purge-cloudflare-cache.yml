@@ -61,6 +61,7 @@ jobs:
             const paths = [
               '/', '/index.html', '/project-status.html', '/licensing.html', '/contact.html',
               '/credits.html', '/404.html', '/README.md', '/PROJECT-STATUS.md',
+              '/resources.html', '/lunavision-architecture.html',
               '/COMMERCIAL-LICENSE.md', '/ASSET-CREDITS.md', '/LICENSE',
               '/docs/th/PROJECT-STATUS.md', '/docs/th/COMMERCIAL-LICENSE.md',
               '/docs/th/ASSET-CREDITS.md',
