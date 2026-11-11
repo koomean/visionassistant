@@ -131,6 +131,7 @@ def render_page(source, target, title_en, title_th, description_en, description_
         '<a href="resources.html">' + translated('ข้อมูลเพิ่มเติม', 'All resources') + '</a>',
         '<a href="demo.html">' + translated('ทดลองแอป', 'Try demo') + '</a>',
         '<a href="lunavision-architecture.html">' + translated('แผนผังการทำงาน', 'System architecture') + '</a>',
+        '<a href="devices.html">' + translated('อุปกรณ์ที่รองรับ', 'Supported devices') + '</a>',
     ]
     for _, href, label_en, label_th, _, _ in PAGES:
         current = ' aria-current="page"' if href == target else ''
@@ -192,7 +193,7 @@ def render_page(source, target, title_en, title_th, description_en, description_
 def sync_site_headers():
     header = (ROOT / 'partials' / 'site-header.html').read_text().rstrip()
     replacement = '  <!-- site-header:start -->\n' + header + '\n  <!-- site-header:end -->'
-    custom_pages = ['index.html', 'demo.html', '404.html', 'contact.html', 'resources.html', 'lunavision-architecture.html']
+    custom_pages = ['index.html', 'demo.html', '404.html', 'contact.html', 'resources.html', 'lunavision-architecture.html', 'devices.html']
     for name in custom_pages:
         path = ROOT / name
         source = path.read_text()
@@ -204,6 +205,8 @@ def sync_site_headers():
             updated = updated.replace('<a href="/contact.html" data-en="Contact">', '<a href="/contact.html" aria-current="page" data-en="Contact">')
         if name == 'demo.html':
             updated = updated.replace('<a href="/demo.html" data-secondary-link data-en="Try demo">', '<a href="/demo.html" data-secondary-link aria-current="page" data-en="Try demo">')
+        if name == 'devices.html':
+            updated = updated.replace('<a class="nav-more-link" href="/devices.html" data-secondary-link>', '<a class="nav-more-link" href="/devices.html" data-secondary-link aria-current="page">')
         path.write_text(updated)
 
     for name in custom_pages:

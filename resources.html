@@ -30,7 +30,7 @@
     }catch{storage=false}
     let fallback=false;
     if(!storage)try{
-      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|demo\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|404\.html)?$/.test(path);
+      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|demo\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|devices\.html|404\.html)?$/.test(path);
       fallback=from.origin===location.origin&&known(from.pathname)&&known(location.pathname)&&((from.pathname==='/contact.html')!==(location.pathname==='/contact.html'));
     }catch{}
     const age=pending?Date.now()-pending.time:Infinity;
@@ -46,7 +46,7 @@
     if(returnHome)root.classList.add('page-positioning');
     setTimeout(()=>{if(!root.dataset.pageTransitionManaged)root.classList.remove('page-arriving','page-arrival-reveal','page-positioning')},returnHome?5000:1500);
   })();</script>
-  <script src="/page-transition.js?v=luna-20261111-demo" defer></script>
+  <script src="/page-transition.js?v=luna-20261111-devices" defer></script>
   <!-- page-transition:end -->
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <script>(()=>{let saved;try{saved=localStorage.getItem('lunav-language')}catch{}const requested=new URLSearchParams(location.search).get('lang');document.documentElement.lang=(requested||saved)==='en'?'en':'th'})();</script>
@@ -64,6 +64,7 @@
     <symbol id="resource-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
     <symbol id="resource-flow" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="7" height="6" rx="1.5"/><rect x="15" y="16" width="7" height="6" rx="1.5"/><path d="M12 8v4M5.5 16v-4h13v4"/></symbol>
     <symbol id="resource-status" viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l4-5 4 2 4-7"/></symbol>
+    <symbol id="resource-devices" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></symbol>
     <symbol id="resource-license" viewBox="0 0 24 24"><path d="M12 3 3 7v6c0 4 9 8 9 8s9-4 9-8V7Z"/><path d="m8 12 3 3 5-6"/></symbol>
     <symbol id="resource-star" viewBox="0 0 24 24"><path d="m12 2 2.3 7.7L22 12l-7.7 2.3L12 22l-2.3-7.7L2 12l7.7-2.3Z"/></symbol>
     <symbol id="resource-contact" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
@@ -91,6 +92,7 @@
             <div class="nav-more-grid">
               <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="System architecture">แผนผังการทำงาน</strong><small data-en="From an image to an on-device answer">จากภาพสู่คำตอบบน iPhone</small></span></a>
               <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Implementation and recorded checks">สิ่งที่ทำได้และผลการตรวจที่บันทึกไว้</small></span></a>
+              <a class="nav-more-link" href="/devices.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg><span><strong data-en="Supported devices">อุปกรณ์ที่รองรับ</strong><small data-en="iPhone models and Mac build requirements">รุ่น iPhone และข้อกำหนด Mac สำหรับ build</small></span></a>
               <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="Open source and commercial enquiries">โอเพนซอร์สและข้อตกลงเชิงพาณิชย์</small></span></a>
               <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, imagery and typefaces">โมเดล ภาพประกอบ และฟอนต์</small></span></a>
             </div>
@@ -154,6 +156,11 @@
           <a class="resource-link" href="project-status.html">
             <span class="resource-glyph"><svg class="icon" aria-hidden="true"><use href="#resource-status"/></svg></span>
             <div><h3 data-en="Project status">สถานะโครงการ</h3><p data-en="Current implementation, recorded checks, and the limits of the available evidence.">สิ่งที่แอปทำได้ในปัจจุบัน ผลตรวจที่บันทึกไว้ และขอบเขตของหลักฐาน</p><span class="resource-link-caption" data-en="Implementation &amp; validation">การพัฒนาและผลตรวจ</span></div>
+            <svg class="icon resource-link-arrow" aria-hidden="true"><use href="#resource-arrow"/></svg>
+          </a>
+          <a class="resource-link" href="devices.html">
+            <span class="resource-glyph"><svg class="icon" aria-hidden="true"><use href="#resource-devices"/></svg></span>
+            <div><h3 data-en="Supported devices">อุปกรณ์ที่รองรับ</h3><p data-en="Look up your iPhone model and check the Mac and Xcode requirements for building LunaV.">ค้นหารุ่น iPhone ของคุณและตรวจข้อกำหนด Mac กับ Xcode สำหรับ build LunaV</p><span class="resource-link-caption" data-en="iPhone &amp; Mac">iPhone และ Mac</span></div>
             <svg class="icon resource-link-arrow" aria-hidden="true"><use href="#resource-arrow"/></svg>
           </a>
           <a class="resource-link" href="licensing.html">

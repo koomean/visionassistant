@@ -1,0 +1,409 @@
+<!doctype html>
+<!-- Copyright (C) 2026 Wachirawich Kripindakul. SPDX-License-Identifier: AGPL-3.0-or-later. See LICENSE. -->
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080f20">
+  <meta name="description" content="ตรวจรุ่น Mac และ Xcode สำหรับ build LunaV และดูรายการ iPhone พร้อมข้อมูล iOS และ LiDAR" data-description-th="ตรวจรุ่น Mac และ Xcode สำหรับ build LunaV และดูรายการ iPhone พร้อมข้อมูล iOS และ LiDAR" data-description-en="Check Mac and Xcode requirements for building LunaV and browse iPhone models by iOS and LiDAR compatibility.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="อุปกรณ์ที่รองรับ — LunaV">
+  <meta property="og:description" content="ตรวจรุ่น Mac และ Xcode สำหรับ build LunaV และดูรายการ iPhone พร้อมข้อมูล iOS และ LiDAR">
+  <meta property="og:locale" content="th_TH">
+  <meta property="og:url" content="https://lunavision.koomean.com/devices.html">
+  <meta property="og:image" content="https://lunavision.koomean.com/assets/social.jpg">
+  <link rel="canonical" href="https://lunavision.koomean.com/devices.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
+  <script>(()=>{let saved;try{saved=localStorage.getItem('lunav-language')}catch{}const requested=new URLSearchParams(location.search).get('lang');document.documentElement.lang=(requested||saved)==='en'?'en':'th'})();</script>
+  <!-- page-transition:start -->
+  <script>(()=>{
+    const root=document.documentElement,key='lunav-page-transition';
+    let reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,saved,pending,storage=true;
+    try{saved=localStorage.getItem('lunav-language');reduced=reduced||localStorage.getItem('lunav-reduce-motion')==='true'}catch{}
+    const requested=new URLSearchParams(location.search).get('lang');
+    const language=(requested||saved||root.lang)==='en'?'en':'th';
+    root.dataset.pageTransitionLanguage=language;
+    root.dataset.pageTransitionLabel=language==='en'?'Finding a path to the stars':'กำลังหาเส้นทางไปยังดวงดาว';
+    if(!reduced&&location.pathname==='/contact.html'){root.classList.add('contact-entry-pending');setTimeout(()=>root.classList.remove('contact-entry-pending'),1200)}
+    try{
+      const value=sessionStorage.getItem(key);sessionStorage.removeItem(key);
+      if(value)try{pending=JSON.parse(value)}catch{}
+      if(!pending){sessionStorage.setItem(key+'-probe','1');sessionStorage.removeItem(key+'-probe')}
+    }catch{storage=false}
+    let fallback=false;
+    if(!storage)try{
+      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|demo\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|devices\.html|404\.html)?$/.test(path);
+      fallback=from.origin===location.origin&&known(from.pathname)&&known(location.pathname)&&((from.pathname==='/contact.html')!==(location.pathname==='/contact.html'));
+    }catch{}
+    const age=pending?Date.now()-pending.time:Infinity;
+    if(!(pending&&pending.to===location.href&&age>=0&&age<7000)&&!fallback)return;
+    const direction=location.pathname==='/contact.html'?'outbound':'return';
+    const returnHome=direction==='return'&&(location.pathname==='/'||location.pathname==='/index.html');
+    root.dataset.pageTransitionDirection=direction;
+    root.dataset.pageTransitionLabel=direction==='return'?(language==='en'?'Taking you back to the stars':'กำลังพากลับสู่ดวงดาว'):(language==='en'?'Finding a path to the stars':'กำลังหาเส้นทางไปยังดวงดาว');
+    if(returnHome)root.dataset.pageTransitionReturnHome='true';
+    root.dataset.pageTransitionArrival='true';
+    if(reduced)return;
+    root.classList.add('page-arriving');
+    if(returnHome)root.classList.add('page-positioning');
+    setTimeout(()=>{if(!root.dataset.pageTransitionManaged)root.classList.remove('page-arriving','page-arrival-reveal','page-positioning')},returnHome?5000:1500);
+  })();</script>
+  <script src="/page-transition.js?v=luna-20261111-devices" defer></script>
+  <!-- page-transition:end -->
+  <link rel="stylesheet" href="styles.css?v=luna-20261103-safari">
+  <link rel="stylesheet" href="site-shell.css?v=luna-20261110-more">
+  <link rel="stylesheet" href="devices.css?v=luna-20261111-devices">
+  <script src="site-shell.js?v=luna-20261110-more" defer></script>
+  <script src="docs-language.js?v=luna-20261031-nav" defer></script>
+  <script src="devices.js?v=luna-20261111-devices" defer></script>
+  <title data-title-th="อุปกรณ์ที่รองรับ — LunaV" data-title-en="Supported devices — LunaV">อุปกรณ์ที่รองรับ — LunaV</title>
+</head>
+<body class="devices-page">
+  <a class="skip-link" href="#main" data-en="Skip to content">ข้ามไปยังเนื้อหา</a>
+  <!-- site-header:start -->
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="/#overview" data-home-anchor="overview" aria-label="LunaV หน้าแรก" data-en-aria="LunaV home"><svg class="brand-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M26 19.1A12 12 0 0 1 12.9 6 12 12 0 1 0 26 19.1Z"/><path d="m23 3 .9 3.1L27 7l-3.1.9L23 11l-.9-3.1L19 7l3.1-.9Z"/></svg><span>LunaV<span class="brand-dot">.</span></span></a>
+      <nav id="navigation" aria-label="เมนูหลัก" data-en-aria="Main navigation">
+        <a href="/#features" data-home-anchor="features" data-en="Explore">ความสามารถ</a>
+        <a href="/#how" data-home-anchor="how" data-en="How it works">วิธีทำงาน</a>
+        <a href="/#models" data-home-anchor="models" data-en="Technology">เทคโนโลยี</a>
+        <a href="/#privacy" data-home-anchor="privacy" data-en="Privacy">ความเป็นส่วนตัว</a>
+        <a href="/#opensource" data-home-anchor="opensource" data-en="Open source">โอเพนซอร์ส</a>
+        <a href="/demo.html" data-secondary-link data-en="Try demo">ทดลองแอป</a>
+        <a href="/contact.html" data-en="Contact">ติดต่อ</a>
+        <div class="nav-more">
+          <button class="nav-more-toggle" type="button" aria-expanded="false" aria-controls="more-navigation"><span data-en="More">อื่น ๆ</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
+          <div class="nav-more-panel" id="more-navigation" hidden>
+            <div class="nav-more-heading"><span data-en="A closer look at LunaV">รู้จัก LunaV ให้มากขึ้น</span><p data-en="Project details, documentation and credits.">ข้อมูลโครงการ เอกสาร และที่มาของสิ่งที่ใช้</p></div>
+            <div class="nav-more-grid">
+              <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="System architecture">แผนผังการทำงาน</strong><small data-en="From an image to an on-device answer">จากภาพสู่คำตอบบน iPhone</small></span></a>
+              <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Implementation and recorded checks">สิ่งที่ทำได้และผลการตรวจที่บันทึกไว้</small></span></a>
+              <a class="nav-more-link" href="/devices.html" data-secondary-link aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg><span><strong data-en="Supported devices">อุปกรณ์ที่รองรับ</strong><small data-en="iPhone models and Mac build requirements">รุ่น iPhone และข้อกำหนด Mac สำหรับ build</small></span></a>
+              <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="Open source and commercial enquiries">โอเพนซอร์สและข้อตกลงเชิงพาณิชย์</small></span></a>
+              <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, imagery and typefaces">โมเดล ภาพประกอบ และฟอนต์</small></span></a>
+            </div>
+            <a class="nav-more-all" href="/resources.html" data-secondary-link><span data-en="All project resources">ดูข้อมูลเพิ่มเติมทั้งหมด</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <noscript><a class="nav-more-fallback" href="/resources.html">ข้อมูลเพิ่มเติม / Resources</a></noscript>
+      </nav>
+      <div class="header-actions">
+        <div class="language-switch" role="group" aria-label="เลือกภาษา" data-en-aria="Choose language">
+          <button type="button" data-language="th" aria-pressed="true" lang="th">TH</button><span aria-hidden="true">/</span><button type="button" data-language="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+        <a class="github-link" href="https://github.com/koomean/visionassistant" aria-label="LunaV บน GitHub" data-en-aria="LunaV on GitHub"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 .5a12 12 0 0 0-3.793 23.385c.6.11.82-.26.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.839 1.237 1.839 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.776.418-1.305.762-1.605-2.665-.304-5.467-1.333-5.467-5.932 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.52 11.52 0 0 1 12 6.3c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.654 1.652.243 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.625-5.479 5.922.43.372.823 1.102.823 2.222v3.293c0 .32.216.694.825.576A12 12 0 0 0 12 .5Z"/></svg></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="เปิดเมนู" data-en-aria="Toggle menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <!-- site-header:end -->
+
+  <main id="main" class="devices-main">
+    <header class="devices-hero wrap">
+      <div class="devices-hero-copy">
+        <p class="section-kicker"><span class="tiny-orbit" aria-hidden="true"></span><span>LunaV 3.2.0</span></p>
+        <h1 data-en="Supported devices">อุปกรณ์ที่รองรับ</h1>
+        <p data-en="Check which Mac you can build with, then find your iPhone to see its iOS compatibility, depth source, and available test results.">ดูว่า Mac ของคุณใช้ build ได้ไหม แล้วค้นหารุ่น iPhone เพื่อดูว่าใช้ iOS 27 ได้หรือไม่ ใช้แหล่งข้อมูลระยะแบบไหน และมีผลทดสอบอะไรบ้าง</p>
+        <nav class="devices-jump" aria-label="ไปยังส่วนที่ต้องการ" data-en-aria="On this page">
+          <a href="#build" data-en="Build on a Mac">Mac สำหรับ build</a>
+          <a href="#iphone" data-en="Find your iPhone">ค้นหารุ่น iPhone</a>
+        </nav>
+      </div>
+      <div class="devices-art" aria-hidden="true">
+        <img class="devices-moon" src="assets/moon.webp" width="840" height="840" alt="">
+        <div class="devices-handset"><img src="assets/app-v3-answer-en.webp" width="720" height="1565" alt="" fetchpriority="high"></div>
+      </div>
+    </header>
+
+    <section id="build" class="devices-section wrap" aria-labelledby="build-title">
+      <div class="devices-section-heading">
+        <h2 id="build-title" data-en="Build on a Mac">Mac สำหรับ build</h2>
+        <p data-en="Use these requirements to compile the LunaV iPhone target with the existing Xcode project.">ข้อกำหนดสำหรับ build ตัวแอป iPhone ด้วยโปรเจกต์ Xcode ที่มีอยู่</p>
+      </div>
+      <dl class="build-specs">
+        <div><dt data-en="Processor">ชิป</dt><dd><strong>Apple silicon</strong><span data-en="M1 is the earliest M-series chip. MacBook Neo uses A18 Pro.">ชิปตระกูล M เริ่มที่ M1 และ MacBook Neo ใช้ A18 Pro</span></dd></div>
+        <div><dt data-en="Minimum macOS">macOS ขั้นต่ำ</dt><dd><strong>macOS 26.6</strong><span data-en="macOS Tahoe 26.6 or later for Xcode 27.1 and 27.2.">macOS Tahoe 26.6 ขึ้นไป สำหรับ Xcode 27.1 และ 27.2</span></dd></div>
+        <div><dt>Xcode</dt><dd><strong>Xcode 27.1+</strong><span data-en="The project was built with Xcode 27.2 (27B52). The app targets iOS 27.0 or later.">โปรเจกต์ผ่านการ build ด้วย Xcode 27.2 (27B52) ตัวแอปตั้งเป้า iOS 27.0 ขึ้นไป</span></dd></div>
+      </dl>
+      <h3 class="mac-heading" data-en="Starting models by Mac family">รุ่นเริ่มต้นของ Mac แต่ละตระกูล</h3>
+      <dl class="mac-lineup">
+        <div><dt>MacBook Air</dt><dd data-en="M1 (2020) and later Apple silicon models">M1 (2020) และรุ่น Apple silicon ที่ใหม่กว่า</dd></div>
+        <div><dt>MacBook Pro</dt><dd data-en="13-inch M1 (2020) and later Apple silicon models">13 นิ้ว M1 (2020) และรุ่น Apple silicon ที่ใหม่กว่า</dd></div>
+        <div><dt>MacBook Neo</dt><dd>A18 Pro (2026)</dd></div>
+        <div><dt>iMac</dt><dd data-en="24-inch M1 (2021) and later Apple silicon models">24 นิ้ว M1 (2021) และรุ่น Apple silicon ที่ใหม่กว่า</dd></div>
+        <div><dt>Mac mini</dt><dd data-en="M1 (2020) and later Apple silicon models">M1 (2020) และรุ่น Apple silicon ที่ใหม่กว่า</dd></div>
+        <div><dt>Mac Studio</dt><dd data-en="M1 Max or M1 Ultra (2022) and later">M1 Max หรือ M1 Ultra (2022) ขึ้นไป</dd></div>
+        <div><dt>Mac Pro</dt><dd>M2 Ultra (2023)</dd></div>
+      </dl>
+      <div class="build-footnotes">
+        <p data-en="These models meet the Apple silicon host requirement. The recorded build used Xcode 27.2 on an Apple M5 Mac.">รุ่นในรายการเข้าเงื่อนไขเครื่อง Apple silicon การ build ที่บันทึกไว้ใช้ Xcode 27.2 บน Mac ชิป Apple M5</p>
+        <p data-en="To run on a physical iPhone, select a Development Team for signing, pair the phone, and enable Developer Mode. The separate LunaVModelCheck tool targets macOS 27.0 or later.">เมื่อลงแอปบน iPhone จริง ให้เลือก Development Team สำหรับลงลายเซ็น จับคู่เครื่อง และเปิด Developer Mode เครื่องมือ LunaVModelCheck ใช้ macOS 27.0 ขึ้นไป</p>
+        <ul class="devices-links" aria-label="แหล่งข้อมูลสำหรับ build" data-en-aria="Build sources">
+          <li><a href="https://developer.apple.com/xcode/system-requirements/" data-en="Apple’s Xcode requirements">ข้อกำหนด Xcode จาก Apple</a></li>
+          <li><a href="https://developer.apple.com/documentation/xcode-release-notes/xcode-27-release-notes?changes=la__8" data-en="Xcode 27 release notes">รายละเอียด Xcode 27</a></li>
+          <li><a href="https://support.apple.com/en-us/116943" data-en="Apple silicon Mac models">รายชื่อ Mac ชิป Apple silicon</a></li>
+          <li><a href="https://developer.apple.com/documentation/xcode/enabling-developer-mode-on-a-device" data-en="Enable Developer Mode">วิธีเปิด Developer Mode</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="iphone" class="devices-section wrap" aria-labelledby="iphone-title">
+      <div class="devices-section-heading">
+        <h2 id="iphone-title" data-en="Find your iPhone">ค้นหารุ่น iPhone</h2>
+        <p data-en="LunaV requires iOS 27 or later. The 34 models below meet that OS requirement. The labels show the planned depth source, with test results marked where available.">LunaV ต้องใช้ iOS 27 ขึ้นไป มี iPhone 34 รุ่นที่เข้าเงื่อนไขนี้ แต่ละรุ่นระบุแหล่งข้อมูลระยะตามฮาร์ดแวร์และแสดงผลทดสอบที่มีบันทึก</p>
+      </div>
+      <div class="depth-guide" aria-label="วิธีวัดระยะ" data-en-aria="Depth sources">
+        <div><strong class="depth-key depth-key-lidar">LiDAR</strong><p data-en="Uses rear LiDAR for distance. Optional live obstacle alerts also require haptics support.">ใช้เซ็นเซอร์ LiDAR หลังสำหรับวัดระยะ การเปิดเตือนสิ่งกีดขวางแบบสดต้องรองรับการสั่นด้วย</p></div>
+        <div><strong class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</strong><p data-en="Depth Anything 3 estimates distance from an app capture with lens data when resources allow.">ใช้ Depth Anything 3 ประเมินระยะจากภาพที่ถ่ายในแอปและมีข้อมูลเลนส์ เมื่อเครื่องมีทรัพยากรเพียงพอ</p></div>
+      </div>
+      <div class="catalog-tools" id="catalog-tools" hidden>
+        <label class="model-search" for="model-search">
+          <span data-en="Search by model name">ค้นหาตามชื่อรุ่น</span>
+          <input id="model-search" type="search" autocomplete="off" spellcheck="false" placeholder="iPhone 14 Pro" aria-controls="iphone-catalog">
+        </label>
+        <div class="model-filters" role="group" aria-label="กรองรายชื่อ iPhone" data-en-aria="Filter iPhone models">
+          <button type="button" data-filter="all" aria-pressed="true" data-en="All models">ทุกรุ่น</button>
+          <button type="button" data-filter="lidar" aria-pressed="false">LiDAR</button>
+          <button type="button" data-filter="da3" aria-pressed="false" data-en="Depth estimate">ระยะประมาณ</button>
+          <button type="button" data-filter="legacy" aria-pressed="false" data-en="Older models">รุ่นเก่า</button>
+        </div>
+      </div>
+      <p class="catalog-result" id="catalog-result" role="status" aria-live="polite" hidden></p>
+      <div id="iphone-catalog">
+        <section class="model-family" aria-labelledby="family-1">
+          <h3 id="family-1">iPhone Duo / 18</h3>
+          <ul class="model-grid">
+            <li class="model-card" data-model="iPhone Duo" data-depth="da3">
+              <span class="model-name">iPhone Duo</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+              <span class="model-evidence" data-en="Simulator · v3.1">Simulator · รุ่น 3.1</span>
+            </li>
+            <li class="model-card" data-model="iPhone 18 Pro Max" data-depth="lidar">
+              <span class="model-name">iPhone 18 Pro Max</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+            </li>
+            <li class="model-card" data-model="iPhone 18 Pro" data-depth="lidar">
+              <span class="model-name">iPhone 18 Pro</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+            </li>
+          </ul>
+        </section>
+        <section class="model-family" aria-labelledby="family-3">
+          <h3 id="family-3">iPhone 17 / Air</h3>
+          <ul class="model-grid">
+            <li class="model-card" data-model="iPhone 17 Pro Max" data-depth="lidar">
+              <span class="model-name">iPhone 17 Pro Max</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+            </li>
+            <li class="model-card" data-model="iPhone 17 Pro" data-depth="lidar">
+              <span class="model-name">iPhone 17 Pro</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+            </li>
+            <li class="model-card" data-model="iPhone Air" data-depth="da3">
+              <span class="model-name">iPhone Air</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+            <li class="model-card" data-model="iPhone 17" data-depth="da3">
+              <span class="model-name">iPhone 17</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+              <span class="model-evidence" data-en="Simulator · v3.2">Simulator · รุ่น 3.2</span>
+            </li>
+            <li class="model-card" data-model="iPhone 17e" data-depth="da3">
+              <span class="model-name">iPhone 17e</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+          </ul>
+        </section>
+        <section class="model-family" aria-labelledby="family-4">
+          <h3 id="family-4">iPhone 16</h3>
+          <ul class="model-grid">
+            <li class="model-card" data-model="iPhone 16 Pro Max" data-depth="lidar">
+              <span class="model-name">iPhone 16 Pro Max</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+            </li>
+            <li class="model-card" data-model="iPhone 16 Pro" data-depth="lidar">
+              <span class="model-name">iPhone 16 Pro</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+            </li>
+            <li class="model-card" data-model="iPhone 16 Plus" data-depth="da3">
+              <span class="model-name">iPhone 16 Plus</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+            <li class="model-card" data-model="iPhone 16" data-depth="da3">
+              <span class="model-name">iPhone 16</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+            <li class="model-card" data-model="iPhone 16e" data-depth="da3">
+              <span class="model-name">iPhone 16e</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+          </ul>
+        </section>
+        <section class="model-family" aria-labelledby="family-5">
+          <h3 id="family-5">iPhone 15</h3>
+          <ul class="model-grid">
+            <li class="model-card" data-model="iPhone 15 Pro Max" data-depth="lidar">
+              <span class="model-name">iPhone 15 Pro Max</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+            </li>
+            <li class="model-card" data-model="iPhone 15 Pro" data-depth="lidar">
+              <span class="model-name">iPhone 15 Pro</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+            </li>
+            <li class="model-card" data-model="iPhone 15 Plus" data-depth="da3">
+              <span class="model-name">iPhone 15 Plus</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+            <li class="model-card" data-model="iPhone 15" data-depth="da3">
+              <span class="model-name">iPhone 15</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+          </ul>
+        </section>
+        <section class="model-family" aria-labelledby="family-6">
+          <h3 id="family-6">iPhone 14</h3>
+          <ul class="model-grid">
+            <li class="model-card" data-model="iPhone 14 Pro Max" data-depth="lidar">
+              <span class="model-name">iPhone 14 Pro Max</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+            </li>
+            <li class="model-card" data-model="iPhone 14 Pro" data-depth="lidar">
+              <span class="model-name">iPhone 14 Pro</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+              <span class="model-evidence" data-en="Earlier physical-device check">ทดสอบเครื่องจริงในรุ่นก่อน</span>
+            </li>
+            <li class="model-card" data-model="iPhone 14 Plus" data-depth="da3">
+              <span class="model-name">iPhone 14 Plus</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+            <li class="model-card" data-model="iPhone 14" data-depth="da3">
+              <span class="model-name">iPhone 14</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+              <span class="model-evidence" data-en="Earlier physical-device check">ทดสอบเครื่องจริงในรุ่นก่อน</span>
+            </li>
+          </ul>
+        </section>
+        <section class="model-family" aria-labelledby="family-7">
+          <h3 id="family-7">iPhone 13</h3>
+          <ul class="model-grid">
+            <li class="model-card" data-model="iPhone 13 Pro Max" data-depth="lidar">
+              <span class="model-name">iPhone 13 Pro Max</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+            </li>
+            <li class="model-card" data-model="iPhone 13 Pro" data-depth="lidar">
+              <span class="model-name">iPhone 13 Pro</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+            </li>
+            <li class="model-card" data-model="iPhone 13" data-depth="da3">
+              <span class="model-name">iPhone 13</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+            <li class="model-card" data-model="iPhone 13 mini" data-depth="da3">
+              <span class="model-name">iPhone 13 mini</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+          </ul>
+        </section>
+        <section class="model-family" aria-labelledby="family-8">
+          <h3 id="family-8">iPhone 12</h3>
+          <ul class="model-grid">
+            <li class="model-card" data-model="iPhone 12 Pro Max" data-depth="lidar">
+              <span class="model-name">iPhone 12 Pro Max</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+            </li>
+            <li class="model-card" data-model="iPhone 12 Pro" data-depth="lidar">
+              <span class="model-name">iPhone 12 Pro</span>
+              <span class="depth-key depth-key-lidar">LiDAR</span>
+            </li>
+            <li class="model-card" data-model="iPhone 12" data-depth="da3">
+              <span class="model-name">iPhone 12</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+            <li class="model-card" data-model="iPhone 12 mini" data-depth="da3">
+              <span class="model-name">iPhone 12 mini</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+          </ul>
+        </section>
+        <section class="model-family" aria-labelledby="family-9">
+          <h3 id="family-9">iPhone 11</h3>
+          <ul class="model-grid">
+            <li class="model-card" data-model="iPhone 11 Pro Max" data-depth="da3">
+              <span class="model-name">iPhone 11 Pro Max</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+            <li class="model-card" data-model="iPhone 11 Pro" data-depth="da3">
+              <span class="model-name">iPhone 11 Pro</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+            <li class="model-card" data-model="iPhone 11" data-depth="da3">
+              <span class="model-name">iPhone 11</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+          </ul>
+        </section>
+        <section class="model-family" aria-labelledby="family-10">
+          <h3 id="family-10">iPhone SE</h3>
+          <ul class="model-grid">
+            <li class="model-card" data-model="iPhone SE (3rd generation)" data-depth="da3" data-alias="iPhone SE รุ่นที่ 3 SE 2022 SE3">
+              <span class="model-name">iPhone SE (3rd generation)</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+            <li class="model-card" data-model="iPhone SE (2nd generation)" data-depth="da3" data-alias="iPhone SE รุ่นที่ 2 SE 2020 SE2">
+              <span class="model-name">iPhone SE (2nd generation)</span>
+              <span class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</span>
+            </li>
+          </ul>
+        </section>
+        <details class="legacy-models" id="legacy-models">
+          <summary><span data-en="Older iPhones that cannot run iOS 27">iPhone รุ่นเก่าที่ใช้ iOS 27 ไม่ได้</span></summary>
+          <ul class="legacy-grid">
+            <li data-model="iPhone XS Max" data-depth="legacy">iPhone XS Max</li>
+            <li data-model="iPhone XS" data-depth="legacy">iPhone XS</li>
+            <li data-model="iPhone XR" data-depth="legacy">iPhone XR</li>
+            <li data-model="iPhone X" data-depth="legacy">iPhone X</li>
+            <li data-model="iPhone 8 Plus" data-depth="legacy">iPhone 8 Plus</li>
+            <li data-model="iPhone 8" data-depth="legacy">iPhone 8</li>
+            <li data-model="iPhone 7 Plus" data-depth="legacy">iPhone 7 Plus</li>
+            <li data-model="iPhone 7" data-depth="legacy">iPhone 7</li>
+            <li data-model="iPhone SE (1st generation)" data-depth="legacy" data-alias="iPhone SE รุ่นที่ 1 SE 2016 SE1">iPhone SE (1st generation)</li>
+            <li data-model="iPhone 6s Plus" data-depth="legacy">iPhone 6s Plus</li>
+            <li data-model="iPhone 6s" data-depth="legacy">iPhone 6s</li>
+            <li data-model="iPhone 6 Plus" data-depth="legacy">iPhone 6 Plus</li>
+            <li data-model="iPhone 6" data-depth="legacy">iPhone 6</li>
+            <li data-model="iPhone 5s" data-depth="legacy">iPhone 5s</li>
+            <li data-model="iPhone 5c" data-depth="legacy">iPhone 5c</li>
+            <li data-model="iPhone 5" data-depth="legacy">iPhone 5</li>
+            <li data-model="iPhone 4s" data-depth="legacy">iPhone 4s</li>
+            <li data-model="iPhone 4" data-depth="legacy">iPhone 4</li>
+            <li data-model="iPhone 3GS" data-depth="legacy">iPhone 3GS</li>
+            <li data-model="iPhone 3G" data-depth="legacy">iPhone 3G</li>
+            <li data-model="iPhone (original)" data-depth="legacy" data-alias="iPhone รุ่นแรก iPhone 2007 iPhone 2G">iPhone (original)</li>
+          </ul>
+        </details>
+      </div>
+      <div class="iphone-footnotes">
+        <p data-en="LunaV 3.2.0 passed 288 tests on the iPhone 17 Simulator. iPhone Duo layout was checked on the Simulator in 3.1.0. The iPhone 14 and iPhone 14 Pro physical-device results are from earlier builds.">LunaV 3.2.0 ผ่าน 288 การทดสอบบน iPhone 17 Simulator ส่วน iPhone Duo ตรวจการจัดหน้าจอบน Simulator ในรุ่น 3.1.0 ผลทดสอบเครื่องจริงของ iPhone 14 และ iPhone 14 Pro เป็นของแอปรุ่นก่อน</p>
+        <p data-en="iOS compatibility tells you which models meet the OS requirement. AI and voice features depend on available memory, device conditions, and installed Dictation language assets.">รายการนี้แสดงว่าเครื่องรุ่นใดเข้าเงื่อนไขระบบปฏิบัติการ การใช้ AI และเสียงยังขึ้นกับหน่วยความจำ สภาพเครื่อง และภาษาของ Dictation ที่ติดตั้ง</p>
+        <ul class="devices-links" aria-label="แหล่งข้อมูล iPhone" data-en-aria="iPhone sources">
+          <li><a href="https://www.apple.com/os/ios/" data-en="Apple’s iOS 27 compatibility list">รายการ iOS 27 จาก Apple</a></li>
+          <li><a href="https://support.apple.com/en-gb/108044" data-en="Identify your iPhone model">วิธีตรวจรุ่น iPhone</a></li>
+          <li><a href="https://www.apple.com/iphone/compare/" data-en="Apple’s iPhone specifications">สเปก iPhone จาก Apple</a></li>
+          <li><a href="project-status.html" data-en="LunaV test results">ผลทดสอบ LunaV</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer devices-footer">
+    <div class="wrap footer-bottom">
+      <span>© 2026 Wachirawich Kripindakul</span>
+      <a class="text-link" href="resources.html" data-en="All project resources">ข้อมูลเพิ่มเติมของโครงการ</a>
+      <a class="text-link" href="#main" data-en="Back to top">กลับขึ้นด้านบน</a>
+    </div>
+  </footer>
+</body>
+</html>
