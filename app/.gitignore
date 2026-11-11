@@ -1,0 +1,14 @@
+.build/
+.venv/
+.derivedData*/
+Logs/
+Models/Qwen3-VL-2B-Instruct-4bit
+Models/DepthAnything3Metric
+Models/.source-*/
+Tools/.venv-depth/
+Tools/DepthAnything3Export/checkpoint/
+Tools/DepthAnything3Export/upstream/
+Tools/DepthAnything3Export/upstream.tar.gz
+*.xcuserstate
+xcuserdata/
+.DS_Store

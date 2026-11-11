@@ -1,0 +1,89 @@
+name: LunaV
+options:
+  developmentLanguage: th
+  bundleIdPrefix: com.lunav
+  deploymentTarget:
+    iOS: "27.0"
+    macOS: "27.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    CLANG_ENABLE_MODULES: YES
+  configs:
+    Debug:
+      SWIFT_OPTIMIZATION_LEVEL: -O
+    Release:
+      SWIFT_OPTIMIZATION_LEVEL: -O
+      SWIFT_COMPILATION_MODE: wholemodule
+packages:
+  WhisperKit:
+    url: https://github.com/argmaxinc/WhisperKit
+    exactVersion: 1.1.1
+  MLXLM:
+    url: https://github.com/ml-explore/mlx-swift-lm
+    exactVersion: 3.32.3
+  MLX:
+    url: https://github.com/ml-explore/mlx-swift
+    exactVersion: 0.32.3
+  Tokenizers:
+    url: https://github.com/huggingface/swift-transformers
+    exactVersion: 1.3.5
+targets:
+  LunaV:
+    type: application
+    platform: iOS
+    postBuildScripts:
+      - name: Remove Finder metadata from built app
+        basedOnDependencyAnalysis: false
+        script: |
+          /usr/bin/xattr -cr "${TARGET_BUILD_DIR}/${WRAPPER_NAME}"
+    sources:
+      - path: LunaV
+        excludes:
+          - Fonts
+      - path: LunaV/Fonts
+        type: folder
+        buildPhase: resources
+      - path: Shared
+      - path: Models/DepthAnything3Metric/DepthAnything3Metric.mlpackage
+        buildPhase: sources
+      - path: Models/DepthAnything3Metadata
+        type: folder
+        buildPhase: resources
+      - path: Models/Qwen3-VL-2B-Instruct-4bit
+        type: folder
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.koomean.lunav
+        PRODUCT_NAME: LunaV
+        MARKETING_VERSION: 3.2.0
+        CURRENT_PROJECT_VERSION: 5
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SUPPORTS_MACCATALYST: NO
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: LunaV/Info.plist
+        CODE_SIGN_ENTITLEMENTS: LunaV/LunaV.entitlements
+        CODE_SIGN_STYLE: Automatic
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_PREVIEWS: YES
+    dependencies:
+      - package: WhisperKit
+        product: WhisperKit
+      - package: MLXLM
+        product: MLXVLM
+      - package: MLXLM
+        product: MLXLMCommon
+      - package: MLX
+        product: MLX
+      - package: Tokenizers
+        product: Tokenizers
+schemes:
+  LunaV:
+    build:
+      targets:
+        LunaV: all
+    run:
+      config: Release

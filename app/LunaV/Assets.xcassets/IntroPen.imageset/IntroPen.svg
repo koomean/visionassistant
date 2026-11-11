@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="72" viewBox="0 0 24 72" fill="none">
+  <!-- SPDX-License-Identifier: AGPL-3.0-or-later. The writing tip is exactly (12, 72). -->
+  <title>Red fineliner pen</title>
+  <defs>
+    <linearGradient id="barrel" x1="7" y1="30" x2="17" y2="30" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c9363c"/>
+      <stop offset=".38" stop-color="#f46661"/>
+      <stop offset=".7" stop-color="#e84c4b"/>
+      <stop offset="1" stop-color="#b52b36"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="8.5" y1="62" x2="15.5" y2="62" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8b96aa"/>
+      <stop offset=".42" stop-color="#ecedf0"/>
+      <stop offset="1" stop-color="#9da5b4"/>
+    </linearGradient>
+  </defs>
+  <path d="M8.5 57H15.5L13.1 68.2H10.9L8.5 57Z" fill="url(#steel)"/>
+  <path d="M10.9 68H13.1L12.55 70.8L12 72L11.45 70.8L10.9 68Z" fill="#f2766c"/>
+  <path d="M12 70.7V72" stroke="#862b36" stroke-width=".7"/>
+  <rect x="7" y="7" width="10" height="51" rx="2.2" fill="url(#barrel)"/>
+  <path d="M7 13V7.5A3.5 3.5 0 0 1 10.5 4H13.5A3.5 3.5 0 0 1 17 7.5V13H7Z" fill="#ed625e"/>
+  <path d="M7.4 19H16.6" stroke="#a92b36" stroke-width="1"/>
+  <path d="M9.1 23V47" stroke="#ffaca0" stroke-width="1" stroke-linecap="round" opacity=".75"/>
+  <path d="M16.6 8.5C18.1 8.5 18.5 9.4 18.5 11V23.5C18.5 25.2 17.8 26 16.7 26" stroke="#ef948a" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M8 51H16M8 53.5H16M8 56H16" stroke="#a8323b" stroke-width=".75" opacity=".8"/>
+</svg>

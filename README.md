@@ -1,5 +1,7 @@
 # LunaV
 
+**Source:** [iOS app and build instructions](app/README.md) · [Motion source](motion/README.md)
+
 An on-device visual question assistant and research prototype for iPhone. Hold to ask about a photograph, read and summarise text, estimate supported distances, and hear completed answers. The current app is **3.0.0 (build 3)** and uses Qwen3-VL-2B-Instruct through MLX/Metal, Apple Dictation for speech input, Apple system voices for answer playback, and Depth Anything 3 Metric on devices without LiDAR.
 
 [Visit the project website](https://lunavision.koomean.com/) · [View the project on GitHub](https://github.com/koomean/visionassistant)

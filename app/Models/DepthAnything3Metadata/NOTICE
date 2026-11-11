@@ -1,0 +1,14 @@
+Depth Anything 3 Metric Large
+Copyright (c) 2025 ByteDance Ltd. and/or its affiliates.
+DINOv2 backbone components: Copyright (c) Meta Platforms, Inc. and affiliates.
+Licensed under Apache License 2.0; see LICENSE.
+
+Official model: https://huggingface.co/depth-anything/DA3METRIC-LARGE
+Model revision: 4010e39f3634a45bc60553321fb49fb760bd594e
+Official source: https://github.com/ByteDance-Seed/Depth-Anything-3
+Source revision: 3d835ec1a5802d64a8b8b15f817a1ab54809bfe4
+
+LunaV modifications: CoreML FP16 conversion; static positional interpolation
+precomputed at 392 x 294 with identical floating point output; ImageNet RGB
+normalization included in graph; returns raw depth and raw sky score, omitting
+percentile sky-depth replacement because sky is excluded from range estimates.

@@ -1,0 +1,7111 @@
+{
+  "sourceLanguage" : "th",
+  "strings" : {
+    " · %@ วินาที" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " · %@ seconds"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " · %@ วินาที"
+          }
+        }
+      }
+    },
+    " · ประมวลผลบนเครื่อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " · On-device processing"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " · ประมวลผลบนเครื่อง"
+          }
+        }
+      }
+    },
+    "." : {
+      "shouldTranslate" : false
+    },
+    "%.2f วินาที" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%.2f seconds"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%.2f วินาที"
+          }
+        }
+      }
+    },
+    "%@" : {
+      "shouldTranslate" : false
+    },
+    "%@ · บิลด์ %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · Build %@"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · บิลด์ %@"
+          }
+        }
+      }
+    },
+    "%@ · ภาพถ่าย %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · Captured %@"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · ภาพถ่าย %@"
+          }
+        }
+      }
+    },
+    "%@ ครั้ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ times"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ครั้ง"
+          }
+        }
+      }
+    },
+    "%@ จากภาพถ่ายเดียวกัน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ from the same photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ จากภาพถ่ายเดียวกัน"
+          }
+        }
+      }
+    },
+    "%@ วินาที" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ seconds"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ วินาที"
+          }
+        }
+      }
+    },
+    "%@%@" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "≈ %.1f เมตร" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "≈ %.1f meters"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "≈ %.1f เมตร"
+          }
+        }
+      }
+    },
+    "≈ %.2f เมตร" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "≈ %.2f meters"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "≈ %.2f เมตร"
+          }
+        }
+      }
+    },
+    "AI ภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visual AI"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI ภาพ"
+          }
+        }
+      }
+    },
+    "AI หาวัตถุจากคำถามแล้วอ่านแผนที่ระยะของพื้นที่นั้น ค่าระยะเป็นของตอนถ่ายภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI locates the object in your question and reads depth from that region. The depth was captured with the photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI หาวัตถุจากคำถามแล้วอ่านแผนที่ระยะของพื้นที่นั้น ค่าระยะเป็นของตอนถ่ายภาพ"
+          }
+        }
+      }
+    },
+    "Apple Dictation · บนเครื่อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Dictation · On device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Dictation · บนเครื่อง"
+          }
+        }
+      }
+    },
+    "Context ที่ใช้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Context used"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Context ที่ใช้"
+          }
+        }
+      }
+    },
+    "Depth Anything 3 · ระยะประมาณจากกล้อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depth Anything 3 · Estimated camera depth"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depth Anything 3 · ระยะประมาณจากกล้อง"
+          }
+        }
+      }
+    },
+    "Depth Anything 3 ประเมินระยะจากภาพ ค่าจริงอาจคลาดเคลื่อน โดยเฉพาะกระจก พื้นผิวสะท้อน และฉากที่โมเดลไม่คุ้นเคย" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depth Anything 3 estimates distance from the photo. Values may be inaccurate, especially for glass, reflective surfaces, and unfamiliar scenes"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depth Anything 3 ประเมินระยะจากภาพ ค่าจริงอาจคลาดเคลื่อน โดยเฉพาะกระจก พื้นผิวสะท้อน และฉากที่โมเดลไม่คุ้นเคย"
+          }
+        }
+      }
+    },
+    "LunaV" : {
+      "shouldTranslate" : false
+    },
+    "LunaV%@" : {
+      "shouldTranslate" : false
+    },
+    "Simulator · ทดสอบ UI ได้ โมเดล AI ต้องใช้เครื่องจริง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulator · UI testing only; AI models require a real device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulator · ทดสอบ UI ได้ โมเดล AI ต้องใช้เครื่องจริง"
+          }
+        }
+      }
+    },
+    "Simulator ใช้ตรวจ UI เท่านั้น ต้องรันบน iPhone เพื่อทดสอบความเร็วโมเดลจริง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulator is for UI testing. Run on iPhone to measure model performance"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulator ใช้ตรวจ UI เท่านั้น ต้องรันบน iPhone เพื่อทดสอบความเร็วโมเดลจริง"
+          }
+        }
+      }
+    },
+    "Simulator ใช้ทดสอบหน้าจอได้ กรุณารันบน iPhone เพื่อใช้โมเดลผ่าน Metal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulator can test the interface. Run on iPhone to use models with Metal"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulator ใช้ทดสอบหน้าจอได้ กรุณารันบน iPhone เพื่อใช้โมเดลผ่าน Metal"
+          }
+        }
+      }
+    },
+    "กดค้างเพื่อถาม · แตะเพื่อถ่าย" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold to ask · Tap to take a photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กดค้างเพื่อถาม · แตะเพื่อถ่าย"
+          }
+        }
+      }
+    },
+    "กดค้างเพื่อถามต่อจากภาพเดิม · แตะเพื่อถ่ายใหม่" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold to ask about the same photo · Tap to take a new one"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กดค้างเพื่อถามต่อจากภาพเดิม · แตะเพื่อถ่ายใหม่"
+          }
+        }
+      }
+    },
+    "กดค้างเพื่อถามต่อจากภาพล่าสุด แตะสั้นเพื่อถ่ายใหม่ คำสั่งช่วยหาของจะถ่ายภาพใหม่" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold to ask about the latest photo. Tap to take a new one. Find-object requests take a fresh photo."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กดค้างเพื่อถามต่อจากภาพล่าสุด แตะสั้นเพื่อถ่ายใหม่ คำสั่งช่วยหาของจะถ่ายภาพใหม่"
+          }
+        }
+      }
+    },
+    "กดค้างเพื่อลองถามใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold to ask again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กดค้างเพื่อลองถามใหม่"
+          }
+        }
+      }
+    },
+    "กดค้างแล้วพูดคำถาม ปล่อยปุ่มเพื่อส่ง แตะสั้นเพื่อถ่ายภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold and speak your question. Release to send. Tap briefly to take a photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กดค้างแล้วพูดคำถาม ปล่อยปุ่มเพื่อส่ง แตะสั้นเพื่อถ่ายภาพ"
+          }
+        }
+      }
+    },
+    "กดปุ่มกลางค้างแล้วพูด ปล่อยเพื่อส่งคำถาม\nแตะสั้นเพื่อถ่ายภาพอย่างเดียว" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold the center button and speak. Release to send your question\nTap briefly to take a photo only"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กดปุ่มกลางค้างแล้วพูด ปล่อยเพื่อส่งคำถาม\nแตะสั้นเพื่อถ่ายภาพอย่างเดียว"
+          }
+        }
+      }
+    },
+    "กรอบที่เลือก" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selected region"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กรอบที่เลือก"
+          }
+        }
+      }
+    },
+    "กรอบที่เลือก · " : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selected region · "
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กรอบที่เลือก · "
+          }
+        }
+      }
+    },
+    "กรอบที่เลือก · %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selected region · %@"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กรอบที่เลือก · %@"
+          }
+        }
+      }
+    },
+    "กระชับ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compact"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กระชับ"
+          }
+        }
+      }
+    },
+    "กรุณากรอกระยะเป็นเมตร เช่น 1.0" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the distance in meters, such as 1.0"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กรุณากรอกระยะเป็นเมตร เช่น 1.0"
+          }
+        }
+      }
+    },
+    "กล้องกำลังถ่ายภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The camera is taking a photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กล้องกำลังถ่ายภาพ"
+          }
+        }
+      }
+    },
+    "กลับ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กลับ"
+          }
+        }
+      }
+    },
+    "การตอบล่าสุด" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latest response"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "การตอบล่าสุด"
+          }
+        }
+      }
+    },
+    "การเตรียม%@ใช้เวลานานเกินกำหนด ระบบจะรอให้งานรอบก่อนจบก่อนเริ่มใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing %@ took too long. Waiting for the previous operation to finish before retrying"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "การเตรียม%@ใช้เวลานานเกินกำหนด ระบบจะรอให้งานรอบก่อนจบก่อนเริ่มใหม่"
+          }
+        }
+      }
+    },
+    "การรับเสียงหยุดแล้ว" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listening stopped"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "การรับเสียงหยุดแล้ว"
+          }
+        }
+      }
+    },
+    "การสั่นไม่พร้อมใช้งาน ลองปิดและเปิดการเตือนอีกครั้ง" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vibration is unavailable. Try turning alerts off and on again."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "การสั่นไม่พร้อมใช้งาน ลองปิดและเปิดการเตือนอีกครั้ง"
+          }
+        }
+      }
+    },
+    "กำลังคิด…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thinking…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังคิด…"
+          }
+        }
+      }
+    },
+    "กำลังคืนหน่วยความจำโมเดลเสียง…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Releasing speech-model memory…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังคืนหน่วยความจำโมเดลเสียง…"
+          }
+        }
+      }
+    },
+    "กำลังดาวน์โหลดภาษาสำหรับการฟังเสียงบนเครื่อง…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloading the on-device speech language…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังดาวน์โหลดภาษาสำหรับการฟังเสียงบนเครื่อง…"
+          }
+        }
+      }
+    },
+    "กำลังดูภาพและตอบ…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analyzing the photo and answering…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังดูภาพและตอบ…"
+          }
+        }
+      }
+    },
+    "กำลังตรวจสอบระบบฟังเสียงบนเครื่อง…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checking on-device speech recognition…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังตรวจสอบระบบฟังเสียงบนเครื่อง…"
+          }
+        }
+      }
+    },
+    "กำลังเตรียม%@… · ครั้งที่ %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing %@… · Attempt %@"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเตรียม%@… · ครั้งที่ %@"
+          }
+        }
+      }
+    },
+    "กำลังเตรียมพร้อมให้คุณ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Getting ready for you"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเตรียมพร้อมให้คุณ"
+          }
+        }
+      }
+    },
+    "กำลังเตรียมภาพ…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing the photo…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเตรียมภาพ…"
+          }
+        }
+      }
+    },
+    "กำลังเตรียมภาพและระยะ…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing the photo and depth…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเตรียมภาพและระยะ…"
+          }
+        }
+      }
+    },
+    "กำลังเตรียมภาษาไทย / English…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing Thai / English…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเตรียมภาษาไทย / English…"
+          }
+        }
+      }
+    },
+    "กำลังเตรียมภาษาเสียง…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing speech language…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเตรียมภาษาเสียง…"
+          }
+        }
+      }
+    },
+    "กำลังเตรียมโมเดล…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing the model…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเตรียมโมเดล…"
+          }
+        }
+      }
+    },
+    "กำลังเตรียมโมเดลบนเครื่อง…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing on-device models…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเตรียมโมเดลบนเครื่อง…"
+          }
+        }
+      }
+    },
+    "กำลังเตรียมโมเดลเสียงบนเครื่อง…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing the on-device speech model…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเตรียมโมเดลเสียงบนเครื่อง…"
+          }
+        }
+      }
+    },
+    "กำลังเตรียมระบบฟังเสียงบนเครื่องให้พร้อม…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Getting on-device speech recognition ready…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเตรียมระบบฟังเสียงบนเครื่องให้พร้อม…"
+          }
+        }
+      }
+    },
+    "กำลังเตรียมระบบฟังเสียงให้พร้อม…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Getting speech recognition ready…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเตรียมระบบฟังเสียงให้พร้อม…"
+          }
+        }
+      }
+    },
+    "กำลังเตรียมเสียง…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing audio…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเตรียมเสียง…"
+          }
+        }
+      }
+    },
+    "กำลังถอดเสียงคำถามก่อนหน้า" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transcribing the previous question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังถอดเสียงคำถามก่อนหน้า"
+          }
+        }
+      }
+    },
+    "กำลังถอดเสียงบนเครื่อง…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transcribing on device…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังถอดเสียงบนเครื่อง…"
+          }
+        }
+      }
+    },
+    "กำลังถ่ายภาพและเตรียมระยะ…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taking a photo and preparing depth…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังถ่ายภาพและเตรียมระยะ…"
+          }
+        }
+      }
+    },
+    "กำลังประเมินระยะจาก Depth Anything 3…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimating depth with Depth Anything 3…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังประเมินระยะจาก Depth Anything 3…"
+          }
+        }
+      }
+    },
+    "กำลังเปิดกล้อง…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opening the camera…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเปิดกล้อง…"
+          }
+        }
+      }
+    },
+    "กำลังเปิดไมโครโฟน…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opening the microphone…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเปิดไมโครโฟน…"
+          }
+        }
+      }
+    },
+    "กำลังเปิดไมโครโฟนและถ่ายภาพ…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opening the microphone and taking a photo…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังเปิดไมโครโฟนและถ่ายภาพ…"
+          }
+        }
+      }
+    },
+    "กำลังแปลงเสียงเป็นคำถาม…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Converting speech into a question…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังแปลงเสียงเป็นคำถาม…"
+          }
+        }
+      }
+    },
+    "กำลังแปลงเสียงเป็นคำถามบนเครื่อง…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Converting speech into a question on device…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังแปลงเสียงเป็นคำถามบนเครื่อง…"
+          }
+        }
+      }
+    },
+    "กำลังฟัง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listening"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังฟัง"
+          }
+        }
+      }
+    },
+    "กำลังฟัง…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listening…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังฟัง…"
+          }
+        }
+      }
+    },
+    "กำลังแยกวัตถุ %@/%@…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identifying object %@/%@…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังแยกวัตถุ %@/%@…"
+          }
+        }
+      }
+    },
+    "กำลังรอระยะสดจาก LiDAR" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waiting for live LiDAR distance"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังรอระยะสดจาก LiDAR"
+          }
+        }
+      }
+    },
+    "กำลังสรุปข้อความ…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarizing text…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังสรุปข้อความ…"
+          }
+        }
+      }
+    },
+    "กำลังหากลุ่มข้อความในภาพ…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finding text groups in the photo…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังหากลุ่มข้อความในภาพ…"
+          }
+        }
+      }
+    },
+    "กำลังหาของในภาพ…" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finding the object in the photo…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังหาของในภาพ…"
+          }
+        }
+      }
+    },
+    "กำลังหาวัตถุและอ่านระยะ…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finding the object and reading its depth…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังหาวัตถุและอ่านระยะ…"
+          }
+        }
+      }
+    },
+    "กำลังอ่านข้อความใน%@…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading text in %@…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังอ่านข้อความใน%@…"
+          }
+        }
+      }
+    },
+    "กำลังอ่านคำตอบ · กดค้างเพื่อถามใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading the answer · Hold to ask again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังอ่านคำตอบ · กดค้างเพื่อถามใหม่"
+          }
+        }
+      }
+    },
+    "กำลังอ่านคำตอบ…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading the answer aloud…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังอ่านคำตอบ…"
+          }
+        }
+      }
+    },
+    "เก็บใจความสำคัญให้สั้นลง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize the key points"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เก็บใจความสำคัญให้สั้นลง"
+          }
+        }
+      }
+    },
+    "เกี่ยวกับ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เกี่ยวกับ"
+          }
+        }
+      }
+    },
+    "เกี่ยวกับ LunaV" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About LunaV"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เกี่ยวกับ LunaV"
+          }
+        }
+      }
+    },
+    "เกี่ยวกับการรับเสียง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About speech recognition"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เกี่ยวกับการรับเสียง"
+          }
+        }
+      }
+    },
+    "ขวา" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Right"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ขวา"
+          }
+        }
+      }
+    },
+    "ข้อความ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ข้อความ"
+          }
+        }
+      }
+    },
+    "ข้อความจากภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text from the photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ข้อความจากภาพ"
+          }
+        }
+      }
+    },
+    "ข้อความแต่ละจุด" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text groups"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ข้อความแต่ละจุด"
+          }
+        }
+      }
+    },
+    "ข้อความที่ใช้สรุป" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text used for the summary"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ข้อความที่ใช้สรุป"
+          }
+        }
+      }
+    },
+    "ข้อความส่วนนี้ยาวเกินขีดจำกัดของเครื่อง กรุณาเลือกพื้นที่ให้เล็กลงแล้วสรุปอีกครั้ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This text exceeds the device's limit. Select a smaller region and summarize again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ข้อความส่วนนี้ยาวเกินขีดจำกัดของเครื่อง กรุณาเลือกพื้นที่ให้เล็กลงแล้วสรุปอีกครั้ง"
+          }
+        }
+      }
+    },
+    "ข้อมูล depth ไม่ตรงกับภาพนี้ กรุณาถ่ายภาพใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The depth data does not match this photo. Take another one"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ข้อมูล depth ไม่ตรงกับภาพนี้ กรุณาถ่ายภาพใหม่"
+          }
+        }
+      }
+    },
+    "ข้อมูล LiDAR ไม่พร้อมใช้งาน" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiDAR data is unavailable"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ข้อมูล LiDAR ไม่พร้อมใช้งาน"
+          }
+        }
+      }
+    },
+    "ข้อมูลการทำงาน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ข้อมูลการทำงาน"
+          }
+        }
+      }
+    },
+    "ข้อมูลเซ็นเซอร์ดิบ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raw sensor data"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ข้อมูลเซ็นเซอร์ดิบ"
+          }
+        }
+      }
+    },
+    "ข้อมูลโมเดล เครื่อง และ LiDAR" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Model, device, and LiDAR details"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ข้อมูลโมเดล เครื่อง และ LiDAR"
+          }
+        }
+      }
+    },
+    "ข้อมูลระยะภาพนี้มีคุณภาพไม่พอ กรุณาถ่ายใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This photo's depth data is not reliable enough. Take another photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ข้อมูลระยะภาพนี้มีคุณภาพไม่พอ กรุณาถ่ายใหม่"
+          }
+        }
+      }
+    },
+    "ข้อมูลเลนส์" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lens data"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ข้อมูลเลนส์"
+          }
+        }
+      }
+    },
+    "ความร้อน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperature"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ความร้อน"
+          }
+        }
+      }
+    },
+    "ความเร็ว" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speed"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ความเร็ว"
+          }
+        }
+      }
+    },
+    "ความเร็วโดยประมาณ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Approximate speed"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ความเร็วโดยประมาณ"
+          }
+        }
+      }
+    },
+    "ความแรงสูงสุด" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum intensity"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ความแรงสูงสุด"
+          }
+        }
+      }
+    },
+    "ความละเอียดปรับตามเครื่อง ถามภาพตอบสั้น ส่วนอ่านข้อความใช้ OCR บนเครื่องและสรุปด้วยโมเดล" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image resolution adapts to the device. Visual answers stay short; text reading uses on-device OCR and model summaries"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ความละเอียดปรับตามเครื่อง ถามภาพตอบสั้น ส่วนอ่านข้อความใช้ OCR บนเครื่องและสรุปด้วยโมเดล"
+          }
+        }
+      }
+    },
+    "คัดลอก" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "คัดลอก"
+          }
+        }
+      }
+    },
+    "ค่าคาลิเบรตกล้อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera calibration"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ค่าคาลิเบรตกล้อง"
+          }
+        }
+      }
+    },
+    "ค่าปรับเทียบต้องอยู่ระหว่าง 0.25–4 เท่า" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calibration scale must be between 0.25× and 4×"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ค่าปรับเทียบต้องอยู่ระหว่าง 0.25–4 เท่า"
+          }
+        }
+      }
+    },
+    "คำตอบถึงขีดจำกัดแล้ว ลองเลือกพื้นที่เล็กลง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The answer reached its limit. Try selecting a smaller region"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "คำตอบถึงขีดจำกัดแล้ว ลองเลือกพื้นที่เล็กลง"
+          }
+        }
+      }
+    },
+    "คำถามเกิน 2 นาที · ปล่อยปุ่มแล้วลองพูดให้สั้นลง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Question exceeded 2 minutes · Release and try a shorter question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "คำถามเกิน 2 นาที · ปล่อยปุ่มแล้วลองพูดให้สั้นลง"
+          }
+        }
+      }
+    },
+    "คำถามนี้ยาวเกินขีดจำกัดของเครื่อง กรุณาถามให้สั้นลง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This question exceeds the device's limit. Ask a shorter question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "คำถามนี้ยาวเกินขีดจำกัดของเครื่อง กรุณาถามให้สั้นลง"
+          }
+        }
+      }
+    },
+    "คำถามยาวเกิน 2 นาที กรุณากดค้างแล้วถามให้สั้นลง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The question exceeded 2 minutes. Hold the button and ask a shorter question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "คำถามยาวเกิน 2 นาที กรุณากดค้างแล้วถามให้สั้นลง"
+          }
+        }
+      }
+    },
+    "คืนค่าสเกลเดิม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset depth scale"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "คืนค่าสเกลเดิม"
+          }
+        }
+      }
+    },
+    "คืนหน่วยความจำแล้ว กำลังเตรียมการรับเสียงใหม่ โมเดลภาพจะโหลดเฉพาะตอนถาม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memory released. Preparing speech again; the visual model will load only when answering"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "คืนหน่วยความจำแล้ว กำลังเตรียมการรับเสียงใหม่ โมเดลภาพจะโหลดเฉพาะตอนถาม"
+          }
+        }
+      }
+    },
+    "คุณถาม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You asked"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "คุณถาม"
+          }
+        }
+      }
+    },
+    "คุณภาพสูง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enhanced"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "คุณภาพสูง"
+          }
+        }
+      }
+    },
+    "เครื่องนี้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เครื่องนี้"
+          }
+        }
+      }
+    },
+    "เครื่องมือทดสอบ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Testing tools"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เครื่องมือทดสอบ"
+          }
+        }
+      }
+    },
+    "เครื่องร้อนมาก กรุณาพักให้เครื่องเย็นลงแล้วลองอีกครั้ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The device is too hot. Let it cool down and try again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เครื่องร้อนมาก กรุณาพักให้เครื่องเย็นลงแล้วลองอีกครั้ง"
+          }
+        }
+      }
+    },
+    "งานที่ต้องการ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose an action"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "งานที่ต้องการ"
+          }
+        }
+      }
+    },
+    "จัดทำโดย" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Created by"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "จัดทำโดย"
+          }
+        }
+      }
+    },
+    "จำนวนโทเคนภาพสูงสุด" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum image tokens"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "จำนวนโทเคนภาพสูงสุด"
+          }
+        }
+      }
+    },
+    "จุดที่เลือก" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selected point"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "จุดที่เลือก"
+          }
+        }
+      }
+    },
+    "ฉลากขวด" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bottle label"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ฉลากขวด"
+          }
+        }
+      }
+    },
+    "ฉลากสินค้า" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Package label"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ฉลากสินค้า"
+          }
+        }
+      }
+    },
+    "ชื่อ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ชื่อ"
+          }
+        }
+      }
+    },
+    "ใช่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ใช่"
+          }
+        }
+      }
+    },
+    "ใช้จุดนี้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use this point"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ใช้จุดนี้"
+          }
+        }
+      }
+    },
+    "ใช้ปุ่มทั้งภาพ ส่วนบน ตรงกลาง หรือส่วนล่างแทนการลากได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Whole photo, Top, Center, or Bottom instead of dragging"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ใช้ปุ่มทั้งภาพ ส่วนบน ตรงกลาง หรือส่วนล่างแทนการลากได้"
+          }
+        }
+      }
+    },
+    "ใช้พื้นที่นี้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use this region"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ใช้พื้นที่นี้"
+          }
+        }
+      }
+    },
+    "ใช้ภาพเดิมเมื่อกดค้าง" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reuse the photo on hold"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ใช้ภาพเดิมเมื่อกดค้าง"
+          }
+        }
+      }
+    },
+    "ใช้ภาพทดสอบ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use sample photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ใช้ภาพทดสอบ"
+          }
+        }
+      }
+    },
+    "ใช้ภาพล่าสุด เลือกพื้นที่หรือพิมพ์ถามได้เอง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use the latest photo, select a region, or type a question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ใช้ภาพล่าสุด เลือกพื้นที่หรือพิมพ์ถามได้เอง"
+          }
+        }
+      }
+    },
+    "ใช้โมเดล Dictation ของ iOS · ไม่ส่งเสียงไปเซิร์ฟเวอร์ · เลือกภาษาไทยหรืออังกฤษ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uses iOS Dictation models · Audio stays on device · Choose Thai or English"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ใช้โมเดล Dictation ของ iOS · ไม่ส่งเสียงไปเซิร์ฟเวอร์ · เลือกภาษาไทยหรืออังกฤษ"
+          }
+        }
+      }
+    },
+    "ซ้าย" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Left"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ซ้าย"
+          }
+        }
+      }
+    },
+    "ตรงกลาง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Center"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตรงกลาง"
+          }
+        }
+      }
+    },
+    "ตรวจทานข้อความกับภาพก่อนนำไปใช้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check the text against the photo before using it"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตรวจทานข้อความกับภาพก่อนนำไปใช้"
+          }
+        }
+      }
+    },
+    "ต้องใช้ iPhone ที่มี LiDAR และรองรับการสั่น" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Requires an iPhone with LiDAR and haptic support"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ต้องใช้ iPhone ที่มี LiDAR และรองรับการสั่น"
+          }
+        }
+      }
+    },
+    "ตอบแล้ว · กดค้างเพื่อถามภาพใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Answered · Hold to ask about a new photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตอบแล้ว · กดค้างเพื่อถามภาพใหม่"
+          }
+        }
+      }
+    },
+    "ตั้งค่า" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตั้งค่า"
+          }
+        }
+      }
+    },
+    "ตั้งค่าและทดสอบระบบ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings and testing"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตั้งค่าและทดสอบระบบ"
+          }
+        }
+      }
+    },
+    "ตัวคูณสำหรับกล้องนี้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scale for this camera"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตัวคูณสำหรับกล้องนี้"
+          }
+        }
+      }
+    },
+    "ตัวเลือกภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo options"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตัวเลือกภาพ"
+          }
+        }
+      }
+    },
+    "ตำแหน่งที่วัด" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Measurement point"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตำแหน่งที่วัด"
+          }
+        }
+      }
+    },
+    "เตรียม / ลองระบบเสียงอีกครั้ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepare / Retry speech"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เตรียม / ลองระบบเสียงอีกครั้ง"
+          }
+        }
+      }
+    },
+    "เตรียม%@ไม่สำเร็จ · จะลองครั้งที่ %@ ใน %@ วินาที" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to prepare %@ · Attempt %@ in %@ seconds"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เตรียม%@ไม่สำเร็จ · จะลองครั้งที่ %@ ใน %@ วินาที"
+          }
+        }
+      }
+    },
+    "เตรียมภาพไม่สำเร็จ กรุณาถ่ายใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to prepare the photo. Take another one"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เตรียมภาพไม่สำเร็จ กรุณาถ่ายใหม่"
+          }
+        }
+      }
+    },
+    "เตรียมภาษาเสียงในตั้งค่าก่อนใช้งานครั้งแรก" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepare the speech language in Settings before first use"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เตรียมภาษาเสียงในตั้งค่าก่อนใช้งานครั้งแรก"
+          }
+        }
+      }
+    },
+    "เตรียมโมเดลอีกครั้ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepare models again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เตรียมโมเดลอีกครั้ง"
+          }
+        }
+      }
+    },
+    "เตรียมเสียงไม่ทันเวลา ลองเตรียมอีกครั้งในตั้งค่า" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech preparation timed out. Try preparing it again in Settings"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เตรียมเสียงไม่ทันเวลา ลองเตรียมอีกครั้งในตั้งค่า"
+          }
+        }
+      }
+    },
+    "เตือนด้วย LiDAR" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiDAR proximity alerts"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เตือนด้วย LiDAR"
+          }
+        }
+      }
+    },
+    "แตะกลุ่มที่ต้องการอ่านหรือสรุป" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a group to read or summarize"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "แตะกลุ่มที่ต้องการอ่านหรือสรุป"
+          }
+        }
+      }
+    },
+    "แตะตรงกลางพื้นผิวของวัตถุที่ต้องการวัด" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the center of the object's surface"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "แตะตรงกลางพื้นผิวของวัตถุที่ต้องการวัด"
+          }
+        }
+      }
+    },
+    "แตะเพื่อเลือกพื้นที่ข้อความ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to select a text region"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "แตะเพื่อเลือกพื้นที่ข้อความ"
+          }
+        }
+      }
+    },
+    "แตะวัตถุที่จะวัดระยะ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap an object to measure"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "แตะวัตถุที่จะวัดระยะ"
+          }
+        }
+      }
+    },
+    "ถอดคำถามไม่ได้ ลองกดค้างแล้วพูดใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to transcribe the question. Hold the button and try again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถอดคำถามไม่ได้ ลองกดค้างแล้วพูดใหม่"
+          }
+        }
+      }
+    },
+    "ถอดเสียงนานเกินไป ลองถามเป็นประโยคสั้นลง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transcription took too long. Try a shorter question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถอดเสียงนานเกินไป ลองถามเป็นประโยคสั้นลง"
+          }
+        }
+      }
+    },
+    "ถอดเสียงไม่สำเร็จ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transcription failed"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถอดเสียงไม่สำเร็จ"
+          }
+        }
+      }
+    },
+    "ถอดเสียงแล้ว · บนเครื่อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transcribed · On device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถอดเสียงแล้ว · บนเครื่อง"
+          }
+        }
+      }
+    },
+    "ถามเกี่ยวกับภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask about the photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถามเกี่ยวกับภาพ"
+          }
+        }
+      }
+    },
+    "ถามต่อเกี่ยวกับภาพนี้ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask a follow-up about this photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถามต่อเกี่ยวกับภาพนี้ได้"
+          }
+        }
+      }
+    },
+    "ถามต่อจากภาพนี้" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask about this photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถามต่อจากภาพนี้"
+          }
+        }
+      }
+    },
+    "ถามภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask about photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถามภาพ"
+          }
+        }
+      }
+    },
+    "ถามระยะได้เลย · AI เลือกวัตถุอัตโนมัติ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask about distance · AI selects the object"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถามระยะได้เลย · AI เลือกวัตถุอัตโนมัติ"
+          }
+        }
+      }
+    },
+    "ถ่ายภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take a photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถ่ายภาพ"
+          }
+        }
+      }
+    },
+    "ถ่ายภาพ แล้วถามได้เลย" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take a photo, then ask a question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถ่ายภาพ แล้วถามได้เลย"
+          }
+        }
+      }
+    },
+    "ถ่ายภาพไม่สำเร็จ กรุณาลองอีกครั้ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to take the photo. Please try again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถ่ายภาพไม่สำเร็จ กรุณาลองอีกครั้ง"
+          }
+        }
+      }
+    },
+    "ถ่ายภาพแล้วถามระยะ หรือใช้เครื่องมือเลือกจุดเองก่อน จึงจะเทียบระยะได้ ไม่จำเป็นต้องเทียบก่อนใช้งานตามปกติ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take a photo and ask about distance, or use the point-selection tool first. Calibration is optional for normal use"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถ่ายภาพแล้วถามระยะ หรือใช้เครื่องมือเลือกจุดเองก่อน จึงจะเทียบระยะได้ ไม่จำเป็นต้องเทียบก่อนใช้งานตามปกติ"
+          }
+        }
+      }
+    },
+    "ถ่ายภาพหรือเลือกรูปก่อนเริ่มใช้เครื่องมือ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take or choose a photo to use these tools"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถ่ายภาพหรือเลือกรูปก่อนเริ่มใช้เครื่องมือ"
+          }
+        }
+      }
+    },
+    "ถ่ายแล้ว · กดค้างเพื่อถ่ายและถามด้วยเสียง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo taken · Hold to take a photo and ask"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถ่ายแล้ว · กดค้างเพื่อถ่ายและถามด้วยเสียง"
+          }
+        }
+      }
+    },
+    "ถ่ายใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retake"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถ่ายใหม่"
+          }
+        }
+      }
+    },
+    "ทดสอบการสั่น" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test vibration"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ทดสอบการสั่น"
+          }
+        }
+      }
+    },
+    "ทดสอบระยะและเลือกจุดเอง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test depth and choose a point"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ทดสอบระยะและเลือกจุดเอง"
+          }
+        }
+      }
+    },
+    "ทั้งภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Whole photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ทั้งภาพ"
+          }
+        }
+      }
+    },
+    "เทียบระยะ Depth Anything 3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calibrate Depth Anything 3"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เทียบระยะ Depth Anything 3"
+          }
+        }
+      }
+    },
+    "เทียบระยะตรงกลางภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calibrate the center distance"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เทียบระยะตรงกลางภาพ"
+          }
+        }
+      }
+    },
+    "โทเคนก่อนหยุด (ประมาณ)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Approximate tokens before stopping"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "โทเคนก่อนหยุด (ประมาณ)"
+          }
+        }
+      }
+    },
+    "โทเคนคำตอบ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Answer tokens"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "โทเคนคำตอบ"
+          }
+        }
+      }
+    },
+    "ไทย / English · บนเครื่อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thai / English · On device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไทย / English · บนเครื่อง"
+          }
+        }
+      }
+    },
+    "น้ำหนักภาษา" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language weights"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "น้ำหนักภาษา"
+          }
+        }
+      }
+    },
+    "เน้นเรื่องใดเป็นพิเศษ? (ไม่บังคับ)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anything to focus on? (optional)"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เน้นเรื่องใดเป็นพิเศษ? (ไม่บังคับ)"
+          }
+        }
+      }
+    },
+    "ในภาพมีวัตถุที่ตรงกับคำถามหลายชิ้น กรุณาระบุชื่อ สี หรือตำแหน่งของชิ้นที่ต้องการในคำถาม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Several objects match your question. Specify the name, color, or position of the object you mean"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ในภาพมีวัตถุที่ตรงกับคำถามหลายชิ้น กรุณาระบุชื่อ สี หรือตำแหน่งของชิ้นที่ต้องการในคำถาม"
+          }
+        }
+      }
+    },
+    "ในภาพมีอะไรบ้าง?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is in this photo?"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ในภาพมีอะไรบ้าง?"
+          }
+        }
+      }
+    },
+    "บนเครื่อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "บนเครื่อง"
+          }
+        }
+      }
+    },
+    "บริบทที่ใช้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Context used"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "บริบทที่ใช้"
+          }
+        }
+      }
+    },
+    "บริเวณนี้อยู่ใกล้ขอบหรือมีหลายระยะปนกัน จึงยังยืนยันระยะไม่ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This region is near an edge or contains mixed depths. The distance cannot be confirmed"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "บริเวณนี้อยู่ใกล้ขอบหรือมีหลายระยะปนกัน จึงยังยืนยันระยะไม่ได้"
+          }
+        }
+      }
+    },
+    "บริเวณวัตถุมีหลายระยะหรือพื้นผิวไม่ชัดเจน จึงยังยืนยันระยะไม่ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The object region contains mixed depths or an unclear surface, so its distance cannot be confirmed"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "บริเวณวัตถุมีหลายระยะหรือพื้นผิวไม่ชัดเจน จึงยังยืนยันระยะไม่ได้"
+          }
+        }
+      }
+    },
+    "บันทึกการเทียบระยะสำหรับกล้องนี้แล้ว" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depth calibration saved for this camera"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "บันทึกการเทียบระยะสำหรับกล้องนี้แล้ว"
+          }
+        }
+      }
+    },
+    "บางกลุ่มยังระบุชนิดวัตถุไม่ได้ แสดงตำแหน่งไว้แทน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some object types could not be identified. Their positions are shown instead"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "บางกลุ่มยังระบุชนิดวัตถุไม่ได้ แสดงตำแหน่งไว้แทน"
+          }
+        }
+      }
+    },
+    "บิลด์" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Build"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "บิลด์"
+          }
+        }
+      }
+    },
+    "บิลด์ %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Build %@"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "บิลด์ %@"
+          }
+        }
+      }
+    },
+    "ปกติ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Normal"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ปกติ"
+          }
+        }
+      }
+    },
+    "ประมวลผล" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processing"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ประมวลผล"
+          }
+        }
+      }
+    },
+    "ประมวลผลช่องว่างโดยระบบ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System-filtered with gap filling"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ประมวลผลช่องว่างโดยระบบ"
+          }
+        }
+      }
+    },
+    "ประมวลผลบนเครื่อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On-device processing"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ประมวลผลบนเครื่อง"
+          }
+        }
+      }
+    },
+    "ประมวลผลบนเครื่องของคุณ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processed on your device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ประมวลผลบนเครื่องของคุณ"
+          }
+        }
+      }
+    },
+    "ประมาณจาก EXIF" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated from EXIF"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ประมาณจาก EXIF"
+          }
+        }
+      }
+    },
+    "ประมาณจากภาพและข้อมูลเลนส์" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated from the photo and lens data"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ประมาณจากภาพและข้อมูลเลนส์"
+          }
+        }
+      }
+    },
+    "ประมาณจากโมเดล ณ ตอนถ่ายภาพ · ค่าจริงอาจคลาดเคลื่อน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated by the model at capture · Actual distance may differ"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ประมาณจากโมเดล ณ ตอนถ่ายภาพ · ค่าจริงอาจคลาดเคลื่อน"
+          }
+        }
+      }
+    },
+    "ประเมินระยะจากภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimate photo depth"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ประเมินระยะจากภาพ"
+          }
+        }
+      }
+    },
+    "ประเมินระยะภาพนี้ไม่ได้: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to estimate depth for this photo: %@"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ประเมินระยะภาพนี้ไม่ได้: %@"
+          }
+        }
+      }
+    },
+    "ปรับบริบทอัตโนมัติ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Context adjusted automatically"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ปรับบริบทอัตโนมัติ"
+          }
+        }
+      }
+    },
+    "ปรับบริบทอัตโนมัติแล้ว · ถามต่อได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Context adjusted automatically · Ask a follow-up"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ปรับบริบทอัตโนมัติแล้ว · ถามต่อได้"
+          }
+        }
+      }
+    },
+    "ปรับสเกลได้เฉพาะระยะประมาณจาก Depth Anything 3 Metric" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scale calibration is available only for Depth Anything 3 Metric estimates"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ปรับสเกลได้เฉพาะระยะประมาณจาก Depth Anything 3 Metric"
+          }
+        }
+      }
+    },
+    "ปรับให้พร้อมในแบบของคุณ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make LunaV work your way"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ปรับให้พร้อมในแบบของคุณ"
+          }
+        }
+      }
+    },
+    "ป้าย" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ป้าย"
+          }
+        }
+      }
+    },
+    "ปิดการเตือนอยู่" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alerts are off"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ปิดการเตือนอยู่"
+          }
+        }
+      }
+    },
+    "ปิดการอ่านคำตอบ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spoken answers are off"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ปิดการอ่านคำตอบ"
+          }
+        }
+      }
+    },
+    "เป็นค่าประมาณจาก depth ที่ระบบกรองและเติมช่องว่าง ไม่ใช่ค่าดิบทุกพิกเซล" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated from system-filtered depth with filled gaps; not every pixel is a raw reading"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เป็นค่าประมาณจาก depth ที่ระบบกรองและเติมช่องว่าง ไม่ใช่ค่าดิบทุกพิกเซล"
+          }
+        }
+      }
+    },
+    "เป็นสัญญาณช่วยเสริม อาจตรวจไม่พบกระจก พื้นต่างระดับ หรือสิ่งกีดขวางนอกมุมกล้อง" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An additional cue. Glass, changes in floor level and obstacles outside the camera view may not be detected."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เป็นสัญญาณช่วยเสริม อาจตรวจไม่พบกระจก พื้นต่างระดับ หรือสิ่งกีดขวางนอกมุมกล้อง"
+          }
+        }
+      }
+    },
+    "เปลี่ยนเฉพาะภาษาหน้าจอ ไม่เปลี่ยนภาษารับเสียงหรือคำตอบ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changes the interface language only. Speech and answer language settings stay the same."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปลี่ยนเฉพาะภาษาหน้าจอ ไม่เปลี่ยนภาษารับเสียงหรือคำตอบ"
+          }
+        }
+      }
+    },
+    "เปิดกล้องไม่ได้ ตรวจสิทธิ์กล้องในตั้งค่า หรือใช้เครื่องมือทดสอบภาพในตั้งค่า" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to open the camera. Check camera permission or use the photo tools in Settings"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดกล้องไม่ได้ ตรวจสิทธิ์กล้องในตั้งค่า หรือใช้เครื่องมือทดสอบภาพในตั้งค่า"
+          }
+        }
+      }
+    },
+    "เปิดกล้องไม่ได้ ลองเลือกรูปจากคลังภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to open the camera. Try a photo from your library"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดกล้องไม่ได้ ลองเลือกรูปจากคลังภาพ"
+          }
+        }
+      }
+    },
+    "เปิดครั้งแรกบนเครื่องนี้อาจใช้เวลาหลายนาที แอพจะลองใหม่อัตโนมัติหากเตรียมไม่สำเร็จ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First-time setup on this device may take a few minutes. The app retries automatically if preparation fails"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดครั้งแรกบนเครื่องนี้อาจใช้เวลาหลายนาที แอพจะลองใหม่อัตโนมัติหากเตรียมไม่สำเร็จ"
+          }
+        }
+      }
+    },
+    "เปิดภาพเพื่อประเมินระยะไม่ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to open the photo for depth estimation"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดภาพเพื่อประเมินระยะไม่ได้"
+          }
+        }
+      }
+    },
+    "เปิดภาพไม่ได้ กรุณาเลือกรูปใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to open this photo. Choose another one"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดภาพไม่ได้ กรุณาเลือกรูปใหม่"
+          }
+        }
+      }
+    },
+    "เปิดภาพส่วนที่เลือกไม่ได้ กรุณาเลือกพื้นที่ใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to open the selected region. Select it again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดภาพส่วนที่เลือกไม่ได้ กรุณาเลือกพื้นที่ใหม่"
+          }
+        }
+      }
+    },
+    "เปิดไมโครโฟนนานเกินไป ปล่อยปุ่มแล้วลองกดค้างใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opening the microphone took too long. Release the button and hold it again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดไมโครโฟนนานเกินไป ปล่อยปุ่มแล้วลองกดค้างใหม่"
+          }
+        }
+      }
+    },
+    "เปิดไมโครโฟนไม่ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to open the microphone"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดไมโครโฟนไม่ได้"
+          }
+        }
+      }
+    },
+    "เปิดไมโครโฟนไม่ได้ ตรวจสอบว่าไม่มีแอพอื่นใช้งานอยู่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to open the microphone. Check that another app is not using it"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดไมโครโฟนไม่ได้ ตรวจสอบว่าไม่มีแอพอื่นใช้งานอยู่"
+          }
+        }
+      }
+    },
+    "เปิดเว็บไซต์" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open website"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดเว็บไซต์"
+          }
+        }
+      }
+    },
+    "เปิดเว็บไซต์ LunaV ในเบราว์เซอร์" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open the LunaV website in your browser"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดเว็บไซต์ LunaV ในเบราว์เซอร์"
+          }
+        }
+      }
+    },
+    "เปิดสิทธิ์กล้องในเมนูตั้งค่า" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow camera access in Settings"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดสิทธิ์กล้องในเมนูตั้งค่า"
+          }
+        }
+      }
+    },
+    "เปิดสิทธิ์กล้องและไมโครโฟน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow camera and microphone access"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดสิทธิ์กล้องและไมโครโฟน"
+          }
+        }
+      }
+    },
+    "โปรไฟล์อัตโนมัติ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic profile"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "โปรไฟล์อัตโนมัติ"
+          }
+        }
+      }
+    },
+    "ผู้จัดทำ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Created by"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ผู้จัดทำ"
+          }
+        }
+      }
+    },
+    "แผนที่ระยะ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depth map"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "แผนที่ระยะ"
+          }
+        }
+      }
+    },
+    "พบ %@ กลุ่ม · กำลังดูว่าอยู่บนวัตถุใด…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Found %@ groups · Identifying their objects…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พบ %@ กลุ่ม · กำลังดูว่าอยู่บนวัตถุใด…"
+          }
+        }
+      }
+    },
+    "พบข้อความ %@ กลุ่ม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Found %@ text groups"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พบข้อความ %@ กลุ่ม"
+          }
+        }
+      }
+    },
+    "พบสิ่งกีดขวางด้านหน้ากล้อง · กำลังสั่นเตือน" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obstacle ahead of the camera · vibrating"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พบสิ่งกีดขวางด้านหน้ากล้อง · กำลังสั่นเตือน"
+          }
+        }
+      }
+    },
+    "พร้อม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พร้อม"
+          }
+        }
+      }
+    },
+    "พร้อม LiDAR" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiDAR ready"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พร้อม LiDAR"
+          }
+        }
+      }
+    },
+    "พร้อมใช้งาน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พร้อมใช้งาน"
+          }
+        }
+      }
+    },
+    "พร้อมใช้งาน · ประมวลผลบนเครื่อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready · On-device processing"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พร้อมใช้งาน · ประมวลผลบนเครื่อง"
+          }
+        }
+      }
+    },
+    "พร้อมถาม · ประเมินระยะจากภาพนี้เมื่อต้องใช้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready · Depth will be estimated when needed"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พร้อมถาม · ประเมินระยะจากภาพนี้เมื่อต้องใช้"
+          }
+        }
+      }
+    },
+    "พร้อมถาม · ระยะประมาณจาก Depth Anything 3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready · Estimated depth from Depth Anything 3"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พร้อมถาม · ระยะประมาณจาก Depth Anything 3"
+          }
+        }
+      }
+    },
+    "พร้อมถามเกี่ยวกับภาพนี้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready for questions about this photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พร้อมถามเกี่ยวกับภาพนี้"
+          }
+        }
+      }
+    },
+    "พร้อมรับเสียง · %@ · บนเครื่อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready to listen · %@ · On device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พร้อมรับเสียง · %@ · บนเครื่อง"
+          }
+        }
+      }
+    },
+    "พร้อมอ่านคำตอบด้วยเสียง Apple" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready to read answers with Apple voices"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พร้อมอ่านคำตอบด้วยเสียง Apple"
+          }
+        }
+      }
+    },
+    "พรีเมียม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พรีเมียม"
+          }
+        }
+      }
+    },
+    "พักการเตือนชั่วคราว" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alerts temporarily paused"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พักการเตือนชั่วคราว"
+          }
+        }
+      }
+    },
+    "พิมพ์ถามเกี่ยวกับภาพ…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask about the photo…"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พิมพ์ถามเกี่ยวกับภาพ…"
+          }
+        }
+      }
+    },
+    "พื้นผิววัตถุในภาพเล็กเกินไปสำหรับระบุระยะอย่างน่าเชื่อถือ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The object's surface is too small in the photo for a reliable distance reading"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พื้นผิววัตถุในภาพเล็กเกินไปสำหรับระบุระยะอย่างน่าเชื่อถือ"
+          }
+        }
+      }
+    },
+    "พูดได้เลย · ปล่อยปุ่มเพื่อส่ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speak now · Release to send"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พูดได้เลย · ปล่อยปุ่มเพื่อส่ง"
+          }
+        }
+      }
+    },
+    "ฟังคำตอบด้วยเสียง Apple ที่อยู่ในเครื่อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listen to answers with Apple voices on this device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ฟังคำตอบด้วยเสียง Apple ที่อยู่ในเครื่อง"
+          }
+        }
+      }
+    },
+    "ไฟล์ tokenizer ของโมเดลเสียงไม่สมบูรณ์ กรุณา build แอพใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The speech tokenizer is incomplete. Rebuild the app"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไฟล์ tokenizer ของโมเดลเสียงไม่สมบูรณ์ กรุณา build แอพใหม่"
+          }
+        }
+      }
+    },
+    "ภาพ เสียง ข้อความ และคำตอบประมวลผลบนเครื่องของคุณ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photos, audio, text, and answers are processed on your device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพ เสียง ข้อความ และคำตอบประมวลผลบนเครื่องของคุณ"
+          }
+        }
+      }
+    },
+    "ภาพจากตอนถ่าย · ประมวลผลบนเครื่อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Captured photo · On-device processing"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพจากตอนถ่าย · ประมวลผลบนเครื่อง"
+          }
+        }
+      }
+    },
+    "ภาพทดสอบอยู่ในเมนูตั้งค่า" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find the sample photo in Settings"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพทดสอบอยู่ในเมนูตั้งค่า"
+          }
+        }
+      }
+    },
+    "ภาพนี้ไม่มี depth จาก LiDAR ที่มีคุณภาพพอ กรุณาถ่ายใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This photo has no LiDAR depth of sufficient quality. Take another photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพนี้ไม่มี depth จาก LiDAR ที่มีคุณภาพพอ กรุณาถ่ายใหม่"
+          }
+        }
+      }
+    },
+    "ภาพนี้ไม่มีข้อมูลระยะ กรุณาถ่ายด้วยกล้องในแอพเพื่อใช้ LiDAR หรือประเมินระยะด้วย Depth Anything 3 ในรุ่นที่ไม่มี LiDAR" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This photo has no depth data. Use the in-app camera for LiDAR, or Depth Anything 3 on devices without LiDAR"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพนี้ไม่มีข้อมูลระยะ กรุณาถ่ายด้วยกล้องในแอพเพื่อใช้ LiDAR หรือประเมินระยะด้วย Depth Anything 3 ในรุ่นที่ไม่มี LiDAR"
+          }
+        }
+      }
+    },
+    "ภาพนี้ไม่มีข้อมูลระยะ ใช้การตอบจากภาพตามปกติ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This photo has no depth data. Visual questions work as usual"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพนี้ไม่มีข้อมูลระยะ ใช้การตอบจากภาพตามปกติ"
+          }
+        }
+      }
+    },
+    "ภาพนี้ไม่มีข้อมูลเลนส์สำหรับคำนวณระยะ กรุณาถ่ายด้วยกล้องในแอพอีกครั้ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This photo has no lens data for depth calculation. Take another photo using the in-app camera"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพนี้ไม่มีข้อมูลเลนส์สำหรับคำนวณระยะ กรุณาถ่ายด้วยกล้องในแอพอีกครั้ง"
+          }
+        }
+      }
+    },
+    "ภาพนี้ไม่มีค่า LiDAR ในช่วงที่แอพวัดได้ (0.2–5 เมตร) กรุณาเล็งวัตถุและถ่ายใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This photo has no LiDAR readings within the app's range (0.2–5 meters). Aim at an object and take another photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพนี้ไม่มีค่า LiDAR ในช่วงที่แอพวัดได้ (0.2–5 เมตร) กรุณาเล็งวัตถุและถ่ายใหม่"
+          }
+        }
+      }
+    },
+    "ภาพและ%@ %@ จากตอนถ่าย · ประมวลผลบนเครื่อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo and %@ from %@ at capture · On-device processing"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพและ%@ %@ จากตอนถ่าย · ประมวลผลบนเครื่อง"
+          }
+        }
+      }
+    },
+    "ภาพและข้อความ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo and text"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพและข้อความ"
+          }
+        }
+      }
+    },
+    "ภาพสำหรับแตะเลือกจุดวัดระยะ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo for selecting a measurement point"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพสำหรับแตะเลือกจุดวัดระยะ"
+          }
+        }
+      }
+    },
+    "ภาพสำหรับลากกรอบข้อความ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo for selecting a text region"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพสำหรับลากกรอบข้อความ"
+          }
+        }
+      }
+    },
+    "ภาพสี" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพสี"
+          }
+        }
+      }
+    },
+    "ภาพสี · LiDAR ไม่พร้อม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color photo · LiDAR unavailable"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาพสี · LiDAR ไม่พร้อม"
+          }
+        }
+      }
+    },
+    "ภาษาไทย" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thai"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาษาไทย"
+          }
+        }
+      }
+    },
+    "ภาษาและคำถาม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech and questions"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาษาและคำถาม"
+          }
+        }
+      }
+    },
+    "ภาษาเสียง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech language"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาษาเสียง"
+          }
+        }
+      }
+    },
+    "ภาษาเสียงบนเครื่อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On-device speech language"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาษาเสียงบนเครื่อง"
+          }
+        }
+      }
+    },
+    "ภาษาเสียงยังไม่พร้อม · จะลองใหม่อัตโนมัติ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech language is not ready · Retrying automatically"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาษาเสียงยังไม่พร้อม · จะลองใหม่อัตโนมัติ"
+          }
+        }
+      }
+    },
+    "ภาษาอังกฤษ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาษาอังกฤษ"
+          }
+        }
+      }
+    },
+    "ภาษาแอพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App language"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ภาษาแอพ"
+          }
+        }
+      }
+    },
+    "ม." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "m"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ม."
+          }
+        }
+      }
+    },
+    "มาตรฐาน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "มาตรฐาน"
+          }
+        }
+      }
+    },
+    "เมตร" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "meters"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เมตร"
+          }
+        }
+      }
+    },
+    "เมนูอาหาร" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เมนูอาหาร"
+          }
+        }
+      }
+    },
+    "โมเดล" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Models"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "โมเดล"
+          }
+        }
+      }
+    },
+    "โมเดลกำลังทำงาน กรุณารอให้เสร็จก่อน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The model is working. Wait for it to finish"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "โมเดลกำลังทำงาน กรุณารอให้เสร็จก่อน"
+          }
+        }
+      }
+    },
+    "โมเดลประเมินระยะยังไม่พร้อม กรุณารอให้เตรียมระบบเสร็จ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The depth model is not ready. Wait for preparation to finish"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "โมเดลประเมินระยะยังไม่พร้อม กรุณารอให้เตรียมระบบเสร็จ"
+          }
+        }
+      }
+    },
+    "โมเดลประเมินระยะให้ข้อมูลไม่ตรงรูปแบบ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The depth model returned an invalid format"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "โมเดลประเมินระยะให้ข้อมูลไม่ตรงรูปแบบ"
+          }
+        }
+      }
+    },
+    "โมเดลเสียง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech model"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "โมเดลเสียง"
+          }
+        }
+      }
+    },
+    "โมเดลเสียงยังไม่พร้อม กรุณาเปิดตั้งค่าและเตรียมภาษาเสียง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The speech model is not ready. Open Settings and prepare the speech language"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "โมเดลเสียงยังไม่พร้อม กรุณาเปิดตั้งค่าและเตรียมภาษาเสียง"
+          }
+        }
+      }
+    },
+    "ไม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่"
+          }
+        }
+      }
+    },
+    "ไมโครโฟนถูกขัดจังหวะ กดค้างเพื่อถามใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Microphone interrupted. Hold the button to ask again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไมโครโฟนถูกขัดจังหวะ กดค้างเพื่อถามใหม่"
+          }
+        }
+      }
+    },
+    "ไม่ได้ยินคำถาม กดค้างไว้แล้วพูด จากนั้นปล่อยปุ่มเพื่อส่ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No question detected. Hold the button and speak, then release to send"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่ได้ยินคำถาม กดค้างไว้แล้วพูด จากนั้นปล่อยปุ่มเพื่อส่ง"
+          }
+        }
+      }
+    },
+    "ไม่ทราบ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่ทราบ"
+          }
+        }
+      }
+    },
+    "ไม่พบข้อความที่อ่านได้ในพื้นที่นี้ ลองเลือกกรอบให้ชิดข้อความหรือถ่ายให้ชัดขึ้น" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No readable text found in this region. Select a tighter box or take a clearer photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่พบข้อความที่อ่านได้ในพื้นที่นี้ ลองเลือกกรอบให้ชิดข้อความหรือถ่ายให้ชัดขึ้น"
+          }
+        }
+      }
+    },
+    "ไม่พบไฟล์โมเดลเสียงในแอพ กรุณา build พร้อม WhisperLargeTurbo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech-model files are missing. Build the app with WhisperLargeTurbo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่พบไฟล์โมเดลเสียงในแอพ กรุณา build พร้อม WhisperLargeTurbo"
+          }
+        }
+      }
+    },
+    "ไม่พบโมเดล 4-bit กรุณารัน Scripts/prepare-model.sh แล้ว build ใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The 4-bit model is missing. Run Scripts/prepare-model.sh and rebuild"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่พบโมเดล 4-bit กรุณารัน Scripts/prepare-model.sh แล้ว build ใหม่"
+          }
+        }
+      }
+    },
+    "ไม่พบโมเดล Depth Anything 3 Metric ในแอพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Depth Anything 3 Metric model is missing from the app"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่พบโมเดล Depth Anything 3 Metric ในแอพ"
+          }
+        }
+      }
+    },
+    "ไม่พบวัตถุที่ระบุในภาพ จึงยังระบุระยะไม่ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The specified object was not found in the photo, so its distance cannot be determined"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่พบวัตถุที่ระบุในภาพ จึงยังระบุระยะไม่ได้"
+          }
+        }
+      }
+    },
+    "ไม่พบสิ่งกีดขวางในบริเวณที่วัด" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No obstacle detected in the measured area"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่พบสิ่งกีดขวางในบริเวณที่วัด"
+          }
+        }
+      }
+    },
+    "ไม่มีข้อมูลเทียบตำแหน่งภาพกับ LiDAR กรุณาถ่ายใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo-to-LiDAR alignment data is missing. Take another photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่มีข้อมูลเทียบตำแหน่งภาพกับ LiDAR กรุณาถ่ายใหม่"
+          }
+        }
+      }
+    },
+    "ไม่มีข้อมูลปรับเทียบเลนส์ที่พอสำหรับวัดระยะตรงจุดนี้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lens calibration data is insufficient to measure this point"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่มีข้อมูลปรับเทียบเลนส์ที่พอสำหรับวัดระยะตรงจุดนี้"
+          }
+        }
+      }
+    },
+    "ไม่มีข้อมูลเลนส์ที่ตรงกับภาพ จึงยังประเมินระยะเป็นเมตรไม่ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matching lens data is missing, so distance cannot be estimated in meters"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่มีข้อมูลเลนส์ที่ตรงกับภาพ จึงยังประเมินระยะเป็นเมตรไม่ได้"
+          }
+        }
+      }
+    },
+    "ไม่มีค่าระยะที่ใช้ได้ตรงพื้นผิววัตถุในภาพนี้ กรุณาถ่ายภาพใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No usable depth reading on the object's surface. Take another photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่มีค่าระยะที่ใช้ได้ตรงพื้นผิววัตถุในภาพนี้ กรุณาถ่ายภาพใหม่"
+          }
+        }
+      }
+    },
+    "ไม่มีรหัสกล้องสำหรับบันทึกค่าปรับเทียบ กรุณาถ่ายภาพจากกล้องอีกครั้ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera identifier is missing. Take another photo to save calibration"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่มีรหัสกล้องสำหรับบันทึกค่าปรับเทียบ กรุณาถ่ายภาพจากกล้องอีกครั้ง"
+          }
+        }
+      }
+    },
+    "ไม่มีเสียงภาษาไทยที่ติดตั้งบนอุปกรณ์นี้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Thai voice is installed on this device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่มีเสียงภาษาไทยที่ติดตั้งบนอุปกรณ์นี้"
+          }
+        }
+      }
+    },
+    "ไม่มีเสียงภาษาอังกฤษที่ติดตั้งบนอุปกรณ์นี้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No English voice is installed on this device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่มีเสียงภาษาอังกฤษที่ติดตั้งบนอุปกรณ์นี้"
+          }
+        }
+      }
+    },
+    "ยกเลิก" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยกเลิก"
+          }
+        }
+      }
+    },
+    "ยกเลิกการเตรียมโมเดลแล้ว" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Model preparation cancelled"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยกเลิกการเตรียมโมเดลแล้ว"
+          }
+        }
+      }
+    },
+    "ยังเตรียม%@ไม่สำเร็จ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to prepare %@ yet"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยังเตรียม%@ไม่สำเร็จ"
+          }
+        }
+      }
+    },
+    "ยังไม่ได้ติดตั้งโมเดลเสียง%@สำหรับถอดเสียงบนเครื่อง กรุณาเชื่อมต่ออินเทอร์เน็ตแล้วเตรียมระบบเสียงอีกครั้ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The %@ model for on-device transcription is not installed. Connect to the internet and prepare speech again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยังไม่ได้ติดตั้งโมเดลเสียง%@สำหรับถอดเสียงบนเครื่อง กรุณาเชื่อมต่ออินเทอร์เน็ตแล้วเตรียมระบบเสียงอีกครั้ง"
+          }
+        }
+      }
+    },
+    "ยังไม่ได้ยินคำถาม กดค้างแล้วพูดใกล้ไมโครโฟนอีกครั้ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No question detected. Hold the button and speak closer to the microphone"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยังไม่ได้ยินคำถาม กดค้างแล้วพูดใกล้ไมโครโฟนอีกครั้ง"
+          }
+        }
+      }
+    },
+    "ยังไม่ได้ยินคำถาม กดค้างแล้วพูดใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No question detected. Hold the button and speak again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยังไม่ได้ยินคำถาม กดค้างแล้วพูดใหม่"
+          }
+        }
+      }
+    },
+    "ยังไม่พร้อม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not ready"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยังไม่พร้อม"
+          }
+        }
+      }
+    },
+    "ยังไม่มีเสียงคำถาม กดปุ่มตรงกลางค้างไว้แล้วพูด" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recording yet. Hold the center button and speak"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยังไม่มีเสียงคำถาม กดปุ่มตรงกลางค้างไว้แล้วพูด"
+          }
+        }
+      }
+    },
+    "ยังระบุพื้นผิวของวัตถุจากภาพนี้ไม่ได้ จึงยังระบุระยะไม่ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The object's surface could not be identified, so its distance cannot be determined"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยังระบุพื้นผิวของวัตถุจากภาพนี้ไม่ได้ จึงยังระบุระยะไม่ได้"
+          }
+        }
+      }
+    },
+    "ยังระบุระยะวัตถุนี้ไม่ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to determine this object's distance"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยังระบุระยะวัตถุนี้ไม่ได้"
+          }
+        }
+      }
+    },
+    "ยังวัดระยะจุดนี้ไม่ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to measure this point"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยังวัดระยะจุดนี้ไม่ได้"
+          }
+        }
+      }
+    },
+    "ยิ่งใกล้ยิ่งสั่นแรงและถี่ขึ้น ใช้ระยะสดด้านหน้ากล้องหลัง พักระหว่างถาม AI และกลับมาเตือนอัตโนมัติเมื่อเสร็จ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vibration gets stronger and faster as objects approach the rear camera. Uses live LiDAR, pauses during AI questions and resumes automatically afterward."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยิ่งใกล้ยิ่งสั่นแรงและถี่ขึ้น ใช้ระยะสดด้านหน้ากล้องหลัง พักระหว่างถาม AI และกลับมาเตือนอัตโนมัติเมื่อเสร็จ"
+          }
+        }
+      }
+    },
+    "แยกตามตำแหน่งแล้ว · ระบุชนิดวัตถุได้เมื่อรันบน iPhone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grouped by position · Object types are available on iPhone"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "แยกตามตำแหน่งแล้ว · ระบุชนิดวัตถุได้เมื่อรันบน iPhone"
+          }
+        }
+      }
+    },
+    "แยกป้าย เมนู และฉลากในภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find signs, menus, and labels"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "แยกป้าย เมนู และฉลากในภาพ"
+          }
+        }
+      }
+    },
+    "ร้อน · ลดการใช้ทรัพยากร" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hot · Reducing resource use"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ร้อน · ลดการใช้ทรัพยากร"
+          }
+        }
+      }
+    },
+    "ร้อนมาก · พักการทำงาน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Very hot · Pausing work"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ร้อนมาก · พักการทำงาน"
+          }
+        }
+      }
+    },
+    "รอโมเดลรอบก่อนคืนทรัพยากร แล้วจะลองใหม่อัตโนมัติ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waiting for the previous model to release resources, then retrying automatically"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รอโมเดลรอบก่อนคืนทรัพยากร แล้วจะลองใหม่อัตโนมัติ"
+          }
+        }
+      }
+    },
+    "ระบบ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระบบ"
+          }
+        }
+      }
+    },
+    "ระบบประเมินระยะกำลังทำงาน กรุณารอสักครู่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depth estimation is running. Please wait"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระบบประเมินระยะกำลังทำงาน กรุณารอสักครู่"
+          }
+        }
+      }
+    },
+    "ระบบและความพร้อม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System and readiness"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระบบและความพร้อม"
+          }
+        }
+      }
+    },
+    "ระบบเสียงกำลังคืนทรัพยากร กรุณารอสักครู่แล้วลองใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech recognition is releasing resources. Wait a moment and try again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระบบเสียงกำลังคืนทรัพยากร กรุณารอสักครู่แล้วลองใหม่"
+          }
+        }
+      }
+    },
+    "ระบบเสียงยังไม่พร้อม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech recognition is not ready"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระบบเสียงยังไม่พร้อม"
+          }
+        }
+      }
+    },
+    "ระยะ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "depth"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระยะ"
+          }
+        }
+      }
+    },
+    "ระยะของภาพนี้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depth for this photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระยะของภาพนี้"
+          }
+        }
+      }
+    },
+    "ระยะจริง (เมตร)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Known distance (meters)"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระยะจริง (เมตร)"
+          }
+        }
+      }
+    },
+    "ระยะจริงสำหรับปรับเทียบต้องอยู่ระหว่าง 0.3–8 เมตร" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Known calibration distance must be between 0.3 and 8 meters"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระยะจริงสำหรับปรับเทียบต้องอยู่ระหว่าง 0.3–8 เมตร"
+          }
+        }
+      }
+    },
+    "ระยะจากกล้อง ณ ตอนถ่ายภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distance from the camera at capture"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระยะจากกล้อง ณ ตอนถ่ายภาพ"
+          }
+        }
+      }
+    },
+    "ระยะจากกล้องหลัง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rear-camera depth"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระยะจากกล้องหลัง"
+          }
+        }
+      }
+    },
+    "ระยะจากภาพเป็นค่าประมาณ การเทียบช่วยปรับสเกลของกล้องนี้ แต่ความแม่นยำยังขึ้นกับฉาก เลนส์ และแสง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image-based depth is an estimate. Calibration adjusts this camera's scale, but accuracy still depends on the scene, lens, and lighting"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระยะจากภาพเป็นค่าประมาณ การเทียบช่วยปรับสเกลของกล้องนี้ แต่ความแม่นยำยังขึ้นกับฉาก เลนส์ และแสง"
+          }
+        }
+      }
+    },
+    "ระยะประมาณ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "estimated depth"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระยะประมาณ"
+          }
+        }
+      }
+    },
+    "ระยะประมาณจากกล้อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated camera depth"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระยะประมาณจากกล้อง"
+          }
+        }
+      }
+    },
+    "ระยะเริ่มเตือน" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start warning at"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระยะเริ่มเตือน"
+          }
+        }
+      }
+    },
+    "ระยะสั่นแรงที่สุด" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strongest vibration at"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ระยะสั่นแรงที่สุด"
+          }
+        }
+      }
+    },
+    "รับเสียงครบเวลาที่กำหนด · ปล่อยปุ่มเพื่อส่ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recording limit reached · Release to send"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รับเสียงครบเวลาที่กำหนด · ปล่อยปุ่มเพื่อส่ง"
+          }
+        }
+      }
+    },
+    "รายละเอียดสูง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "High detail"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รายละเอียดสูง"
+          }
+        }
+      }
+    },
+    "รูปแบบระยะ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depth type"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รูปแบบระยะ"
+          }
+        }
+      }
+    },
+    "เริ่มถามด้วยเสียง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start a spoken question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เริ่มถามด้วยเสียง"
+          }
+        }
+      }
+    },
+    "ลองถามอีกครั้งได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try asking again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ลองถามอีกครั้งได้"
+          }
+        }
+      }
+    },
+    "ลองพูดว่า อ่านเฉพาะราคา หรือ ช่วยหาขวดน้ำบนโต๊ะ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try saying Read only the price or Help me find the water bottle on the table."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ลองพูดว่า อ่านเฉพาะราคา หรือ ช่วยหาขวดน้ำบนโต๊ะ"
+          }
+        }
+      }
+    },
+    "ลองฟังเสียง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preview voice"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ลองฟังเสียง"
+          }
+        }
+      }
+    },
+    "ลองแยกข้อความอีกครั้ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find text groups again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ลองแยกข้อความอีกครั้ง"
+          }
+        }
+      }
+    },
+    "ลากกรอบรอบข้อความที่ต้องการ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drag a box around the text you want"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ลากกรอบรอบข้อความที่ต้องการ"
+          }
+        }
+      }
+    },
+    "ล้างบริบท / เริ่มถามใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear context / Start again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ล้างบริบท / เริ่มถามใหม่"
+          }
+        }
+      }
+    },
+    "ล้างบริบทแล้ว · ถามภาพนี้ใหม่ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Context cleared · Ask about this photo again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ล้างบริบทแล้ว · ถามภาพนี้ใหม่ได้"
+          }
+        }
+      }
+    },
+    "ล้างบริบทแล้ว · ลองระบุคำถามให้ชัดขึ้น" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Context cleared · Try a more specific question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ล้างบริบทแล้ว · ลองระบุคำถามให้ชัดขึ้น"
+          }
+        }
+      }
+    },
+    "เลือก%@แล้ว" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selected %@"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือก%@แล้ว"
+          }
+        }
+      }
+    },
+    "เลือกจากข้อความ %@ กลุ่ม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose from %@ text groups"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกจากข้อความ %@ กลุ่ม"
+          }
+        }
+      }
+    },
+    "เลือกจุดกลางภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the center point"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกจุดกลางภาพ"
+          }
+        }
+      }
+    },
+    "เลือกจุดเอง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a point"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกจุดเอง"
+          }
+        }
+      }
+    },
+    "เลือกถามภาพ อ่าน หรือสรุปข้อความได้เลย" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask about the photo, read text, or summarize"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกถามภาพ อ่าน หรือสรุปข้อความได้เลย"
+          }
+        }
+      }
+    },
+    "เลือกพื้นที่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a region"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกพื้นที่"
+          }
+        }
+      }
+    },
+    "เลือกพื้นที่ข้อความ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a text region"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกพื้นที่ข้อความ"
+          }
+        }
+      }
+    },
+    "เลือกพื้นที่เล็กลงหรือถ่ายให้ชัดขึ้นแล้วลองใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a smaller region or take a clearer photo, then try again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกพื้นที่เล็กลงหรือถ่ายให้ชัดขึ้นแล้วลองใหม่"
+          }
+        }
+      }
+    },
+    "เลือกพื้นที่แล้วกด%@ได้เลย" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a region, then tap %@"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกพื้นที่แล้วกด%@ได้เลย"
+          }
+        }
+      }
+    },
+    "เลือกพื้นที่แล้วกดสรุปข้อความ หรือพิมพ์เรื่องที่อยากให้เน้นด้านล่าง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a region and tap Summarize text, or type what to focus on below"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกพื้นที่แล้วกดสรุปข้อความ หรือพิมพ์เรื่องที่อยากให้เน้นด้านล่าง"
+          }
+        }
+      }
+    },
+    "เลือกภาษาที่คุณใช้พูดกับ LunaV" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the language you speak to LunaV"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกภาษาที่คุณใช้พูดกับ LunaV"
+          }
+        }
+      }
+    },
+    "เลือกรูปจากคลังภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose from photo library"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกรูปจากคลังภาพ"
+          }
+        }
+      }
+    },
+    "เลือกรูปเพื่อทดสอบบน Simulator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a photo to test on Simulator"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกรูปเพื่อทดสอบบน Simulator"
+          }
+        }
+      }
+    },
+    "เลือกแล้ว: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selected: %@"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกแล้ว: %@"
+          }
+        }
+      }
+    },
+    "เลือกเสียงที่ติดตั้งบนเครื่องได้ทันที เพิ่มเสียงคุณภาพสูงได้ใน Settings → Accessibility → Read & Speak → Voices ส่วนเสียง Siri ไม่เปิดให้แอพเลือกโดยตรง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use any installed voice. Add high-quality voices in Settings → Accessibility → Read & Speak → Voices. Siri voices cannot be selected directly by apps"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกเสียงที่ติดตั้งบนเครื่องได้ทันที เพิ่มเสียงคุณภาพสูงได้ใน Settings → Accessibility → Read & Speak → Voices ส่วนเสียง Siri ไม่เปิดให้แอพเลือกโดยตรง"
+          }
+        }
+      }
+    },
+    "วัดระยะ LiDAR" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Measure LiDAR depth"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "วัดระยะ LiDAR"
+          }
+        }
+      }
+    },
+    "วิธีเพิ่มเสียง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add more voices"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "วิธีเพิ่มเสียง"
+          }
+        }
+      }
+    },
+    "วินาที" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "seconds"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "วินาที"
+          }
+        }
+      }
+    },
+    "เว็บไซต์ LunaV" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LunaV website"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เว็บไซต์ LunaV"
+          }
+        }
+      }
+    },
+    "เว็บไซต์ของโปรแกรม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Program website"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เว็บไซต์ของโปรแกรม"
+          }
+        }
+      }
+    },
+    "เวลาถ่าย" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Captured at"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เวลาถ่าย"
+          }
+        }
+      }
+    },
+    "เวลาที่ใช้เตรียม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparation time"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เวลาที่ใช้เตรียม"
+          }
+        }
+      }
+    },
+    "เวลารวม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total time"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เวลารวม"
+          }
+        }
+      }
+    },
+    "เวอร์ชัน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เวอร์ชัน"
+          }
+        }
+      }
+    },
+    "เวอร์ชัน %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เวอร์ชัน %@"
+          }
+        }
+      }
+    },
+    "เวอร์ชันแอพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App version"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เวอร์ชันแอพ"
+          }
+        }
+      }
+    },
+    "ส่งคำถาม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ส่งคำถาม"
+          }
+        }
+      }
+    },
+    "ส่งคำถามเสียง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send spoken question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ส่งคำถามเสียง"
+          }
+        }
+      }
+    },
+    "สมดุล" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balanced"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สมดุล"
+          }
+        }
+      }
+    },
+    "สร้างคำตอบใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Response retries"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สร้างคำตอบใหม่"
+          }
+        }
+      }
+    },
+    "สร้างคำตอบใหม่หลังล้างบริบทแล้ว" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Response regenerated after clearing context"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สร้างคำตอบใหม่หลังล้างบริบทแล้ว"
+          }
+        }
+      }
+    },
+    "สร้างโทเคนแรกหลัง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time to first token"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สร้างโทเคนแรกหลัง"
+          }
+        }
+      }
+    },
+    "สรุปกลุ่มนี้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize this group"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สรุปกลุ่มนี้"
+          }
+        }
+      }
+    },
+    "สรุปข้อความ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize text"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สรุปข้อความ"
+          }
+        }
+      }
+    },
+    "สรุปป้าย เมนู และฉลาก" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize signs, menus, and labels"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สรุปป้าย เมนู และฉลาก"
+          }
+        }
+      }
+    },
+    "สรุปแล้ว · เปิดดูข้อความต้นฉบับได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summary ready · You can view the original text"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สรุปแล้ว · เปิดดูข้อความต้นฉบับได้"
+          }
+        }
+      }
+    },
+    "ส่วนบน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ส่วนบน"
+          }
+        }
+      }
+    },
+    "ส่วนล่าง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bottom"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ส่วนล่าง"
+          }
+        }
+      }
+    },
+    "สั่นเตือนสิ่งกีดขวาง" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obstacle vibration alerts"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สั่นเตือนสิ่งกีดขวาง"
+          }
+        }
+      }
+    },
+    "สิทธิ์ไมโครโฟนและกล้อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Microphone and camera permissions"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สิทธิ์ไมโครโฟนและกล้อง"
+          }
+        }
+      }
+    },
+    "เสร็จ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เสร็จ"
+          }
+        }
+      }
+    },
+    "เสียง Dictation ของ iOS" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS Dictation speech"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เสียง Dictation ของ iOS"
+          }
+        }
+      }
+    },
+    "เสียงคำถามไม่ชัดเจน ลองพูดใกล้ไมโครโฟนอีกครั้ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The question is unclear. Try speaking closer to the microphone"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เสียงคำถามไม่ชัดเจน ลองพูดใกล้ไมโครโฟนอีกครั้ง"
+          }
+        }
+      }
+    },
+    "เสียงที่เลือกไม่พร้อมใช้งานบนอุปกรณ์นี้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected voice is unavailable on this device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เสียงที่เลือกไม่พร้อมใช้งานบนอุปกรณ์นี้"
+          }
+        }
+      }
+    },
+    "เสียงภาษาไทย" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thai voice"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เสียงภาษาไทย"
+          }
+        }
+      }
+    },
+    "เสียงภาษาอังกฤษ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English voice"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เสียงภาษาอังกฤษ"
+          }
+        }
+      }
+    },
+    "เสียงอ่านคำตอบ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spoken answers"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เสียงอ่านคำตอบ"
+          }
+        }
+      }
+    },
+    "หน่วยความจำ MLX สูงสุด" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peak MLX memory"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หน่วยความจำ MLX สูงสุด"
+          }
+        }
+      }
+    },
+    "หน่วยความจำที่ iOS อนุญาตยังไม่พอ ลองปิดแอพอื่นแล้วเปิด LunaV ใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not enough memory is available to the app. Close other apps and reopen LunaV"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หน่วยความจำที่ iOS อนุญาตยังไม่พอ ลองปิดแอพอื่นแล้วเปิด LunaV ใหม่"
+          }
+        }
+      }
+    },
+    "หน่วยความจำที่แอพใช้ได้ไม่พอสำหรับโมเดลประเมินระยะ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not enough memory is available for the depth model"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หน่วยความจำที่แอพใช้ได้ไม่พอสำหรับโมเดลประเมินระยะ"
+          }
+        }
+      }
+    },
+    "หน้าจอ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หน้าจอ"
+          }
+        }
+      }
+    },
+    "หยุด" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หยุด"
+          }
+        }
+      }
+    },
+    "หยุดการตอบ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop answering"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หยุดการตอบ"
+          }
+        }
+      }
+    },
+    "หยุดการตอบแล้ว" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Answer stopped"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หยุดการตอบแล้ว"
+          }
+        }
+      }
+    },
+    "หยุดการทำงาน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หยุดการทำงาน"
+          }
+        }
+      }
+    },
+    "หยุดคำถามเสียง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel spoken question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หยุดคำถามเสียง"
+          }
+        }
+      }
+    },
+    "หยุดเตรียมระยะแล้ว" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depth preparation stopped"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หยุดเตรียมระยะแล้ว"
+          }
+        }
+      }
+    },
+    "หยุดแยกข้อความแล้ว" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text grouping stopped"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หยุดแยกข้อความแล้ว"
+          }
+        }
+      }
+    },
+    "หยุดแล้ว · กดค้างเพื่อถามใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stopped · Hold to ask again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หยุดแล้ว · กดค้างเพื่อถามใหม่"
+          }
+        }
+      }
+    },
+    "หยุดแล้ว เริ่มใหม่ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stopped · Ready to start again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หยุดแล้ว เริ่มใหม่ได้"
+          }
+        }
+      }
+    },
+    "หยุดอ่าน" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop reading"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หยุดอ่าน"
+          }
+        }
+      }
+    },
+    "หากกรอบรวมข้อความคนละชิ้น ใช้เลือกพื้นที่เพื่อลากกรอบแก้ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If a box includes text from different objects, use region selection to draw a new one"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หากกรอบรวมข้อความคนละชิ้น ใช้เลือกพื้นที่เพื่อลากกรอบแก้ได้"
+          }
+        }
+      }
+    },
+    "หากปรับสเกลแล้วจุดนั้นไม่มีค่า ให้ถ่ายใหม่เพื่อคำนวณแผนที่ระยะอีกครั้ง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If this point has no reading after calibration, take another photo to calculate a new depth map"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หากปรับสเกลแล้วจุดนั้นไม่มีค่า ให้ถ่ายใหม่เพื่อคำนวณแผนที่ระยะอีกครั้ง"
+          }
+        }
+      }
+    },
+    "หากยังไม่มีภาษาเสียง iOS จะดาวน์โหลดจาก Apple ครั้งแรก หลังจากนั้นถอดคำถามบนเครื่อง เลือกภาษาให้ตรงกับคำถาม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If a speech language is missing, iOS downloads it from Apple once. Questions are then transcribed on device. Choose the language that matches your question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หากยังไม่มีภาษาเสียง iOS จะดาวน์โหลดจาก Apple ครั้งแรก หลังจากนั้นถอดคำถามบนเครื่อง เลือกภาษาให้ตรงกับคำถาม"
+          }
+        }
+      }
+    },
+    "แหล่งข้อมูล" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "แหล่งข้อมูล"
+          }
+        }
+      }
+    },
+    "โหมดประหยัดหน่วยความจำ · เตรียมพร้อมถามใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memory-saving mode · Getting ready for another question"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "โหมดประหยัดหน่วยความจำ · เตรียมพร้อมถามใหม่"
+          }
+        }
+      }
+    },
+    "ให้ผิวทึบเรียบอยู่กลางภาพ วัดจากกล้องถึงผิวด้วยตลับเมตร แล้วกรอกระยะเป็นเมตร" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place a flat, opaque surface in the center. Measure from the camera to the surface with a tape, then enter the distance in meters"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ให้ผิวทึบเรียบอยู่กลางภาพ วัดจากกล้องถึงผิวด้วยตลับเมตร แล้วกรอกระยะเป็นเมตร"
+          }
+        }
+      }
+    },
+    "อนุญาตการใช้กล้องใน Settings หรือเลือกรูปจากคลังภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow camera access in Settings, or choose a photo from your library"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อนุญาตการใช้กล้องใน Settings หรือเลือกรูปจากคลังภาพ"
+          }
+        }
+      }
+    },
+    "อนุญาตไมโครโฟนให้ LunaV ใน Settings ของ iPhone แล้วกดค้างเพื่อถามใหม่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow LunaV microphone access in iPhone Settings, then hold the button to ask again"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อนุญาตไมโครโฟนให้ LunaV ใน Settings ของ iPhone แล้วกดค้างเพื่อถามใหม่"
+          }
+        }
+      }
+    },
+    "อยากรู้อะไรจากภาพนี้?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What would you like to know about this photo?"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อยากรู้อะไรจากภาพนี้?"
+          }
+        }
+      }
+    },
+    "อัตโนมัติ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อัตโนมัติ"
+          }
+        }
+      }
+    },
+    "อ่านข้อความ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read text"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อ่านข้อความ"
+          }
+        }
+      }
+    },
+    "อ่านข้อความและเลือกพื้นที่" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read text and select a region"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อ่านข้อความและเลือกพื้นที่"
+          }
+        }
+      }
+    },
+    "อ่านคำตอบด้วยเสียงไม่ได้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to read the answer aloud"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อ่านคำตอบด้วยเสียงไม่ได้"
+          }
+        }
+      }
+    },
+    "อ่านคำตอบอัตโนมัติ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read answers aloud automatically"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อ่านคำตอบอัตโนมัติ"
+          }
+        }
+      }
+    },
+    "อ่านตามข้อความในภาพ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read the text in the photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อ่านตามข้อความในภาพ"
+          }
+        }
+      }
+    },
+    "อ่านตามต้นฉบับในพื้นที่ที่เลือก" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read the original text in the selected region"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อ่านตามต้นฉบับในพื้นที่ที่เลือก"
+          }
+        }
+      }
+    },
+    "อ่านทั้งภาพเพื่อแยกข้อความเป็นกลุ่ม หรือแตะแยกป้าย เมนู และฉลากเพื่อเลือกเฉพาะชิ้น" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read the whole photo to find text groups, or find signs, menus, and labels to choose one item"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อ่านทั้งภาพเพื่อแยกข้อความเป็นกลุ่ม หรือแตะแยกป้าย เมนู และฉลากเพื่อเลือกเฉพาะชิ้น"
+          }
+        }
+      }
+    },
+    "อ่านระยะจาก %@ ของภาพนี้แล้ว" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depth read from %@ for this photo"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อ่านระยะจาก %@ ของภาพนี้แล้ว"
+          }
+        }
+      }
+    },
+    "อ่านระยะจากตำแหน่งวัตถุอัตโนมัติแล้ว" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Object depth read automatically"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อ่านระยะจากตำแหน่งวัตถุอัตโนมัติแล้ว"
+          }
+        }
+      }
+    },
+    "อ่านแล้ว · %@ บรรทัด" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read · %@ lines"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อ่านแล้ว · %@ บรรทัด"
+          }
+        }
+      }
+    },
+    "อุ่น" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warm"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อุ่น"
+          }
+        }
+      }
+    },
+    "อุปกรณ์" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อุปกรณ์"
+          }
+        }
+      }
+    },
+    "อุปกรณ์นี้ยังไม่รองรับการถอดเสียง%@บนเครื่อง" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device does not support on-device %@ transcription"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อุปกรณ์นี้ยังไม่รองรับการถอดเสียง%@บนเครื่อง"
+          }
+        }
+      }
+    },
+    "เอกสาร" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Document"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เอกสาร"
+          }
+        }
+      }
+    },
+    "แอพจะอ่านหรือสรุปเฉพาะในกรอบนี้" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only the text inside this box will be read or summarized"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "แอพจะอ่านหรือสรุปเฉพาะในกรอบนี้"
+          }
+        }
+      }
+    },
+    "แอพจัดการหน่วยความจำให้อัตโนมัติ เครื่องที่มี RAM จำกัดจะโหลดโมเดลเมื่อใช้และคืนหลังตอบ จึงอาจมีช่วงรอระหว่างคำถาม" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memory is managed automatically. Devices with limited RAM load models when needed and release them after answering, so there may be a pause between questions"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "แอพจัดการหน่วยความจำให้อัตโนมัติ เครื่องที่มี RAM จำกัดจะโหลดโมเดลเมื่อใช้และคืนหลังตอบ จึงอาจมีช่วงรอระหว่างคำถาม"
+          }
+        }
+      }
+    },
+    "แอพฟังต่อแม้คุณเว้นช่วงพูด และส่งคำถามเมื่อปล่อยปุ่มเท่านั้น" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app keeps listening through pauses and sends your question only when you release the button"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "แอพฟังต่อแม้คุณเว้นช่วงพูด และส่งคำถามเมื่อปล่อยปุ่มเท่านั้น"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

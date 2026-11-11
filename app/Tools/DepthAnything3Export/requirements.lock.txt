@@ -1,0 +1,11 @@
+torch==2.5.0
+torchvision==0.20.0
+coremltools==8.3.0
+numpy==1.26.4
+safetensors==0.7.0
+einops==0.8.1
+omegaconf==2.3.0
+pillow==11.3.0
+opencv-python-headless==4.11.0.86
+addict==2.4.0
+huggingface-hub==0.36.2

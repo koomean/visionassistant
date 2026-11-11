@@ -1,0 +1,677 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0905315B64BC3CD7E7DA6806 /* NativeSpeechAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32A03EBB20B9948CFEAFC9B /* NativeSpeechAudio.swift */; };
+		0C4C119335247F30EDCDCE41 /* LunaTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE869D3611F40CE5F5258FC /* LunaTheme.swift */; };
+		0CC67EFB198EB734BA77CFB2 /* MLXLMCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 0C4BE4BCE940FEA5DDEB5BF9 /* MLXLMCommon */; };
+		1CECB15B718DF83EF7E0238C /* ObjectCentered.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7AC8978391AF6FB4B4018DC /* ObjectCentered.wav */; };
+		1F7B5936D2CCBACAA61B9298 /* NearbyObjectCue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC684A0987C90DE820029E /* NearbyObjectCue.swift */; };
+		2590F1768763461E4247601B /* MonocularDepthRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ADF2EA647FD8134B46B353 /* MonocularDepthRuntime.swift */; };
+		2E508A076D2DFFF6373DCCDF /* AnswerPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9CFD68A53CB07346768929 /* AnswerPolicy.swift */; };
+		2F8F26D42F2E1763931A6256 /* DocumentTextReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20F375D35B7CC2CE5772C90 /* DocumentTextReader.swift */; };
+		33FA20E3A8C522DCF8330339 /* TextSourceAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF8B5F2E4F728B85A420AD /* TextSourceAnalyzer.swift */; };
+		38E65E4C30B59D97ADAFF99B /* MLX in Frameworks */ = {isa = PBXBuildFile; productRef = 39612440918FED707ABF54CC /* MLX */; };
+		3BDEC15B4FC6A9A7B243263B /* ObstacleHaptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB143B56FBB98ADC066C4DF0 /* ObstacleHaptics.swift */; };
+		3EBAC41A9B282DB6D9239394 /* MemoryTelemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D99FB2F65C04D97112E67C7 /* MemoryTelemetry.swift */; };
+		3FD03E72C531451F8A76D15D /* ObjectSurfaceRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DA2014000B6CA02333E31D /* ObjectSurfaceRefiner.swift */; };
+		41F306F293C0FD6168B9D187 /* PhotoRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A24DC3FB2BAEDE0BE6F6E8 /* PhotoRegion.swift */; };
+		43511ECB154728536E2BF5F0 /* LocalSpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8AC29E642A58885160D31 /* LocalSpeechRecognizer.swift */; };
+		504A3020D03F4101891DD212 /* NearbyObjectFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED3DDECB4971D87054164E /* NearbyObjectFinder.swift */; };
+		526DDA257417BDA72E1C30EE /* CameraScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1EAEB8851CD68946898C8 /* CameraScreen.swift */; };
+		56414C6731B81D6A7F3CA0FC /* AppMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7231D9D6BA6B5DD888AE1230 /* AppMetadata.swift */; };
+		57BEED9A7B64BC66E241A463 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = FA366E7512ADE8ECE60C1223 /* Fonts */; };
+		5A14332A500E1297E5AD1EEA /* AutomaticDistanceResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB4A195B5339C33ABF37D21 /* AutomaticDistanceResolver.swift */; };
+		5AC1A71284337F3B090F0439 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C5E192D7B528C137D3A256DA /* Localizable.xcstrings */; };
+		5C3D89AB74A84EB7D5879A20 /* DepthAnything3Metadata in Resources */ = {isa = PBXBuildFile; fileRef = 2C3F64999F1B5F59E3D7F8A1 /* DepthAnything3Metadata */; };
+		610AD99CFEB4E0B9125895A9 /* RegionSelectionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4432951AECACA7FAD0E7FC69 /* RegionSelectionSheet.swift */; };
+		62CAB1A10F271D5A092A0307 /* ModelPreparation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFBDA153DA782ABC031E66 /* ModelPreparation.swift */; };
+		63DB1E068E5D4676DF9FD9E6 /* Tokenizers in Frameworks */ = {isa = PBXBuildFile; productRef = 1EFCA805EFCA17D826B5A32E /* Tokenizers */; };
+		68F5FABD2EFC344B13F88B1D /* LiDARMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C731AE5C89A5B733853A0D4 /* LiDARMeasurement.swift */; };
+		6975A312287BA3D05D3010C9 /* ResponseRepetitionGuard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105FA02B85AFDFFF8B80B3D /* ResponseRepetitionGuard.swift */; };
+		69DB4AA01FCA4B493386D7C0 /* TextSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E39C40CCC6F935AEAFCD40E /* TextSources.swift */; };
+		6A64634F3D996F93795F6813 /* LunaIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E4C8E8040715A89448542B /* LunaIntroView.swift */; };
+		71D784DE666C39F21BBE2A23 /* VoiceCameraFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7CF88984EDE22A2CFF93CF /* VoiceCameraFlow.swift */; };
+		801D2C9BE1D1F1A7279D5599 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804322479BBE5B90DF885033 /* ChatViewModel.swift */; };
+		820420DED0F038FCFC2876B4 /* DistanceSelectionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D5EEAE7B12B77B6862D59 /* DistanceSelectionSheet.swift */; };
+		88A8327B37AF6E809A9CF3F2 /* RuntimePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D297C115D5477361F4A55D7B /* RuntimePolicy.swift */; };
+		89B506E10190EF679A4593AC /* ObstacleWarningPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43784C545EBF0D0A775C2E /* ObstacleWarningPolicy.swift */; };
+		91281F2DF3C6CCD1720CD9C6 /* TargetedTextReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A6F078F9AB025895B02128 /* TargetedTextReading.swift */; };
+		9384961F53E8BECA73E3378F /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1BF1BC4B780E331C6F09CA /* AboutScreen.swift */; };
+		9A317FDC8BA825E24D3159ED /* AnswerSpeechPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAFE6385FCBBF2AEF91D598 /* AnswerSpeechPlayer.swift */; };
+		9B19FE00707B7AC8ED9F3DA0 /* ModelRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F051C10E6EBF14EDACB3106B /* ModelRuntime.swift */; };
+		9BE48973416BDE0C80815DDC /* ObstacleSettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533386155AFE7229674C47B8 /* ObstacleSettingsSection.swift */; };
+		9F47DB68826491E318876A06 /* NativeSpeechDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D352525C2EA5F6E84A8001CA /* NativeSpeechDecoder.swift */; };
+		A23594A9E2185E4D5ABB4CF0 /* MLXVLM in Frameworks */ = {isa = PBXBuildFile; productRef = 0C00A04DBC55C5CA5644BCDA /* MLXVLM */; };
+		A9084752609B5513999E9199 /* LocalTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE84835476028BC6055BEE43 /* LocalTokenizer.swift */; };
+		ACDC92B66B814CB16A032282 /* DepthPhotoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEA317E7BB5DBE42632BF93 /* DepthPhotoCapture.swift */; };
+		AE74E70933BBA0064BAD0B15 /* LocalSpeechDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA2E515396D684D15FD1D6 /* LocalSpeechDecoder.swift */; };
+		B18659E95115F258BD35FA00 /* TextSourcesSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A849457883D36FAD4E7C4 /* TextSourcesSheet.swift */; };
+		BBB4BA4761AE6FEBFCBB2A80 /* WhisperKit in Frameworks */ = {isa = PBXBuildFile; productRef = AF9A266DBFB3EFE9220C6E5E /* WhisperKit */; };
+		BE9690965A1EBC92713FCDDD /* TextSourceContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA8A0CE2D08A6B7507A88A4 /* TextSourceContext.swift */; };
+		C8EEBE797BDCCFACACA79EF4 /* DepthCalibrationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34E992C291A10032415769 /* DepthCalibrationStore.swift */; };
+		CBA9E85CCA3E3F9AED6E5C7B /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441407096391E02E5240564 /* PhotoStore.swift */; };
+		CE724C24C196642D8ED44159 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A0200BCE0B142314D533884C /* InfoPlist.xcstrings */; };
+		CF21887A98551EFB0E1EEF7E /* DepthAnything3Metric.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28D501F1B9B7B04232FDA /* DepthAnything3Metric.mlpackage */; };
+		CFC1A84A160C77D9EE1E6D5F /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB54885CE2BA9C0E46E433 /* CameraController.swift */; };
+		D3448939DEFEB22DF6069842 /* AppLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D836A67B15685918F22A4E /* AppLocalization.swift */; };
+		DE051FCBEA1FA70FA697920E /* ConversationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71598495AB9FFF9ACCD203C8 /* ConversationContext.swift */; };
+		E4112CED74E7C3B568FDC675 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B282256477C897BBE09D62F /* Assets.xcassets */; };
+		E496D2D8D4140EF932D1E466 /* SpeechTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C396E2CBE3FEEB7E520E285 /* SpeechTask.swift */; };
+		E7DC86D70A5AD87DD8F974B5 /* LunaVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E7F44413244B8C44B8755C /* LunaVApp.swift */; };
+		E98ABA49C7E2C1EB69802AD6 /* Qwen3-VL-2B-Instruct-4bit in Resources */ = {isa = PBXBuildFile; fileRef = 07C666EAA065ED9C56E23FAD /* Qwen3-VL-2B-Instruct-4bit */; };
+		F1BFA24889FC617CA0E50887 /* AdaptiveCameraLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E053A0C50287CF0A480D53F /* AdaptiveCameraLayout.swift */; };
+		F61E88BBCB2D3BFA014DAD66 /* CameraSettingsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F29F9DBD4C5FB76954772 /* CameraSettingsSheet.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		07C666EAA065ED9C56E23FAD /* Qwen3-VL-2B-Instruct-4bit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Qwen3-VL-2B-Instruct-4bit"; path = "Models/Qwen3-VL-2B-Instruct-4bit"; sourceTree = SOURCE_ROOT; };
+		0C396E2CBE3FEEB7E520E285 /* SpeechTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTask.swift; sourceTree = "<group>"; };
+		0E053A0C50287CF0A480D53F /* AdaptiveCameraLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveCameraLayout.swift; sourceTree = "<group>"; };
+		17DA2014000B6CA02333E31D /* ObjectSurfaceRefiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSurfaceRefiner.swift; sourceTree = "<group>"; };
+		1C7CF88984EDE22A2CFF93CF /* VoiceCameraFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceCameraFlow.swift; sourceTree = "<group>"; };
+		1E39C40CCC6F935AEAFCD40E /* TextSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSources.swift; sourceTree = "<group>"; };
+		1F9CFD68A53CB07346768929 /* AnswerPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerPolicy.swift; sourceTree = "<group>"; };
+		2C3F64999F1B5F59E3D7F8A1 /* DepthAnything3Metadata */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DepthAnything3Metadata; path = Models/DepthAnything3Metadata; sourceTree = SOURCE_ROOT; };
+		2C731AE5C89A5B733853A0D4 /* LiDARMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiDARMeasurement.swift; sourceTree = "<group>"; };
+		2D99FB2F65C04D97112E67C7 /* MemoryTelemetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTelemetry.swift; sourceTree = "<group>"; };
+		2FA28D501F1B9B7B04232FDA /* DepthAnything3Metric.mlpackage */ = {isa = PBXFileReference; path = DepthAnything3Metric.mlpackage; sourceTree = "<group>"; };
+		3105FA02B85AFDFFF8B80B3D /* ResponseRepetitionGuard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRepetitionGuard.swift; sourceTree = "<group>"; };
+		38DF8B5F2E4F728B85A420AD /* TextSourceAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSourceAnalyzer.swift; sourceTree = "<group>"; };
+		3EEA317E7BB5DBE42632BF93 /* DepthPhotoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthPhotoCapture.swift; sourceTree = "<group>"; };
+		40E7F44413244B8C44B8755C /* LunaVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunaVApp.swift; sourceTree = "<group>"; };
+		41A24DC3FB2BAEDE0BE6F6E8 /* PhotoRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRegion.swift; sourceTree = "<group>"; };
+		4432951AECACA7FAD0E7FC69 /* RegionSelectionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectionSheet.swift; sourceTree = "<group>"; };
+		4AA8AC29E642A58885160D31 /* LocalSpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSpeechRecognizer.swift; sourceTree = "<group>"; };
+		4C43784C545EBF0D0A775C2E /* ObstacleWarningPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleWarningPolicy.swift; sourceTree = "<group>"; };
+		52E4C8E8040715A89448542B /* LunaIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunaIntroView.swift; sourceTree = "<group>"; };
+		533386155AFE7229674C47B8 /* ObstacleSettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleSettingsSection.swift; sourceTree = "<group>"; };
+		5777C19F7786FFCE5921DAC4 /* LunaV.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LunaV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65BC684A0987C90DE820029E /* NearbyObjectCue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyObjectCue.swift; sourceTree = "<group>"; };
+		68A6F078F9AB025895B02128 /* TargetedTextReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetedTextReading.swift; sourceTree = "<group>"; };
+		6A2CDD39406CDD4B5C92F0AD /* LunaV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LunaV.entitlements; sourceTree = "<group>"; };
+		6BA8A0CE2D08A6B7507A88A4 /* TextSourceContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSourceContext.swift; sourceTree = "<group>"; };
+		71598495AB9FFF9ACCD203C8 /* ConversationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationContext.swift; sourceTree = "<group>"; };
+		71D1EAEB8851CD68946898C8 /* CameraScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScreen.swift; sourceTree = "<group>"; };
+		7231D9D6BA6B5DD888AE1230 /* AppMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMetadata.swift; sourceTree = "<group>"; };
+		74D836A67B15685918F22A4E /* AppLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocalization.swift; sourceTree = "<group>"; };
+		7B282256477C897BBE09D62F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		804322479BBE5B90DF885033 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		8A0D5EEAE7B12B77B6862D59 /* DistanceSelectionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceSelectionSheet.swift; sourceTree = "<group>"; };
+		8B4F29F9DBD4C5FB76954772 /* CameraSettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSettingsSheet.swift; sourceTree = "<group>"; };
+		A0200BCE0B142314D533884C /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		AB143B56FBB98ADC066C4DF0 /* ObstacleHaptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleHaptics.swift; sourceTree = "<group>"; };
+		AB1BF1BC4B780E331C6F09CA /* AboutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutScreen.swift; sourceTree = "<group>"; };
+		ADCFBDA153DA782ABC031E66 /* ModelPreparation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPreparation.swift; sourceTree = "<group>"; };
+		B441407096391E02E5240564 /* PhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
+		B7AC8978391AF6FB4B4018DC /* ObjectCentered.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ObjectCentered.wav; sourceTree = "<group>"; };
+		B9ADF2EA647FD8134B46B353 /* MonocularDepthRuntime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonocularDepthRuntime.swift; sourceTree = "<group>"; };
+		C5E192D7B528C137D3A256DA /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		CCAFE6385FCBBF2AEF91D598 /* AnswerSpeechPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerSpeechPlayer.swift; sourceTree = "<group>"; };
+		D20F375D35B7CC2CE5772C90 /* DocumentTextReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTextReader.swift; sourceTree = "<group>"; };
+		D297C115D5477361F4A55D7B /* RuntimePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimePolicy.swift; sourceTree = "<group>"; };
+		D32A849457883D36FAD4E7C4 /* TextSourcesSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSourcesSheet.swift; sourceTree = "<group>"; };
+		D352525C2EA5F6E84A8001CA /* NativeSpeechDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeSpeechDecoder.swift; sourceTree = "<group>"; };
+		D78CAC123C890CE01D5DFBD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DADB54885CE2BA9C0E46E433 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		DF34E992C291A10032415769 /* DepthCalibrationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthCalibrationStore.swift; sourceTree = "<group>"; };
+		E32A03EBB20B9948CFEAFC9B /* NativeSpeechAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeSpeechAudio.swift; sourceTree = "<group>"; };
+		ECB4A195B5339C33ABF37D21 /* AutomaticDistanceResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticDistanceResolver.swift; sourceTree = "<group>"; };
+		EEE869D3611F40CE5F5258FC /* LunaTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunaTheme.swift; sourceTree = "<group>"; };
+		F051C10E6EBF14EDACB3106B /* ModelRuntime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRuntime.swift; sourceTree = "<group>"; };
+		FA366E7512ADE8ECE60C1223 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = LunaV/Fonts; sourceTree = SOURCE_ROOT; };
+		FAED3DDECB4971D87054164E /* NearbyObjectFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyObjectFinder.swift; sourceTree = "<group>"; };
+		FAFA2E515396D684D15FD1D6 /* LocalSpeechDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSpeechDecoder.swift; sourceTree = "<group>"; };
+		FE84835476028BC6055BEE43 /* LocalTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTokenizer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		733E9C0C0D29BEC4FEFA413B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBB4BA4761AE6FEBFCBB2A80 /* WhisperKit in Frameworks */,
+				A23594A9E2185E4D5ABB4CF0 /* MLXVLM in Frameworks */,
+				0CC67EFB198EB734BA77CFB2 /* MLXLMCommon in Frameworks */,
+				38E65E4C30B59D97ADAFF99B /* MLX in Frameworks */,
+				63DB1E068E5D4676DF9FD9E6 /* Tokenizers in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		64859A88339C71B472D829ED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2C3F64999F1B5F59E3D7F8A1 /* DepthAnything3Metadata */,
+				07C666EAA065ED9C56E23FAD /* Qwen3-VL-2B-Instruct-4bit */,
+				F03EDDB55644B0E42DA4D58A /* DepthAnything3Metric */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		791D7FAF69BABE49E2A0101C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1F9CFD68A53CB07346768929 /* AnswerPolicy.swift */,
+				ECB4A195B5339C33ABF37D21 /* AutomaticDistanceResolver.swift */,
+				71598495AB9FFF9ACCD203C8 /* ConversationContext.swift */,
+				DF34E992C291A10032415769 /* DepthCalibrationStore.swift */,
+				D20F375D35B7CC2CE5772C90 /* DocumentTextReader.swift */,
+				2C731AE5C89A5B733853A0D4 /* LiDARMeasurement.swift */,
+				FE84835476028BC6055BEE43 /* LocalTokenizer.swift */,
+				2D99FB2F65C04D97112E67C7 /* MemoryTelemetry.swift */,
+				F051C10E6EBF14EDACB3106B /* ModelRuntime.swift */,
+				B9ADF2EA647FD8134B46B353 /* MonocularDepthRuntime.swift */,
+				FAED3DDECB4971D87054164E /* NearbyObjectFinder.swift */,
+				17DA2014000B6CA02333E31D /* ObjectSurfaceRefiner.swift */,
+				4C43784C545EBF0D0A775C2E /* ObstacleWarningPolicy.swift */,
+				41A24DC3FB2BAEDE0BE6F6E8 /* PhotoRegion.swift */,
+				3105FA02B85AFDFFF8B80B3D /* ResponseRepetitionGuard.swift */,
+				D297C115D5477361F4A55D7B /* RuntimePolicy.swift */,
+				0C396E2CBE3FEEB7E520E285 /* SpeechTask.swift */,
+				68A6F078F9AB025895B02128 /* TargetedTextReading.swift */,
+				38DF8B5F2E4F728B85A420AD /* TextSourceAnalyzer.swift */,
+				6BA8A0CE2D08A6B7507A88A4 /* TextSourceContext.swift */,
+				1E39C40CCC6F935AEAFCD40E /* TextSources.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		8EB6ACD54438AB8FEA432D30 /* LunaV */ = {
+			isa = PBXGroup;
+			children = (
+				AB1BF1BC4B780E331C6F09CA /* AboutScreen.swift */,
+				0E053A0C50287CF0A480D53F /* AdaptiveCameraLayout.swift */,
+				CCAFE6385FCBBF2AEF91D598 /* AnswerSpeechPlayer.swift */,
+				74D836A67B15685918F22A4E /* AppLocalization.swift */,
+				7231D9D6BA6B5DD888AE1230 /* AppMetadata.swift */,
+				7B282256477C897BBE09D62F /* Assets.xcassets */,
+				DADB54885CE2BA9C0E46E433 /* CameraController.swift */,
+				71D1EAEB8851CD68946898C8 /* CameraScreen.swift */,
+				8B4F29F9DBD4C5FB76954772 /* CameraSettingsSheet.swift */,
+				804322479BBE5B90DF885033 /* ChatViewModel.swift */,
+				3EEA317E7BB5DBE42632BF93 /* DepthPhotoCapture.swift */,
+				8A0D5EEAE7B12B77B6862D59 /* DistanceSelectionSheet.swift */,
+				FA366E7512ADE8ECE60C1223 /* Fonts */,
+				D78CAC123C890CE01D5DFBD8 /* Info.plist */,
+				A0200BCE0B142314D533884C /* InfoPlist.xcstrings */,
+				C5E192D7B528C137D3A256DA /* Localizable.xcstrings */,
+				FAFA2E515396D684D15FD1D6 /* LocalSpeechDecoder.swift */,
+				4AA8AC29E642A58885160D31 /* LocalSpeechRecognizer.swift */,
+				52E4C8E8040715A89448542B /* LunaIntroView.swift */,
+				EEE869D3611F40CE5F5258FC /* LunaTheme.swift */,
+				6A2CDD39406CDD4B5C92F0AD /* LunaV.entitlements */,
+				40E7F44413244B8C44B8755C /* LunaVApp.swift */,
+				ADCFBDA153DA782ABC031E66 /* ModelPreparation.swift */,
+				E32A03EBB20B9948CFEAFC9B /* NativeSpeechAudio.swift */,
+				D352525C2EA5F6E84A8001CA /* NativeSpeechDecoder.swift */,
+				65BC684A0987C90DE820029E /* NearbyObjectCue.swift */,
+				B7AC8978391AF6FB4B4018DC /* ObjectCentered.wav */,
+				AB143B56FBB98ADC066C4DF0 /* ObstacleHaptics.swift */,
+				533386155AFE7229674C47B8 /* ObstacleSettingsSection.swift */,
+				B441407096391E02E5240564 /* PhotoStore.swift */,
+				4432951AECACA7FAD0E7FC69 /* RegionSelectionSheet.swift */,
+				D32A849457883D36FAD4E7C4 /* TextSourcesSheet.swift */,
+				1C7CF88984EDE22A2CFF93CF /* VoiceCameraFlow.swift */,
+			);
+			path = LunaV;
+			sourceTree = "<group>";
+		};
+		AD6AD3DCF54AAED9C86F2F53 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5777C19F7786FFCE5921DAC4 /* LunaV.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9154C166E195350656E96B5 = {
+			isa = PBXGroup;
+			children = (
+				8EB6ACD54438AB8FEA432D30 /* LunaV */,
+				64859A88339C71B472D829ED /* Models */,
+				791D7FAF69BABE49E2A0101C /* Shared */,
+				AD6AD3DCF54AAED9C86F2F53 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F03EDDB55644B0E42DA4D58A /* DepthAnything3Metric */ = {
+			isa = PBXGroup;
+			children = (
+				2FA28D501F1B9B7B04232FDA /* DepthAnything3Metric.mlpackage */,
+			);
+			path = DepthAnything3Metric;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		757A67AA536F498FE519FCBC /* LunaV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61940A3F63CFCCC9625381CF /* Build configuration list for PBXNativeTarget "LunaV" */;
+			buildPhases = (
+				93AD77EED577AB3462F60422 /* Sources */,
+				4E838C168C8F752BC6C65E18 /* Resources */,
+				733E9C0C0D29BEC4FEFA413B /* Frameworks */,
+				752F10CBF7B7AD81141FD49A /* Remove Finder metadata from built app */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LunaV;
+			packageProductDependencies = (
+				AF9A266DBFB3EFE9220C6E5E /* WhisperKit */,
+				0C00A04DBC55C5CA5644BCDA /* MLXVLM */,
+				0C4BE4BCE940FEA5DDEB5BF9 /* MLXLMCommon */,
+				39612440918FED707ABF54CC /* MLX */,
+				1EFCA805EFCA17D826B5A32E /* Tokenizers */,
+			);
+			productName = LunaV;
+			productReference = 5777C19F7786FFCE5921DAC4 /* LunaV.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0A2CCF48C33C18E1989DB0DA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					757A67AA536F498FE519FCBC = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 27895923E4430019C7346F02 /* Build configuration list for PBXProject "LunaV" */;
+			developmentRegion = th;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				th,
+			);
+			mainGroup = C9154C166E195350656E96B5;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A613A50B7ACD5185D93BA8DE /* XCRemoteSwiftPackageReference "mlx-swift" */,
+				795402978F1E168AD39A2A89 /* XCRemoteSwiftPackageReference "mlx-swift-lm" */,
+				6ABF66EF67A0D0ADD8233B70 /* XCRemoteSwiftPackageReference "swift-transformers" */,
+				377A8F7DB9AA49D0C38E5B7D /* XCRemoteSwiftPackageReference "WhisperKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AD6AD3DCF54AAED9C86F2F53 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				757A67AA536F498FE519FCBC /* LunaV */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4E838C168C8F752BC6C65E18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4112CED74E7C3B568FDC675 /* Assets.xcassets in Resources */,
+				5C3D89AB74A84EB7D5879A20 /* DepthAnything3Metadata in Resources */,
+				57BEED9A7B64BC66E241A463 /* Fonts in Resources */,
+				CE724C24C196642D8ED44159 /* InfoPlist.xcstrings in Resources */,
+				5AC1A71284337F3B090F0439 /* Localizable.xcstrings in Resources */,
+				1CECB15B718DF83EF7E0238C /* ObjectCentered.wav in Resources */,
+				E98ABA49C7E2C1EB69802AD6 /* Qwen3-VL-2B-Instruct-4bit in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		752F10CBF7B7AD81141FD49A /* Remove Finder metadata from built app */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Remove Finder metadata from built app";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/xattr -cr \"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		93AD77EED577AB3462F60422 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9384961F53E8BECA73E3378F /* AboutScreen.swift in Sources */,
+				F1BFA24889FC617CA0E50887 /* AdaptiveCameraLayout.swift in Sources */,
+				2E508A076D2DFFF6373DCCDF /* AnswerPolicy.swift in Sources */,
+				9A317FDC8BA825E24D3159ED /* AnswerSpeechPlayer.swift in Sources */,
+				D3448939DEFEB22DF6069842 /* AppLocalization.swift in Sources */,
+				56414C6731B81D6A7F3CA0FC /* AppMetadata.swift in Sources */,
+				5A14332A500E1297E5AD1EEA /* AutomaticDistanceResolver.swift in Sources */,
+				CFC1A84A160C77D9EE1E6D5F /* CameraController.swift in Sources */,
+				526DDA257417BDA72E1C30EE /* CameraScreen.swift in Sources */,
+				F61E88BBCB2D3BFA014DAD66 /* CameraSettingsSheet.swift in Sources */,
+				801D2C9BE1D1F1A7279D5599 /* ChatViewModel.swift in Sources */,
+				DE051FCBEA1FA70FA697920E /* ConversationContext.swift in Sources */,
+				CF21887A98551EFB0E1EEF7E /* DepthAnything3Metric.mlpackage in Sources */,
+				C8EEBE797BDCCFACACA79EF4 /* DepthCalibrationStore.swift in Sources */,
+				ACDC92B66B814CB16A032282 /* DepthPhotoCapture.swift in Sources */,
+				820420DED0F038FCFC2876B4 /* DistanceSelectionSheet.swift in Sources */,
+				2F8F26D42F2E1763931A6256 /* DocumentTextReader.swift in Sources */,
+				68F5FABD2EFC344B13F88B1D /* LiDARMeasurement.swift in Sources */,
+				AE74E70933BBA0064BAD0B15 /* LocalSpeechDecoder.swift in Sources */,
+				43511ECB154728536E2BF5F0 /* LocalSpeechRecognizer.swift in Sources */,
+				A9084752609B5513999E9199 /* LocalTokenizer.swift in Sources */,
+				6A64634F3D996F93795F6813 /* LunaIntroView.swift in Sources */,
+				0C4C119335247F30EDCDCE41 /* LunaTheme.swift in Sources */,
+				E7DC86D70A5AD87DD8F974B5 /* LunaVApp.swift in Sources */,
+				3EBAC41A9B282DB6D9239394 /* MemoryTelemetry.swift in Sources */,
+				62CAB1A10F271D5A092A0307 /* ModelPreparation.swift in Sources */,
+				9B19FE00707B7AC8ED9F3DA0 /* ModelRuntime.swift in Sources */,
+				2590F1768763461E4247601B /* MonocularDepthRuntime.swift in Sources */,
+				0905315B64BC3CD7E7DA6806 /* NativeSpeechAudio.swift in Sources */,
+				9F47DB68826491E318876A06 /* NativeSpeechDecoder.swift in Sources */,
+				1F7B5936D2CCBACAA61B9298 /* NearbyObjectCue.swift in Sources */,
+				504A3020D03F4101891DD212 /* NearbyObjectFinder.swift in Sources */,
+				3FD03E72C531451F8A76D15D /* ObjectSurfaceRefiner.swift in Sources */,
+				3BDEC15B4FC6A9A7B243263B /* ObstacleHaptics.swift in Sources */,
+				9BE48973416BDE0C80815DDC /* ObstacleSettingsSection.swift in Sources */,
+				89B506E10190EF679A4593AC /* ObstacleWarningPolicy.swift in Sources */,
+				41F306F293C0FD6168B9D187 /* PhotoRegion.swift in Sources */,
+				CBA9E85CCA3E3F9AED6E5C7B /* PhotoStore.swift in Sources */,
+				610AD99CFEB4E0B9125895A9 /* RegionSelectionSheet.swift in Sources */,
+				6975A312287BA3D05D3010C9 /* ResponseRepetitionGuard.swift in Sources */,
+				88A8327B37AF6E809A9CF3F2 /* RuntimePolicy.swift in Sources */,
+				E496D2D8D4140EF932D1E466 /* SpeechTask.swift in Sources */,
+				91281F2DF3C6CCD1720CD9C6 /* TargetedTextReading.swift in Sources */,
+				33FA20E3A8C522DCF8330339 /* TextSourceAnalyzer.swift in Sources */,
+				BE9690965A1EBC92713FCDDD /* TextSourceContext.swift in Sources */,
+				69DB4AA01FCA4B493386D7C0 /* TextSources.swift in Sources */,
+				B18659E95115F258BD35FA00 /* TextSourcesSheet.swift in Sources */,
+				71D784DE666C39F21BBE2A23 /* VoiceCameraFlow.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		14D5C1627E874EF92E83DF6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LunaV/LunaV.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LunaV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.koomean.lunav;
+				PRODUCT_NAME = LunaV;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		993ED4630814147CAFC20E67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		A04CA41C79826FC9A7C07EC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		DAA31C42F9F450BB370C94B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LunaV/LunaV.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LunaV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.koomean.lunav;
+				PRODUCT_NAME = LunaV;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27895923E4430019C7346F02 /* Build configuration list for PBXProject "LunaV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				993ED4630814147CAFC20E67 /* Debug */,
+				A04CA41C79826FC9A7C07EC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		61940A3F63CFCCC9625381CF /* Build configuration list for PBXNativeTarget "LunaV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14D5C1627E874EF92E83DF6A /* Debug */,
+				DAA31C42F9F450BB370C94B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		377A8F7DB9AA49D0C38E5B7D /* XCRemoteSwiftPackageReference "WhisperKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/argmaxinc/WhisperKit";
+			requirement = {
+				kind = exactVersion;
+				version = 1.1.1;
+			};
+		};
+		6ABF66EF67A0D0ADD8233B70 /* XCRemoteSwiftPackageReference "swift-transformers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huggingface/swift-transformers";
+			requirement = {
+				kind = exactVersion;
+				version = 1.3.5;
+			};
+		};
+		795402978F1E168AD39A2A89 /* XCRemoteSwiftPackageReference "mlx-swift-lm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ml-explore/mlx-swift-lm";
+			requirement = {
+				kind = exactVersion;
+				version = 3.32.3;
+			};
+		};
+		A613A50B7ACD5185D93BA8DE /* XCRemoteSwiftPackageReference "mlx-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ml-explore/mlx-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 0.32.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0C00A04DBC55C5CA5644BCDA /* MLXVLM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 795402978F1E168AD39A2A89 /* XCRemoteSwiftPackageReference "mlx-swift-lm" */;
+			productName = MLXVLM;
+		};
+		0C4BE4BCE940FEA5DDEB5BF9 /* MLXLMCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 795402978F1E168AD39A2A89 /* XCRemoteSwiftPackageReference "mlx-swift-lm" */;
+			productName = MLXLMCommon;
+		};
+		1EFCA805EFCA17D826B5A32E /* Tokenizers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6ABF66EF67A0D0ADD8233B70 /* XCRemoteSwiftPackageReference "swift-transformers" */;
+			productName = Tokenizers;
+		};
+		39612440918FED707ABF54CC /* MLX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A613A50B7ACD5185D93BA8DE /* XCRemoteSwiftPackageReference "mlx-swift" */;
+			productName = MLX;
+		};
+		AF9A266DBFB3EFE9220C6E5E /* WhisperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 377A8F7DB9AA49D0C38E5B7D /* XCRemoteSwiftPackageReference "WhisperKit" */;
+			productName = WhisperKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 0A2CCF48C33C18E1989DB0DA /* Project object */;
+}
