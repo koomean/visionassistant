@@ -49,7 +49,9 @@ The website is static and needs no runtime build step. Serve this directory loca
 python3 -m http.server 8080
 ```
 
-All eight HTML pages share their main navigation from `partials/site-header.html`. The compact menu and the **More / อื่น ๆ** disclosure are handled by `site-shell.js`; links preserve the chosen language. Secondary pages live in the dropdown and the bilingual `resources.html` directory: system architecture, project status, licensing, and credits. `lunavision-architecture.html` explains the current on-device flow with real Simulator screenshots. These are ordinary public project pages, grouped outside the primary navigation.
+The HTML pages share their main navigation from `partials/site-header.html`. The compact menu and the **More / อื่น ๆ** disclosure are handled by `site-shell.js`. Links preserve the chosen language. The dropdown and bilingual `resources.html` directory link to the system architecture, project status, licensing, and credits. `lunavision-architecture.html` explains the on-device flow with Simulator screenshots.
+
+`demo.html` reproduces the app interface using prepared scenes and simulated answers. The camera and imported photos are previews. Sample questions work without a microphone. Users can opt into browser speech recognition, which may use the browser’s online service.
 
 After editing the shared header or either language version of a Markdown notice, regenerate the pages with:
 

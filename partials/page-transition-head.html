@@ -15,7 +15,7 @@
     }catch{storage=false}
     let fallback=false;
     if(!storage)try{
-      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|404\.html)?$/.test(path);
+      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|demo\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|404\.html)?$/.test(path);
       fallback=from.origin===location.origin&&known(from.pathname)&&known(location.pathname)&&((from.pathname==='/contact.html')!==(location.pathname==='/contact.html'));
     }catch{}
     const age=pending?Date.now()-pending.time:Infinity;
@@ -31,5 +31,5 @@
     if(returnHome)root.classList.add('page-positioning');
     setTimeout(()=>{if(!root.dataset.pageTransitionManaged)root.classList.remove('page-arriving','page-arrival-reveal','page-positioning')},returnHome?5000:1500);
   })();</script>
-  <script src="/page-transition.js?v=luna-20261110-more" defer></script>
+  <script src="/page-transition.js?v=luna-20261111-demo" defer></script>
   <!-- page-transition:end -->

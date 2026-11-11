@@ -32,7 +32,7 @@
     }catch{storage=false}
     let fallback=false;
     if(!storage)try{
-      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|404\.html)?$/.test(path);
+      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|demo\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|404\.html)?$/.test(path);
       fallback=from.origin===location.origin&&known(from.pathname)&&known(location.pathname)&&((from.pathname==='/contact.html')!==(location.pathname==='/contact.html'));
     }catch{}
     const age=pending?Date.now()-pending.time:Infinity;
@@ -48,7 +48,7 @@
     if(returnHome)root.classList.add('page-positioning');
     setTimeout(()=>{if(!root.dataset.pageTransitionManaged)root.classList.remove('page-arriving','page-arrival-reveal','page-positioning')},returnHome?5000:1500);
   })();</script>
-  <script src="/page-transition.js?v=luna-20261110-more" defer></script>
+  <script src="/page-transition.js?v=luna-20261111-demo" defer></script>
   <!-- page-transition:end -->
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
@@ -71,6 +71,7 @@
         <a href="/#models" data-home-anchor="models" data-en="Technology">เทคโนโลยี</a>
         <a href="/#privacy" data-home-anchor="privacy" data-en="Privacy">ความเป็นส่วนตัว</a>
         <a href="/#opensource" data-home-anchor="opensource" data-en="Open source">โอเพนซอร์ส</a>
+        <a href="/demo.html" data-secondary-link data-en="Try demo">ทดลองแอป</a>
         <a href="/contact.html" data-en="Contact">ติดต่อ</a>
         <div class="nav-more">
           <button class="nav-more-toggle" type="button" aria-expanded="false" aria-controls="more-navigation"><span data-en="More">อื่น ๆ</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
@@ -99,7 +100,7 @@
   <!-- site-header:end -->
   <main id="main" class="wrap document-main">
     <a class="document-back" href="./"><svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg><span data-en="Back to LunaV">กลับหน้า LunaV</span></a>
-    <nav class="document-navigation" aria-label="เอกสาร" data-en-aria="Project documents"><a href="resources.html"><span data-en="All resources">ข้อมูลเพิ่มเติม</span></a><a href="lunavision-architecture.html"><span data-en="System architecture">แผนผังการทำงาน</span></a><a href="project-status.html" aria-current="page"><span data-en="Project status">สถานะโครงการ</span></a><a href="licensing.html"><span data-en="Commercial licensing">การอนุญาตใช้สิทธิ</span></a><a href="credits.html"><span data-en="Asset credits">เครดิตทรัพยากร</span></a></nav>
+    <nav class="document-navigation" aria-label="เอกสาร" data-en-aria="Project documents"><a href="resources.html"><span data-en="All resources">ข้อมูลเพิ่มเติม</span></a><a href="demo.html"><span data-en="Try demo">ทดลองแอป</span></a><a href="lunavision-architecture.html"><span data-en="System architecture">แผนผังการทำงาน</span></a><a href="project-status.html" aria-current="page"><span data-en="Project status">สถานะโครงการ</span></a><a href="licensing.html"><span data-en="Commercial licensing">การอนุญาตใช้สิทธิ</span></a><a href="credits.html"><span data-en="Asset credits">เครดิตทรัพยากร</span></a></nav>
     <article class="document" data-document-language="th" lang="th">
 <h1 lang="th">สถานะโครงการ LunaV</h1>
 <p lang="th"><strong>ตรวจหลักฐานถึงวันที่ 11 พฤศจิกายน 2026</strong> LunaV เป็นต้นแบบวิจัยบน iPhone ที่ใช้กล้องและเสียงช่วยให้ทำกิจวัตรได้สะดวกขึ้น ครอบคลุมผู้ที่ตาบอด สายตาเลือนราง หรือมองเห็นลำบากในบางสถานการณ์ แอปปัจจุบันคือ <strong>3.2.0 (บิลด์ 5)</strong> เพิ่มการถามต่อจากภาพเดิม การอ่านเฉพาะข้อมูลที่ขอ และการช่วยหาของใกล้ตัว ทั้งสามฟีเจอร์ประมวลผลบนอุปกรณ์ Repo นี้เผยแพร่เว็บไซต์และประกาศสิทธิของโครงการ <a href="https://github.com/koomean/visionassistant">ดูโครงการบน GitHub</a></p>

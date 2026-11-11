@@ -30,7 +30,7 @@
     }catch{storage=false}
     let fallback=false;
     if(!storage)try{
-      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|404\.html)?$/.test(path);
+      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|demo\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|404\.html)?$/.test(path);
       fallback=from.origin===location.origin&&known(from.pathname)&&known(location.pathname)&&((from.pathname==='/contact.html')!==(location.pathname==='/contact.html'));
     }catch{}
     const age=pending?Date.now()-pending.time:Infinity;
@@ -46,7 +46,7 @@
     if(returnHome)root.classList.add('page-positioning');
     setTimeout(()=>{if(!root.dataset.pageTransitionManaged)root.classList.remove('page-arriving','page-arrival-reveal','page-positioning')},returnHome?5000:1500);
   })();</script>
-  <script src="/page-transition.js?v=luna-20261110-more" defer></script>
+  <script src="/page-transition.js?v=luna-20261111-demo" defer></script>
   <!-- page-transition:end -->
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <script>(()=>{let saved;try{saved=localStorage.getItem('lunav-language')}catch{}const requested=new URLSearchParams(location.search).get('lang');document.documentElement.lang=(requested||saved)==='en'?'en':'th'})();</script>
@@ -82,6 +82,7 @@
         <a href="/#models" data-home-anchor="models" data-en="Technology">เทคโนโลยี</a>
         <a href="/#privacy" data-home-anchor="privacy" data-en="Privacy">ความเป็นส่วนตัว</a>
         <a href="/#opensource" data-home-anchor="opensource" data-en="Open source">โอเพนซอร์ส</a>
+        <a href="/demo.html" data-secondary-link data-en="Try demo">ทดลองแอป</a>
         <a href="/contact.html" data-en="Contact">ติดต่อ</a>
         <div class="nav-more">
           <button class="nav-more-toggle" type="button" aria-expanded="false" aria-controls="more-navigation"><span data-en="More">อื่น ๆ</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
@@ -145,6 +146,11 @@
         </a>
 
         <div class="resource-grid">
+          <a class="resource-link" href="demo.html">
+            <span class="resource-glyph"><svg class="icon" aria-hidden="true"><use href="#resource-eye"/></svg></span>
+            <div><h3 data-en="Interactive web demo">ทดลองแอปบนเว็บ</h3><p data-en="Use sample scenes to try asking about a photo, reading text, finding an object, and checking distance.">ลองถามจากภาพ อ่านข้อความ หาของ และดูระยะด้วยฉากตัวอย่าง</p><span class="resource-link-caption" data-en="LunaV 3.2.0 simulation">จำลอง LunaV 3.2.0</span></div>
+            <svg class="icon resource-link-arrow" aria-hidden="true"><use href="#resource-arrow"/></svg>
+          </a>
           <a class="resource-link" href="project-status.html">
             <span class="resource-glyph"><svg class="icon" aria-hidden="true"><use href="#resource-status"/></svg></span>
             <div><h3 data-en="Project status">สถานะโครงการ</h3><p data-en="Current implementation, recorded checks, and the limits of the available evidence.">สิ่งที่แอปทำได้ในปัจจุบัน ผลตรวจที่บันทึกไว้ และขอบเขตของหลักฐาน</p><span class="resource-link-caption" data-en="Implementation &amp; validation">การพัฒนาและผลตรวจ</span></div>
