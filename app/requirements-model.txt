@@ -1,4 +1,0 @@
-# Only needed on the Mac to convert weights; the iPhone app uses Swift and Metal.
-mlx-vlm==0.7.9
-mlx==0.32.4
-transformers==5.20.2
