@@ -54,10 +54,10 @@
   <!-- page-transition:end -->
   <link rel="stylesheet" href="styles.css?v=luna-20261103-safari">
   <link rel="stylesheet" href="site-shell.css?v=luna-20261110-more">
-  <link rel="stylesheet" href="devices.css?v=luna-20261111-devices">
+  <link rel="stylesheet" href="devices.css?v=luna-20261112-check">
   <script src="site-shell.js?v=luna-20261110-more" defer></script>
   <script src="docs-language.js?v=luna-20261031-nav" defer></script>
-  <script src="devices.js?v=luna-20261111-devices" defer></script>
+  <script type="module" src="devices.js?v=luna-20261112-check"></script>
   <title data-title-th="อุปกรณ์ที่รองรับ — LunaV" data-title-en="Supported devices — LunaV">อุปกรณ์ที่รองรับ — LunaV</title>
 </head>
 <body class="devices-page">
@@ -104,12 +104,27 @@
   <main id="main" class="devices-main">
     <header class="devices-hero wrap">
       <div class="devices-hero-copy">
-        <p class="section-kicker"><span class="tiny-orbit" aria-hidden="true"></span><span>LunaV 3.2.0</span></p>
+        <p class="section-kicker"><span class="tiny-orbit" aria-hidden="true"></span><span>LunaV 3.2.1</span></p>
         <h1 data-en="Supported devices">อุปกรณ์ที่รองรับ</h1>
-        <p data-en="Check which Mac you can build with, then find your iPhone to see its iOS compatibility, depth source, and available test results.">ดูว่า Mac ของคุณใช้ build ได้ไหม แล้วค้นหารุ่น iPhone เพื่อดูว่าใช้ iOS 27 ได้หรือไม่ ใช้แหล่งข้อมูลระยะแบบไหน และมีผลทดสอบอะไรบ้าง</p>
+        <section id="device-check" class="device-check" aria-labelledby="device-check-title" hidden>
+          <h2 id="device-check-title" data-en="This device">อุปกรณ์ที่คุณใช้อยู่</h2>
+          <div role="status" aria-atomic="true">
+            <p class="device-check-name" id="device-check-name"></p>
+            <p class="device-check-status" id="device-check-status"></p>
+            <p class="device-check-description" id="device-check-description"></p>
+            <p class="device-check-matches" id="device-check-matches" hidden></p>
+            <p class="device-check-depth" id="device-check-depth" hidden></p>
+            <p class="device-check-evidence" id="device-check-evidence" hidden></p>
+          </div>
+          <div class="device-check-choice" id="device-check-choice" hidden>
+            <label for="device-check-model" data-en="Confirm your iPhone model">ยืนยันรุ่น iPhone ของคุณ</label>
+            <select id="device-check-model" aria-describedby="device-check-help"></select>
+            <p id="device-check-help" data-en="Find Model Name in Settings → General → About. This check runs in your browser.">ดูชื่อรุ่นใน การตั้งค่า → ทั่วไป → เกี่ยวกับ การตรวจนี้ทำงานในเบราว์เซอร์ของคุณ</p>
+          </div>
+        </section>
         <nav class="devices-jump" aria-label="ไปยังส่วนที่ต้องการ" data-en-aria="On this page">
+          <a href="#iphone" data-en="Browse all iPhone models">ดู iPhone ทุกรุ่น</a>
           <a href="#build" data-en="Build on a Mac">Mac สำหรับ build</a>
-          <a href="#iphone" data-en="Find your iPhone">ค้นหารุ่น iPhone</a>
         </nav>
       </div>
       <div class="devices-art" aria-hidden="true">
