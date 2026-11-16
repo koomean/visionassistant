@@ -33,6 +33,9 @@ html[lang=th] .document-page [data-document-language=th],html[lang=en] .document
 .document tr:last-child td{border-bottom:0}
 .document tbody tr:nth-child(even){background:rgba(167,189,237,.025)}
 .document th:first-child{width:20%}.document th:nth-child(2){width:39%}
+.status-page .document table:has(th:nth-child(4)) th{width:auto}
+.status-page .document table:has(th:nth-child(4)) th:first-child{width:24%}
+.status-page .document table:has(th:nth-child(4)) td:not(:first-child){font-variant-numeric:tabular-nums}
 .document [lang=th]{line-height:2.05}
 .document h2[lang=th]{font-size:1.9rem;letter-spacing:-.02em}
 html[lang=th] .document :is(h1,h2,h3){line-height:1.5;letter-spacing:-.025em}
@@ -47,3 +50,13 @@ html[lang=th] .document h1{font-size:clamp(2.5rem,5.4vw,4rem);line-height:1.45}
 .document-navigation a{font-size:.77rem;color:var(--muted);padding:5px 0;border-bottom:1px solid transparent}
 .document-navigation a:hover,.document-navigation a[aria-current=page]{color:var(--paper);border-color:var(--gold)}
 @media(max-width:640px){.document-navigation{gap:5px 18px;margin-bottom:27px;padding-bottom:14px}.document-navigation a{font-size:.7rem}}
+
+@media screen and (max-width:640px){
+  .status-page .document-table{margin-block:18px 24px}
+  .status-page .document table{min-width:0;table-layout:fixed;line-height:1.7}
+  .status-page .document th,.status-page .document td{padding:9px 7px;overflow-wrap:anywhere}
+  .status-page .document th:first-child{width:25%}
+  .status-page .document th:nth-child(2){width:29%}
+  .status-page .document table:has(th:nth-child(4)) th{width:auto}
+  .status-page .document table:has(th:nth-child(4)) th:first-child{width:24%}
+}

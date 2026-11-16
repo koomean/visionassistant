@@ -24,7 +24,7 @@ No commercial rights beyond the AGPL are granted by this document or by sending 
 
 A separate commercial licence can only cover code for which the licensor has the necessary rights or permission to grant that licence. Before accepting outside contributions, the project owner should establish clear contribution terms and confirm that those terms allow any intended dual-licensing model. Code and dependencies from third parties remain subject to their own licences.
 
-This repository contains the LunaV project website. The iPhone app source and model weights are not included here. A commercial agreement must explicitly identify any separately supplied app source, assets, or other works it covers. This notice does not grant additional rights to third-party models or dependencies.
+The main branch contains the LunaV project website. The iPhone app source is available as a separate archive under [GitHub Releases](https://github.com/koomean/visionassistant/releases). That archive excludes model weights. A commercial agreement must explicitly identify any separately supplied app source, assets, or other works it covers. This notice does not grant additional rights to third-party models or dependencies.
 
 ## Disclaimer
 

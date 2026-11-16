@@ -30,11 +30,10 @@ These images come from the project owner's local LunaV app previews. They have
 been resized to 720 × 1565 pixels and encoded as WebP. No app interface or results
 have been fabricated or composited.
 
-### Current version 3.0.0 (build 3)
+### Version 3.0.0 (build 3) Simulator previews
 
-The following previews were captured on **29 October 2026** from the current
-version 3.0.0 (build 3) interface, including its separate app-language setting and
-About page.
+These previews were captured on **29 October 2026** from the version 3.0.0
+(build 3) interface, including its separate app-language setting and About page.
 
 | Website asset | Original preview |
 | --- | --- |
@@ -54,7 +53,7 @@ website.
 These four images were also captured on **29 October 2026**, before the version
 3.0.0 language/About update. They show the earlier lunar-themed interface and are
 retained as historical assets. A text-grouping preview may still illustrate that
-specific tool; it is not a screenshot of the current version 3.0.0 interface.
+specific tool; it predates the version 3.0.0 interface.
 
 | Website asset | Original preview |
 | --- | --- |

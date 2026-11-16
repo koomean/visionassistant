@@ -1,28 +1,68 @@
 # LunaV project status
 
-**Updated 11 November 2026.** The current app is **LunaV 3.2.0 (build 5)**, an on-device iPhone research prototype designed to make everyday tasks easier for people who face barriers to seeing, including people who are blind, have low vision, or have difficulty seeing in a particular situation. The public GitHub repository hosts this website and its notices. The app source, model weights, and raw validation logs are kept in the app workspace. [Visit the project on GitHub](https://github.com/koomean/visionassistant).
+**Updated 16 November 2026.** LunaV **3.2.1 (build 6)** is an on-device iPhone research prototype. It uses the camera and speech to make everyday tasks easier for people who are blind, have low vision, or have difficulty seeing in a particular situation. The website and its notices are in the public GitHub repository. App and motion source are available as release assets. [Download the 3.2.1 source release](https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source).
 
-## What’s new in 3.2.0
+## Reading and visual assistance
 
 - **Follow up on the same photo.** Turn on **Reuse the photo on hold** in Settings. Hold the shutter to ask about the latest photo and its paired depth, or tap briefly to take a new photo. VoiceOver also offers a follow-up action on the shutter.
 - **Read only what you ask for.** Say “Read only the price on the right” or ask for the bus route number in Thai or English. Apple Vision OCR extracts the requested text from the photo. LunaV asks for the item or area when several values match and says when it cannot verify the requested text.
 - **Find something nearby.** Say “Help me find my keys” to search a fresh camera photo. LunaV reports where a matching item appears in the frame or asks for a distinguishing detail such as its colour. Aim the camera as directed and ask again. When LunaV confirms that the object is centred in a recent capture, it can play a short tone and pulse the haptics on supported devices.
+- **Read the most prominent text.** In 3.2.1, a general request such as “Read the label” prefers a prominent heading over small text such as the package quantity. Ask to read all text or name a field when you need it. LunaV can ask which area to read when several prominent headings match.
 
-## Latest validation — 11 November 2026
+## Recent validation
 
-| Check | Recorded result | Scope and limit |
+### iPhone Simulator — 12 November 2026
+
+The focused **3.2.1 (build 6)** run used the iPhone 17 Simulator with iOS 27.2.
+
+| Check | Passed | What it covered |
+| --- | ---: | --- |
+| Unit tests | **21/21** | Document reading, prominent text, requested fields and packaged version information. |
+| UI tests | **2/2** | Spoken label reading and reading a requested price with Apple Vision OCR. Both used simulated camera and speech inputs. |
+| Total | **23/23** | Zero failures, skips or recorded runtime warnings in this run. |
+
+An earlier run of the label-reading check failed that evening. The check passed in the 23-test run.
+
+### Mac component benchmark — 16 November 2026
+
+The evaluation used file inputs on Apple Silicon with macOS 27.2.1 and tools built from LunaV 3.2.1 (build 6). OCR used Apple Vision, the visual model used Qwen3-VL-2B-Instruct 4-bit via MLX, and speech used the app’s Apple Dictation decoder. CER is character error rate and WER is word error rate. Lower is better for both. Each result applies to its own inputs and scoring method.
+
+| Task | Evaluation inputs | Recorded result |
 | --- | --- | --- |
-| iPhone 17 Simulator with iOS 27.0 | **288/288 passed (285 unit and 3 UI)** with zero failures, skips, or recorded runtime warnings | The UI checks cover hold-and-release submission, keeping and replacing a photo, and reading a price with Apple Vision OCR. Camera capture and speech recognition use simulated inputs in these checks. |
-| Local visual-model checks on Mac | Qwen located the orange-juice bottle on the right and the green bottle in the centre of their respective test images, requested a detail when several bottles matched, and reported that absent keys were not found | These results cover the selected test images and prompts. |
-| Generic iOS Release | Xcode build passed with signing disabled for compilation. Bundle metadata shows **3.2.0 / build 5**. | Installation, tone playback, and the finder’s haptic pulse are awaiting checks on a physical iPhone. |
+| OCR | [TEMS v5](https://data.mendeley.com/datasets/ntdmgksh9w/5), 514 text crops | **3.07% CER**. Exact text on **434/514** images. |
+| Visual Q&A | [VizWiz VQA](https://vizwiz.org/tasks-and-datasets/vqa/), 150 questions | **56.07%** under VizWiz’s scoring method. |
+| Object finding | 50 synthetic scenes | **39/50 (78%)** matched the expected response. |
+| Thai Dictation | [FLEURS](https://huggingface.co/datasets/google/fleurs), 50 Thai clips | **10.73% CER**. All 50 returned text. |
+| English Dictation | [FLEURS](https://huggingface.co/datasets/google/fleurs), 50 US English clips | **22.68% CER**, **28.00% WER**. Ten clips returned no text. |
+| Document summaries | 8 synthetic document images | **18/27 facts** retained. **3/8** summaries retained every expected fact. |
 
-The results above come from the app’s release checks. General model accuracy, human speech accuracy, physical distance accuracy, battery life, and thermal performance require separate validation.
+- **OCR.** The CER represents 263 edits across 8,571 reference characters. Whitespace-delimited WER was 10.64%. Eight images returned no text and counted as deletions.
+- **Visual Q&A.** The score was 48.10% on the 100 answerable questions and 72.00% on the 50 unanswerable questions. The model said `unanswerable` on 13 and 35 questions in those groups, respectively. One image below the model’s minimum height scored zero.
+- **Object finding.** Left 10/10, right 10/10, centred 4/10, absent 10/10 and multiple matches 5/10. The other six centred scenes prompted a camera adjustment.
+- **Dictation.** Thai had 628 edits across 5,854 reference characters. English had 1,139 across 5,023. The ten missing English transcriptions counted as deletions. CER was 5.36% across the 40 English clips that returned text.
+- **Summaries.** One reviewer checked the retained facts. Example errors included changing a correctly read Friday time and misidentifying a correctly read water label.
+
+TEMS CER was 2.41% for Thai (258 crops), 0.83% for English (188), 8.36% for mixed Thai/English (63) and 0.00% for numerals/symbols (5). Exploratory 95% bootstrap intervals were **1.93–4.60% CER** for TEMS and **49.00–63.07%** for the VizWiz score. TEMS resampling grouped crops by source photo. The v5 metadata contains 112 test source-photo IDs. The accompanying paper reports 162, so the results should only be compared directly once the test IDs are matched. VizWiz and FLEURS samples used seed 2027. These file-based checks leave live microphone use, end-to-end offline operation, iPhone latency and battery life open for measurement.
+
+### Physical iPhone distance comparison — 16 November 2026
+
+A LunaV **3.2.1 (build 6) Release test build** captured five frames per phone in one scene with a white jar. The iPhone 14 Pro produced filtered rear LiDAR depth. The iPhone 14 used DA3 with scale 1.0 and the camera’s intrinsic matrix. Both devices returned values at all five selected positions in all five frames, giving **25 paired readings**. The DA3 test path invoked the camera, image preparation and depth runtime directly after ordinary preparation attempts reported the model as busy. Both paths used LunaV’s production range reader.
+
+| Point in the frame | Median LiDAR (m) | Median DA3 (m) | Mean DA3 minus LiDAR (cm) |
+| --- | --- | --- | --- |
+| Jar surface | 0.659 | 0.484 | −17.5 |
+| Upper left | 0.813 | 1.131 | +31.8 |
+| Upper right | 0.869 | 0.772 | −9.7 |
+| Lower left | 0.574 | 0.410 | −16.4 |
+| Lower right | 0.648 | 0.427 | −22.1 |
+
+Mean absolute difference across the 25 pairs was **19.5 cm**, and **17.5 cm** over the five jar-surface pairs. A negative value means DA3 estimated a closer surface than LiDAR. The cameras have different frame proportions, so matching corner coordinates may sample different spots. This experiment uses LiDAR as its reference across two devices in one scene. Absolute error remains unmeasured because there was no independent physical reference for each point.
 
 ## App language and About
 
 Use **Settings → App language** to switch the interface immediately between Thai and English. The choice persists across relaunches and covers the camera, Settings, About, conversation controls, region/text-group/distance tools, runtime information, status, and errors. It is independent of the selected Dictation language, answer language, and reading voice. Existing questions, answers, and original OCR text are preserved rather than translated when the interface changes. Language names and the creator's name keep their original spelling.
 
-The final Settings group opens **About → About LunaV**, showing the actual bundle version **3.2.0 / build 5**, creator **Wachirawich kripindakul (koomean)**, and a link to the LunaV website. The bundle includes Thai and English interface catalogs and permission descriptions. iOS system screens follow the system language.
+The final Settings group opens **About → About LunaV**, showing the actual bundle version **3.2.1 / build 6**, creator **Wachirawich kripindakul (koomean)**, and a link to the LunaV website. The bundle includes Thai and English interface catalogs and permission descriptions. iOS system screens follow the system language.
 
 ## Current interface
 
@@ -50,19 +90,23 @@ On a **LiDAR-equipped device**, supported captures use sensor depth paired with 
 
 On a **device without LiDAR**, bundled **Depth Anything 3 Metric** estimates depth from a new photograph and its lens focal information **when a distance question or manual point selection needs it**. Ordinary visual questions do not trigger a prediction. A successful map is reused for the same capture; transient prediction failures can be retried. Missing lens information, sky, or invalid values can prevent a reading. Answers label the model source and round estimates to 0.1 metre. Imported images without paired depth do not produce numeric distances.
 
-Settings can fit a per-camera scale from a measured camera-to-surface reference of **0.3–8 metres** near the image centre. Calibration may reduce consistent bias; it does not validate other scenes or certify accuracy. **DA3 has not been compared against measured physical reference distances on the delivered app.** LiDAR is also not certified here against physical reference measurements.
+Settings can fit a per-camera scale from a measured camera-to-surface reference of **0.3–8 metres** near the image centre. Calibration can reduce a consistent bias for that camera. The 16 November comparison used LiDAR as its reference and measured how closely the two devices agreed in one scene. Measuring absolute accuracy requires independent physical reference distances.
 
 **LiDAR obstacle haptics** are an optional Settings feature on compatible iPhones with rear LiDAR. During live camera preview, the pulses become stronger and more frequent as an obstacle in the central area gets closer. The default start distance is **2 m**, the strongest point is **0.4 m**, and the maximum strength is **80%**. Settings lets users adjust all three and preview the vibration. Monitoring pauses during capture or AI processing, while the app is in the background, or when the device is too hot.
 
 ## Preparation and resource use
 
-The app targets **iOS 27 / Xcode 27 or later**. Dictation support depends on device and language; image/depth inference still needs sufficient memory and supported hardware. It prepares visual models before enabling questions and retries temporary failures in the foreground. DA3 preparation applies only to devices without LiDAR. Speech preparation has a **30-second deadline** and can retry separately. If speech is unavailable, photos, typed questions, OCR, and summaries remain available once their required visual models are ready.
+The app targets **iOS 27.0 or later**. Build the source with **Xcode 27.1 or later**. Dictation support depends on device and language; image/depth inference still needs sufficient memory and supported hardware. It prepares visual models before enabling questions and retries temporary failures in the foreground. DA3 preparation applies only to devices without LiDAR. Speech preparation has a **30-second deadline** and can retry separately. If speech is unavailable, photos, typed questions, OCR, and summaries remain available once their required visual models are ready.
 
 The compact policy applies at **6 GiB physical RAM or below**, or when reported positive process headroom is below **1 GiB**. It releases idle visual-model weights before a new capture and after answers, and retains lightweight image references and bounded text/OCR/tokenizer caches. OCR runs before a cold visual-model load. Releasing weights can add another load before the next answer. Successful warmup stages are tracked separately from resident weights so returning from the background does not repeat every completed stage.
 
 Cancellation and memory-warning cleanup follow running work before models reload. In-flight inference may own buffers until it returns; cancellation does not guarantee immediate or complete RAM release. Native-speech cleanup does not block typed visual questions. The optimisation retained model weights, quantisation, image resolution, answer checks, and memory-admission safeguards. Warmup does not guarantee that weights remain in RAM or every device can run inference.
 
 ## Earlier app validation
+
+### 3.2.0 build 5 — 11 November 2026
+
+This release passed **288/288 (285 unit and 3 UI)** on an iPhone 17 Simulator with iOS 27.0. The UI tests used simulated camera and speech inputs and checked hold-to-ask, photo reuse and replacement, and Apple Vision price reading. Four selected Mac finder prompts checked right, centred, multiple matches and absent objects. A generic iOS Release compiled with signing disabled and reported version 3.2.0 / build 5.
 
 ### 3.1.0 build 4 — 11 November 2026
 
@@ -98,7 +142,7 @@ Earlier 24 October speech work recorded 224 unit passes, initially 10/11 UI foll
 
 Earlier 21 October Mac VLM/OCR evidence contained **22 correct concrete answers + 7 abstentions across 29 cases**; six abstentions missed visible information and one declined an absent price. Former Whisper synthetic results were **10/12 exact transcriptions**, not current Apple Dictation accuracy. The historical 23 October hold/release suite passed 155/155. Controlled follow-up/LiDAR/DA3 fixtures establish routing or geometry for their setup, not physical distance accuracy.
 
-Human microphone accuracy, human-confirmed audibility/Silent-switch behaviour, and measured physical distance accuracy remain unestablished by these records. No promise is made of compatibility with every iPhone, continuous navigation, unlimited operation, or correct answers on every image.
+Live microphone accuracy, human-confirmed audibility and Silent-switch behaviour, and absolute distance accuracy still require measurement. Finder tones and haptic strength also require checks on a physical iPhone.
 
 ## Data handling
 
@@ -109,6 +153,8 @@ Temporary WAV recordings, compressed images, previews, and crops can be stored i
 ## Evidence provenance
 
 Descriptions were checked against the supplied app's current `README.md`, `VALIDATION.md`, UI/runtime source, and recorded logs. These provenance names refer to the app workspace, not files distributed in this website repository.
+
+Current version metadata comes from `App/project.yml`. The 12 November XCTest result is `Test-LunaV-2569.11.12_21-55-17-+0700.xcresult` in local Xcode DerivedData. The 16 November aggregate results come from `Test/Mac-Benchmark-2026-11-16/` and `Test/iPhone-Distance-2026-11-16/`. The public status page reports aggregates and methods.
 
 Version 3.2 evidence uses `Logs/LunaV-v32-delivery-simulator.xcresult`, `Logs/LunaV-v32-delivery-simulator.log`, `Logs/LunaV-v32-delivery-iphone.log`, and the local `LunaVModelCheck` finder runs. `project.yml` is the app version source.
 
