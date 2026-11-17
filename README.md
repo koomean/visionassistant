@@ -1,100 +1,195 @@
+<div align="center">
+
+<img src="assets/favicon.svg" alt="LunaV logo" width="88">
+
 # LunaV
 
-**LunaV and motion source:** [LunaV 3.2.1 source release](https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source), published **12 November 2026**. Under Assets, download `LunaV-3.2.1-source.zip` and use `SHA256SUMS.txt` to verify it. The ZIP does not include model weights or an installable app.
+### Ask about the world around you. Privately, on your iPhone.
 
-**LunaV Lite:** [Separate source release for iPhone and iPad](https://github.com/koomean/visionassistant/releases/tag/v4.0.0-lite). The Xcode project includes the compressed Depth Anything 3 model and uses Apple Vision for offline photo and text tools.
+**An experimental, on-device AI visual assistant** built to explore more accessible ways to understand photographs, read text, and estimate supported distances.
 
-An on-device visual question assistant and research prototype for iPhone. Hold to ask about a photograph, read and summarise text, estimate supported distances, and hear completed answers. The current app is **3.2.1 (build 6)** and uses Qwen3-VL-2B-Instruct through MLX/Metal, Apple Dictation for speech input, Apple system voices for answer playback, and Depth Anything 3 Metric on devices without LiDAR.
+**No cloud AI API · Thai & English · SwiftUI · LiDAR + Depth Anything 3**
 
-[Visit the project website](https://lunavision.koomean.com/) · [View the project on GitHub](https://github.com/koomean/visionassistant)
+[**Explore the website**](https://lunavision.koomean.com/) · [**Try the interactive demo**](https://lunavision.koomean.com/demo.html) · [**Get the source**](https://github.com/koomean/visionassistant/releases) · [**Read the research status**](PROJECT-STATUS.md)
 
-## Repository scope
+![Platform](https://img.shields.io/badge/Platform-iOS%2027%2B-1f3654?style=flat-square)
+![SwiftUI](https://img.shields.io/badge/UI-SwiftUI-3274a1?style=flat-square)
+![AI](https://img.shields.io/badge/AI-On--device-226b69?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Research%20prototype-c58a36?style=flat-square)
+[![License](https://img.shields.io/badge/License-AGPL--3.0--or--later-374151?style=flat-square)](LICENSE)
 
-The repository tree contains the **public project website and its licensing notices**. GitHub Releases hosts the LunaV and LunaV Lite source archives. The Lite archive bundles its compressed depth model.
+</div>
 
-Capability descriptions and recorded results were reviewed on **16 November 2026**. They describe the current research implementation, not a guarantee of accuracy or compatibility with every iPhone.
+---
 
-## Current capabilities
+## A visual assistant designed around simple interactions
 
-- **Thai or English interface.** Settings → App language switches screens immediately and remembers the choice across relaunches. This changes interface labels, status, errors, and tools independently of Dictation language, answer language, and reading voices; existing questions, answers, and OCR text retain their original content. The final Settings group opens About, displaying the installed build’s version, creator, and website link.
+LunaV explores a straightforward idea: **point your iPhone at something, ask a question, and hear an answer**—with image analysis performed on the device rather than sent to a cloud AI service.
 
-- **A shared lunar identity.** The current SwiftUI interface uses the website’s navy, warm-white, pale-blue/gold palette, Noto Sans Thai, and Manrope. Its icon now shares the crescent-and-star symbol. A native LunaVision-to-LunaV introduction runs for about 4.22 seconds while model preparation proceeds; Reduce Motion uses a brief static mark. Settings puts language and answer voices first, then testing tools. The camera retains two main buttons; the camera-switch menu has been removed.
+It is a **research prototype**, not a certified accessibility or mobility product. Its answers and distance estimates can be incorrect, and it must **not** be used as a navigation aid or a substitute for a cane, guide dog, or other mobility support.
 
-- **Hold, speak, release.** Hold the centre button to start photo/depth capture and microphone recording together, after microphone permission is granted. Speak while holding, then release to stop recording and submit once the image is ready. Silence while holding does not submit. A short tap takes a photograph only. Recordings over the 2-minute limit are rejected rather than submitting only their beginning.
-- **Thai or English Dictation on the phone.** Apple DictationTranscriber through SpeechAnalyzer replaces bundled Whisper. Thai is the default; choose English with the separate speech-language setting in Settings. Each request uses the selected language, without automatic language switching. If its Apple language asset is missing, initial preparation may need a download; question transcription then uses installed assets locally.
-- **Hear completed answers.** Automatic reading is on by default and uses installed Apple voices for completed AI, OCR, summary, and distance answers. Change or disable voices in Settings. Playback stops before a new capture or microphone session. These are Apple system voices, not a promise of access to the voice selected for Siri.
-- **Read and summarise text.** Apple Vision extracts text locally. In 3.2.1, a general reading request can return a prominent heading in a photo directly from OCR. Ask for the left, right, top, bottom, or centre in Thai or English; LunaV asks which area to read when multiple headings fit, or suggests reframing when the text is unclear. Settings tools select a region, group text from signs, menus, and labels, and summarise the selected OCR text.
-- **Distance with a clear source.** Supported LiDAR captures use sensor depth paired with the photograph. Devices without LiDAR keep the new photograph’s lens information and run bundled Depth Anything 3 Metric when a distance question or manual point selection needs it. A successful map is reused for that photograph; ordinary visual questions do not trigger a depth prediction. Model estimates are labelled, rounded to 0.1 metre, and can be scale-calibrated per camera in Settings. Calibration is not an accuracy certification. Imported images without paired depth do not produce numeric distances; LiDAR-equipped devices skip DA3 even if a capture lacks depth.
-- **Preparation, progress, and cancellation.** The app prepares image/depth models before questions and retries temporary preparation failures. Speech preparation has a 30-second deadline; if speech is unavailable, photos, typed questions, and OCR remain available once the required visual models are ready. Voice requests show their stage and elapsed time, can be cancelled, and have a 45-second transcription deadline. Temporary audio remains until its worker actually finishes; cancellation does not promise instant deletion.
-- **Use memory for the current task.** Lower-memory devices release idle visual-model weights and reuse bounded text/OCR/tokenizer metadata instead of retaining large image tensors between questions. This means weights may reload for the next answer. OCR runs before a cold visual-model load; DA3 predictions are deferred until distance is needed. Models, quantisation, image resolution, and answer checks were retained in this optimisation. Cancellation and memory warnings request cleanup in order; they do not promise that in-flight inference releases RAM instantly.
-- **Local analysis.** Image, depth, OCR, question transcription, and answer synthesis run on the device without a cloud AI service or an API key. The app bundles its image and DA3 models, while iOS manages Dictation language assets and installed voices. Fresh installation is not guaranteed to be usable offline before required Apple assets are installed. Temporary images and recordings are kept in the app sandbox during use.
+### See the interface
 
-On compatible iPhones, optional live obstacle haptics require rear LiDAR and haptics support and are off by default. LunaV is not a navigation aid or a substitute for mobility aids. Model estimates, OCR, transcription, and generated answers can still be wrong. A distance answer from a photograph refers to the moment of capture.
+<div align="center">
+  <img src="assets/app-v3-camera-en.webp" width="29%" alt="LunaV camera interface">
+  &nbsp;
+  <img src="assets/app-v3-answer-en.webp" width="29%" alt="LunaV answer interface">
+  &nbsp;
+  <img src="assets/app-v3-settings-en.webp" width="29%" alt="LunaV settings interface">
+  <br>
+  <sub>App interface previews. Actual screens and feature availability depend on the build and device.</sub>
+</div>
 
-## Development requirements and evidence
+## What can LunaV do?
 
-The app project targets **iOS 27.0 or later** and requires **Xcode 27.1 or later** (the recorded build used Xcode 27.2). To install on a physical iPhone, prepare the required models, configure your own development signing, and enable Developer Mode. Speech depends on the device and selected language; Qwen and DA3 require sufficient available memory and supported hardware. See the [device compatibility guide](https://lunavision.koomean.com/devices.html).
+| Capability | How it works |
+| --- | --- |
+| **Ask about a scene** | Capture an image and ask a question using Qwen3-VL-2B-Instruct running through MLX/Metal. |
+| **Speak in Thai or English** | Hold the main button, speak in the selected Dictation language, and release to submit. |
+| **Read printed text** | Apple Vision performs on-device OCR, including requests to read specific regions of an image. |
+| **Summarise text** | Summarise extracted text from signs, labels, menus, and other readable material. |
+| **Estimate distance** | Use paired LiDAR depth on supported captures, or Depth Anything 3 Metric on non-LiDAR iPhones. |
+| **Hear the response** | Play completed answers using installed Apple system voices. |
+| **Choose your language** | Switch the app interface between Thai and English independently of speech and voice settings. |
 
-- **12 November — 3.2.1 focused Simulator checks:** **23/23 passed** (21 unit, 2 UI) on the iPhone 17 Simulator with iOS 27.2. These OCR and reading checks used simulated camera and speech inputs for the two UI cases. The earlier **288/288** Simulator run on 11 November belongs to **3.2.0**, not this patch.
-- **16 November — Mac component checks:** On file inputs, OCR on 514 TEMS crops had **3.07% character error rate**; visual QA scored **56.07%** on a 150-item VizWiz subset. The other component checks cover object finding, Thai/English transcription, and summaries. These are Mac component results, not iPhone camera or microphone benchmarks.
-- **16 November — physical depth comparison:** iPhone 14 (DA3) and iPhone 14 Pro (LiDAR) produced **25 paired readings** from five photos per phone in one scene. The mean absolute difference was **19.5 cm relative to LiDAR**. The successful DA3 collection used an isolated diagnostic path after the normal route returned busy. This did not validate the complete app flow or accuracy against an independently measured distance.
+**Interaction tip:** Hold the centre button to capture and speak, then release to submit. A short tap captures a photo without recording speech. Voice questions have a two-minute recording limit.
 
-See [PROJECT-STATUS.md](PROJECT-STATUS.md) for methods, data scope, and earlier runs.
+## On-device by design
 
-## Website development and deployment
+```text
+                iPhone camera + microphone
+                            |
+                     LunaV (SwiftUI)
+                            |
+       +--------------------+--------------------+
+       |                    |                    |
+  Visual questions      Text reading       Distance requests
+  Qwen3-VL-2B           Apple Vision OCR    LiDAR (if supported)
+  MLX / Metal                                or DA3 Metric
+       |                    |                    |
+       +--------------------+--------------------+
+                            |
+                    Answer / summary
+                            |
+                  Apple system voice
+```
 
-The website includes a LunaVision-to-LunaV introduction with a visible red pen and wavy strikeout, plus passive scroll effects. Replay the introduction from the footer; reduced-motion preferences skip it. The sequence is in `intro.js` and `motion.css`, while `script.js` controls homepage language, tabs, and scroll motion. The project-status, licensing, and credits pages offer the same Thai/English choice; `docs-language.js` remembers it across pages and supports `?lang=th` / `?lang=en`. Complete Thai document sources live in `docs/th/`, alongside the English Markdown originals at the repository root.
+LunaV processes its core image, depth, OCR, question-transcription, and answer-generation tasks locally. **No cloud AI service or API key is required for those tasks.**
 
-The website is static and needs no runtime build step. Serve this directory locally, for example:
+**Offline caveat:** Apple Dictation language assets or voices may need to be installed first. A fresh installation is therefore **not guaranteed to be fully usable offline immediately**. Temporary photos and audio may remain inside the app sandbox while their processing tasks finish.
 
-```sh
+## Choose a release
+
+The repository's `main` branch contains the **project website**, documentation, and licensing notices. **The Xcode app source is distributed through GitHub Releases**, not directly in the root repository tree.
+
+| | **LunaV 3.2.1** | **LunaV Lite 4.0.0** |
+| --- | --- | --- |
+| Focus | On-device visual question answering | A separate, lighter photo/text toolset |
+| Target | iPhone | iPhone and iPad |
+| Core technology | Qwen3-VL-2B-Instruct, MLX/Metal, Apple Vision, LiDAR / DA3 Metric | Apple Vision and a compressed DA3 model |
+| Source package | [`v3.2.1-source`](https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source) | [`v4.0.0-lite`](https://github.com/koomean/visionassistant/releases/tag/v4.0.0-lite) |
+| Included model files | **Not included** in the 3.2.1 source ZIP | Compressed Depth Anything 3 included in the Xcode project |
+
+**For LunaV 3.2.1:** Open the release's **Assets** and download `LunaV-3.2.1-source.zip` and `SHA256SUMS.txt`. Verify the source archive against the published checksums. The ZIP is **source code, not an installable iPhone app**; model preparation and your own Xcode signing are required.
+
+### Development requirements
+
+- **iOS 27.0+** and **Xcode 27.1+** for LunaV 3.2.1 (recorded testing used Xcode 27.2).
+- Supported iPhone hardware and sufficient available memory for the relevant models.
+- Apple development signing and Developer Mode for installation on a physical device.
+- Relevant Apple language assets installed for offline Dictation.
+
+See the [device compatibility guide](https://lunavision.koomean.com/devices.html) before attempting installation. Lite is a separate release; check its release package for edition-specific setup.
+
+## Research and testing
+
+LunaV is under active evaluation. The figures below are **limited test results**, not claims of universal accuracy.
+
+| Evaluation | Recorded result | What it actually measures |
+| --- | --- | --- |
+| **Simulator tests — 12 Nov 2026** | **23 / 23 passed** | Focused unit/UI checks for v3.2.1 on iPhone 17 Simulator, iOS 27.2; UI cases used simulated camera and speech input. |
+| **OCR — 16 Nov 2026** | **3.07% character error rate** | 514 TEMS text crops processed in Mac-based component testing. |
+| **Visual question answering — 16 Nov 2026** | **56.07%** | A 150-question VizWiz subset evaluated as a Mac-based component test. |
+| **Depth comparison — 16 Nov 2026** | **19.5 cm mean absolute difference** | 25 paired readings in one scene, comparing iPhone 14 DA3 estimates with iPhone 14 Pro LiDAR—not independently measured ground truth. |
+
+The successful DA3 depth collection used an **isolated diagnostic path** after the normal app route reported that the model was busy. This result does **not** validate the complete end-to-end app flow or establish real-world distance accuracy.
+
+The earlier **288/288 Simulator tests** belong to **v3.2.0**, not v3.2.1.
+
+**[Read the full project status, methodology, and limitations →](PROJECT-STATUS.md)**
+
+## Important limitations
+
+- LunaV **does not provide safe navigation guidance**. Optional live obstacle haptics require supported rear LiDAR hardware and are **disabled by default**.
+- OCR, generated answers, Dictation, and depth estimates may be wrong. A distance estimate describes a **captured moment**, not a continuously updated safe path.
+- Imported images without paired depth do **not** produce numeric distance estimates.
+- Model performance, memory use, and feature availability vary by iPhone.
+- The [interactive website demo](https://lunavision.koomean.com/demo.html) shows **prepared scenes and simulated responses**. It is not a live demonstration of the complete iPhone AI pipeline. Optional browser speech recognition may use an online service.
+
+## Project website
+
+The public website is a static GitHub Pages project, with English/Thai pages and documentation.
+
+To preview it locally:
+
+```bash
 python3 -m http.server 8080
 ```
 
-The HTML pages share their main navigation from `partials/site-header.html`. The compact menu and the **More / อื่น ๆ** disclosure are handled by `site-shell.js`. Links preserve the chosen language. The dropdown and bilingual `resources.html` directory link to the system architecture, project status, licensing, and credits. `lunavision-architecture.html` explains the on-device flow with Simulator screenshots.
+To regenerate documentation pages after modifying the Markdown sources or shared site header:
 
-`demo.html` reproduces the app interface using prepared scenes and simulated answers. The camera and imported photos are previews. Sample questions work without a microphone. Users can opt into browser speech recognition, which may use the browser’s online service.
-
-After editing the shared header or either language version of a Markdown notice, regenerate the pages with:
-
-```sh
+```bash
 python3 scripts/render-docs.py
 ```
 
-GitHub Pages publishes the repository root from `main` to [lunavision.koomean.com](https://lunavision.koomean.com/). Keep `CNAME` when publishing changes. The existing GitHub Actions workflow purges the Cloudflare cache after a successful Pages build.
+The site deploys from the root of `main`. Keep `CNAME` in place when publishing changes. The repository also includes a GitHub Actions workflow for Cloudflare cache purging after successful Pages builds.
 
-## Licence
+Useful pages: [Website](https://lunavision.koomean.com/) · [Architecture](https://lunavision.koomean.com/lunavision-architecture.html) · [Device support](https://lunavision.koomean.com/devices.html) · [Project status](PROJECT-STATUS.md) · [Asset credits](ASSET-CREDITS.md)
 
-Copyright © 2026 Wachirawich Kripindakul ([koomean](https://github.com/koomean)).
+<details>
+<summary><strong>Implementation notes for developers</strong></summary>
 
-Unless a file identifies different terms, the original work in this repository is licensed under the **GNU Affero General Public License, version 3 or (at your option) any later version (`AGPL-3.0-or-later`)**. See [LICENSE](LICENSE) for the complete licence text.
+- **Interface:** SwiftUI with a shared LunaVision/LunaV visual identity, language controls, accessible motion preferences, and on-device voice playback.
+- **Speech:** Apple `SpeechAnalyzer` / DictationTranscriber; the selected Dictation language is distinct from the app UI language. The current implementation does **not** bundle Whisper.
+- **Text:** Apple Vision OCR, region selection, and text summarisation tools.
+- **Depth:** Rear LiDAR depth paired to supported camera captures; otherwise Depth Anything 3 Metric for supported new captures. Scale calibration is **not** an accuracy certification.
+- **Memory:** Bounded metadata caches and idle model-weight release help manage lower-memory devices; model loading may recur between questions.
+- **Website:** `intro.js` and `motion.css` implement the introduction and motion; `script.js`, `site-shell.js`, and `docs-language.js` handle primary interactions, navigation, and language persistence. Thai document sources are in `docs/th/`.
 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. It is distributed in the hope that it will be useful, but **WITHOUT ANY WARRANTY**; without even the implied warranty of **MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE**. You should have received a copy of the GNU Affero General Public License along with this program; see [LICENSE](LICENSE). The corresponding website source is available in [this public repository](https://github.com/koomean/visionassistant).
-
-AGPL permits commercial use when its terms are followed. An optional separate commercial licence may be available by written agreement for permissions beyond the AGPL; see [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md). This notice is not a signed commercial contract. Third-party models, libraries, and resources retain their own licences. The LunaV Lite release includes Depth Anything 3 under Apache 2.0, with its licence and notices in the archive.
+</details>
 
 ## ภาษาไทย
 
-LunaV เป็นต้นแบบงานวิจัยผู้ช่วยถามตอบจากภาพบน iPhone รุ่นปัจจุบัน **3.2.1 (บิลด์ 6)** เผยแพร่ซอร์ส **12 พฤศจิกายน 2026** และทบทวนข้อมูลล่าสุด **16 พฤศจิกายน 2026** กดปุ่มกลางค้างเพื่อถ่ายภาพ/depth และรับเสียงพร้อมกัน พูดระหว่างถือแล้วปล่อยเพื่อส่ง ความเงียบไม่ส่งเอง แตะสั้นถ่ายภาพอย่างเดียว รับเสียงไม่เกิน 2 นาที หากเกินจะปฏิเสธแทนการส่งเฉพาะต้นประโยค
+**LunaV คือแอปต้นแบบผู้ช่วยทำความเข้าใจภาพบน iPhone ที่ใช้ AI ประมวลผลภายในเครื่อง** สามารถถามเกี่ยวกับสิ่งที่อยู่ในภาพ อ่านและสรุปข้อความ รวมถึงประมาณระยะห่างจากภาพที่รองรับ โดยใช้ LiDAR หรือ Depth Anything 3 Metric ตามอุปกรณ์
 
-ใช้ **ตั้งค่า → ภาษาแอพ** สลับหน้าจอไทย/อังกฤษทันทีและจำค่าข้ามการเปิดใหม่ แยกจากภาษา Dictation ภาษาคำตอบ และเสียงอ่าน คำถาม คำตอบ และ OCR เดิมไม่ถูกแปล หน้าเกี่ยวกับแสดงเลขรุ่นที่ติดตั้ง ผู้จัดทำ และลิงก์เว็บไซต์ รุ่น 3.2.1 อ่านหัวข้อเด่นจาก OCR ได้เมื่อสั่งให้อ่านข้อความ ระบุซ้าย ขวา บน ล่าง หรือกลางได้ ถ้ามีหลายจุดที่เข้าข่าย แอปจะถามว่าต้องการให้อ่านส่วนไหน
+- **ถามด้วยเสียง:** กดปุ่มกลางค้าง พูดภาษาไทยหรืออังกฤษตามภาษาที่เลือก แล้วปล่อยเพื่อส่งคำถาม
+- **อ่านข้อความ:** ใช้ Apple Vision OCR และเลือกให้อ่านข้อความจากบริเวณต่าง ๆ ของภาพได้
+- **ฟังคำตอบ:** ใช้เสียงอ่านที่ติดตั้งอยู่ใน iPhone
+- **ความเป็นส่วนตัว:** ประมวลผล AI หลักในเครื่อง ไม่ต้องใช้ Cloud AI หรือ API Key
+- **ข้อควรทราบ:** บางภาษาอาจต้องดาวน์โหลดไฟล์เสียงของ Apple ก่อนจึงจะใช้ Dictation แบบออฟไลน์ได้ และแอปยังเป็นต้นแบบวิจัย **ไม่ใช่เครื่องมือนำทางหรืออุปกรณ์ทดแทนไม้เท้าขาว**
 
-แอป SwiftUI ใช้ธีม ฟอนต์ และตราจันทร์เสี้ยว/ดาวเดียวกับเว็บแล้ว มี intro LunaVision-to-LunaV ประมาณ 4.22 วินาทีพร้อมเตรียมโมเดลคู่ขนาน รองรับ Reduce Motion หน้า Settings วางภาษาและเสียงก่อนเครื่องมือทดสอบ และนำเมนูสลับกล้องออก หน้าหลักยังมีสองปุ่ม
+**ดาวน์โหลดซอร์ส:** [LunaV 3.2.1](https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source) · [LunaV Lite](https://github.com/koomean/visionassistant/releases/tag/v4.0.0-lite)
 
-ใช้ **Apple Dictation ในเครื่องแทน Whisper** ค่าเริ่มต้นไทย เลือก English ได้ด้วยตัวเลือกภาษาเสียงใน Settings ซึ่งแยกจากภาษาแอป ใช้ภาษาที่เลือกทีละภาษา ไม่สลับภาษาอัตโนมัติ หากไม่มี asset ภาษา Apple อาจต้องดาวน์โหลดครั้งแรก จึงไม่รับรองว่าเพิ่งติดตั้งแล้วใช้เสียงออฟไลน์ได้ทันที การถอดคำถามด้วย asset ที่ติดตั้งแล้วทำในเครื่อง มีเส้นตาย 45 วินาทีและยกเลิกได้
+**ผลทดสอบ:** ผ่าน Simulator test เฉพาะส่วน **23/23** สำหรับเวอร์ชัน 3.2.1; OCR มี Character Error Rate **3.07%** บนข้อมูลทดสอบผ่าน Mac; และ DA3 มีค่าเฉลี่ยความต่างจาก LiDAR **19.5 ซม.** ในฉากทดลองเดียว ซึ่งยังไม่ใช่การวัดเทียบระยะจริง อ่านรายละเอียดและข้อจำกัดได้ใน [PROJECT-STATUS.md](PROJECT-STATUS.md)
 
-**อ่านคำตอบอัตโนมัติเป็นค่าเริ่มต้น** ด้วยเสียง Apple ที่ติดตั้ง อ่านเมื่อคำตอบ AI/OCR/สรุป/ระยะเสร็จ หยุดก่อนถ่ายหรือรับเสียงใหม่ เปลี่ยนเสียงไทย/อังกฤษหรือปิดได้ใน Settings ไม่รับรองว่าใช้เสียง Siri ที่ผู้ใช้เลือกไว้
+## Contributing and feedback
 
-เครื่องไม่มี LiDAR เก็บภาพใหม่และข้อมูลเลนส์ แล้วใช้ **Depth Anything 3 Metric** เมื่อถามระยะหรือเลือกจุดเอง หากสำเร็จใช้แผนที่เดิมกับภาพนั้น ค่าประมาณปัดเป็น 0.1 เมตรและปรับสเกลแยกกล้องได้ เครื่องที่มี LiDAR ใช้เซ็นเซอร์และข้าม DA3 แม้ไม่มีข้อมูล depth ภาพนำเข้าที่ไม่มีคู่ depth ไม่ตอบระยะตัวเลข ฟีเจอร์สั่นเตือนสดปิดไว้เป็นค่าเริ่มต้นและต้องใช้ LiDAR หลังและเครื่องที่รองรับการสั่น แอปไม่ใช่อุปกรณ์นำทางหรือสิ่งทดแทนเครื่องช่วยเดินทาง
+Interested in accessibility, on-device AI, SwiftUI, OCR, or depth estimation? **Feedback, reproducible bug reports, and suggestions are welcome.** Please check the existing documentation and [open an issue](https://github.com/koomean/visionassistant/issues) to start a discussion.
 
-เครื่อง RAM น้อยคืน weights เมื่อว่างและเก็บบริบท/OCR/cache แบบมีขอบเขต จึงอาจต้องรอโหลดใหม่ระหว่างคำถาม โดยคงโมเดลและความละเอียดเดิม หากเสียงไม่พร้อมยังใช้ภาพ พิมพ์ถาม และ OCR ได้เมื่อโมเดลพร้อม ภาพและเสียงมีไฟล์ชั่วคราวใน sandbox เสียงลบเมื่องานเดิมจบจริง การยกเลิกไม่รับประกันคืน RAM หรือลบไฟล์ทันทีขณะ inference ยังทำงาน
+If this project is useful to your research or development, consider giving the repository a **Star ⭐** to help others discover it.
 
-ผลทดสอบเฉพาะการอ่านและ OCR บน iPhone 17 Simulator / iOS 27.2 วันที่ **12 พฤศจิกายน ผ่าน 23/23** (unit 21 + UI 2) โดยกรณี UI ใช้ข้อมูลจำลองแทนกล้องและการถอดเสียง ส่วน **288/288** วันที่ 11 พฤศจิกายนเป็นผลของ **3.2.0**
+## License and credits
 
-วันที่ **16 พฤศจิกายน** การทดสอบด้วยไฟล์บน Mac ได้อัตราผิดระดับอักขระ OCR **3.07%** บนภาพครอป TEMS 514 ภาพ และคะแนน VQA **56.07%** บนชุดย่อย VizWiz 150 ข้อ ส่วนการเปรียบเทียบระยะฉากเดียวบน iPhone 14 (DA3) และ iPhone 14 Pro (LiDAR) ได้ 25 คู่จากภาพเครื่องละห้าภาพ ต่างเฉลี่ยแบบสัมบูรณ์ **19.5 ซม. เมื่อเทียบกับ LiDAR** ยังไม่มีการวัดระยะจริงแยกต่างหาก และรอบที่เก็บ DA3 ได้ใช้โหมดตรวจเฉพาะส่วนหลังเส้นทางปกติรายงานว่าโมเดลกำลังทำงาน ผลนี้ไม่ใช่ค่าความแม่นยำในงานทั่วไป อ่าน[สถานะและผลทดสอบ](PROJECT-STATUS.md)สำหรับรายละเอียดและผลรุ่นก่อน
+Copyright © 2026 **Wachirawich Kripindakul** ([@koomean](https://github.com/koomean)).
 
-Repo นี้เก็บ **เว็บไซต์โครงการ** ส่วนซอร์สแอปและแอนิเมชันดาวน์โหลดจาก[รีลีส 3.2.1](https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source) ใน Assets ไฟล์ `LunaV-3.2.1-source.zip` ไม่มีน้ำหนักโมเดลหรือแอปพร้อมติดตั้ง ต้องเตรียมโมเดลและลงลายเซ็นเอง ใช้ iOS 27.0 และ Xcode 27.1 ขึ้นไป ความพร้อมของฟีเจอร์ขึ้นกับภาษา ฮาร์ดแวร์ และหน่วยความจำ หน้าสถานะ การอนุญาตใช้สิทธิ และเครดิตมีตัวสลับไทย–อังกฤษ โดยจำภาษาร่วมกับหน้าหลัก
+Unless otherwise noted, original work in this repository is licensed under **[AGPL-3.0-or-later](LICENSE)**. Commercial use is allowed when the license's conditions are followed. Permissions beyond AGPL may be available through a separately negotiated [commercial license](COMMERCIAL-LICENSE.md); that document alone is **not** a signed agreement.
 
-[LunaV Lite](https://github.com/koomean/visionassistant/releases/tag/v4.0.0-lite) เป็นรุ่นแยกสำหรับ iPhone และ iPad ใช้ Apple Vision ประมวลผลภาพและข้อความออฟไลน์ และรวมโมเดลวัดระยะ Depth Anything 3 แบบบีบอัดไว้ใน ZIP
+Third-party models, libraries, fonts, and assets retain their respective licenses. The LunaV Lite source archive includes a compressed Depth Anything 3 model under Apache 2.0 with its own notices.
 
-โค้ดต้นฉบับใน repo ใช้ **AGPL-3.0-or-later** ตามไฟล์ [LICENSE](LICENSE) ใช้เชิงพาณิชย์ได้เมื่อทำตามเงื่อนไข AGPL หากต้องการสิทธิ์เพิ่มเติมสามารถ[ติดต่อเรื่อง commercial licence](COMMERCIAL-LICENSE.md) โดยต้องตกลงเป็นลายลักษณ์อักษรแยกต่างหาก โมเดลและ dependencies บุคคลที่สามยังใช้ไลเซนส์ของตนเอง
+---
+
+<div align="center">
+  <strong>Built to explore more private, accessible interactions with on-device AI.</strong>
+  <br>
+  <sub>Research prototype · Capability and test information last reviewed 16 November 2026</sub>
+</div>
