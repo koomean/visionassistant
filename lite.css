@@ -1,0 +1,37 @@
+/* Copyright (C) 2026 Wachirawich Kripindakul. SPDX-License-Identifier: AGPL-3.0-or-later. See LICENSE. */
+.lite-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .55fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 64px);
+  padding-block: 24px 58px;
+}
+
+.lite-version { margin-bottom: 14px; color: var(--gold); font-size: .78rem; }
+.lite-version span { margin-inline: .3em; }
+.lite-hero h1 { font-size: clamp(3.1rem, 7vw, 5.45rem); line-height: 1.15; }
+.lite-hero h1 span { color: var(--gold); }
+.lite-lead { margin-top: 22px; max-width: 56ch; color: var(--muted); }
+.lite-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 28px; }
+.lite-actions .lite-download { background: var(--gold); color: var(--night); font-weight: 700; }
+.lite-actions .lite-download:hover { background: var(--paper); }
+.lite-file-meta { margin-top: 12px; color: var(--muted); font-size: .75rem; }
+.lite-moon { width: min(100%, 280px); height: auto; justify-self: center; }
+
+.lite-section { padding-block: 32px; border-top: 1px solid var(--line); }
+.lite-section h2 { margin-bottom: 18px; font-size: clamp(1.6rem, 3.5vw, 2.35rem); text-wrap: initial; }
+.lite-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin: 0; }
+.lite-features dt { color: var(--paper); font-weight: 650; }
+.lite-features dd { margin: 6px 0 0; color: var(--muted); font-size: .9rem; }
+.lite-setup p { margin-top: 12px; color: var(--muted); font-size: .92rem; }
+
+@media (max-width: 720px) {
+  .lite-hero { grid-template-columns: 1fr; padding-block: 12px 36px; }
+  .lite-moon { display: none; }
+  .lite-features { grid-template-columns: 1fr; gap: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lite-actions .button { transition: none; }
+  .lite-actions .button:hover { transform: none; }
+}

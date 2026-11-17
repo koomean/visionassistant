@@ -12,7 +12,7 @@ Any additional permissions take effect once the parties accept a separate writte
 
 ## What an agreement can cover
 
-- The main branch contains the website. The iPhone app source is a separate archive on [GitHub Releases](https://github.com/koomean/visionassistant/releases) and excludes model weights.
+- The main branch contains the website. The standard LunaV source archive and the LunaV Lite archive are available on [GitHub Releases](https://github.com/koomean/visionassistant/releases). The Lite archive includes Depth Anything 3 under Apache 2.0.
 - A commercial licence covers only work the copyright holder has the right to license. The agreement must name any app source, assets, or other material supplied separately.
 - Third-party code, models, and dependencies keep their own licences. Before accepting outside contributions, the project should check that its contribution terms support any planned dual licensing.
 

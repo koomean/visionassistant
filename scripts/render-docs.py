@@ -17,6 +17,7 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 TRANSITION_HEAD = (ROOT / 'partials' / 'page-transition-head.html').read_text().rstrip()
+SITE_SHELL_VERSION = 'luna-20261117-lite'
 PAGES = [
     ('PROJECT-STATUS.md', 'project-status.html', 'Project status', 'สถานะโครงการ',
      'Current LunaV version, test results, and how to read them.',
@@ -163,9 +164,9 @@ def render_page(source, target, title_en, title_th, description_en, description_
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css?v=luna-20261103-safari">
-  <link rel="stylesheet" href="site-shell.css?v=luna-20261110-more">
+  <link rel="stylesheet" href="site-shell.css?v={SITE_SHELL_VERSION}">
   <link rel="stylesheet" href="docs.css?v=luna-20261116-results">
-  <script src="site-shell.js?v=luna-20261110-more" defer></script>
+  <script src="site-shell.js?v={SITE_SHELL_VERSION}" defer></script>
   <script src="docs-language.js?v=luna-20261031-nav" defer></script>
   <title data-title-th="{escape(title_th, quote=True)} — LunaV" data-title-en="{escape(title_en, quote=True)} — LunaV">{escape(title_th)} — LunaV</title>
 </head>
@@ -194,20 +195,22 @@ def render_page(source, target, title_en, title_th, description_en, description_
 def sync_site_headers():
     header = (ROOT / 'partials' / 'site-header.html').read_text().rstrip()
     replacement = '  <!-- site-header:start -->\n' + header + '\n  <!-- site-header:end -->'
-    custom_pages = ['index.html', 'demo.html', '404.html', 'contact.html', 'resources.html', 'lunavision-architecture.html', 'devices.html']
+    custom_pages = ['index.html', 'demo.html', '404.html', 'contact.html', 'resources.html', 'lunavision-architecture.html', 'devices.html', 'lite.html']
     for name in custom_pages:
         path = ROOT / name
         source = path.read_text()
         updated, count = re.subn(r'  <!-- site-header:start -->.*?  <!-- site-header:end -->', lambda _: replacement, source, flags=re.S)
         if count != 1:
             raise ValueError(f'{name}: expected one shared header block, found {count}')
-        updated = re.sub(r'site-shell\.(css|js)(?:\?v=[^"\s]*)?', lambda match: f'site-shell.{match[1]}?v=luna-20261110-more', updated)
+        updated = re.sub(r'site-shell\.(css|js)(?:\?v=[^"\s]*)?', lambda match: f'site-shell.{match[1]}?v={SITE_SHELL_VERSION}', updated)
         if name == 'contact.html':
             updated = updated.replace('<a href="/contact.html" data-en="Contact">', '<a href="/contact.html" aria-current="page" data-en="Contact">')
         if name == 'demo.html':
             updated = updated.replace('<a href="/demo.html" data-secondary-link data-en="Try demo">', '<a href="/demo.html" data-secondary-link aria-current="page" data-en="Try demo">')
         if name == 'devices.html':
             updated = updated.replace('<a class="nav-more-link" href="/devices.html" data-secondary-link>', '<a class="nav-more-link" href="/devices.html" data-secondary-link aria-current="page">')
+        if name == 'lite.html':
+            updated = updated.replace('class="lite-link" href="/lite.html" data-secondary-link ', 'class="lite-link" href="/lite.html" data-secondary-link aria-current="page" ')
         path.write_text(updated)
 
     for name in custom_pages:

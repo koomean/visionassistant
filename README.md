@@ -1,6 +1,8 @@
 # LunaV
 
-**App and motion source:** [LunaV 3.2.1 source release](https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source), published **12 November 2026**. Under Assets, download `LunaV-3.2.1-source.zip` and use `SHA256SUMS.txt` to verify it. The ZIP does not include model weights or an installable app.
+**LunaV and motion source:** [LunaV 3.2.1 source release](https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source), published **12 November 2026**. Under Assets, download `LunaV-3.2.1-source.zip` and use `SHA256SUMS.txt` to verify it. The ZIP does not include model weights or an installable app.
+
+**LunaV Lite:** [Separate source release for iPhone and iPad](https://github.com/koomean/visionassistant/releases/tag/v4.0.0-lite). The Xcode project includes the compressed Depth Anything 3 model and uses Apple Vision for offline photo and text tools.
 
 An on-device visual question assistant and research prototype for iPhone. Hold to ask about a photograph, read and summarise text, estimate supported distances, and hear completed answers. The current app is **3.2.1 (build 6)** and uses Qwen3-VL-2B-Instruct through MLX/Metal, Apple Dictation for speech input, Apple system voices for answer playback, and Depth Anything 3 Metric on devices without LiDAR.
 
@@ -8,7 +10,7 @@ An on-device visual question assistant and research prototype for iPhone. Hold t
 
 ## Repository scope
 
-The repository tree contains the **public project website and its licensing notices**. The app and motion source are published separately as release assets. There is no App Store release or bundled model download in this repository.
+The repository tree contains the **public project website and its licensing notices**. GitHub Releases hosts the LunaV and LunaV Lite source archives. The Lite archive bundles its compressed depth model.
 
 Capability descriptions and recorded results were reviewed on **16 November 2026**. They describe the current research implementation, not a guarantee of accuracy or compatibility with every iPhone.
 
@@ -69,7 +71,7 @@ Unless a file identifies different terms, the original work in this repository i
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. It is distributed in the hope that it will be useful, but **WITHOUT ANY WARRANTY**; without even the implied warranty of **MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE**. You should have received a copy of the GNU Affero General Public License along with this program; see [LICENSE](LICENSE). The corresponding website source is available in [this public repository](https://github.com/koomean/visionassistant).
 
-AGPL permits commercial use when its terms are followed. An optional separate commercial licence may be available by written agreement for permissions beyond the AGPL; see [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md). This notice is not a signed commercial contract. Third-party models, libraries, and resources retain their own licences. No model weights are distributed by this repository.
+AGPL permits commercial use when its terms are followed. An optional separate commercial licence may be available by written agreement for permissions beyond the AGPL; see [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md). This notice is not a signed commercial contract. Third-party models, libraries, and resources retain their own licences. The LunaV Lite release includes Depth Anything 3 under Apache 2.0, with its licence and notices in the archive.
 
 ## ภาษาไทย
 
@@ -92,5 +94,7 @@ LunaV เป็นต้นแบบงานวิจัยผู้ช่ว�
 วันที่ **16 พฤศจิกายน** การทดสอบด้วยไฟล์บน Mac ได้อัตราผิดระดับอักขระ OCR **3.07%** บนภาพครอป TEMS 514 ภาพ และคะแนน VQA **56.07%** บนชุดย่อย VizWiz 150 ข้อ ส่วนการเปรียบเทียบระยะฉากเดียวบน iPhone 14 (DA3) และ iPhone 14 Pro (LiDAR) ได้ 25 คู่จากภาพเครื่องละห้าภาพ ต่างเฉลี่ยแบบสัมบูรณ์ **19.5 ซม. เมื่อเทียบกับ LiDAR** ยังไม่มีการวัดระยะจริงแยกต่างหาก และรอบที่เก็บ DA3 ได้ใช้โหมดตรวจเฉพาะส่วนหลังเส้นทางปกติรายงานว่าโมเดลกำลังทำงาน ผลนี้ไม่ใช่ค่าความแม่นยำในงานทั่วไป อ่าน[สถานะและผลทดสอบ](PROJECT-STATUS.md)สำหรับรายละเอียดและผลรุ่นก่อน
 
 Repo นี้เก็บ **เว็บไซต์โครงการ** ส่วนซอร์สแอปและแอนิเมชันดาวน์โหลดจาก[รีลีส 3.2.1](https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source) ใน Assets ไฟล์ `LunaV-3.2.1-source.zip` ไม่มีน้ำหนักโมเดลหรือแอปพร้อมติดตั้ง ต้องเตรียมโมเดลและลงลายเซ็นเอง ใช้ iOS 27.0 และ Xcode 27.1 ขึ้นไป ความพร้อมของฟีเจอร์ขึ้นกับภาษา ฮาร์ดแวร์ และหน่วยความจำ หน้าสถานะ การอนุญาตใช้สิทธิ และเครดิตมีตัวสลับไทย–อังกฤษ โดยจำภาษาร่วมกับหน้าหลัก
+
+[LunaV Lite](https://github.com/koomean/visionassistant/releases/tag/v4.0.0-lite) เป็นรุ่นแยกสำหรับ iPhone และ iPad ใช้ Apple Vision ประมวลผลภาพและข้อความออฟไลน์ และรวมโมเดลวัดระยะ Depth Anything 3 แบบบีบอัดไว้ใน ZIP
 
 โค้ดต้นฉบับใน repo ใช้ **AGPL-3.0-or-later** ตามไฟล์ [LICENSE](LICENSE) ใช้เชิงพาณิชย์ได้เมื่อทำตามเงื่อนไข AGPL หากต้องการสิทธิ์เพิ่มเติมสามารถ[ติดต่อเรื่อง commercial licence](COMMERCIAL-LICENSE.md) โดยต้องตกลงเป็นลายลักษณ์อักษรแยกต่างหาก โมเดลและ dependencies บุคคลที่สามยังใช้ไลเซนส์ของตนเอง

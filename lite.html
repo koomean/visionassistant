@@ -1,0 +1,156 @@
+<!doctype html>
+<!-- Copyright (C) 2026 Wachirawich Kripindakul. SPDX-License-Identifier: AGPL-3.0-or-later. See LICENSE. -->
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080f20">
+  <meta name="description" content="LunaV Lite ช่วยอ่านข้อความ ถามจากภาพ และวัดระยะบน iPhone และ iPad แบบออฟไลน์" data-description-th="LunaV Lite ช่วยอ่านข้อความ ถามจากภาพ และวัดระยะบน iPhone และ iPad แบบออฟไลน์" data-description-en="LunaV Lite reads text, answers supported photo questions, and measures distance offline on iPhone and iPad.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LunaV Lite">
+  <meta property="og:description" content="LunaV Lite ช่วยอ่านข้อความ ถามจากภาพ และวัดระยะบน iPhone และ iPad แบบออฟไลน์">
+  <meta property="og:locale" content="th_TH">
+  <meta property="og:url" content="https://lunavision.koomean.com/lite.html">
+  <meta property="og:image" content="https://lunavision.koomean.com/assets/social.jpg">
+  <link rel="canonical" href="https://lunavision.koomean.com/lite.html">
+  <!-- page-transition:start -->
+  <script>(()=>{
+    const root=document.documentElement,key='lunav-page-transition';
+    let reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,saved,pending,storage=true;
+    try{saved=localStorage.getItem('lunav-language');reduced=reduced||localStorage.getItem('lunav-reduce-motion')==='true'}catch{}
+    const requested=new URLSearchParams(location.search).get('lang');
+    const language=(requested||saved||root.lang)==='en'?'en':'th';
+    root.dataset.pageTransitionLanguage=language;
+    root.dataset.pageTransitionLabel=language==='en'?'Finding a path to the stars':'กำลังหาเส้นทางไปยังดวงดาว';
+    if(!reduced&&location.pathname==='/contact.html'){root.classList.add('contact-entry-pending');setTimeout(()=>root.classList.remove('contact-entry-pending'),1200)}
+    try{
+      const value=sessionStorage.getItem(key);sessionStorage.removeItem(key);
+      if(value)try{pending=JSON.parse(value)}catch{}
+      if(!pending){sessionStorage.setItem(key+'-probe','1');sessionStorage.removeItem(key+'-probe')}
+    }catch{storage=false}
+    let fallback=false;
+    if(!storage)try{
+      const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|demo\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|devices\.html|lite\.html|404\.html)?$/.test(path);
+      fallback=from.origin===location.origin&&known(from.pathname)&&known(location.pathname)&&((from.pathname==='/contact.html')!==(location.pathname==='/contact.html'));
+    }catch{}
+    const age=pending?Date.now()-pending.time:Infinity;
+    if(!(pending&&pending.to===location.href&&age>=0&&age<7000)&&!fallback)return;
+    const direction=location.pathname==='/contact.html'?'outbound':'return';
+    const returnHome=direction==='return'&&(location.pathname==='/'||location.pathname==='/index.html');
+    root.dataset.pageTransitionDirection=direction;
+    root.dataset.pageTransitionLabel=direction==='return'?(language==='en'?'Taking you back to the stars':'กำลังพากลับสู่ดวงดาว'):(language==='en'?'Finding a path to the stars':'กำลังหาเส้นทางไปยังดวงดาว');
+    if(returnHome)root.dataset.pageTransitionReturnHome='true';
+    root.dataset.pageTransitionArrival='true';
+    if(reduced)return;
+    root.classList.add('page-arriving');
+    if(returnHome)root.classList.add('page-positioning');
+    setTimeout(()=>{if(!root.dataset.pageTransitionManaged)root.classList.remove('page-arriving','page-arrival-reveal','page-positioning')},returnHome?5000:1500);
+  })();</script>
+  <script src="/page-transition.js?v=luna-20261117-lite" defer></script>
+  <!-- page-transition:end -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
+  <script>(()=>{let saved;try{saved=localStorage.getItem('lunav-language')}catch{}const requested=new URLSearchParams(location.search).get('lang');document.documentElement.lang=(requested||saved)==='en'?'en':'th'})();</script>
+  <link rel="stylesheet" href="styles.css?v=luna-20261103-safari">
+  <link rel="stylesheet" href="site-shell.css?v=luna-20261117-lite">
+  <link rel="stylesheet" href="docs.css?v=luna-20261116-results">
+  <link rel="stylesheet" href="lite.css?v=luna-20261117-lite">
+  <script src="site-shell.js?v=luna-20261117-lite" defer></script>
+  <script src="docs-language.js?v=luna-20261031-nav" defer></script>
+  <title data-title-th="LunaV Lite" data-title-en="LunaV Lite">LunaV Lite</title>
+</head>
+<body class="document-page lite-page">
+  <a class="skip-link" href="#main" data-en="Skip to content">ข้ามไปยังเนื้อหา</a>
+  <!-- site-header:start -->
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="/#overview" data-home-anchor="overview" aria-label="LunaV หน้าแรก" data-en-aria="LunaV home"><svg class="brand-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M26 19.1A12 12 0 0 1 12.9 6 12 12 0 1 0 26 19.1Z"/><path d="m23 3 .9 3.1L27 7l-3.1.9L23 11l-.9-3.1L19 7l3.1-.9Z"/></svg><span>LunaV<span class="brand-dot">.</span></span></a>
+      <nav id="navigation" aria-label="เมนูหลัก" data-en-aria="Main navigation">
+        <a href="/#features" data-home-anchor="features" data-en="Features">ความสามารถ</a>
+        <a href="/#how" data-home-anchor="how" data-en="How to use it">วิธีใช้แอป</a>
+        <a href="/#models" data-home-anchor="models" data-en="Technology">เทคโนโลยี</a>
+        <a href="/#privacy" data-home-anchor="privacy" data-en="Privacy">ความเป็นส่วนตัว</a>
+        <a href="/#opensource" data-home-anchor="opensource" data-en="Open source">โอเพนซอร์ส</a>
+        <a href="/demo.html" data-secondary-link data-en="Try demo">ทดลองแอป</a>
+        <a href="/contact.html" data-en="Contact">ติดต่อ</a>
+        <div class="nav-more">
+          <button class="nav-more-toggle" type="button" aria-expanded="false" aria-controls="more-navigation"><span data-en="More">อื่น ๆ</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
+          <div class="nav-more-panel" id="more-navigation" hidden>
+            <div class="nav-more-heading"><span data-en="About the project">ข้อมูลโครงการ</span></div>
+            <div class="nav-more-grid">
+              <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="How LunaV works">แผนผังการทำงาน</strong><small data-en="From the camera to an answer">จากกล้องถึงคำตอบ</small></span></a>
+              <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Current version and test results">เวอร์ชันล่าสุดและผลทดสอบ</small></span></a>
+              <a class="nav-more-link" href="/devices.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg><span><strong data-en="Supported devices">อุปกรณ์ที่รองรับ</strong><small data-en="iPhone compatibility and Mac setup">รุ่น iPhone ที่รองรับและการเตรียม Mac</small></span></a>
+              <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="AGPL and commercial licences">AGPL และสิทธิเชิงพาณิชย์</small></span></a>
+              <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, images, and fonts">โมเดล ภาพ และฟอนต์</small></span></a>
+            </div>
+            <a class="nav-more-all" href="/resources.html" data-secondary-link><span data-en="All project resources">ดูเอกสารและลิงก์ทั้งหมด</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <noscript><a class="nav-more-fallback" href="/resources.html">ข้อมูลเพิ่มเติม / Resources</a></noscript>
+      </nav>
+      <div class="header-actions">
+        <div class="language-switch" role="group" aria-label="เลือกภาษา" data-en-aria="Choose language">
+          <button type="button" data-language="th" aria-pressed="true" lang="th">TH</button><span aria-hidden="true">/</span><button type="button" data-language="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="เปิดเมนู" data-en-aria="Toggle menu"><span></span><span></span></button>
+        <a class="github-link" href="https://github.com/koomean/visionassistant" aria-label="LunaV บน GitHub" data-en-aria="LunaV on GitHub"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 .5a12 12 0 0 0-3.793 23.385c.6.11.82-.26.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.839 1.237 1.839 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.776.418-1.305.762-1.605-2.665-.304-5.467-1.333-5.467-5.932 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.52 11.52 0 0 1 12 6.3c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.654 1.652.243 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.625-5.479 5.922.43.372.823 1.102.823 2.222v3.293c0 .32.216.694.825.576A12 12 0 0 0 12 .5Z"/></svg></a>
+        <a class="lite-link" href="/lite.html" data-secondary-link aria-current="page" aria-label="เกี่ยวกับ LunaV Lite" data-en-aria="About LunaV Lite"><span class="lite-link-brand">LunaV </span>Lite</a>
+      </div>
+    </div>
+  </header>
+  <!-- site-header:end -->
+
+  <main id="main" class="wrap document-main">
+    <header class="lite-hero">
+      <div class="lite-intro">
+        <p class="lite-version">4.0.0 <span aria-hidden="true">·</span> Swift Student Challenge 2027</p>
+        <h1>LunaV Lite<span>.</span></h1>
+        <p class="lite-lead" data-en="Read text, ask about what’s visible in a photo, and measure distance on your iPhone or iPad. LunaV Lite is a separate edition that works offline and uses Apple Vision in place of Qwen.">อ่านข้อความ ถามจากสิ่งที่เห็นในภาพ และวัดระยะบน iPhone หรือ iPad ได้แบบออฟไลน์ LunaV Lite เป็นแอปรุ่นแยกที่ใช้ Apple Vision แทน Qwen</p>
+        <div class="lite-actions">
+          <a class="button lite-download" href="https://github.com/koomean/visionassistant/releases/download/v4.0.0-lite/LunaV-Lite-4.0.0-source.zip"><span data-en="Download source ZIP">ดาวน์โหลดซอร์ส ZIP</span><span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="https://github.com/koomean/visionassistant/releases/tag/v4.0.0-lite" data-en="Release on GitHub">ดูรีลีสบน GitHub</a>
+        </div>
+        <p class="lite-file-meta" data-en="334.87 MB · Xcode project with the bundled depth model">334.87 MB · โปรเจกต์ Xcode พร้อมโมเดลประเมินระยะ</p>
+      </div>
+      <img class="lite-moon" src="assets/moon.webp" width="840" height="840" alt="">
+    </header>
+
+    <section class="lite-section" aria-labelledby="lite-features">
+      <h2 id="lite-features" data-en="What you can do offline">สิ่งที่ทำได้แบบออฟไลน์</h2>
+      <dl class="lite-features">
+        <div>
+          <dt data-en="Read and summarize text">อ่านและสรุปข้อความ</dt>
+          <dd data-en="Read visible text or choose an area. Summaries quote key lines from the photo.">อ่านข้อความที่มองเห็นหรือเลือกเฉพาะพื้นที่ แอปสรุปโดยคัดบรรทัดสำคัญจากภาพ</dd>
+        </div>
+        <div>
+          <dt data-en="Ask about a photo">ถามเกี่ยวกับภาพ</dt>
+          <dd data-en="Ask about detected objects or visible text, such as a price on a menu. Answers are limited to what the app can detect.">ถามจากข้อความหรือวัตถุที่แอปตรวจพบ เช่น ราคาบนเมนู คำตอบจำกัดตามข้อมูลที่แอปตรวจได้</dd>
+        </div>
+        <div>
+          <dt data-en="Measure distance">วัดระยะ</dt>
+          <dd data-en="Use LiDAR on devices that have it. Other supported devices estimate distance with the included Depth Anything 3 model.">ใช้ LiDAR บนอุปกรณ์ที่มีเซ็นเซอร์ ส่วนอุปกรณ์ที่รองรับรุ่นอื่นประเมินระยะด้วย Depth Anything 3 ที่มากับแอป</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="lite-section lite-setup" aria-labelledby="lite-setup">
+      <h2 id="lite-setup" data-en="Build and try the app">สร้างและลองใช้แอป</h2>
+      <p data-en="Unzip the download and open LunaV Lite.xcodeproj on a Mac with Xcode 27 or later. Run on iOS or iPadOS 27 or later, then select Try a sample to try the photo tools.">แตกไฟล์แล้วเปิด LunaV Lite.xcodeproj บน Mac ที่ใช้ Xcode 27 ขึ้นไป รันบน iOS หรือ iPadOS 27 ขึ้นไป แล้วกด Try a sample เพื่อลองเครื่องมือจากภาพตัวอย่าง</p>
+      <p data-en="Voice questions use English Apple Dictation already available on the device. Typing and photo tools work when Dictation is unavailable.">คำถามเสียงใช้ Apple Dictation ภาษาอังกฤษที่มีอยู่บนเครื่อง หากใช้ Dictation ไม่ได้ คุณยังพิมพ์ถามหรือใช้เครื่องมือภาพได้</p>
+    </section>
+  </main>
+
+  <footer class="document-footer">
+    <div class="wrap document-footer-inner">
+      <p>© 2026 Wachirawich Kripindakul</p>
+      <nav aria-label="ท้ายหน้า" data-en-aria="Footer">
+        <a href="/" data-en="LunaV home">หน้าแรก LunaV</a>
+        <a href="/licensing.html" data-secondary-link data-en="Licensing">สิทธิการใช้งาน</a>
+        <a href="https://github.com/koomean/visionassistant/releases/tag/v4.0.0-lite" data-en="Lite release on GitHub">รีลีส Lite บน GitHub</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

@@ -67,6 +67,9 @@ html.page-transition-ready::after{display:none}
 .site-header .language-switch>span{color:#53627e}
 .site-header .github-link{display:block;padding:10px 0 10px 20px;border-left:1px solid var(--line)}
 .site-header .github-link .icon{width:20px;height:20px}
+.site-header .lite-link{display:inline-flex;align-items:center;column-gap:.24em;min-height:44px;padding-inline:14px;border-radius:6px;background:var(--gold);color:var(--night);font-size:.76rem;font-weight:750;white-space:nowrap;transition:background-color .2s}
+.site-header .lite-link:hover{background:var(--paper)}
+.site-header .lite-link[aria-current=page]{box-shadow:0 0 0 1px var(--night),0 0 0 2px var(--gold)}
 .site-header .menu-toggle{display:none;position:relative;width:44px;height:44px;background:transparent;border:0;flex-shrink:0;cursor:pointer}
 .site-header .menu-toggle span{position:absolute;left:11px;display:block;width:22px;height:1px;background:var(--paper);transition:transform .25s,top .25s}
 .site-header .menu-toggle span:first-child{top:17px}.site-header .menu-toggle span:last-child{top:25px}
@@ -100,9 +103,9 @@ html:not(.navigation-ready) .site-header .nav-more{display:none}
   .site-header #navigation.is-open{display:flex}
   .site-header #navigation>a{font-size:.95rem;padding:12px 0;line-height:1.7}
   .site-header #navigation>a::after{display:none}
-  .site-header .menu-toggle{display:block}
-  .site-header .header-actions{gap:18px}
-  .site-header .github-link{border:0;padding:10px}
+  .site-header .menu-toggle{display:block;margin-right:0}
+  .site-header .header-actions{gap:10px}
+  .site-header .github-link{display:grid;place-items:center;width:44px;min-height:44px;padding:0;border:0}
   .site-header .nav-more-toggle{font-size:.95rem;justify-content:space-between;width:100%;min-height:50px;padding:12px 0}
   .site-header .nav-more-panel{position:static;width:100%;margin:4px 0 10px;padding:20px;border-radius:8px;box-shadow:none;background:#0e1a30}
   .site-header .nav-more-grid{padding-block:12px;gap:4px 12px}
@@ -118,8 +121,8 @@ html:not(.navigation-ready) .site-header .nav-more{display:none}
   .site-header .header-inner{gap:12px}
   .site-header .brand{font-size:1.4rem}
   .site-header .brand-icon{width:29px;height:29px}
-  .site-header .header-actions{gap:13px}
-  .site-header .github-link{display:none}
+  .site-header .header-actions{gap:6px}
+  .site-header .lite-link{padding-inline:10px}
   .site-header #navigation{padding-inline:24px}
   .site-header .nav-more-panel{padding:16px}
   .site-header .nav-more-grid{grid-template-columns:minmax(0,1fr);gap:0}
@@ -127,6 +130,15 @@ html:not(.navigation-ready) .site-header .nav-more{display:none}
   .site-header .nav-more-heading p{font-size:.68rem}
   .site-header .nav-more-link strong{font-size:.82rem}
   .site-header .nav-more-link small{font-size:.69rem}
+}
+@media(max-width:390px){
+  .site-header .header-inner{width:calc(100% - 28px);gap:6px}
+  .site-header .header-actions{gap:3px}
+  .site-header .language-switch{gap:2px}
+  .site-header .language-switch button{min-width:24px;padding-inline:2px}
+  .site-header .menu-toggle,.site-header .github-link{width:38px}
+  .site-header .menu-toggle span{left:8px}
+  .site-header .lite-link-brand{display:none}
 }
 @media(prefers-reduced-motion:reduce){.site-header,.site-header *{transition:none!important}}
 @media print{.site-header{display:none!important}}
