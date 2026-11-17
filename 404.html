@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#080f20">
-  <meta name="description" content="ไม่พบหน้านี้ กลับไปสำรวจ LunaV หรือใช้เมนูเพื่อเลือกหน้าที่ต้องการ" data-description-th="ไม่พบหน้านี้ กลับไปสำรวจ LunaV หรือใช้เมนูเพื่อเลือกหน้าที่ต้องการ" data-description-en="We could not find this page. Return to LunaV or use the menu to find your way.">
+  <meta name="description" content="ไม่พบหน้านี้ กลับหน้าแรกหรือเลือกหน้าอื่นจากเมนู" data-description-th="ไม่พบหน้านี้ กลับหน้าแรกหรือเลือกหน้าอื่นจากเมนู" data-description-en="This page could not be found. Go home or choose another page from the menu.">
   <meta property="og:title" content="ไม่พบหน้านี้ — LunaV">
-  <meta property="og:description" content="กลับไปสำรวจ LunaV หรือใช้เมนูเพื่อเลือกหน้าที่ต้องการ">
+  <meta property="og:description" content="กลับหน้าแรกหรือเลือกหน้าอื่นจากเมนู">
   <meta property="og:locale" content="th_TH">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <script>(()=>{const root=document.documentElement;let saved,reduced=false;try{saved=localStorage.getItem('lunav-language');reduced=localStorage.getItem('lunav-reduce-motion')==='true'}catch{}const requested=new URLSearchParams(location.search).get('lang');root.lang=(requested||saved)==='en'?'en':'th';reduced=reduced||matchMedia('(prefers-reduced-motion: reduce)').matches;root.classList.toggle('lost-motion-reduced',reduced);if(!reduced&&typeof Element.prototype.animate==='function'){root.classList.add('lost-intro-pending');setTimeout(()=>root.classList.remove('lost-intro-pending'),4000)}})();</script>
@@ -64,8 +64,8 @@
     <div class="header-inner wrap">
       <a class="brand" href="/#overview" data-home-anchor="overview" aria-label="LunaV หน้าแรก" data-en-aria="LunaV home"><svg class="brand-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M26 19.1A12 12 0 0 1 12.9 6 12 12 0 1 0 26 19.1Z"/><path d="m23 3 .9 3.1L27 7l-3.1.9L23 11l-.9-3.1L19 7l3.1-.9Z"/></svg><span>LunaV<span class="brand-dot">.</span></span></a>
       <nav id="navigation" aria-label="เมนูหลัก" data-en-aria="Main navigation">
-        <a href="/#features" data-home-anchor="features" data-en="Explore">ความสามารถ</a>
-        <a href="/#how" data-home-anchor="how" data-en="How it works">วิธีทำงาน</a>
+        <a href="/#features" data-home-anchor="features" data-en="Features">ความสามารถ</a>
+        <a href="/#how" data-home-anchor="how" data-en="How to use it">วิธีใช้แอป</a>
         <a href="/#models" data-home-anchor="models" data-en="Technology">เทคโนโลยี</a>
         <a href="/#privacy" data-home-anchor="privacy" data-en="Privacy">ความเป็นส่วนตัว</a>
         <a href="/#opensource" data-home-anchor="opensource" data-en="Open source">โอเพนซอร์ส</a>
@@ -74,15 +74,15 @@
         <div class="nav-more">
           <button class="nav-more-toggle" type="button" aria-expanded="false" aria-controls="more-navigation"><span data-en="More">อื่น ๆ</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
           <div class="nav-more-panel" id="more-navigation" hidden>
-            <div class="nav-more-heading"><span data-en="A closer look at LunaV">รู้จัก LunaV ให้มากขึ้น</span><p data-en="Project details, documentation and credits.">ข้อมูลโครงการ เอกสาร และที่มาของสิ่งที่ใช้</p></div>
+            <div class="nav-more-heading"><span data-en="About the project">ข้อมูลโครงการ</span></div>
             <div class="nav-more-grid">
-              <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="System architecture">แผนผังการทำงาน</strong><small data-en="From an image to an on-device answer">จากภาพสู่คำตอบบน iPhone</small></span></a>
-              <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Implementation and recorded checks">สิ่งที่ทำได้และผลการตรวจที่บันทึกไว้</small></span></a>
-              <a class="nav-more-link" href="/devices.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg><span><strong data-en="Supported devices">อุปกรณ์ที่รองรับ</strong><small data-en="iPhone models and Mac build requirements">รุ่น iPhone และข้อกำหนด Mac สำหรับ build</small></span></a>
-              <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="Open source and commercial enquiries">โอเพนซอร์สและข้อตกลงเชิงพาณิชย์</small></span></a>
-              <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, imagery and typefaces">โมเดล ภาพประกอบ และฟอนต์</small></span></a>
+              <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="How LunaV works">แผนผังการทำงาน</strong><small data-en="From the camera to an answer">จากกล้องถึงคำตอบ</small></span></a>
+              <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Current version and test results">เวอร์ชันล่าสุดและผลทดสอบ</small></span></a>
+              <a class="nav-more-link" href="/devices.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg><span><strong data-en="Supported devices">อุปกรณ์ที่รองรับ</strong><small data-en="iPhone compatibility and Mac setup">รุ่น iPhone ที่รองรับและการเตรียม Mac</small></span></a>
+              <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="AGPL and commercial licences">AGPL และสิทธิเชิงพาณิชย์</small></span></a>
+              <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, images, and fonts">โมเดล ภาพ และฟอนต์</small></span></a>
             </div>
-            <a class="nav-more-all" href="/resources.html" data-secondary-link><span data-en="All project resources">ดูข้อมูลเพิ่มเติมทั้งหมด</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a class="nav-more-all" href="/resources.html" data-secondary-link><span data-en="All project resources">ดูเอกสารและลิงก์ทั้งหมด</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
           </div>
         </div>
         <noscript><a class="nav-more-fallback" href="/resources.html">ข้อมูลเพิ่มเติม / Resources</a></noscript>
@@ -102,14 +102,14 @@
       <div class="lost-copy">
         <p class="lost-label"><span class="lost-label-code">404</span><span class="lost-label-divider" aria-hidden="true">·</span><span class="lost-label-message" data-en="Page not found">ไม่พบหน้านี้</span></p>
         <h1 data-en="A little off orbit.">หน้านี้อยู่นอกวงโคจร</h1>
-        <p class="lost-description" data-en="We couldn’t find the page you opened. Head back to LunaV, or use the menu above to find what you need.">ไม่พบหน้าที่คุณเปิด กลับไปสำรวจ LunaV หรือใช้เมนูด้านบนเพื่อเลือกส่วนที่ต้องการ</p>
+        <p class="lost-description" data-en="Check the link, or use the menu above to choose another page.">ลองตรวจลิงก์ หรือเลือกหน้าอื่นจากเมนูด้านบน</p>
         <div class="lost-actions">
-          <a href="/" class="button button-primary" data-home-anchor="overview"><span data-en="Back to LunaV">กลับหน้าแรก</span><svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M6 4h14v14"/></svg></a>
-          <a href="/#features" class="button button-outline" data-home-anchor="features" data-en="Explore features">สำรวจความสามารถ</a>
+          <a href="/" class="button button-primary" data-home-anchor="overview"><span data-en="Back to home">กลับหน้าแรก</span><svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M6 4h14v14"/></svg></a>
+          <a href="/#features" class="button button-outline" data-home-anchor="features" data-en="See what LunaV can do">ดูว่า LunaV ทำอะไรได้บ้าง</a>
         </div>
         <nav class="lost-help" aria-label="หน้าอื่นของ LunaV" data-en-aria="More LunaV pages">
           <a href="/project-status.html" data-en="Project status">สถานะโครงการ</a>
-          <a href="/licensing.html" data-en="Licensing">การอนุญาตใช้สิทธิ</a>
+          <a href="/licensing.html" data-en="Licensing">สิทธิการใช้งาน</a>
           <a href="/credits.html" data-en="Credits">เครดิต</a>
         </nav>
       </div>
@@ -117,7 +117,6 @@
         <div class="lost-orbit"></div><div class="lost-orbit lost-orbit-inner"></div>
         <div class="lost-moon-body"><img class="lost-moon" src="/assets/moon.webp" width="1400" height="1400" alt=""><div class="lost-moon-shadow"></div></div>
         <div class="lost-star-track"><span class="lost-star">+</span></div><div class="lost-star-track lost-star-track-inner"><span class="lost-star lost-star-small">✦</span></div>
-        <span class="lost-coordinate" data-en="A familiar orbit is one click away.">กลับสู่วงโคจรที่คุ้นเคยได้ในคลิกเดียว</span>
       </div>
     </div>
   </main>

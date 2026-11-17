@@ -19,14 +19,14 @@ ROOT = Path(__file__).resolve().parents[1]
 TRANSITION_HEAD = (ROOT / 'partials' / 'page-transition-head.html').read_text().rstrip()
 PAGES = [
     ('PROJECT-STATUS.md', 'project-status.html', 'Project status', 'สถานะโครงการ',
-     'Current LunaV implementation, recorded validation results, and their limits.',
-     'สถานะแอป LunaV ปัจจุบัน ผลการตรวจที่บันทึกไว้ และขอบเขตของหลักฐาน'),
-    ('COMMERCIAL-LICENSE.md', 'licensing.html', 'Commercial licensing', 'การอนุญาตใช้สิทธิ',
-     'LunaV AGPL-3.0-or-later licensing and enquiries about an optional separate commercial agreement.',
-     'การใช้สิทธิโครงการ LunaV ภายใต้ AGPL-3.0-or-later และการสอบถามข้อตกลงเชิงพาณิชย์แยกต่างหาก'),
-    ('ASSET-CREDITS.md', 'credits.html', 'Asset credits', 'เครดิตทรัพยากร',
-     'Sources and licence credits for LunaV lunar imagery, Simulator screenshots, and self-hosted fonts.',
-     'ที่มาและเงื่อนไขสิทธิของภาพดวงจันทร์ ภาพแอปจาก Simulator และฟอนต์ที่ใช้บนเว็บไซต์ LunaV'),
+     'Current LunaV version, test results, and how to read them.',
+     'เวอร์ชันปัจจุบันของ LunaV ผลทดสอบ และคำอธิบายวิธีอ่านผล'),
+    ('COMMERCIAL-LICENSE.md', 'licensing.html', 'Licensing', 'สิทธิการใช้งาน',
+     'LunaV’s AGPL terms and how to ask for a separate commercial licence.',
+     'เงื่อนไข AGPL ของ LunaV และวิธีสอบถามสิทธิเชิงพาณิชย์เพิ่มเติม'),
+    ('ASSET-CREDITS.md', 'credits.html', 'Credits and sources', 'เครดิตและแหล่งที่มา',
+     'Sources and licences for the models, images, and fonts used in LunaV.',
+     'ที่มาและสิทธิการใช้งานของโมเดล ภาพ และฟอนต์ที่ LunaV ใช้'),
 ]
 LINK_MAP = {page[0]: page[1] for page in PAGES}
 LINK_MAP.update({'docs/th/' + page[0]: page[1] for page in PAGES})
@@ -128,9 +128,9 @@ def translated(th, en):
 
 def render_page(source, target, title_en, title_th, description_en, description_th):
     navigation = [
-        '<a href="resources.html">' + translated('ข้อมูลเพิ่มเติม', 'All resources') + '</a>',
+        '<a href="resources.html">' + translated('เอกสารทั้งหมด', 'All resources') + '</a>',
         '<a href="demo.html">' + translated('ทดลองแอป', 'Try demo') + '</a>',
-        '<a href="lunavision-architecture.html">' + translated('แผนผังการทำงาน', 'System architecture') + '</a>',
+        '<a href="lunavision-architecture.html">' + translated('แผนผังการทำงาน', 'How LunaV works') + '</a>',
         '<a href="devices.html">' + translated('อุปกรณ์ที่รองรับ', 'Supported devices') + '</a>',
     ]
     for _, href, label_en, label_th, _, _ in PAGES:

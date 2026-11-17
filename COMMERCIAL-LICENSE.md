@@ -1,31 +1,19 @@
-# LunaV commercial licensing
+# Commercial licensing for LunaV
 
-This document explains how to request a separate commercial licence. It is a project licensing notice, not a complete commercial licence agreement.
+You can use the original work in this repository under the [GNU Affero General Public License](LICENSE), version 3 or later (`AGPL-3.0-or-later`). The AGPL allows commercial use without a licence fee when you follow its terms.
 
-## Project
+## When you may need a separate licence
 
-- **Project name:** LunaV
-- **Copyright holder / licensor:** Wachirawich Kripindakul ([koomean](https://github.com/koomean)), the repository owner, for original work in this repository.
-- **Commercial licensing contact:** [Open a licensing enquiry on GitHub](https://github.com/koomean/visionassistant/issues/new?title=Commercial%20licence%20request%20%E2%80%94%20LunaV). Issues are public; include only a brief, non-confidential enquiry. A private contact method can be agreed with the maintainer before sharing confidential details.
+If you need rights beyond the AGPL, contact copyright holder Wachirawich Kripindakul ([koomean](https://github.com/koomean)). A signed agreement may grant specific additional rights, such as distributing a proprietary version without the source-sharing obligations that would otherwise apply.
 
-## Available licensing options
+[Open a commercial licensing enquiry on GitHub](https://github.com/koomean/visionassistant/issues/new?title=Commercial%20licence%20request%20%E2%80%94%20LunaV). Briefly describe how you plan to use LunaV and what rights you need. GitHub issues are public. Arrange a private contact method before sharing confidential details.
 
-The original work in this repository is offered under the GNU Affero General Public License, version 3 or (at your option) any later version (`AGPL-3.0-or-later`). A separate commercial licence may be available by written agreement with the copyright holder.
+Any additional permissions take effect once the parties accept a separate written agreement. The agreement identifies the parties and the covered work, and sets terms such as price, duration, support, and updates.
 
-The AGPL licence permits commercial use without paying a licence fee, provided the user complies with all applicable AGPL terms. A commercial licence is an optional alternative for customers who need additional permissions that are not provided by the AGPL, such as permission to distribute a proprietary version without the source-disclosure obligations that would otherwise apply, where the signed commercial agreement expressly grants that permission.
+## What an agreement can cover
 
-## Request a commercial licence
+- The main branch contains the website. The iPhone app source is a separate archive on [GitHub Releases](https://github.com/koomean/visionassistant/releases) and excludes model weights.
+- A commercial licence covers only work the copyright holder has the right to license. The agreement must name any app source, assets, or other material supplied separately.
+- Third-party code, models, and dependencies keep their own licences. Before accepting outside contributions, the project should check that its contribution terms support any planned dual licensing.
 
-Use the contact above with the subject **Commercial licence request — LunaV**. Please include a brief description of the intended use and the permissions your organisation needs. Pricing, scope, duration, support, updates, and any other terms will be discussed and documented in a separate written agreement. The agreement must identify the contracting parties and the works it covers.
-
-No commercial rights beyond the AGPL are granted by this document or by sending an enquiry. A separate commercial licence takes effect only when an agreement has been accepted by the appropriate parties.
-
-## Contributions and ownership
-
-A separate commercial licence can only cover code for which the licensor has the necessary rights or permission to grant that licence. Before accepting outside contributions, the project owner should establish clear contribution terms and confirm that those terms allow any intended dual-licensing model. Code and dependencies from third parties remain subject to their own licences.
-
-The main branch contains the LunaV project website. The iPhone app source is available as a separate archive under [GitHub Releases](https://github.com/koomean/visionassistant/releases). That archive excludes model weights. A commercial agreement must explicitly identify any separately supplied app source, assets, or other works it covers. This notice does not grant additional rights to third-party models or dependencies.
-
-## Disclaimer
-
-This file is a project licensing notice, not legal advice or a substitute for a complete commercial licence agreement. Have the commercial agreement reviewed for your circumstances before relying on it.
+This page is a project notice. It grants no additional rights and does not supply legal advice or a commercial agreement.

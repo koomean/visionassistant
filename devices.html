@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#080f20">
-  <meta name="description" content="ตรวจรุ่น Mac และ Xcode สำหรับ build LunaV และดูรายการ iPhone พร้อมข้อมูล iOS และ LiDAR" data-description-th="ตรวจรุ่น Mac และ Xcode สำหรับ build LunaV และดูรายการ iPhone พร้อมข้อมูล iOS และ LiDAR" data-description-en="Check Mac and Xcode requirements for building LunaV and browse iPhone models by iOS and LiDAR compatibility.">
+  <meta name="description" content="เช็กว่า iPhone ของคุณใช้ LunaV ได้หรือไม่ และดูข้อกำหนด Mac สำหรับคอมไพล์แอป" data-description-th="เช็กว่า iPhone ของคุณใช้ LunaV ได้หรือไม่ และดูข้อกำหนด Mac สำหรับคอมไพล์แอป" data-description-en="Check if your iPhone can run LunaV and see the Mac requirements for building the app.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="อุปกรณ์ที่รองรับ — LunaV">
-  <meta property="og:description" content="ตรวจรุ่น Mac และ Xcode สำหรับ build LunaV และดูรายการ iPhone พร้อมข้อมูล iOS และ LiDAR">
+  <meta property="og:description" content="เช็กว่า iPhone ของคุณใช้ LunaV ได้หรือไม่ และดูข้อกำหนด Mac สำหรับคอมไพล์แอป">
   <meta property="og:locale" content="th_TH">
   <meta property="og:url" content="https://lunavision.koomean.com/devices.html">
   <meta property="og:image" content="https://lunavision.koomean.com/assets/social.jpg">
@@ -57,7 +57,7 @@
   <link rel="stylesheet" href="devices.css?v=luna-20261112-check">
   <script src="site-shell.js?v=luna-20261110-more" defer></script>
   <script src="docs-language.js?v=luna-20261031-nav" defer></script>
-  <script type="module" src="devices.js?v=luna-20261112-check"></script>
+  <script type="module" src="devices.js?v=luna-20261117-copy"></script>
   <title data-title-th="อุปกรณ์ที่รองรับ — LunaV" data-title-en="Supported devices — LunaV">อุปกรณ์ที่รองรับ — LunaV</title>
 </head>
 <body class="devices-page">
@@ -67,8 +67,8 @@
     <div class="header-inner wrap">
       <a class="brand" href="/#overview" data-home-anchor="overview" aria-label="LunaV หน้าแรก" data-en-aria="LunaV home"><svg class="brand-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M26 19.1A12 12 0 0 1 12.9 6 12 12 0 1 0 26 19.1Z"/><path d="m23 3 .9 3.1L27 7l-3.1.9L23 11l-.9-3.1L19 7l3.1-.9Z"/></svg><span>LunaV<span class="brand-dot">.</span></span></a>
       <nav id="navigation" aria-label="เมนูหลัก" data-en-aria="Main navigation">
-        <a href="/#features" data-home-anchor="features" data-en="Explore">ความสามารถ</a>
-        <a href="/#how" data-home-anchor="how" data-en="How it works">วิธีทำงาน</a>
+        <a href="/#features" data-home-anchor="features" data-en="Features">ความสามารถ</a>
+        <a href="/#how" data-home-anchor="how" data-en="How to use it">วิธีใช้แอป</a>
         <a href="/#models" data-home-anchor="models" data-en="Technology">เทคโนโลยี</a>
         <a href="/#privacy" data-home-anchor="privacy" data-en="Privacy">ความเป็นส่วนตัว</a>
         <a href="/#opensource" data-home-anchor="opensource" data-en="Open source">โอเพนซอร์ส</a>
@@ -77,15 +77,15 @@
         <div class="nav-more">
           <button class="nav-more-toggle" type="button" aria-expanded="false" aria-controls="more-navigation"><span data-en="More">อื่น ๆ</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
           <div class="nav-more-panel" id="more-navigation" hidden>
-            <div class="nav-more-heading"><span data-en="A closer look at LunaV">รู้จัก LunaV ให้มากขึ้น</span><p data-en="Project details, documentation and credits.">ข้อมูลโครงการ เอกสาร และที่มาของสิ่งที่ใช้</p></div>
+            <div class="nav-more-heading"><span data-en="About the project">ข้อมูลโครงการ</span></div>
             <div class="nav-more-grid">
-              <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="System architecture">แผนผังการทำงาน</strong><small data-en="From an image to an on-device answer">จากภาพสู่คำตอบบน iPhone</small></span></a>
-              <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Implementation and recorded checks">สิ่งที่ทำได้และผลการตรวจที่บันทึกไว้</small></span></a>
-              <a class="nav-more-link" href="/devices.html" data-secondary-link aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg><span><strong data-en="Supported devices">อุปกรณ์ที่รองรับ</strong><small data-en="iPhone models and Mac build requirements">รุ่น iPhone และข้อกำหนด Mac สำหรับ build</small></span></a>
-              <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="Open source and commercial enquiries">โอเพนซอร์สและข้อตกลงเชิงพาณิชย์</small></span></a>
-              <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, imagery and typefaces">โมเดล ภาพประกอบ และฟอนต์</small></span></a>
+              <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="How LunaV works">แผนผังการทำงาน</strong><small data-en="From the camera to an answer">จากกล้องถึงคำตอบ</small></span></a>
+              <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Current version and test results">เวอร์ชันล่าสุดและผลทดสอบ</small></span></a>
+              <a class="nav-more-link" href="/devices.html" data-secondary-link aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg><span><strong data-en="Supported devices">อุปกรณ์ที่รองรับ</strong><small data-en="iPhone compatibility and Mac setup">รุ่น iPhone ที่รองรับและการเตรียม Mac</small></span></a>
+              <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="AGPL and commercial licences">AGPL และสิทธิเชิงพาณิชย์</small></span></a>
+              <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, images, and fonts">โมเดล ภาพ และฟอนต์</small></span></a>
             </div>
-            <a class="nav-more-all" href="/resources.html" data-secondary-link><span data-en="All project resources">ดูข้อมูลเพิ่มเติมทั้งหมด</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a class="nav-more-all" href="/resources.html" data-secondary-link><span data-en="All project resources">ดูเอกสารและลิงก์ทั้งหมด</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
           </div>
         </div>
         <noscript><a class="nav-more-fallback" href="/resources.html">ข้อมูลเพิ่มเติม / Resources</a></noscript>
@@ -107,7 +107,7 @@
         <p class="section-kicker"><span class="tiny-orbit" aria-hidden="true"></span><span>LunaV 3.2.1</span></p>
         <h1 data-en="Supported devices">อุปกรณ์ที่รองรับ</h1>
         <section id="device-check" class="device-check" aria-labelledby="device-check-title" hidden>
-          <h2 id="device-check-title" data-en="This device">อุปกรณ์ที่คุณใช้อยู่</h2>
+          <h2 id="device-check-title" data-en="Your device">อุปกรณ์ของคุณ</h2>
           <div role="status" aria-atomic="true">
             <p class="device-check-name" id="device-check-name"></p>
             <p class="device-check-status" id="device-check-status"></p>
@@ -117,14 +117,14 @@
             <p class="device-check-evidence" id="device-check-evidence" hidden></p>
           </div>
           <div class="device-check-choice" id="device-check-choice" hidden>
-            <label for="device-check-model" data-en="Confirm your iPhone model">ยืนยันรุ่น iPhone ของคุณ</label>
+            <label for="device-check-model" data-en="Confirm your iPhone model">ยืนยันรุ่น iPhone</label>
             <select id="device-check-model" aria-describedby="device-check-help"></select>
-            <p id="device-check-help" data-en="Find Model Name in Settings → General → About. This check runs in your browser.">ดูชื่อรุ่นใน การตั้งค่า → ทั่วไป → เกี่ยวกับ การตรวจนี้ทำงานในเบราว์เซอร์ของคุณ</p>
+            <p id="device-check-help" data-en="Find the model name in Settings → General → About.">ดูชื่อรุ่นที่ การตั้งค่า → ทั่วไป → เกี่ยวกับ</p>
           </div>
         </section>
         <nav class="devices-jump" aria-label="ไปยังส่วนที่ต้องการ" data-en-aria="On this page">
-          <a href="#iphone" data-en="Browse all iPhone models">ดู iPhone ทุกรุ่น</a>
-          <a href="#build" data-en="Build on a Mac">Mac สำหรับ build</a>
+          <a href="#iphone" data-en="See iPhone models">ดูรายชื่อ iPhone</a>
+          <a href="#build" data-en="Build on a Mac">สร้างแอปจากซอร์สบน Mac</a>
         </nav>
       </div>
       <div class="devices-art" aria-hidden="true">
@@ -135,15 +135,15 @@
 
     <section id="build" class="devices-section wrap" aria-labelledby="build-title">
       <div class="devices-section-heading">
-        <h2 id="build-title" data-en="Build on a Mac">Mac สำหรับ build</h2>
-        <p data-en="Use these requirements to compile the LunaV iPhone target with the existing Xcode project.">ข้อกำหนดสำหรับ build ตัวแอป iPhone ด้วยโปรเจกต์ Xcode ที่มีอยู่</p>
+        <h2 id="build-title" data-en="Build on a Mac">สร้างแอปจากซอร์สบน Mac</h2>
+        <p data-en="Use Xcode on a Mac to build LunaV for iPhone.">ใช้ Xcode บน Mac เพื่อสร้างแอป LunaV สำหรับ iPhone</p>
       </div>
       <dl class="build-specs">
-        <div><dt data-en="Processor">ชิป</dt><dd><strong>Apple silicon</strong><span data-en="M1 is the earliest M-series chip. MacBook Neo uses A18 Pro.">ชิปตระกูล M เริ่มที่ M1 และ MacBook Neo ใช้ A18 Pro</span></dd></div>
-        <div><dt data-en="Minimum macOS">macOS ขั้นต่ำ</dt><dd><strong>macOS 26.6</strong><span data-en="macOS Tahoe 26.6 or later for Xcode 27.1 and 27.2.">macOS Tahoe 26.6 ขึ้นไป สำหรับ Xcode 27.1 และ 27.2</span></dd></div>
-        <div><dt>Xcode</dt><dd><strong>Xcode 27.1+</strong><span data-en="The project was built with Xcode 27.2 (27B52). The app targets iOS 27.0 or later.">โปรเจกต์ผ่านการ build ด้วย Xcode 27.2 (27B52) ตัวแอปตั้งเป้า iOS 27.0 ขึ้นไป</span></dd></div>
+        <div><dt data-en="Processor">ชิป</dt><dd><strong>Apple silicon</strong><span data-en="M1 or later, or A18 Pro on MacBook Neo.">M1 ขึ้นไป หรือ A18 Pro บน MacBook Neo</span></dd></div>
+        <div><dt data-en="Minimum macOS">macOS ขั้นต่ำ</dt><dd><strong>macOS 26.6</strong><span data-en="For Xcode 27.1 and 27.2.">สำหรับ Xcode 27.1 และ 27.2</span></dd></div>
+        <div><dt>Xcode</dt><dd><strong>Xcode 27.1+</strong><span data-en="Built and checked with Xcode 27.2 on an M5 Mac.">ทดสอบการสร้างแอปด้วย Xcode 27.2 บน Mac ชิป M5</span></dd></div>
       </dl>
-      <h3 class="mac-heading" data-en="Starting models by Mac family">รุ่นเริ่มต้นของ Mac แต่ละตระกูล</h3>
+      <h3 class="mac-heading" data-en="Compatible Mac models">รุ่น Mac ที่ใช้ได้</h3>
       <dl class="mac-lineup">
         <div><dt>MacBook Air</dt><dd data-en="M1 (2020) and later Apple silicon models">M1 (2020) และรุ่น Apple silicon ที่ใหม่กว่า</dd></div>
         <div><dt>MacBook Pro</dt><dd data-en="13-inch M1 (2020) and later Apple silicon models">13 นิ้ว M1 (2020) และรุ่น Apple silicon ที่ใหม่กว่า</dd></div>
@@ -154,9 +154,8 @@
         <div><dt>Mac Pro</dt><dd>M2 Ultra (2023)</dd></div>
       </dl>
       <div class="build-footnotes">
-        <p data-en="These models meet the Apple silicon host requirement. The recorded build used Xcode 27.2 on an Apple M5 Mac.">รุ่นในรายการเข้าเงื่อนไขเครื่อง Apple silicon การ build ที่บันทึกไว้ใช้ Xcode 27.2 บน Mac ชิป Apple M5</p>
-        <p data-en="To run on a physical iPhone, select a Development Team for signing, pair the phone, and enable Developer Mode. The separate LunaVModelCheck tool targets macOS 27.0 or later.">เมื่อลงแอปบน iPhone จริง ให้เลือก Development Team สำหรับลงลายเซ็น จับคู่เครื่อง และเปิด Developer Mode เครื่องมือ LunaVModelCheck ใช้ macOS 27.0 ขึ้นไป</p>
-        <ul class="devices-links" aria-label="แหล่งข้อมูลสำหรับ build" data-en-aria="Build sources">
+        <p data-en="To install on an iPhone, select a Development Team in Xcode, pair your phone, and enable Developer Mode. LunaVModelCheck needs macOS 27.0 or later.">ถ้าจะติดตั้งแอปบน iPhone ให้เลือก Development Team ใน Xcode จับคู่โทรศัพท์ แล้วเปิด Developer Mode เครื่องมือ LunaVModelCheck ต้องใช้ macOS 27.0 ขึ้นไป</p>
+        <ul class="devices-links" aria-label="ข้อมูลสำหรับสร้างแอป" data-en-aria="Build sources">
           <li><a href="https://developer.apple.com/xcode/system-requirements/" data-en="Apple’s Xcode requirements">ข้อกำหนด Xcode จาก Apple</a></li>
           <li><a href="https://developer.apple.com/documentation/xcode-release-notes/xcode-27-release-notes?changes=la__8" data-en="Xcode 27 release notes">รายละเอียด Xcode 27</a></li>
           <li><a href="https://support.apple.com/en-us/116943" data-en="Apple silicon Mac models">รายชื่อ Mac ชิป Apple silicon</a></li>
@@ -168,11 +167,11 @@
     <section id="iphone" class="devices-section wrap" aria-labelledby="iphone-title">
       <div class="devices-section-heading">
         <h2 id="iphone-title" data-en="Find your iPhone">ค้นหารุ่น iPhone</h2>
-        <p data-en="LunaV requires iOS 27 or later. The 34 models below meet that OS requirement. The labels show the planned depth source, with test results marked where available.">LunaV ต้องใช้ iOS 27 ขึ้นไป มี iPhone 34 รุ่นที่เข้าเงื่อนไขนี้ แต่ละรุ่นระบุแหล่งข้อมูลระยะตามฮาร์ดแวร์และแสดงผลทดสอบที่มีบันทึก</p>
+        <p data-en="LunaV requires iOS 27 or later. Each model shows how the app measures distance. Test labels appear where results are available.">LunaV ต้องใช้ iOS 27 ขึ้นไป แต่ละรุ่นมีป้ายบอกวิธีวัดระยะและระบุว่าเคยทดสอบอะไรบ้าง</p>
       </div>
       <div class="depth-guide" aria-label="วิธีวัดระยะ" data-en-aria="Depth sources">
-        <div><strong class="depth-key depth-key-lidar">LiDAR</strong><p data-en="Uses rear LiDAR for distance. Optional live obstacle alerts also require haptics support.">ใช้เซ็นเซอร์ LiDAR หลังสำหรับวัดระยะ การเปิดเตือนสิ่งกีดขวางแบบสดต้องรองรับการสั่นด้วย</p></div>
-        <div><strong class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</strong><p data-en="Depth Anything 3 estimates distance from an app capture with lens data when resources allow.">ใช้ Depth Anything 3 ประเมินระยะจากภาพที่ถ่ายในแอปและมีข้อมูลเลนส์ เมื่อเครื่องมีทรัพยากรเพียงพอ</p></div>
+        <div><strong class="depth-key depth-key-lidar">LiDAR</strong><p data-en="The rear LiDAR sensor measures distance. Live obstacle alerts also need vibration support.">เซ็นเซอร์ LiDAR ด้านหลังวัดระยะ การเตือนสิ่งกีดขวางขณะเปิดกล้องต้องรองรับการสั่นด้วย</p></div>
+        <div><strong class="depth-key depth-key-da3" data-en="Depth estimate">ระยะประมาณ</strong><p data-en="Depth Anything 3 estimates distance from a photo taken in LunaV. It needs lens data and enough free memory.">Depth Anything 3 ประมาณระยะจากภาพที่ถ่ายใน LunaV โดยต้องมีข้อมูลเลนส์และหน่วยความจำว่างพอ</p></div>
       </div>
       <div class="catalog-tools" id="catalog-tools" hidden>
         <label class="model-search" for="model-search">
@@ -401,8 +400,7 @@
         </details>
       </div>
       <div class="iphone-footnotes">
-        <p data-en="LunaV 3.2.1 passed 23 focused text-reading tests on the iPhone 17 Simulator. The 16 November 2026 distance comparison used physical iPhone 14 and iPhone 14 Pro units with a 3.2.1 test build. The iPhone Duo layout check used the 3.1.0 Simulator build.">LunaV 3.2.1 ผ่านชุดทดสอบเฉพาะจุดด้านการอ่านข้อความ 23 รายการบน iPhone 17 Simulator การเปรียบเทียบระยะวันที่ 16 พฤศจิกายน 2026 ใช้ iPhone 14 และ iPhone 14 Pro จริงกับบิลด์ทดสอบ 3.2.1 ส่วนการตรวจหน้าจอ iPhone Duo ใช้บิลด์ Simulator รุ่น 3.1.0</p>
-        <p data-en="iOS compatibility tells you which models meet the OS requirement. AI and voice features depend on available memory, device conditions, and installed Dictation language assets.">รายการนี้แสดงว่าเครื่องรุ่นใดเข้าเงื่อนไขระบบปฏิบัติการ การใช้ AI และเสียงยังขึ้นกับหน่วยความจำ สภาพเครื่อง และภาษาของ Dictation ที่ติดตั้ง</p>
+        <p data-en="AI performance depends on available memory and device conditions. To ask by voice, install the Dictation language you want to use.">การทำงานของ AI ขึ้นอยู่กับหน่วยความจำว่างและสภาพเครื่อง การถามด้วยเสียงต้องติดตั้งภาษา Dictation ที่ต้องการใช้</p>
         <ul class="devices-links" aria-label="แหล่งข้อมูล iPhone" data-en-aria="iPhone sources">
           <li><a href="https://www.apple.com/os/ios/" data-en="Apple’s iOS 27 compatibility list">รายการ iOS 27 จาก Apple</a></li>
           <li><a href="https://support.apple.com/en-gb/108044" data-en="Identify your iPhone model">วิธีตรวจรุ่น iPhone</a></li>

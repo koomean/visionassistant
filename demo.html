@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#080f20">
-  <meta name="description" content="ทดลองขั้นตอนการใช้งาน LunaV ด้วยฉากและคำตอบจำลองบนเว็บ" data-description-th="ทดลองขั้นตอนการใช้งาน LunaV ด้วยฉากและคำตอบจำลองบนเว็บ" data-description-en="Explore LunaV’s iPhone interface with prepared scenes and simulated answers in your browser.">
+  <meta name="description" content="ลองใช้ LunaV บนเว็บด้วยภาพและคำตอบตัวอย่าง" data-description-th="ลองใช้ LunaV บนเว็บด้วยภาพและคำตอบตัวอย่าง" data-description-en="Try LunaV in your browser with sample photos and simulated answers.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ทดลองใช้งานแอป — LunaV">
-  <meta property="og:description" content="ทดลองขั้นตอนการใช้งาน LunaV ด้วยฉากและคำตอบจำลองบนเว็บ">
+  <meta property="og:title" content="ทดลองแอป — LunaV">
+  <meta property="og:description" content="ลองใช้ LunaV บนเว็บด้วยภาพและคำตอบตัวอย่าง">
   <meta property="og:locale" content="th_TH">
   <meta property="og:url" content="https://lunavision.koomean.com/demo.html">
   <meta property="og:image" content="https://lunavision.koomean.com/assets/social.jpg">
@@ -57,8 +57,8 @@
   <link rel="stylesheet" href="demo.css?v=luna-20261111-demo-redesign">
   <script src="site-shell.js?v=luna-20261110-more" defer></script>
   <script src="docs-language.js?v=luna-20261031-nav" defer></script>
-  <script src="demo.js?v=luna-20261111-demo-redesign" defer></script>
-  <title data-title-th="ทดลองใช้งานแอป — LunaV" data-title-en="Interactive Demo — LunaV">ทดลองใช้งานแอป — LunaV</title>
+  <script src="demo.js?v=luna-20261117-plain-language" defer></script>
+  <title data-title-th="ทดลองแอป — LunaV" data-title-en="Web Demo — LunaV">ทดลองแอป — LunaV</title>
 </head>
 <body class="demo-page">
   <a class="skip-link" href="#main" data-en="Skip to content">ข้ามไปยังเนื้อหา</a>
@@ -86,8 +86,8 @@
     <div class="header-inner wrap">
       <a class="brand" href="/#overview" data-home-anchor="overview" aria-label="LunaV หน้าแรก" data-en-aria="LunaV home"><svg class="brand-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M26 19.1A12 12 0 0 1 12.9 6 12 12 0 1 0 26 19.1Z"/><path d="m23 3 .9 3.1L27 7l-3.1.9L23 11l-.9-3.1L19 7l3.1-.9Z"/></svg><span>LunaV<span class="brand-dot">.</span></span></a>
       <nav id="navigation" aria-label="เมนูหลัก" data-en-aria="Main navigation">
-        <a href="/#features" data-home-anchor="features" data-en="Explore">ความสามารถ</a>
-        <a href="/#how" data-home-anchor="how" data-en="How it works">วิธีทำงาน</a>
+        <a href="/#features" data-home-anchor="features" data-en="Features">ความสามารถ</a>
+        <a href="/#how" data-home-anchor="how" data-en="How to use it">วิธีใช้แอป</a>
         <a href="/#models" data-home-anchor="models" data-en="Technology">เทคโนโลยี</a>
         <a href="/#privacy" data-home-anchor="privacy" data-en="Privacy">ความเป็นส่วนตัว</a>
         <a href="/#opensource" data-home-anchor="opensource" data-en="Open source">โอเพนซอร์ส</a>
@@ -96,15 +96,15 @@
         <div class="nav-more">
           <button class="nav-more-toggle" type="button" aria-expanded="false" aria-controls="more-navigation"><span data-en="More">อื่น ๆ</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
           <div class="nav-more-panel" id="more-navigation" hidden>
-            <div class="nav-more-heading"><span data-en="A closer look at LunaV">รู้จัก LunaV ให้มากขึ้น</span><p data-en="Project details, documentation and credits.">ข้อมูลโครงการ เอกสาร และที่มาของสิ่งที่ใช้</p></div>
+            <div class="nav-more-heading"><span data-en="About the project">ข้อมูลโครงการ</span></div>
             <div class="nav-more-grid">
-              <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="System architecture">แผนผังการทำงาน</strong><small data-en="From an image to an on-device answer">จากภาพสู่คำตอบบน iPhone</small></span></a>
-              <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Implementation and recorded checks">สิ่งที่ทำได้และผลการตรวจที่บันทึกไว้</small></span></a>
-              <a class="nav-more-link" href="/devices.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg><span><strong data-en="Supported devices">อุปกรณ์ที่รองรับ</strong><small data-en="iPhone models and Mac build requirements">รุ่น iPhone และข้อกำหนด Mac สำหรับ build</small></span></a>
-              <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="Open source and commercial enquiries">โอเพนซอร์สและข้อตกลงเชิงพาณิชย์</small></span></a>
-              <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, imagery and typefaces">โมเดล ภาพประกอบ และฟอนต์</small></span></a>
+              <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="How LunaV works">แผนผังการทำงาน</strong><small data-en="From the camera to an answer">จากกล้องถึงคำตอบ</small></span></a>
+              <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Current version and test results">เวอร์ชันล่าสุดและผลทดสอบ</small></span></a>
+              <a class="nav-more-link" href="/devices.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg><span><strong data-en="Supported devices">อุปกรณ์ที่รองรับ</strong><small data-en="iPhone compatibility and Mac setup">รุ่น iPhone ที่รองรับและการเตรียม Mac</small></span></a>
+              <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="AGPL and commercial licences">AGPL และสิทธิเชิงพาณิชย์</small></span></a>
+              <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, images, and fonts">โมเดล ภาพ และฟอนต์</small></span></a>
             </div>
-            <a class="nav-more-all" href="/resources.html" data-secondary-link><span data-en="All project resources">ดูข้อมูลเพิ่มเติมทั้งหมด</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a class="nav-more-all" href="/resources.html" data-secondary-link><span data-en="All project resources">ดูเอกสารและลิงก์ทั้งหมด</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
           </div>
         </div>
         <noscript><a class="nav-more-fallback" href="/resources.html">ข้อมูลเพิ่มเติม / Resources</a></noscript>
@@ -123,10 +123,10 @@
   <main class="demo-main" id="main">
     <div class="wrap demo-workspace">
       <header class="demo-intro">
-        <p class="demo-edition"><span class="tiny-orbit" aria-hidden="true"></span><span data-en="Interactive demo">เดโมแบบโต้ตอบ</span><span class="demo-version">3.2.1</span></p>
-        <h1 data-en="Try LunaV.">ลองใช้ LunaV</h1>
-        <p class="demo-lead" data-en="Choose a scene and ask LunaV to read text or find something in the photo.">เลือกฉากแล้วลองให้ LunaV อ่านข้อความหรือช่วยหาของในภาพ</p>
-        <p class="demo-scope" id="demo-scope" data-en="Answers are simulated. Your camera and photos are available for preview.">คำตอบในเดโมเป็นแบบจำลอง เปิดกล้องหรือเลือกรูปของคุณเพื่อดูตัวอย่างได้</p>
+        <p class="demo-edition"><span class="tiny-orbit" aria-hidden="true"></span><span data-en="Web demo">ทดลองบนเว็บ</span><span class="demo-version">3.2.1</span></p>
+        <h1 data-en="Try LunaV">ลองใช้ LunaV</h1>
+        <p class="demo-lead" data-en="Choose a sample photo, then try a question or read text in the image.">เลือกภาพตัวอย่าง แล้วลองถามหรือให้อ่านข้อความในภาพ</p>
+        <p class="demo-scope" id="demo-scope" data-en="Answers are simulated from sample scenes. Your camera and photos are for preview.">คำตอบจำลองอิงจากภาพตัวอย่าง คุณเปิดกล้องหรือเลือกรูปของตัวเองมาดูได้</p>
       </header>
 
         <section class="phone-stage" aria-label="หน้าจอจำลอง LunaV" data-en-aria="LunaV simulator" aria-describedby="demo-scope">
@@ -194,7 +194,7 @@
                           <span id="prep-time-label">เวลาที่ใช้เตรียม</span>
                           <span class="mono" id="prep-timer">0:01</span>
                         </div>
-                        <p class="app-prep-note" id="prep-note-text">เปิดครั้งแรกบนเครื่องนี้อาจใช้เวลาหลายนาที แอพจะลองใหม่อัตโนมัติหากเตรียมไม่สำเร็จ</p>
+                        <p class="app-prep-note" id="prep-note-text">เปิดครั้งแรกบนเครื่องนี้อาจใช้เวลาหลายนาที แอปจะลองใหม่อัตโนมัติหากเตรียมไม่สำเร็จ</p>
                       </div>
 
                       <!-- Inline Response Panel (responsePanel in CameraScreen.swift) -->
@@ -267,9 +267,9 @@
 
                     <!-- App Language -->
                     <div class="settings-group">
-                      <h3 class="settings-heading" id="st-lang-heading">ภาษาแอพ</h3>
+                      <h3 class="settings-heading" id="st-lang-heading">ภาษาแอป</h3>
                       <div class="settings-panel">
-                        <div class="segmented-control" role="group" aria-label="ภาษาแอพ">
+                        <div class="segmented-control" role="group" aria-label="ภาษาแอป">
                           <button type="button" class="seg-btn is-active" data-set-app-lang="th">ไทย</button>
                           <button type="button" class="seg-btn" data-set-app-lang="en">English</button>
                         </div>
@@ -307,7 +307,7 @@
                             <div class="labeled-row"><span id="st-sp-model-lbl">โมเดลเสียง</span><strong id="st-sp-model-val">เสียง Dictation ของ iOS</strong></div>
                             <div class="labeled-row"><span id="st-sp-ready-lbl">ภาษาเสียงบนเครื่อง</span><strong id="st-sp-ready-val">พร้อมใช้งาน</strong></div>
                             <p id="st-sp-desc-1">หากยังไม่มีภาษาเสียง iOS จะดาวน์โหลดจาก Apple ครั้งแรก หลังจากนั้นถอดคำถามบนเครื่อง เลือกภาษาให้ตรงกับคำถาม</p>
-                            <p id="st-sp-desc-2">แอพฟังต่อแม้คุณเว้นช่วงพูด และส่งคำถามเมื่อปล่อยปุ่มเท่านั้น</p>
+                            <p id="st-sp-desc-2">แอปฟังต่อแม้คุณเว้นช่วงพูด และส่งคำถามเมื่อปล่อยปุ่มเท่านั้น</p>
                             <p id="st-sp-desc-3">ลองพูดว่า อ่านเฉพาะราคา หรือ ช่วยหาขวดน้ำบนโต๊ะ</p>
                           </div>
                         </details>
@@ -346,7 +346,7 @@
                         <details class="settings-disclosure">
                           <summary id="st-tts-how-sum">วิธีเพิ่มเสียง</summary>
                           <div class="disclosure-body">
-                            <p id="st-tts-how-body">เลือกเสียงที่ติดตั้งบนเครื่องได้ทันที เพิ่มเสียงคุณภาพสูงได้ใน Settings → Accessibility → Read &amp; Speak → Voices ส่วนเสียง Siri ไม่เปิดให้แอพเลือกโดยตรง</p>
+                            <p id="st-tts-how-body">เลือกเสียงที่ติดตั้งบนเครื่องได้ทันที เพิ่มเสียงคุณภาพสูงได้ใน Settings → Accessibility → Read &amp; Speak → Voices ส่วนเสียง Siri ไม่เปิดให้แอปเลือกโดยตรง</p>
                           </div>
                         </details>
                       </div>
@@ -570,7 +570,7 @@
                     </div>
                     <div class="tool-controls-panel">
                       <h3 id="reg-guide-title">ลากกรอบรอบข้อความที่ต้องการ</h3>
-                      <p class="settings-footnote" id="reg-guide-sub">แอพจะอ่านหรือสรุปเฉพาะในกรอบนี้</p>
+                      <p class="settings-footnote" id="reg-guide-sub">แอปจะอ่านหรือสรุปเฉพาะในกรอบนี้</p>
                       <div class="region-presets-grid">
                         <button type="button" class="ios-bordered-btn is-selected" data-region-preset="full" id="regionFull">ทั้งภาพ</button>
                         <button type="button" class="ios-bordered-btn" data-region-preset="top" id="regionTop">ส่วนบน</button>
@@ -686,7 +686,7 @@
                       <div class="settings-brand-name">LunaV<span>.</span></div>
                     </div>
                     <div class="settings-panel">
-                      <div class="labeled-row"><span id="ab-ver-lbl">เวอร์ชันแอพ</span><strong class="mono" id="aboutVersion">3.2.1</strong></div>
+                      <div class="labeled-row"><span id="ab-ver-lbl">เวอร์ชันแอป</span><strong class="mono" id="aboutVersion">3.2.1</strong></div>
                       <hr class="settings-sep">
                       <div class="labeled-row"><span id="ab-bld-lbl">บิลด์</span><strong class="mono" id="aboutBuild">6</strong></div>
                     </div>
@@ -721,10 +721,10 @@
               </div>
             </div>
           </div>
-          <div class="stage-toolbar" role="group" aria-label="แถบควบคุมจำลองด่วน" data-en-aria="Quick simulator controls">
+          <div class="stage-toolbar" role="group" aria-label="ปุ่มควบคุมเดโม" data-en-aria="Demo controls">
             <button type="button" class="stage-pill-btn" id="btn-replay-app-intro">
               <svg class="icon" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-moon"/></svg>
-              <span data-en="Replay intro">เล่นหน้าเปิดแอป</span>
+              <span data-en="Replay intro">ดูหน้าเปิดแอปอีกครั้ง</span>
             </button>
             <button type="button" class="stage-pill-btn" id="btn-toggle-webcam">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-camera"/></svg>
@@ -732,17 +732,17 @@
             </button>
             <button type="button" class="stage-pill-btn" id="btn-upload-photo">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-upload"/></svg>
-              <span data-en="Preview a photo">ดูรูปของคุณ</span>
+              <span data-en="Choose a photo">เลือกรูปของคุณ</span>
             </button>
             <input type="file" id="demo-file-input" accept="image/*" hidden>
           </div>
           <p class="demo-media-status" id="demo-media-status" role="status" hidden></p>
         </section>
 
-        <div class="demo-controls-panel" aria-label="ฉากและคำถามตัวอย่าง" data-en-aria="Scenes and sample questions">
+        <div class="demo-controls-panel" aria-label="ภาพและคำถามตัวอย่าง" data-en-aria="Sample photos and questions">
           <!-- 1. Scene Selector & Sensor Mode -->
           <div class="control-card">
-            <h2 id="demo-scenes" data-en="Choose a scene">เลือกฉาก</h2>
+            <h2 id="demo-scenes" data-en="Choose a sample photo">เลือกภาพตัวอย่าง</h2>
             <div class="scene-selector-grid" role="group" aria-labelledby="demo-scenes">
               <button type="button" class="scene-card is-active" data-scene="cafe" aria-pressed="true">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-text"/></svg>
@@ -767,7 +767,7 @@
             </div>
 
             <div class="sensor-mode-bar">
-              <span class="sensor-mode-label" data-en="Simulated depth">จำลองแหล่งข้อมูลระยะ</span>
+              <span class="sensor-mode-label" data-en="Simulated distance">ระยะจำลอง</span>
               <div class="sensor-pills" role="group" aria-label="เลือกโหมดวัดระยะ" data-en-aria="Choose depth mode">
                 <button type="button" class="sensor-pill is-active" data-depth-mode="lidar" aria-pressed="true">LiDAR Scanner</button>
                 <button type="button" class="sensor-pill" data-depth-mode="da3" aria-pressed="false">Depth Anything 3 Metric</button>
@@ -828,92 +828,92 @@
           </div>
 
           <details class="control-card demo-disclosure demo-tools">
-            <summary data-en="Explore app tools">สำรวจเครื่องมือในแอป</summary>
+            <summary data-en="App tools">เครื่องมือในแอป</summary>
             <div class="screen-jumper-grid">
               <button type="button" class="jumper-btn is-active" data-open-screen="camera">
-                <strong data-en="Camera &amp; Shutter">หน้ากล้องหลัก</strong>
-                <small data-en="Hold-to-ask &amp; inline answer">กดค้างเพื่อถามและดูคำตอบ</small>
+                <strong data-en="Camera">หน้ากล้อง</strong>
+                <small data-en="Hold the shutter to ask">กดชัตเตอร์ค้างเพื่อถาม</small>
               </button>
               <button type="button" class="jumper-btn" data-open-screen="conversation">
-                <strong data-en="Conversation &amp; Modes">ถามภาพ · อ่าน · สรุป</strong>
-                <small data-en="3 modes &amp; follow-up chat">หน้าสนทนาและเลือกงาน 3 โหมด</small>
+                <strong data-en="Conversation">หน้าสนทนา</strong>
+                <small data-en="Ask, read, or summarize">ถามจากภาพ อ่าน หรือสรุปข้อความ</small>
               </button>
               <button type="button" class="jumper-btn" data-open-screen="sources">
-                <strong data-en="Text Groups (OCR)">แยกป้าย เมนู และฉลาก</strong>
-                <small data-en="Numbered boxes by object">กรอบหมายเลขแยกตามวัตถุ</small>
+                <strong data-en="Text groups">กลุ่มข้อความ</strong>
+                <small data-en="Browse text on signs, menus, and labels">เลือกอ่านข้อความจากป้าย เมนู และฉลาก</small>
               </button>
               <button type="button" class="jumper-btn" data-open-screen="region">
-                <strong data-en="Select Region">ลากกรอบเลือกพื้นที่</strong>
-                <small data-en="Crop top, middle, bottom, or custom">อ่านเฉพาะส่วนบน กลาง ล่าง หรือลากเอง</small>
+                <strong data-en="Select an area">เลือกพื้นที่</strong>
+                <small data-en="Drag a box around text to read it">ลากกรอบรอบข้อความที่ต้องการอ่าน</small>
               </button>
               <button type="button" class="jumper-btn" data-open-screen="distance">
-                <strong data-en="Measure Distance">แตะวัดระยะ LiDAR / DA3</strong>
-                <small data-en="Tap any surface for meters">แตะจุดใดก็ได้ในภาพเพื่อดูค่าระยะ</small>
+                <strong data-en="Distance">วัดระยะ</strong>
+                <small data-en="Tap the photo to see a simulated distance">แตะจุดในภาพเพื่อดูระยะจำลอง</small>
               </button>
               <button type="button" class="jumper-btn" data-open-screen="settings">
-                <strong data-en="Settings &amp; Haptics">ตั้งค่าและเตือนสิ่งกีดขวาง</strong>
-                <small data-en="Language, voices &amp; LiDAR alerts">ภาษา เสียงอ่าน และการสั่นเตือน</small>
+                <strong data-en="Settings">ตั้งค่า</strong>
+                <small data-en="Language, voices, and vibration alerts">ภาษา เสียงอ่าน และการสั่นเตือน</small>
               </button>
               <button type="button" class="jumper-btn" data-open-screen="performance">
-                <strong data-en="Runtime &amp; MLX">ข้อมูลการทำงาน</strong>
-                <small data-en="Tokens/s, memory &amp; depth map">ความเร็วโมเดล หน่วยความจำ และแผนที่ระยะ</small>
+                <strong data-en="Performance details">ข้อมูลการทำงาน</strong>
+                <small data-en="Model speed, memory, and depth map">ความเร็วโมเดล หน่วยความจำ และแผนที่ระยะ</small>
               </button>
               <button type="button" class="jumper-btn" data-open-screen="about">
-                <strong data-en="About LunaV 3.2.1">เกี่ยวกับ LunaV</strong>
-                <small data-en="Version, build &amp; creator">เวอร์ชัน 3.2.1 บิลด์ 6 และผู้จัดทำ</small>
+                <strong data-en="About LunaV">เกี่ยวกับ LunaV</strong>
+                <small data-en="Version 3.2.1, build 6, and creator">เวอร์ชัน 3.2.1 บิลด์ 6 และผู้จัดทำ</small>
               </button>
             </div>
           </details>
 
           <details class="control-card demo-disclosure demo-voice-options">
-            <summary data-en="Try speaking with your microphone">ทดลองพูดผ่านไมโครโฟน</summary>
+            <summary data-en="Try the microphone">ทดลองใช้ไมโครโฟน</summary>
             <label class="voice-option">
               <input type="checkbox" id="demo-voice-input" aria-describedby="demo-voice-privacy">
-              <span data-en="Enable browser speech recognition">เปิดการรู้จำเสียงของเบราว์เซอร์</span>
+              <span data-en="Let the browser turn speech into text">ให้เบราว์เซอร์แปลงเสียงเป็นข้อความ</span>
             </label>
-            <p id="demo-voice-privacy" data-en="When enabled, hold the shutter to speak. Your browser may process speech online. Sample questions work without a microphone.">เมื่อเปิดแล้ว ให้กดชัตเตอร์ค้างเพื่อพูด เบราว์เซอร์อาจประมวลผลเสียงผ่านอินเทอร์เน็ต คำถามตัวอย่างใช้ได้โดยไม่เปิดไมค์</p>
+            <p id="demo-voice-privacy" data-en="Hold the shutter and speak. Your browser may use the internet to transcribe your voice. You can use sample questions with the microphone off.">กดชัตเตอร์ค้างแล้วพูด เบราว์เซอร์อาจใช้อินเทอร์เน็ตในการถอดเสียง คุณใช้คำถามตัวอย่างได้โดยปิดไมค์ไว้</p>
           </details>
 
           <details class="control-card pipeline-card demo-disclosure">
             <summary data-en="See how the iPhone app works">ดูขั้นตอนของแอปบน iPhone</summary>
             <div class="pipeline-header">
-              <h3 data-en="Simulated on-device pipeline">ลำดับการทำงานบนเครื่องที่กำลังจำลอง</h3>
-              <a class="text-link" href="lunavision-architecture.html"><span data-en="Full architecture">ดูแผนผังฉบับเต็ม</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+              <h3 data-en="From photo to answer">จากภาพถึงคำตอบ</h3>
+              <a class="text-link" href="lunavision-architecture.html"><span data-en="See the full diagram">ดูแผนผังฉบับเต็ม</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
             </div>
             <ol class="pipeline-steps" id="pipeline-steps">
               <li class="pipe-step is-active" data-pipe="capture">
                 <span class="pipe-dot"></span>
                 <div>
-                  <strong data-en="1. Camera &amp; Shutter">1. กล้องและปุ่มชัตเตอร์เดียว</strong>
-                  <small id="pipe-desc-capture" data-en="Paired RGB photo + LiDAR / EXIF depth snapshot">เก็บภาพสีคู่กับข้อมูลระยะจากเฟรมเดียวกัน</small>
+                  <strong data-en="1. Capture a photo">1. ถ่ายภาพ</strong>
+                  <small id="pipe-desc-capture" data-en="The camera takes a photo while you ask a question">กล้องถ่ายภาพขณะที่คุณถาม</small>
                 </div>
               </li>
               <li class="pipe-step" data-pipe="speech">
                 <span class="pipe-dot"></span>
                 <div>
-                  <strong data-en="2. On-Device Dictation ASR">2. ถอดเสียงคำถามบนเครื่อง (Apple Dictation)</strong>
-                  <small id="pipe-desc-speech" data-en="Transcribes Thai or English when shutter is released">แปลงเสียงพูดภาษาไทยหรืออังกฤษเมื่อปล่อยปุ่ม</small>
+                  <strong data-en="2. Transcribe the question">2. ถอดเสียงคำถาม</strong>
+                  <small id="pipe-desc-speech" data-en="Apple Dictation turns Thai or English speech into text">Apple Dictation แปลงเสียงพูดไทยหรืออังกฤษเป็นข้อความ</small>
                 </div>
               </li>
               <li class="pipe-step" data-pipe="vision">
                 <span class="pipe-dot"></span>
                 <div>
-                  <strong data-en="3. Apple Vision OCR &amp; Depth Reader">3. แยกข้อความ OCR และอ่านแผนที่ระยะ</strong>
-                  <small id="pipe-desc-vision" data-en="Groups text lines by surface &amp; samples metric depth">จัดกลุ่มบรรทัดตามพื้นผิวและวัดระยะเป็นเมตร</small>
+                  <strong data-en="3. Read text or distance">3. อ่านข้อความหรือดูระยะ</strong>
+                  <small id="pipe-desc-vision" data-en="Use Apple Vision for text and LiDAR or DA3 for distance">ใช้ Apple Vision อ่านข้อความ และใช้ LiDAR หรือ DA3 ดูระยะ</small>
                 </div>
               </li>
               <li class="pipe-step" data-pipe="qwen">
                 <span class="pipe-dot"></span>
                 <div>
-                  <strong data-en="4. Qwen3-VL-2B-Instruct (4-bit MLX)">4. โมเดลภาพและภาษา Qwen3-VL-2B (4-bit)</strong>
-                  <small id="pipe-desc-qwen" data-en="Answers visual questions, classifies labels &amp; locates objects">ตอบคำถามจากภาพ ระบุชนิดฉลาก และหาตำแหน่งวัตถุ</small>
+                  <strong data-en="4. Answer questions about the photo">4. ตอบคำถามจากภาพ</strong>
+                  <small id="pipe-desc-qwen" data-en="Qwen3-VL can describe the photo and help find objects">Qwen3-VL บอกสิ่งที่อยู่ในภาพและช่วยหาของได้</small>
                 </div>
               </li>
               <li class="pipe-step" data-pipe="output">
                 <span class="pipe-dot"></span>
                 <div>
-                  <strong data-en="5. Spoken Answer &amp; Haptic Cues">5. อ่านคำตอบด้วยเสียง Apple และสัญญาณเตือน</strong>
-                  <small id="pipe-desc-output" data-en="Speaks concise answers aloud &amp; plays centered object cue">อ่านคำตอบอัตโนมัติและส่งเสียงเมื่อของที่หาอยู่กลางภาพ</small>
+                  <strong data-en="5. Read the answer aloud">5. อ่านคำตอบออกเสียง</strong>
+                  <small id="pipe-desc-output" data-en="An Apple voice reads the answer. A tone can signal when an object is centered.">อ่านคำตอบด้วยเสียงของ Apple และส่งเสียงสั้น ๆ ได้เมื่อของที่หาอยู่กลางภาพ</small>
                 </div>
               </li>
             </ol>

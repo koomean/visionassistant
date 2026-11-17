@@ -50,43 +50,43 @@ import { assessCompatibility, detectDevice, minimumIOS } from './device-compatib
       || localized('อุปกรณ์นี้', 'This device');
     setCheckText('name', name);
     const statuses = {
-      supported: localized('รองรับตามเงื่อนไขของรุ่นและ iOS', 'Meets the model and iOS requirements'),
-      likely: localized('น่าจะรองรับ', 'Likely compatible'),
+      supported: localized('รุ่นและ iOS รองรับ LunaV', 'Your model and iOS version meet the requirements'),
+      likely: localized('น่าจะใช้ LunaV ได้', 'Likely compatible'),
       update: localized(`ต้องอัปเดตเป็น ${ios} ขึ้นไป`, `Update to ${ios} or later`),
-      'check-os': localized('ตรวจสอบเวอร์ชัน iOS เพิ่มเติม', 'Check your iOS version'),
-      'check-model': localized('ยังยืนยันความเข้ากันไม่ได้', 'Compatibility not confirmed'),
+      'check-os': localized('ตรวจเวอร์ชัน iOS', 'Check your iOS version'),
+      'check-model': localized('ต้องยืนยันรุ่นก่อน', 'Confirm your model'),
       unsupported: localized('อุปกรณ์นี้ไม่รองรับ', 'This device is not supported'),
     };
     setCheckText('status', statuses[result.status]);
 
     let detail;
     if (kind === 'apple-mobile' && !model) {
-      detail = localized('เบราว์เซอร์แสดงไซต์เดสก์ท็อปอยู่ หากใช้ iPhone ให้เลือกรุ่นด้านล่างหรือสลับเป็นไซต์มือถือ', 'Your browser is showing the desktop site. On iPhone, select your model below or switch to the mobile site.');
+      detail = localized('ตอนนี้เบราว์เซอร์เปิดเว็บแบบเดสก์ท็อป ถ้าใช้ iPhone ให้เลือกรุ่นหรือเปิดเว็บแบบมือถือ', 'You’re viewing the desktop site. On iPhone, select your model below or switch to the mobile site.');
     } else if (kind !== 'iphone' && kind !== 'apple-mobile') {
       detail = kind === 'mac'
-        ? localized('แอป LunaV ใช้บน iPhone เท่านั้น Mac ใช้สำหรับ build แอปได้ตามข้อกำหนดด้านล่าง', 'LunaV runs on iPhone only. A Mac that meets the requirements below can build the app.')
-        : localized(`แอป LunaV ใช้ได้บน iPhone ที่รองรับ ${ios} ขึ้นไปเท่านั้น`, `LunaV runs only on iPhone models that support ${ios} or later.`);
+        ? localized('LunaV เป็นแอป iPhone ดูข้อกำหนดสำหรับสร้างแอปบน Mac ได้ด้านล่าง', 'LunaV runs on iPhone. See the Mac build requirements below.')
+        : localized(`LunaV ใช้ได้เฉพาะ iPhone ที่ใช้ ${ios} ขึ้นไป`, `LunaV runs only on iPhones with ${ios} or later.`);
     } else {
       const modelNote = model
-        ? localized('รุ่นที่คุณเลือก', 'Model you selected')
+        ? ''
         : possible > 1
-          ? localized(`ขนาดจอตรงกับ iPhone ${possible} รุ่น กรุณาเลือกรุ่นเพื่อยืนยัน`, `${possible} iPhone models match this screen size. Select yours to confirm.`)
+          ? localized(`ขนาดหน้าจอตรงกับ iPhone ${possible} รุ่น เลือกรุ่นของคุณด้านล่าง`, `${possible} iPhone models match this screen size. Select yours below.`)
           : possible === 1
-            ? localized('รุ่นที่คาดจากขนาดจอ กรุณาตรวจชื่อรุ่นเพื่อยืนยัน', 'Suggested from the screen size. Confirm the model name below.')
-            : localized('เบราว์เซอร์ระบุรุ่นไม่ได้ เลือกรุ่นจากรายการด้านล่างได้', 'Your browser couldn’t identify the model. Choose it below.');
+            ? localized('คาดจากขนาดหน้าจอ เช็กชื่อรุ่นเพื่อยืนยัน', 'Suggested from your screen size. Check the model name to confirm.')
+            : localized('เบราว์เซอร์ระบุรุ่นไม่ได้ เลือกจากรายการด้านล่าง', 'Your browser couldn’t identify the model. Choose it below.');
       const osNote = result.status === 'unsupported'
         ? localized(`รุ่นนี้อัปเดตเป็น ${ios} ไม่ได้`, `This model can’t update to ${ios}.`)
         : detectedOS
-          ? localized(`ตรวจพบ ${detectedOS} · ต้องใช้ ${ios} ขึ้นไป`, `Detected ${detectedOS} · requires ${ios} or later.`)
-          : localized(`เบราว์เซอร์ไม่รายงานเวอร์ชัน iOS ที่ชัดเจน ต้องใช้ ${ios} ขึ้นไป`, `Your browser doesn’t report a clear iOS version. ${ios} or later is required.`);
-      detail = `${modelNote.replace(/\.$/, '')}${localized(' · ', '. ')}${osNote}`;
+          ? localized(`ตรวจพบ ${detectedOS}`, `Detected ${detectedOS}.`)
+          : localized(`ตรวจที่ การตั้งค่า → ทั่วไป → เกี่ยวกับ (ต้องใช้ ${ios} ขึ้นไป)`, `Check in Settings → General → About. LunaV needs ${ios} or later.`);
+      detail = [modelNote, osNote].filter(Boolean).join(localized(' · ', ' '));
     }
     setCheckText('description', detail);
     setCheckText('matches', !model && possible > 1 ? device.candidates.join(' · ') : '');
     setCheckText('depth', result.depth === 'lidar'
-      ? localized('วัดระยะด้วย LiDAR หลัง', 'Depth: rear LiDAR')
+      ? localized('วัดระยะด้วย LiDAR ด้านหลัง', 'Measures distance with rear LiDAR')
       : result.depth === 'da3'
-        ? localized('ประมาณระยะด้วย Depth Anything 3 เมื่อข้อมูลเลนส์พร้อม', 'Depth: estimated by Depth Anything 3 when lens data is available')
+        ? localized('ใช้ Depth Anything 3 ประมาณระยะเมื่อมีข้อมูลเลนส์', 'Depth Anything 3 estimates distance when lens data is available')
         : '');
     setCheckText('evidence', model ? (catalogEvidence.get(model)?.textContent || '') : '');
   }

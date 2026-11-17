@@ -6,10 +6,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#080f20">
-  <meta name="description" content="สถานะแอป LunaV ปัจจุบัน ผลการตรวจที่บันทึกไว้ และขอบเขตของหลักฐาน" data-description-th="สถานะแอป LunaV ปัจจุบัน ผลการตรวจที่บันทึกไว้ และขอบเขตของหลักฐาน" data-description-en="Current LunaV implementation, recorded validation results, and their limits.">
+  <meta name="description" content="เวอร์ชันปัจจุบันของ LunaV ผลทดสอบ และคำอธิบายวิธีอ่านผล" data-description-th="เวอร์ชันปัจจุบันของ LunaV ผลทดสอบ และคำอธิบายวิธีอ่านผล" data-description-en="Current LunaV version, test results, and how to read them.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="สถานะโครงการ — LunaV">
-  <meta property="og:description" content="สถานะแอป LunaV ปัจจุบัน ผลการตรวจที่บันทึกไว้ และขอบเขตของหลักฐาน">
+  <meta property="og:description" content="เวอร์ชันปัจจุบันของ LunaV ผลทดสอบ และคำอธิบายวิธีอ่านผล">
   <meta property="og:locale" content="th_TH">
   <meta property="og:url" content="https://lunavision.koomean.com/project-status.html">
   <link rel="canonical" href="https://lunavision.koomean.com/project-status.html">
@@ -66,8 +66,8 @@
     <div class="header-inner wrap">
       <a class="brand" href="/#overview" data-home-anchor="overview" aria-label="LunaV หน้าแรก" data-en-aria="LunaV home"><svg class="brand-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M26 19.1A12 12 0 0 1 12.9 6 12 12 0 1 0 26 19.1Z"/><path d="m23 3 .9 3.1L27 7l-3.1.9L23 11l-.9-3.1L19 7l3.1-.9Z"/></svg><span>LunaV<span class="brand-dot">.</span></span></a>
       <nav id="navigation" aria-label="เมนูหลัก" data-en-aria="Main navigation">
-        <a href="/#features" data-home-anchor="features" data-en="Explore">ความสามารถ</a>
-        <a href="/#how" data-home-anchor="how" data-en="How it works">วิธีทำงาน</a>
+        <a href="/#features" data-home-anchor="features" data-en="Features">ความสามารถ</a>
+        <a href="/#how" data-home-anchor="how" data-en="How to use it">วิธีใช้แอป</a>
         <a href="/#models" data-home-anchor="models" data-en="Technology">เทคโนโลยี</a>
         <a href="/#privacy" data-home-anchor="privacy" data-en="Privacy">ความเป็นส่วนตัว</a>
         <a href="/#opensource" data-home-anchor="opensource" data-en="Open source">โอเพนซอร์ส</a>
@@ -76,15 +76,15 @@
         <div class="nav-more">
           <button class="nav-more-toggle" type="button" aria-expanded="false" aria-controls="more-navigation"><span data-en="More">อื่น ๆ</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
           <div class="nav-more-panel" id="more-navigation" hidden>
-            <div class="nav-more-heading"><span data-en="A closer look at LunaV">รู้จัก LunaV ให้มากขึ้น</span><p data-en="Project details, documentation and credits.">ข้อมูลโครงการ เอกสาร และที่มาของสิ่งที่ใช้</p></div>
+            <div class="nav-more-heading"><span data-en="About the project">ข้อมูลโครงการ</span></div>
             <div class="nav-more-grid">
-              <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="System architecture">แผนผังการทำงาน</strong><small data-en="From an image to an on-device answer">จากภาพสู่คำตอบบน iPhone</small></span></a>
-              <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Implementation and recorded checks">สิ่งที่ทำได้และผลการตรวจที่บันทึกไว้</small></span></a>
-              <a class="nav-more-link" href="/devices.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg><span><strong data-en="Supported devices">อุปกรณ์ที่รองรับ</strong><small data-en="iPhone models and Mac build requirements">รุ่น iPhone และข้อกำหนด Mac สำหรับ build</small></span></a>
-              <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="Open source and commercial enquiries">โอเพนซอร์สและข้อตกลงเชิงพาณิชย์</small></span></a>
-              <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, imagery and typefaces">โมเดล ภาพประกอบ และฟอนต์</small></span></a>
+              <a class="nav-more-link" href="/lunavision-architecture.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1.5"/><rect x="2" y="16" width="8" height="6" rx="1.5"/><rect x="14" y="16" width="8" height="6" rx="1.5"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span><strong data-en="How LunaV works">แผนผังการทำงาน</strong><small data-en="From the camera to an answer">จากกล้องถึงคำตอบ</small></span></a>
+              <a class="nav-more-link" href="/project-status.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-5 4 3 5-7"/></svg><span><strong data-en="Project status">สถานะโครงการ</strong><small data-en="Current version and test results">เวอร์ชันล่าสุดและผลทดสอบ</small></span></a>
+              <a class="nav-more-link" href="/devices.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg><span><strong data-en="Supported devices">อุปกรณ์ที่รองรับ</strong><small data-en="iPhone compatibility and Mac setup">รุ่น iPhone ที่รองรับและการเตรียม Mac</small></span></a>
+              <a class="nav-more-link" href="/licensing.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H5V3Zm8 0v5h5M8 12h8m-8 4h6"/></svg><span><strong data-en="Licensing">สิทธิการใช้งาน</strong><small data-en="AGPL and commercial licences">AGPL และสิทธิเชิงพาณิชย์</small></span></a>
+              <a class="nav-more-link" href="/credits.html" data-secondary-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1Z"/></svg><span><strong data-en="Credits and sources">เครดิตและแหล่งที่มา</strong><small data-en="Models, images, and fonts">โมเดล ภาพ และฟอนต์</small></span></a>
             </div>
-            <a class="nav-more-all" href="/resources.html" data-secondary-link><span data-en="All project resources">ดูข้อมูลเพิ่มเติมทั้งหมด</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a class="nav-more-all" href="/resources.html" data-secondary-link><span data-en="All project resources">ดูเอกสารและลิงก์ทั้งหมด</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
           </div>
         </div>
         <noscript><a class="nav-more-fallback" href="/resources.html">ข้อมูลเพิ่มเติม / Resources</a></noscript>
@@ -101,21 +101,15 @@
   <!-- site-header:end -->
   <main id="main" class="wrap document-main">
     <a class="document-back" href="./"><svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg><span data-en="Back to LunaV">กลับหน้า LunaV</span></a>
-    <nav class="document-navigation" aria-label="เอกสาร" data-en-aria="Project documents"><a href="resources.html"><span data-en="All resources">ข้อมูลเพิ่มเติม</span></a><a href="demo.html"><span data-en="Try demo">ทดลองแอป</span></a><a href="lunavision-architecture.html"><span data-en="System architecture">แผนผังการทำงาน</span></a><a href="devices.html"><span data-en="Supported devices">อุปกรณ์ที่รองรับ</span></a><a href="project-status.html" aria-current="page"><span data-en="Project status">สถานะโครงการ</span></a><a href="licensing.html"><span data-en="Commercial licensing">การอนุญาตใช้สิทธิ</span></a><a href="credits.html"><span data-en="Asset credits">เครดิตทรัพยากร</span></a></nav>
+    <nav class="document-navigation" aria-label="เอกสาร" data-en-aria="Project documents"><a href="resources.html"><span data-en="All resources">เอกสารทั้งหมด</span></a><a href="demo.html"><span data-en="Try demo">ทดลองแอป</span></a><a href="lunavision-architecture.html"><span data-en="How LunaV works">แผนผังการทำงาน</span></a><a href="devices.html"><span data-en="Supported devices">อุปกรณ์ที่รองรับ</span></a><a href="project-status.html" aria-current="page"><span data-en="Project status">สถานะโครงการ</span></a><a href="licensing.html"><span data-en="Licensing">สิทธิการใช้งาน</span></a><a href="credits.html"><span data-en="Credits and sources">เครดิตและแหล่งที่มา</span></a></nav>
     <article class="document" data-document-language="th" lang="th">
 <h1 lang="th">สถานะโครงการ LunaV</h1>
-<p lang="th"><strong>ตรวจหลักฐานถึงวันที่ 16 พฤศจิกายน 2026</strong> LunaV <strong>3.2.1 (บิลด์ 6)</strong> เป็นต้นแบบวิจัยบน iPhone ที่ประมวลผลในเครื่อง ใช้กล้องและเสียงช่วยให้คนตาบอด ผู้มีสายตาเลือนราง และคนที่มองเห็นลำบากในบางสถานการณ์ทำกิจวัตรได้สะดวกขึ้น GitHub ของโครงการเผยแพร่เว็บไซต์และประกาศสิทธิ พร้อมซอร์สแอปและ Motion ในไฟล์แนบของรุ่นที่เผยแพร่ <a href="https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source">ดาวน์โหลดซอร์ส 3.2.1</a></p>
-<h2 lang="th">การอ่านและการช่วยมองจากภาพ</h2>
-<ul>
-<li lang="th"><strong>ถามต่อจากภาพเดิม</strong> เปิด <strong>ตั้งค่า → ใช้ภาพเดิมเมื่อกดค้าง</strong> เพื่อถามต่อจากภาพล่าสุดและข้อมูลระยะที่จับคู่ไว้ แตะชัตเตอร์สั้นเพื่อถ่ายใหม่ ผู้ใช้ VoiceOver เลือก <strong>ถามต่อจากภาพนี้</strong> จากรายการการทำงานของชัตเตอร์ได้</li>
-<li lang="th"><strong>อ่านเฉพาะข้อมูลที่ขอ</strong> พูดภาษาไทยหรืออังกฤษได้ เช่น «อ่านเฉพาะราคาด้านขวา» หรือ «อ่านแค่เลขรถเมล์» แอปใช้ข้อความที่ Apple Vision OCR อ่านได้จากภาพ และขอให้ระบุรายการหรือบริเวณเพิ่มเมื่อพบหลายค่าที่ตรงกัน</li>
-<li lang="th"><strong>ช่วยหาของใกล้ตัว</strong> พูดว่า «ช่วยหาขวดน้ำบนโต๊ะ» เพื่อถ่ายภาพใหม่แล้วฟังทิศของวัตถุเทียบกับกรอบภาพ ถ้าพบหลายชิ้นที่ตรงกัน แอปจะขอให้ระบุสีหรือลักษณะเพิ่ม เมื่อยืนยันว่าของอยู่กลางภาพที่เพิ่งถ่าย แอปส่งเสียงสั้นและสั่นบนอุปกรณ์ที่รองรับ เล็งกล้องใหม่แล้วถามซ้ำได้</li>
-<li lang="th"><strong>อ่านข้อความเด่น</strong> ใน 3.2.1 คำขอทั่วไปอย่าง «อ่านฉลาก» จะเลือกหัวข้อเด่นก่อนข้อความเล็กอย่างจำนวนบนบรรจุภัณฑ์ ขอให้อ่านทั้งหมดหรือระบุช่องข้อมูลได้ ถ้ามีหลายหัวข้อเด่น แอปอาจถามว่าต้องการให้อ่านส่วนไหน</li>
-</ul>
-<h2 lang="th">ผลตรวจล่าสุด</h2>
-<h3 lang="th">iPhone Simulator — 12 พฤศจิกายน 2026</h3>
-<p lang="th">ชุดทดสอบเฉพาะจุดของ <strong>3.2.1 (บิลด์ 6)</strong> รันบน iPhone 17 Simulator ที่ใช้ iOS 27.2</p>
-<div class="document-table" role="region" tabindex="0" aria-label="ตาราง: iPhone Simulator — 12 พฤศจิกายน 2026"><table><thead><tr>
+<p lang="th">LunaV <strong>3.2.1 (บิลด์ 6)</strong> คือรุ่นปัจจุบันของแอปต้นแบบวิจัยบน iPhone <a href="https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source">ดาวน์โหลดซอร์สจาก GitHub</a></p>
+<h2 lang="th">ผลทดสอบล่าสุด</h2>
+<p lang="th">ตารางสามชุดนี้สรุปว่าทดสอบอะไรกับ LunaV 3.2.1 ได้ผลอย่างไร และแต่ละชุดบอกอะไรได้บ้าง</p>
+<h3 lang="th">เครื่องจำลอง iPhone — 12 พฤศจิกายน 2026</h3>
+<p lang="th">ทดสอบการอ่านข้อความและเลขเวอร์ชันบนเครื่องจำลอง iPhone 17 ที่ใช้ iOS 27.2</p>
+<div class="document-table" role="region" tabindex="0" aria-label="ตาราง: เครื่องจำลอง iPhone — 12 พฤศจิกายน 2026"><table><thead><tr>
 <th scope="col">การทดสอบ</th>
 <th scope="col">ผ่าน</th>
 <th scope="col">สิ่งที่ตรวจ</th>
@@ -123,73 +117,73 @@
 <tr>
 <td>ทดสอบหน่วย</td>
 <td><strong>21/21</strong></td>
-<td>อ่านเอกสาร ข้อความเด่น ข้อมูลเฉพาะที่ขอ และเลขรุ่นในแอป</td>
+<td>อ่านเอกสาร หัวข้อเด่น ข้อมูลเฉพาะที่ขอ และเลขเวอร์ชันในแอป</td>
 </tr>
 <tr>
 <td>ทดสอบหน้าจอ</td>
 <td><strong>2/2</strong></td>
-<td>สั่งให้อ่านหัวฉลากและอ่านราคาที่ระบุด้วย Apple Vision OCR ทั้งสองกรณีใช้ข้อมูลกล้องและการถอดเสียงจำลอง</td>
+<td>สั่งให้อ่านหัวฉลากหรือราคาที่ระบุ โดยใช้ภาพและคำสั่งเสียงจำลอง</td>
 </tr>
 <tr>
 <td>รวม</td>
 <td><strong>23/23</strong></td>
-<td>รอบนี้ไม่มีรายการล้มเหลว ถูกข้าม หรือคำเตือนขณะรันที่บันทึกไว้</td>
+<td>ผ่านทุกกรณีโดยไม่มีรายการที่ข้ามหรือคำเตือนขณะรันที่บันทึกไว้</td>
 </tr>
 </tbody></table></div>
-<p lang="th">การอ่านหัวฉลากรอบแรกในวันเดียวกันไม่ผ่าน ก่อนผ่านในชุด 23 กรณีนี้</p>
-<h3 lang="th">การทดสอบส่วนประกอบบน Mac — 16 พฤศจิกายน 2026</h3>
-<p lang="th">ทดสอบด้วยไฟล์บน Apple Silicon ที่ใช้ macOS 27.2.1 และเครื่องมือที่สร้างจากซอร์ส LunaV 3.2.1 (บิลด์ 6) การอ่านภาพใช้ Apple Vision โมเดลภาพใช้ Qwen3-VL-2B-Instruct 4-bit ผ่าน MLX และการถอดเสียงใช้ตัวถอด Apple Dictation ของแอป CER คืออัตราผิดระดับอักขระ ส่วน WER คืออัตราผิดระดับคำ ทั้งสองค่ายิ่งต่ำยิ่งดี แต่ละผลอ้างอิงอินพุตและวิธีให้คะแนนของชุดนั้น</p>
-<div class="document-table" role="region" tabindex="0" aria-label="ตาราง: การทดสอบส่วนประกอบบน Mac — 16 พฤศจิกายน 2026"><table><thead><tr>
+<p lang="th">กรณีอ่านหัวฉลากไม่ผ่านในรอบก่อนหน้าของวันเดียวกัน และผ่านในรอบนี้</p>
+<h3 lang="th">ทดสอบแยกตามฟีเจอร์บน Mac — 16 พฤศจิกายน 2026</h3>
+<p lang="th">ทดสอบด้วยไฟล์ภาพและไฟล์เสียงบน Mac ชิป Apple silicon ที่ใช้ macOS 27.2.1 ระบบอ่านข้อความจากภาพเรียกว่า OCR ส่วน CER คืออัตราผิดระดับตัวอักษร และ WER คืออัตราผิดระดับคำ ทั้งสองค่ายิ่งต่ำยิ่งดี</p>
+<div class="document-table" role="region" tabindex="0" aria-label="ตาราง: ทดสอบแยกตามฟีเจอร์บน Mac — 16 พฤศจิกายน 2026"><table><thead><tr>
 <th scope="col">การทดสอบ</th>
-<th scope="col">ชุดข้อมูลที่ใช้</th>
-<th scope="col">ผลที่บันทึก</th>
+<th scope="col">ข้อมูลที่ใช้</th>
+<th scope="col">ผล</th>
 </tr></thead><tbody>
 <tr>
-<td>OCR</td>
-<td><a href="https://data.mendeley.com/datasets/ntdmgksh9w/5">TEMS v5</a> ภาพครอปข้อความ 514 ภาพ</td>
-<td><strong>CER 3.07%</strong> อ่านตรงทุกตัวอักษร <strong>434/514</strong> ภาพ</td>
+<td>อ่านข้อความ</td>
+<td>ภาพครอปข้อความ 514 ภาพจาก <a href="https://data.mendeley.com/datasets/ntdmgksh9w/5">TEMS v5</a></td>
+<td><strong>CER 3.07%</strong> อ่านตรงทุกตัว <strong>434/514</strong> ภาพ</td>
 </tr>
 <tr>
-<td>ถามตอบจากภาพ</td>
-<td><a href="https://vizwiz.org/tasks-and-datasets/vqa/">VizWiz VQA</a> 150 คำถาม</td>
+<td>ตอบคำถามจากภาพ</td>
+<td>150 คำถามจาก <a href="https://vizwiz.org/tasks-and-datasets/vqa/">VizWiz VQA</a></td>
 <td><strong>56.07%</strong> ตามวิธีให้คะแนนของ VizWiz</td>
 </tr>
 <tr>
 <td>ช่วยหาวัตถุ</td>
-<td>ฉากสังเคราะห์ 50 ฉาก</td>
-<td><strong>39/50 (78%)</strong> ตรงกับคำตอบที่คาดไว้</td>
+<td>ฉากจำลอง 50 ฉาก</td>
+<td>ตอบตรงตามที่คาด <strong>39/50 (78%)</strong></td>
 </tr>
 <tr>
 <td>ถอดเสียงไทย</td>
-<td><a href="https://huggingface.co/datasets/google/fleurs">FLEURS</a> 50 คลิป</td>
+<td>เสียงไทย 50 คลิปจาก <a href="https://huggingface.co/datasets/google/fleurs">FLEURS</a></td>
 <td><strong>CER 10.73%</strong> ได้ข้อความครบ 50 คลิป</td>
 </tr>
 <tr>
 <td>ถอดเสียงอังกฤษ</td>
-<td><a href="https://huggingface.co/datasets/google/fleurs">FLEURS</a> สำเนียงสหรัฐฯ 50 คลิป</td>
+<td>เสียงอังกฤษสำเนียงสหรัฐฯ 50 คลิปจาก <a href="https://huggingface.co/datasets/google/fleurs">FLEURS</a></td>
 <td><strong>CER 22.68%</strong> และ <strong>WER 28.00%</strong> ถอดไม่ได้ 10 คลิป</td>
 </tr>
 <tr>
 <td>สรุปเอกสาร</td>
-<td>ภาพเอกสารสังเคราะห์ 8 ภาพ</td>
-<td>คง <strong>18/27 ข้อเท็จจริง</strong> และครบทุกข้อ <strong>3/8 เอกสาร</strong></td>
+<td>ภาพเอกสารจำลอง 8 ภาพ</td>
+<td>เก็บข้อมูลได้ <strong>18/27 ข้อ</strong> และครบทุกข้อ <strong>3/8 เอกสาร</strong></td>
 </tr>
 </tbody></table></div>
 <ul>
-<li lang="th"><strong>OCR</strong> ต้องแก้ 263 ครั้งจากข้อความอ้างอิง 8,571 อักขระ นับระดับคำโดยแบ่งด้วยช่องว่างได้ WER 10.64% ภาพ 8 ภาพที่ไม่ได้ข้อความนับเป็นการลบ</li>
-<li lang="th"><strong>ถามตอบจากภาพ</strong> ได้ 48.10% ในกลุ่มที่ตอบได้ 100 ข้อ และ 72.00% ในกลุ่มที่ตอบไม่ได้ 50 ข้อ โมเดลตอบว่าตอบไม่ได้ 13 และ 35 ข้อในสองกลุ่มตามลำดับ มีหนึ่งภาพที่เตี้ยกว่าขนาดขั้นต่ำของโมเดลและได้ศูนย์คะแนน</li>
-<li lang="th"><strong>ช่วยหาวัตถุ</strong> ซ้าย 10/10 ขวา 10/10 ตรงกลาง 4/10 ไม่พบวัตถุ 10/10 และพบหลายชิ้น 5/10 อีกหกฉากที่วัตถุอยู่กลางภาพได้คำขอให้เล็งกล้องใหม่</li>
-<li lang="th"><strong>ถอดเสียง</strong> ภาษาไทยต้องแก้ 628 ครั้งจาก 5,854 อักขระ ภาษาอังกฤษต้องแก้ 1,139 ครั้งจาก 5,023 อักขระ คลิปอังกฤษที่ถอดไม่ได้ 10 คลิปนับเป็นการลบ ส่วน 40 คลิปที่ได้ข้อความมี CER 5.36%</li>
-<li lang="th"><strong>สรุปเอกสาร</strong> ผู้ตรวจหนึ่งคนเช็กข้อเท็จจริงที่คงอยู่ ตัวอย่างข้อผิดพลาดคือเปลี่ยนเวลานัดวันศุกร์และตีความฉลากน้ำดื่มผิดแม้ OCR อ่านได้ถูกต้อง</li>
+<li lang="th"><strong>อ่านข้อความ</strong> ผลจาก Apple Vision ต้องแก้ 263 ครั้งจากข้อความอ้างอิง 8,571 ตัวอักษร เมื่อนับคำตามช่องว่างได้ WER 10.64% ภาพ 8 ภาพที่ไม่ได้ข้อความนับเป็นการลบ ค่า CER แยกตามกลุ่มคือ ไทย 2.41% (258 ภาพ) อังกฤษ 0.83% (188 ภาพ) ไทยปนอังกฤษ 8.36% (63 ภาพ) และตัวเลขหรือสัญลักษณ์ 0.00% (5 ภาพ)</li>
+<li lang="th"><strong>ตอบคำถามจากภาพ</strong> โมเดล Qwen3-VL-2B-Instruct 4-bit (MLX) ได้ 48.10% ในกลุ่มที่ตอบได้ 100 ข้อ และ 72.00% ในกลุ่มที่ตอบไม่ได้ 50 ข้อ โมเดลแจ้งว่าตอบไม่ได้ 13 และ 35 ข้อในสองกลุ่มตามลำดับ ภาพหนึ่งเตี้ยกว่าขนาดขั้นต่ำที่โมเดลรับได้จึงได้ศูนย์</li>
+<li lang="th"><strong>ช่วยหาวัตถุ</strong> ซ้าย 10/10 ขวา 10/10 กลาง 4/10 ไม่พบวัตถุ 10/10 และพบหลายชิ้น 5/10 อีก 6 ฉากในกลุ่มตรงกลางได้คำขอให้เล็งกล้องใหม่</li>
+<li lang="th"><strong>ถอดเสียง</strong> ผลจาก Apple Dictation ต้องแก้ 628 ครั้งจากข้อความไทย 5,854 ตัวอักษร และ 1,139 ครั้งจากข้อความอังกฤษ 5,023 ตัวอักษร คลิปอังกฤษที่ถอดไม่ได้ 10 คลิปนับเป็นการลบ ส่วน 40 คลิปที่ได้ข้อความมี CER 5.36%</li>
+<li lang="th"><strong>สรุปเอกสาร</strong> ผู้ตรวจหนึ่งคนเช็กว่าข้อมูลใดยังอยู่ในสรุป ตัวอย่างที่สรุปผิดคือเปลี่ยนเวลานัดวันศุกร์และตีความฉลากน้ำดื่มผิด แม้ OCR อ่านข้อความทั้งสองได้ถูกต้อง</li>
 </ul>
-<p lang="th">TEMS มี CER ภาษาไทย 2.41% (258 ภาพ) อังกฤษ 0.83% (188 ภาพ) ไทย/อังกฤษปนกัน 8.36% (63 ภาพ) และตัวเลข/สัญลักษณ์ 0.00% (5 ภาพ) ช่วงความเชื่อมั่นเชิงสำรวจ 95% แบบ bootstrap คือ <strong>CER 1.93–4.60%</strong> สำหรับ TEMS และ <strong>49.00–63.07%</strong> สำหรับคะแนน VizWiz การสุ่มซ้ำของ TEMS จัดกลุ่มตามภาพต้นทาง metadata v5 มีรหัสภาพต้นทางชุด test 112 รหัส ส่วนบทความประกอบระบุ 162 ภาพ จึงต้องยืนยันรหัสภาพก่อนเทียบตัวเลขโดยตรง VizWiz และ FLEURS สุ่มตัวอย่างด้วย seed 2027 การตรวจจากไฟล์ยังเหลือการวัดไมโครโฟนจริง การทำงานออฟไลน์ครบขั้นตอน เวลาตอบสนอง iPhone และแบตเตอรี่</p>
-<h3 lang="th">เปรียบเทียบระยะบน iPhone จริง — 16 พฤศจิกายน 2026</h3>
-<p lang="th">LunaV <strong>3.2.1 (บิลด์ 6) แบบ Release สำหรับเก็บผลทดสอบ</strong> ถ่ายฉากกระปุกสีขาวหนึ่งฉากเครื่องละห้าเฟรม iPhone 14 Pro ใช้ระยะ LiDAR หลังที่ผ่านตัวกรอง iPhone 14 ใช้ DA3 สเกล 1.0 และพารามิเตอร์ภายในกล้อง ทั้งสองเครื่องได้ค่าครบห้าตำแหน่งในห้าเฟรม รวม <strong>25 คู่วัด</strong> รอบที่เก็บผล DA3 เรียกกล้อง ตัวเตรียมภาพ และโมเดลระยะโดยตรงหลังการเตรียมตามปกติแจ้งว่าโมเดลกำลังทำงาน ทั้งสองเส้นทางใช้ตัวอ่านระยะเดียวกับแอป</p>
-<div class="document-table" role="region" tabindex="0" aria-label="ตาราง: เปรียบเทียบระยะบน iPhone จริง — 16 พฤศจิกายน 2026"><table><thead><tr>
+<p lang="th">ช่วงประมาณการ 95% คือ <strong>CER 1.93–4.60%</strong> สำหรับ TEMS และ <strong>49.00–63.07%</strong> สำหรับ VizWiz การสุ่มซ้ำแบบ bootstrap ของ TEMS จัดกลุ่มตามภาพต้นฉบับ ข้อมูลชุด v5 มีรหัสภาพทดสอบ 112 รหัส ส่วนบทความระบุ 162 รหัส จึงต้องจับคู่รหัสภาพก่อนเทียบคะแนนโดยตรง VizWiz และ FLEURS ใช้ค่าตั้งต้นการสุ่ม 2027 ความแม่นยำเมื่อพูดผ่านไมโครโฟน การใช้ออฟไลน์ครบขั้นตอน เวลาตอบสนองบน iPhone และอายุแบตเตอรี่ยังต้องทดสอบแยก</p>
+<h3 lang="th">วัดระยะบน iPhone สองเครื่อง — 16 พฤศจิกายน 2026</h3>
+<p lang="th">แอปรุ่นสำหรับเก็บผลทดสอบถ่ายภาพกระปุกสีขาวในฉากเดียว เครื่องละ 5 ภาพ iPhone 14 Pro วัดด้วยเซ็นเซอร์ LiDAR ด้านหลัง iPhone 14 ใช้ Depth Anything 3 (DA3) ประเมินจากภาพและข้อมูลเลนส์ โดยตั้งสเกลไว้ที่ 1.0 ทั้งสองเครื่องได้ค่าครบ 5 จุดต่อภาพ ขั้นเตรียม DA3 ปกติแจ้งว่าโมเดลกำลังทำงาน ชุดทดสอบจึงเรียกกล้อง ตัวเตรียมภาพ และโมเดลโดยตรง แล้วอ่านค่าระยะด้วยวิธีเดียวกับแอป</p>
+<div class="document-table" role="region" tabindex="0" aria-label="ตาราง: วัดระยะบน iPhone สองเครื่อง — 16 พฤศจิกายน 2026"><table><thead><tr>
 <th scope="col">จุดในภาพ</th>
-<th scope="col">มัธยฐาน LiDAR (ม.)</th>
-<th scope="col">มัธยฐาน DA3 (ม.)</th>
-<th scope="col">DA3 ลบ LiDAR เฉลี่ย (ซม.)</th>
+<th scope="col">ค่ากลาง LiDAR (ม.)</th>
+<th scope="col">ค่ากลาง DA3 (ม.)</th>
+<th scope="col">ค่าเฉลี่ย DA3 − LiDAR (ซม.)</th>
 </tr></thead><tbody>
 <tr>
 <td>ผิวกระปุก</td>
@@ -222,216 +216,136 @@
 <td>−22.1</td>
 </tr>
 </tbody></table></div>
-<p lang="th">ขนาดความต่างเฉลี่ยทั้ง 25 คู่คือ <strong>19.5 ซม.</strong> และ <strong>17.5 ซม.</strong> สำหรับห้าคู่บนผิวกระปุก ค่าติดลบหมายถึง DA3 ประเมินใกล้กว่า LiDAR สัดส่วนภาพของกล้องต่างกัน พิกัดที่มุมเดียวกันจึงอาจอยู่คนละจุดบนพื้นผิว ผลนี้อ้างอิง LiDAR ในการเปรียบเทียบสองเครื่องในฉากเดียว ความคลาดเคลื่อนเทียบระยะจริงยังไม่ทราบเพราะไม่มีการวัดระยะอิสระในแต่ละจุด</p>
-<h2 lang="th">ภาษาแอปและหน้าเกี่ยวกับ</h2>
-<p lang="th">ใช้ <strong>ตั้งค่า → ภาษาแอพ</strong> เพื่อสลับหน้าจอไทย/อังกฤษทันทีและจำค่าข้ามการเปิดแอปใหม่ ครอบคลุมกล้อง ตั้งค่า เกี่ยวกับ ปุ่มในบทสนทนา เครื่องมือพื้นที่/กลุ่มข้อความ/ระยะ ข้อมูลการทำงาน สถานะ และข้อผิดพลาด แยกจากภาษา Dictation ภาษาคำตอบ และเสียงอ่านที่เลือกไว้ คำถาม คำตอบ และข้อความ OCR เดิมยังคงเดิม ไม่ได้แปลตามหน้าจอ ชื่อภาษาและชื่อผู้จัดทำใช้การสะกดเดิม</p>
-<p lang="th">ส่วนสุดท้ายใน Settings เปิด <strong>เกี่ยวกับ → เกี่ยวกับ LunaV</strong> แสดงรุ่นจาก bundle จริง <strong>3.2.1 / บิลด์ 6</strong> ผู้จัดทำ <strong>วชิรวิช ไกรพิณดากุล / Wachirawich kripindakul (koomean)</strong> และลิงก์เว็บไซต์ LunaV ใน bundle มี catalog หน้าจอและคำอธิบายขอสิทธิ์ทั้งไทย/อังกฤษ ส่วนหน้าระบบ iOS ใช้ภาษาที่ระบบเลือกเอง</p>
-<h2 lang="th">หน้าตาแอปปัจจุบัน</h2>
-<p lang="th">หน้ากล้อง ตั้งค่า บทสนทนา เลือกพื้นที่ กลุ่มข้อความ และระยะ ใช้กรมท่าเข้ม ขาวอุ่น ฟ้า/ทองอ่อน และฟอนต์ Noto Sans Thai กับ Manrope ไอคอนแอปใช้รูปจันทร์เสี้ยวและดาวจากเว็บแล้ว Settings วางภาษา การรับเสียง และเสียงอ่านคำตอบก่อนเครื่องมือทดสอบ พร้อมรายละเอียดเสียงและการเทียบระยะที่เปิดดูเพิ่มได้ หน้ากล้องยังมีสองปุ่มหลัก และนำเมนูสลับกล้องหน้า/หลังออกจาก Settings แล้ว</p>
-<p lang="th">บน iPhone Duo หน้ากล้องปรับตามพื้นที่ที่ iOS ให้ใช้ จอนอกใช้หน้ากล้องแนวตั้ง เมื่อกางในแนวนอน ภาพและคำตอบแยกกันคนละด้าน เมื่อพับบางส่วน ภาพและปุ่มหลบรอยพับตามพื้นที่ที่ iOS ระบุ การเปลี่ยนขนาดหน้าจอคงภาพและคำถามเดิมไว้</p>
-<p lang="th">แอนิเมชัน SwiftUI แสดง <strong>LunaVision → ปากกาแดงขีด “ision” → LunaV. → หัวหน้ากล้อง</strong> ใช้เวลาประมาณ <strong>4.22 วินาที</strong> งานเตรียมโมเดลเริ่มพร้อมกันและทำงานต่อใต้แอนิเมชัน ถ้ายังไม่พร้อม แอปจะแสดงสถานะเตรียมหรือลองใหม่ตามจริงหลังภาพเคลื่อนไหวจบ Reduce Motion ใช้ตรานิ่งสั้น ๆ แทน และไม่เล่นซ้ำเพียงเพราะกลับจาก background ลำดับนี้ไม่ได้ใช้ WebView หรือวิดีโอ</p>
-<p lang="th">ภาพกล้อง บทสนทนา Settings และหน้าเกี่ยวกับไทย/อังกฤษของเวอร์ชัน 3 ถ่ายจาก <strong>iOS Simulator วันที่ 29 ตุลาคม 2026</strong> บทสนทนาใน UI อังกฤษยังคงคำถามภาษาไทยและข้อความ OCR ต้นฉบับ แสดงว่าภาษาหน้าจอไม่ได้เขียนเนื้อหาเก่าใหม่ ภาพกลุ่มข้อความที่ยังใช้บนเว็บเป็นของธีมดวงจันทร์รุ่นก่อน ภาพเหล่านี้เป็นตัวอย่างหน้าจอ/OCR fixture ไม่ใช่หลักฐานประสิทธิภาพกล้อง ไมโครโฟน โมเดลภาพ หรือระยะบนเครื่องจริง</p>
-<h2 lang="th">ถาม อ่าน และฟังคำตอบ</h2>
-<p lang="th">หลังให้สิทธิ์ไมโครโฟน การกดปุ่มกลางค้างตามค่าเริ่มต้นจะเริ่มถ่ายภาพพร้อม depth และบันทึกเสียง พูดระหว่างถือ แล้วปล่อยเพื่อหยุดบันทึกและส่งเมื่อภาพพร้อม ความเงียบระหว่างถือไม่ส่งเอง แตะสั้นจะถ่ายภาพอย่างเดียว เสียงที่ยาวเกิน <strong>2 นาที</strong> จะถูกปฏิเสธ แทนการส่งเฉพาะต้นประโยค</p>
-<p lang="th">ใช้ <strong>Apple DictationTranscriber ผ่าน SpeechAnalyzer</strong> ถอดคำถามในเครื่องด้วย asset ภาษาของ Apple ที่ติดตั้งแล้ว ค่าเริ่มต้นไทย เลือก English ได้ด้วยตัวเลือกภาษาเสียงใน Settings ซึ่งแยกจากภาษาแอป คำขอใช้ภาษาที่เลือกทีละภาษา ไม่สลับภาษาอัตโนมัติ แอปตรวจการรองรับของอุปกรณ์/ภาษา หากไม่มี asset อาจต้องดาวน์โหลดครั้งแรก จึงไม่รับรองว่าเพิ่งติดตั้งแล้วจะใช้เสียงออฟไลน์ได้ทันที การถอดเสียงมีเส้นตาย <strong>45 วินาที</strong> และไม่มี Whisper ใน bundle แอปปัจจุบันแล้ว</p>
-<p lang="th">อ่านคำตอบ AI/OCR/สรุป/ระยะที่เสร็จแล้วอัตโนมัติเป็นค่าเริ่มต้น ด้วย <strong>เสียง Apple ที่ติดตั้งในเครื่อง</strong> ปิดการอ่าน เลือกเสียงไทย/อังกฤษ และฟังตัวอย่างได้ใน Settings หยุดอ่านก่อนถ่าย/รับเสียงใหม่ ยกเลิก ล้างบริบท หรือเข้า background ไม่รับรองการใช้เสียง Siri ที่ผู้ใช้เลือกไว้ ติดตั้งเสียงเพิ่มเติมได้ผ่านการตั้งค่าของ iOS</p>
-<p lang="th">Apple Vision OCR และ Qwen3-VL-2B-Instruct 4-bit ผ่าน MLX/Metal ทำงานในเครื่อง เครื่องมือใน Settings ใช้เลือกพื้นที่ จัดกลุ่มป้าย/เมนู/ฉลาก สรุปข้อความ OCR ที่เลือก และถามต่อด้วยบริบทที่มีขอบเขต ฟีเจอร์หาของบอกทิศในกรอบภาพล่าสุด การเตือนสิ่งกีดขวางใช้ระยะสดบริเวณกลางกล้องเมื่อเปิดบนเครื่องที่รองรับ OCR การถอดเสียง ค่าประมาณ และคำตอบที่สร้างขึ้นยังผิดได้</p>
-<h2 lang="th">ระยะและแหล่งข้อมูล</h2>
-<p lang="th">บน <strong>เครื่องที่มี LiDAR</strong> ภาพที่รองรับใช้ depth จากเซ็นเซอร์ที่จับคู่กับภาพ เป็นระยะจากกล้องถึงพื้นผิว ณ เวลาถ่าย เครื่องกลุ่มนี้ข้าม Depth Anything 3 รวมถึงตอนข้อมูลเซ็นเซอร์ขาดหาย หาก LiDAR อ่านไม่สำเร็จจะไม่แอบแทนด้วยค่าจากโมเดลแล้วระบุว่าเป็น LiDAR</p>
-<p lang="th">บน <strong>เครื่องไม่มี LiDAR</strong> ใช้ <strong>Depth Anything 3 Metric</strong> ที่รวมในแอปประมาณ depth จากภาพใหม่และข้อมูลโฟกัสของเลนส์ <strong>เมื่อถามระยะหรือเลือกจุดเอง</strong> คำถามภาพทั่วไปไม่เรียก prediction หากสำเร็จจะใช้แผนที่เดิมกับภาพเดียวกัน และลองใหม่ได้เมื่อ prediction ล้มเหลวชั่วคราว ข้อมูลเลนส์ที่ขาด ท้องฟ้า หรือค่าผิดปกติอาจทำให้ไม่มีผล คำตอบระบุแหล่งว่าเป็นโมเดลและปัดเป็น 0.1 เมตร ภาพนำเข้าที่ไม่มีคู่ depth ไม่ตอบระยะเป็นตัวเลข</p>
-<p lang="th">Settings ปรับสเกลแยกกล้องด้วยระยะอ้างอิงจากกล้องถึงพื้นผิวใกล้กลางภาพ <strong>0.3–8 เมตร</strong> ได้ การปรับสเกลอาจลดความคลาดเคลื่อนที่เกิดสม่ำเสมอของกล้องนั้น การทดลองวันที่ 16 พฤศจิกายนใช้ LiDAR เป็นค่าอ้างอิงเพื่อดูความสอดคล้องของสองเครื่องในฉากเดียว การวัดความแม่นยำเทียบระยะจริงต้องมีระยะอ้างอิงอิสระ</p>
-<h3 lang="th">สั่นเตือนสิ่งกีดขวางด้วย LiDAR</h3>
-<p lang="th">เปิดได้จาก <strong>ตั้งค่า → สั่นเตือนสิ่งกีดขวาง → เตือนด้วย LiDAR</strong> บน iPhone ที่มี LiDAR หลังและรองรับการสั่น ค่าเริ่มต้นคือปิด เมื่อเปิดใช้งาน แอปอ่านระยะสดบริเวณกลางกล้องและสั่นแรงขึ้นและถี่ขึ้นเมื่อวัตถุเข้าใกล้ ปรับระยะเริ่มเตือน ระยะที่สั่นแรงที่สุด และความแรงสูงสุดได้ ค่าเริ่มต้นของสามรายการนี้คือ <strong>2 เมตร, 0.4 เมตร และ 80%</strong> ตามลำดับ การเตือนพักระหว่างถ่ายภาพ ถาม AI เข้าเบื้องหลัง หรือเครื่องร้อนมาก แล้วกลับมาทำงานเมื่อพร้อม ฟีเจอร์นี้เตือนวัตถุในพื้นที่กลางกล้องเท่านั้น</p>
-<h2 lang="th">การเตรียมและใช้ทรัพยากร</h2>
-<p lang="th">แอปรองรับตั้งแต่ <strong>iOS 27.0</strong> และใช้ <strong>Xcode 27.1 ขึ้นไป</strong> สำหรับ build ซอร์ส การรองรับ Dictation ขึ้นกับเครื่องและภาษา ส่วนโมเดลภาพ/depth ยังต้องมีหน่วยความจำและฮาร์ดแวร์ที่รองรับ แอปเตรียมโมเดลภาพก่อนเปิดให้ถาม และลองใหม่เมื่อเกิดปัญหาชั่วคราวขณะอยู่ foreground เตรียม DA3 เฉพาะเครื่องไม่มี LiDAR การเตรียมเสียงมีเส้นตาย <strong>30 วินาที</strong> และลองใหม่แยกได้ หากเสียงไม่พร้อม ยังใช้ภาพ พิมพ์ถาม OCR และสรุปได้เมื่อโมเดลที่ต้องใช้พร้อม</p>
-<p lang="th">นโยบาย compact ใช้เมื่อ <strong>RAM กายภาพไม่เกิน 6 GiB</strong> หรือ process headroom ที่รายงานเป็นบวกแต่ต่ำกว่า <strong>1 GiB</strong> คืน weights โมเดลภาพเมื่อว่างก่อนถ่ายใหม่และหลังตอบ เก็บเฉพาะตัวอ้างอิงภาพและ cache ข้อความ/OCR/tokenizer ที่มีขอบเขต จัด OCR ก่อนโหลดโมเดลภาพที่ยังไม่อยู่ใน RAM การคืน weights ทำให้คำถามถัดไปอาจต้องรอโหลดใหม่ แยกการจำขั้น warmup ที่เสร็จแล้วออกจาก weights ที่อยู่ใน RAM เพื่อไม่ทำทุกขั้นซ้ำเมื่อกลับจาก background</p>
-<p lang="th">การยกเลิกและการจัดการ memory warning ต้องติดตามให้งานที่กำลังใช้ทรัพยากรจบก่อนโหลดโมเดลใหม่ inference ที่ยังทำงานอาจถือ buffer จนจบ จึงไม่รับประกันคืน RAM ทันทีหรือทั้งหมด การเก็บกวาดเสียงเนทีฟไม่ขวางคำถามภาพแบบพิมพ์ งานลดทรัพยากรคง weights การ quantise ความละเอียดภาพ การตรวจคำตอบ และเกณฑ์รับงานตามหน่วยความจำเดิม การ warmup ไม่รับประกันว่า weights จะค้างใน RAM หรือทุกเครื่องรัน inference ได้</p>
-<h2 lang="th">ประวัติการตรวจรุ่นก่อน</h2>
-<h3 lang="th">รุ่น 3.2.0 (บิลด์ 5) — 11 พฤศจิกายน 2026</h3>
-<p lang="th">ผ่าน <strong>288/288 (unit 285 + UI 3)</strong> บน iPhone 17 Simulator ที่ใช้ iOS 27.0 ชุด UI ใช้อินพุตกล้องและเสียงจำลองเพื่อตรวจการกดค้างเพื่อถาม การใช้และเปลี่ยนภาพ และการอ่านราคาด้วย Apple Vision การตรวจ Finder บน Mac สี่คำขอครอบคลุมวัตถุทางขวา กลางภาพ หลายชิ้น และไม่พบวัตถุ ส่วน generic iOS Release คอมไพล์ผ่านโดยปิดการลงลายเซ็นและระบุรุ่น 3.2.0 / บิลด์ 5</p>
-<h3 lang="th">รุ่น 3.1.0 (บิลด์ 4) — 11 พฤศจิกายน 2026</h3>
-<p lang="th">รุ่นนี้เพิ่มการปรับหน้ากล้องสำหรับ iPhone Duo และการสั่นเตือนสิ่งกีดขวางด้วย LiDAR การตรวจบน iPhone 17 Simulator ผ่าน <strong>271 unit tests</strong> และชุดตรวจการจัดวาง/หมุนจอแนวนอนแยกผ่าน <strong>7/7</strong> ชุด iPhone Duo Simulator ผ่าน <strong>2/2</strong> ครอบคลุมการคงสถานะภาพและคำถามเมื่อเปลี่ยนระหว่างจอนอก จอกาง และพับบางส่วน รวมถึงหน้าตั้งค่าบนเครื่องจำลองที่ไม่มี LiDAR บิลด์ Release สำหรับ generic iOS ผ่านโดยปิดการลงลายเซ็น ผลของรุ่นนี้จำกัดอยู่ที่การตรวจซอร์ส การ build และการจำลองกล้อง/เสียงกับรูปแบบหน้าจอ</p>
-<h3 lang="th">รุ่น 3.0.0 (บิลด์ 3) — 29 ตุลาคม 2026</h3>
-<div class="document-table" role="region" tabindex="0" aria-label="ตาราง: รุ่น 3.0.0 (บิลด์ 3) — 29 ตุลาคม 2026"><table><thead><tr>
-<th scope="col">การตรวจ</th>
-<th scope="col">ผลที่บันทึก</th>
-<th scope="col">ขอบเขตและข้อจำกัด</th>
+<p lang="th">ขนาดความต่างเฉลี่ยอยู่ที่ <strong>19.5 ซม. จาก 25 คู่</strong> และ <strong>17.5 ซม.</strong> ที่ผิวกระปุก ค่าติดลบหมายถึง DA3 ประเมินระยะสั้นกว่า ภาพจากกล้องมีสัดส่วนต่างกัน มุมเดียวกันจึงอาจวัดคนละจุด ผลนี้ใช้ LiDAR เป็นค่าอ้างอิงในฉากเดียว การหาความคลาดเคลื่อนเทียบกับระยะจริงต้องวัดแต่ละจุดแยกต่างหาก</p>
+<h2 lang="th">การอ่านและรายละเอียดการใช้งาน</h2>
+<ul>
+<li lang="th"><strong>อ่านข้อความที่ต้องการ</strong> ถ้าบอกว่า «อ่านฉลาก» แอปจะเลือกอ่านข้อความเด่นก่อน ขอให้อ่านทั้งหมดหรือเจาะจงได้ เช่น «อ่านราคาด้านขวา» ถ้าเจอหลายรายการตรงกัน แอปอาจถามว่าหมายถึงรายการไหน</li>
+<li lang="th"><strong>ถามต่อจากภาพเดิม</strong> เปิด <strong>ใช้ภาพเดิมเมื่อกดค้าง</strong> ในการตั้งค่า หรือเลือกคำสั่งถามต่อของชัตเตอร์ผ่าน VoiceOver แตะสั้น ๆ เพื่อถ่ายภาพใหม่ ฟีเจอร์หาวัตถุจะถ่ายใหม่และบอกตำแหน่งในภาพ พอเจอวัตถุตรงกลาง แอปอาจส่งเสียงสั้น ๆ หรือสั่นบนเครื่องที่รองรับ</li>
+<li lang="th"><strong>เลือกภาษา</strong> ไปที่ <strong>ตั้งค่า → ภาษาแอพ</strong> เพื่อเปลี่ยนภาษาปุ่มและเมนู แอปจำค่าที่เลือกไว้ ส่วนภาษารับเสียง ภาษาคำตอบ และเสียงอ่านตั้งแยกได้ คำถาม คำตอบ และข้อความจากภาพเดิมเก็บไว้ตามภาษาเดิม ดูเวอร์ชันที่ติดตั้งได้ที่ <strong>ตั้งค่า → เกี่ยวกับ → เกี่ยวกับ LunaV</strong></li>
+<li lang="th"><strong>เวลาเตรียมและถอดเสียง</strong> แอปให้เวลาเตรียมระบบถอดเสียง 30 วินาที และให้เวลาถอดเสียงต่อคำถาม 45 วินาที ถ้ารับเสียงไม่ได้ ยังถ่ายภาพ พิมพ์ถาม อ่านหรือสรุปข้อความได้เมื่อโมเดลที่จำเป็นพร้อม</li>
+<li lang="th"><strong>ดูระยะ</strong> แอปบอกว่าใช้เซ็นเซอร์ LiDAR หรือประเมินด้วย DA3 รูปที่นำเข้าต้องมีข้อมูลความลึกคู่กันจึงจะแสดงตัวเลขได้ iPhone ที่มี LiDAR ด้านหลังเปิดสั่นเตือนเมื่อวัตถุกลางภาพเข้าใกล้ขณะเปิดกล้องได้ ค่าเริ่มต้นคือเริ่มเตือนที่ 2 ม. สั่นแรงสุดที่ 0.4 ม. และจำกัดความแรงที่ 80% แอปพักการเตือนขณะถ่ายภาพ ประมวลผล อยู่เบื้องหลัง หรือเครื่องร้อนจัด เสียงสั้นของฟีเจอร์หาวัตถุและความแรงสั่นยังต้องตรวจบนเครื่องจริง</li>
+</ul>
+<p lang="th">บนเครื่องที่มี RAM ไม่เกิน 6 GiB หรือเมื่อแอปเหลือหน่วยความจำให้ใช้ต่ำกว่า 1 GiB แอปอาจนำโมเดลที่ว่างออกจากหน่วยความจำและโหลดใหม่เมื่อต้องใช้ ดูข้อกำหนด iOS, Xcode และโมเดลในหน้า <a href="devices.html">อุปกรณ์ที่รองรับ</a></p>
+<p lang="th">ภาพตัวอย่างหน้ากล้อง ตั้งค่า และเกี่ยวกับบนเว็บถ่ายจากรุ่น <strong>3.0.0</strong> เมื่อ 29 ตุลาคม 2026 <a href="credits.html">ดูที่มาของภาพ</a></p>
+<h2 lang="th">ผลทดสอบรุ่นก่อน</h2>
+<div class="document-table" role="region" tabindex="0" aria-label="ตาราง: ผลทดสอบรุ่นก่อน"><table><thead><tr>
+<th scope="col">รุ่นหรือวันที่</th>
+<th scope="col">เครื่องจำลองหรือ Mac</th>
+<th scope="col">การสร้างแอปหรือเครื่องจริง</th>
 </tr></thead><tbody>
 <tr>
-<td>Regression บน iOS 27 Simulator</td>
-<td><strong>ผ่าน 269/269 (unit 253 + UI 16)</strong> ไม่มี fail/skip และไม่มี runtime warning ที่บันทึกไว้</td>
-<td>รวมหน้าเกี่ยวกับสองภาษา รุ่น/ผู้จัดทำ/ลิงก์เว็บ การจำภาษา คงภาษารับเสียงและคำถาม/คำตอบ OCR เดิม พร้อม flow กล้อง/เสียง/OCR/context ขอบเขตกล้อง/ไมค์/ASR จำลอง</td>
+<td>3.2.0 บิลด์ 5 · 11 พ.ย.</td>
+<td>ผ่าน <strong>288/288</strong> บนเครื่องจำลอง iPhone 17 ที่ใช้ iOS 27.0 (ทดสอบหน่วย 285 และหน้าจอ 3) ทดลองหาวัตถุบน Mac อีก 4 กรณี ได้แก่ ขวา กลาง พบหลายชิ้น และไม่พบ</td>
+<td>สร้างแอป Release โดยปิดการลงนามได้สำเร็จ</td>
 </tr>
 <tr>
-<td>ตรวจ catalog และ metadata สุดท้าย</td>
-<td><strong>ผ่านเฉพาะจุด 2/2</strong> หลังเก็บคำแปลหัวข้อข้อมูลการทำงานอีกสองรายการ</td>
-<td>รันเฉพาะจุดหลังชุดเต็ม 269 กรณี แยกจากยอดชุดนั้น</td>
+<td>3.1.0 บิลด์ 4 · 11 พ.ย.</td>
+<td>ผ่านการจัดหน้าจอ iPhone Duo <strong>2/2</strong> ทดสอบหน่วย <strong>271</strong> และทดสอบแนวนอน <strong>7/7</strong> การวัดระยะและแรงสั่นใช้ข้อมูลจำลอง</td>
+<td>สร้างแอป Release โดยปิดการลงนามได้สำเร็จ</td>
 </tr>
 <tr>
-<td>Signed generic-iOS Release</td>
-<td>Build และตรวจลายเซ็นแบบ deep/strict ผ่าน Bundle ระบุ <strong>3.0.0 / บิลด์ 3</strong> พร้อมทรัพยากรภาษาอังกฤษและไทย</td>
-<td>การตรวจอยู่ที่ขั้น build และลายเซ็น</td>
+<td>3.0.0 บิลด์ 3 · 29 ต.ค.</td>
+<td>ผ่าน <strong>269/269</strong> บนเครื่องจำลอง (ทดสอบหน่วย 253 และหน้าจอ 16) และทดสอบภาษาและเลขเวอร์ชันเพิ่ม <strong>2/2</strong></td>
+<td>ลายเซ็น Release ผ่านการตรวจ การติดตั้งบน iPhone 14 ถูกยกเลิกหลังไม่มีความคืบหน้านานกว่า 3 นาที</td>
 </tr>
 <tr>
-<td>ความพยายามติดตั้งบน iPhone 14 จริง</td>
-<td>ยกเลิกคำสั่งหลังเกินสามนาทีโดยไม่มีความคืบหน้าการเชื่อมต่อหรือถ่ายโอนไฟล์</td>
-<td>ยังรอการยืนยันว่ารุ่นนี้ติดตั้งและทำงานบนเครื่องจริง</td>
+<td>หน้าตาธีมดวงจันทร์ · 29 ต.ค.</td>
+<td>ผ่าน <strong>262/262</strong> บนเครื่องจำลอง (ทดสอบหน่วย 249 และหน้าจอ 13)</td>
+<td>ลายเซ็น Release ผ่านการตรวจ iPhone 14 หลุดการเชื่อมต่อระหว่างติดตั้ง (CoreDevice 4000)</td>
 </tr>
 <tr>
-<td>ตรวจซอร์สหลักและคำแปล</td>
-<td><strong>hash ซอร์สหลัก 26 ไฟล์ไม่เปลี่ยน</strong> ผลตรวจ source/catalog ที่บันทึกไว้ไม่มีคำแปลอังกฤษที่ขาดหรือไม่ถูกต้อง</td>
-<td>รุ่น 3.0.0 เปลี่ยนหน้าจอและ metadata การตรวจ source/catalog และการตรวจขณะรันเป็นคนละชุด</td>
+<td>ลดการใช้หน่วยความจำ · 24 ต.ค.</td>
+<td>ผ่าน <strong>259/259</strong> บนเครื่องจำลอง (ทดสอบหน่วย 248 และหน้าจอ 11) ก่อนปรับระบบบันทึกการทดสอบขั้นสุดท้าย</td>
+<td>ติดตั้งแอป Release ที่ลงนามแล้วบน iPhone 14 / iOS 27.2 ได้ กล้องจริงตอบคำถามจากเสียงบันทึกครบ 2 รอบ แอปใช้ผลประเมินระยะเดิมกับภาพเดิมซ้ำได้</td>
 </tr>
 </tbody></table></div>
-<h2 lang="th">ธีมดวงจันทร์รุ่นก่อน — 29 ตุลาคม 2026</h2>
-<p lang="th">งานธีมดวงจันทร์ก่อนหน้านี้ผ่าน <strong>262/262 บน Simulator (unit 249 + UI 13)</strong> และ signed Release ตรวจลายเซ็นผ่าน การติดตั้ง build นั้นบน iPhone 14 ไม่สำเร็จด้วย <strong>CoreDevice 4000 / transport peer ติดต่อไม่ได้แล้ว</strong> hash ซอร์ส UI 7 ไฟล์และ Shared 18 ไฟล์ตรง manifest ของงานนั้น ผลเหล่านี้เป็นของ UI รุ่นก่อน แยกจากชุด 269/269 และความพยายามติดตั้งที่ยกเลิกภายหลังของเวอร์ชัน 3</p>
-<h2 lang="th">รุ่นลดงานซ้ำก่อนหน้า — 24 ตุลาคม 2026</h2>
-<p lang="th">ผลเหล่านี้เป็นของรุ่นลดงานซ้ำก่อนหน้า ไม่ใช่ผลตรวจ UI ใหม่บนเครื่องจริง</p>
-<div class="document-table" role="region" tabindex="0" aria-label="ตาราง: รุ่นลดงานซ้ำก่อนหน้า — 24 ตุลาคม 2026"><table><thead><tr>
-<th scope="col">การตรวจ</th>
-<th scope="col">ผลที่บันทึก</th>
-<th scope="col">ขอบเขตและข้อจำกัด</th>
-</tr></thead><tbody>
-<tr>
-<td>Regression บน Simulator</td>
-<td><strong>259/259 (unit 248 + UI 11)</strong> ไม่มี fail/skip/runtime warning</td>
-<td>บันทึกก่อนเพิ่ม diagnostics เครื่องจริงและลำดับตรวจ headroom ใน signed build สุดท้ายของรุ่นนั้น</td>
-</tr>
-<tr>
-<td>iPhone 14 / iOS 27.2</td>
-<td>ติดตั้ง signed Release และคืนสู่โหมดพร้อมใช้ปกติแล้ว</td>
-<td>เครื่องไม่มี LiDAR ไม่ใช่การติดตั้งเวอร์ชัน 3 หรือธีมดวงจันทร์รุ่นก่อนวันที่ 29 ตุลาคม และไม่ใช่การตรวจ iPhone 14 Pro ชุดใหม่</td>
-</tr>
-<tr>
-<td>กล้องจริง 2 รอบถาม</td>
-<td>ใช้ไฟล์เสียงตัวอย่าง → VLM/TTS สำเร็จ ไม่มี retry/fallback/การปฏิเสธเพราะ RAM ในกรณีที่ตรวจ</td>
-<td>ภาพจากกล้องจริงแต่ใช้เสียงจากไฟล์ ไม่ใช่การวัดเสียงคนผ่านไมค์หรือความถูกต้องเชิงความหมาย</td>
-</tr>
-<tr>
-<td>เลื่อนและใช้แผนที่ DA3 ซ้ำ</td>
-<td>ภาพทั่วไป 2 ภาพใช้ <strong>0</strong> prediction เลือก depth เองแล้วถามระยะอัตโนมัติในภาพเดียวกันใช้ <strong>1</strong> prediction</td>
-<td>ตรวจการจับคู่เวลาถ่ายและเลนส์ ไม่มีระยะอ้างอิงที่วัดจริงและไม่เปลี่ยน calibration</td>
-</tr>
-<tr>
-<td>คำถาม OCR ภาพทดสอบ 2 ครั้ง</td>
-<td>OCR ก่อนโหลดโมเดลที่ยังไม่อยู่ใน RAM และครั้งที่สองใช้ cache ภาพเดิม</td>
-<td>ยืนยันลำดับ/cache ในกรณีที่ตรวจ ไม่ใช่ความถูกต้องเชิงความหมายทุกกรณี</td>
-</tr>
-<tr>
-<td>เสียง / การอ่านคำตอบ</td>
-<td>ไฟล์ไทย/อังกฤษ 5 ไฟล์ได้ข้อความ ปฏิเสธความเงียบ/white noise และผ่าน TTS completion/ส่งต่อ audio session <strong>3</strong> กรณี</td>
-<td>ใช้ไฟล์บันทึกและ callback สังเคราะห์เสียง ไม่ใช่ความแม่นยำเสียงคน การยืนยันว่าได้ยินด้วยหู หรือผลสวิตช์ Silent</td>
-</tr>
-<tr>
-<td>หน่วยความจำ process แอปที่สุ่มวัด</td>
-<td>สูงสุด <strong>2.394 GB</strong> หลัง TTS/ระยะเหลือ <strong>96.7–117.6 MB</strong> หน่วยฐานสิบ</td>
-<td>รวม overhead ของ diagnostics ไม่รวมบริการเสียง iOS แยก process ไม่มีผลเทียบการประหยัดแบบควบคุม แบตเตอรี่/ความร้อน หรือ soak ระยะยาวชุดใหม่</td>
-</tr>
-</tbody></table></div>
-<h2 lang="th">หลักฐานก่อนหน้าและสิ่งที่ยังไม่ยืนยัน</h2>
-<p lang="th">รุ่น compact ก่อนหน้านั้นบน <strong>iPhone 14 Pro</strong> จบ <strong>30/30 รอบใน 545.8 วินาที</strong> ใช้ภาพ RGB/depth จริง ไฟล์เสียง และเปิด TTS โดย <strong>15 รอบเป็น safe fallback หลัง retry</strong> ไม่พบปฏิเสธเพราะ RAM หรือแอปหยุดในการรันนั้น แต่ไม่ใช่คำตอบโมเดลถูกหรืออ่านออกเสียงครบ 30 รอบ RAM หลังรอบอยู่ที่ <strong>91.6–225.8 MiB ค่ากลาง 155.9 MiB</strong> สูงสุดที่สุ่มวัดประมาณ <strong>2.47 GB</strong> RAM หลังรอบยังเพิ่มระหว่างรันและพบสถานะความร้อน serious การตรวจแบบควบคุมอีก 3 รอบเทียบ baseline ประมาณ <strong>1.9 GiB</strong> กับ compact <strong>61–66 MiB</strong> และฟื้นตัวจาก memory warning ที่ฉีดทดสอบหนึ่งครั้ง ทั้งหมดเป็นการตรวจรุ่นก่อนที่มีขอบเขต ไม่ใช่อัตราประหยัดสากลหรือรับประกันใช้ได้ไม่สิ้นสุด</p>
-<p lang="th">งานเสียงวันที่ 24 ตุลาคมก่อนหน้านี้ผ่าน unit 224 ครั้ง ชุด UI แรกผ่าน 10/11 แล้วแก้ expectation และรันเฉพาะจุดผ่าน 2/2 ส่วน Dictation ก่อนหน้านั้นผ่าน 220/220 และ native integration อีก 6 กรณีแยกกัน ตรวจไฟล์เสียงสังเคราะห์ 5 ไฟล์และไฟล์ไม่ใช่เสียงพูด 2 ไฟล์บน iPhone 14 Pro ไฟล์ยาว 41 วินาทียังคงข้อความหลังช่วง 30 วินาที ผลประวัติเหล่านี้ไม่นำมารวมกับยอดทดสอบล่าสุด</p>
-<p lang="th">หลักฐาน VLM/OCR บน Mac วันที่ 21 ตุลาคมมี <strong>22 คำตอบตรง + 7 การปฏิเสธ จาก 29 กรณี</strong> ในการปฏิเสธนั้น 6 ครั้งพลาดข้อมูลที่เห็นได้ และอีกครั้งปฏิเสธราคาที่ไม่มีในภาพ ผล Whisper สังเคราะห์เดิม <strong>ถอดตรง 10/12</strong> ไม่ใช่ความแม่นยำ Apple Dictation ปัจจุบัน ชุดกดค้าง/ปล่อยวันที่ 23 ตุลาคมผ่าน 155/155 ส่วน fixture ถามต่อ/LiDAR/DA3 แบบควบคุมยืนยันการเลือกเส้นทางหรือเรขาคณิตของชุดทดสอบ ไม่ใช่ความแม่นยำระยะกายภาพ</p>
-<p lang="th">ความแม่นยำเสียงผ่านไมค์จริง การได้ยินด้วยหูและผลสวิตช์ Silent รวมถึงความแม่นยำเทียบระยะจริงยังต้องวัดเพิ่ม เสียงสั้นของ Finder และความแรงการสั่นยังต้องตรวจบน iPhone จริง</p>
-<h2 lang="th">การจัดการข้อมูล</h2>
-<p lang="th">โมเดลภาพ/depth OCR การถอดเสียงด้วย asset ที่ติดตั้ง และการอ่านด้วยเสียงที่มีในเครื่อง ทำบนอุปกรณ์โดยไม่ใช้บริการ AI บนคลาวด์หรือ API key การดาวน์โหลดภาษา Apple ครั้งแรกอาจต้องใช้อินเทอร์เน็ต Qwen และ DA3 รวมอยู่ในแอป ส่วน iOS จัดการ asset เสียงและเสียงอ่าน</p>
-<p lang="th">ไฟล์ WAV ชั่วคราว ภาพบีบอัด ภาพตัวอย่าง และภาพ crop อาจเก็บใน sandbox แอป ไฟล์เสียงลบเมื่องานที่ใช้จบจริง รวมถึงหลังยกเลิก/หมดเวลา จึงอาจไม่ลบทันทีขณะงานยังทำต่อ ภาพที่ถูกแทนจะได้รับการเก็บกวาด ไม่ได้หมายความว่าข้อมูลอยู่เฉพาะใน RAM ข้อความนี้อธิบายแอป ไม่ใช่โฮสติ้งเว็บไซต์หรือลิงก์ภายนอก</p>
-<h2 lang="th">ที่มาของหลักฐาน</h2>
-<p lang="th">ตรวจคำอธิบายกับ <code>README.md</code>, <code>VALIDATION.md</code>, ซอร์ส UI/runtime และ log ของแอปปัจจุบัน ชื่อหลักฐานเหล่านี้อ้างถึง workspace แอป ไม่ใช่ไฟล์ที่แจกใน repo เว็บไซต์นี้</p>
-<p lang="th">เลขรุ่นปัจจุบันอ้างอิง <code>App/project.yml</code> ผล XCTest วันที่ 12 พฤศจิกายนอยู่ใน <code>Test-LunaV-2569.11.12_21-55-17-+0700.xcresult</code> ใน Xcode DerivedData ส่วนผลรวมวันที่ 16 พฤศจิกายนอยู่ใน <code>Test/Mac-Benchmark-2026-11-16/</code> และ <code>Test/iPhone-Distance-2026-11-16/</code> หน้าสถานะสาธารณะแสดงผลรวมและวิธีตรวจ</p>
-<p lang="th">หลักฐานรุ่น 3.2.0 ใช้ <code>Logs/LunaV-v32-delivery-simulator.xcresult</code> และ <code>Logs/LunaV-v32-delivery-simulator.log</code> สำหรับผล Simulator, <code>Logs/LunaV-v32-delivery-iphone.log</code> สำหรับ Release และ <code>LunaVModelCheck --find-nearby</code> สำหรับการรันโมเดลจริงกับภาพทดสอบบน Mac</p>
-<p lang="th">หลักฐานรุ่น 3.1.0 ใช้ <code>VALIDATION.md</code>, <code>Logs/v31-duo-handoff-summary.json</code>, <code>Logs/v31-landscape-delivery-summary.json</code> และ <code>Logs/v31-device-final.log</code></p>
-<p lang="th">หลักฐานรุ่น 3.0.0 ใช้ <code>Logs/v3-language-delivery-test-summary.json</code>, <code>Logs/v3-catalog-final-test-summary.json</code>, <code>Logs/v3-language-source-summary.json</code>, <code>Logs/ui-localization-audit.json</code>, <code>Logs/v3-language-final-release-build.log</code>, <code>Logs/v3-language-final-signature.log</code> และ <code>Logs/v3-language-device-install.log</code> ส่วนบันทึก session UI และภาพ V3 จาก Simulator ระบุการตรวจหน้าจอ</p>
-<p lang="th">หลักฐานธีมดวงจันทร์รุ่นก่อนยังคงใช้ <code>Logs/website-ui-delivery-test-summary.json</code>, <code>Logs/website-ui-source-summary.json</code> และผล release/ลายเซ็น/ติดตั้งเครื่องจริงของงานนั้น</p>
-<p lang="th">ผลทรัพยากรก่อนหน้าใช้ <code>Logs/resource-optimization-tests-summary.json</code>, <code>Logs/resource-optimization-delivery-summary.json</code>, <code>Logs/resource-device-delivery-summary.json</code> และผลเครื่องจริง functional/OCR/native/TTS/normal-preparation ผล compact-memory ใช้ <code>Logs/memory-delivery-summary.json</code>, <code>Logs/memory-final-soak.json</code> และ <code>Logs/memory-constrained-fixed.json</code> ผลเสียง/เรขาคณิตก่อนหน้ายังคงที่มาชุด <code>answer-speech-*</code>, <code>native-dictation-*</code>, <code>da3-*</code>, <code>qa-*</code> และ <code>ptt-*</code></p>
+<p lang="th">รุ่นวันที่ 24 ตุลาคมใช้หน่วยความจำสูงสุด <strong>2.394 GB</strong> ก่อนลดเหลือ <strong>96.7–117.6 MB</strong> หลังอ่านคำตอบหรือเช็กระยะ ตัวเลขนี้วัดเฉพาะส่วนของแอป</p>
+<p lang="th">แอปรุ่นประหยัดหน่วยความจำก่อนหน้านั้นบน iPhone 14 Pro จบ <strong>30/30 รอบใน 545.8 วินาที</strong> โดยใช้กล้องจริงและไฟล์เสียง <strong>15 รอบได้ข้อความสำรอง</strong> หลังลองใหม่ หน่วยความจำหลังจบแต่ละรอบอยู่ที่ <strong>91.6–225.8 MiB</strong> (ค่ากลาง <strong>155.9 MiB</strong>) และวัดได้สูงสุดประมาณ <strong>2.47 GB</strong> ระหว่างรันหน่วยความจำเพิ่มขึ้นและเครื่องเข้าสู่สถานะความร้อนระดับสูง การตรวจเสียงวันที่ 24 ตุลาคมใช้ไฟล์บันทึก การได้ยินคำตอบจริงและผลของโหมดปิดเสียงยังต้องตรวจแยก</p>
+<h2 lang="th">แอปจัดการข้อมูลที่ไหน</h2>
+<p lang="th">เมื่อยกเลิกคำถามหรือหมดเวลา LunaV จะลบไฟล์เสียงชั่วคราวหลังงานเบื้องหลังจบ ดูวิธีจัดการภาพและเสียงในหัวข้อ <a href="./#privacy">ความเป็นส่วนตัว</a></p>
+<h2 lang="th">ที่มาของผลทดสอบ</h2>
+<p lang="th">ต้นฉบับอยู่ในพื้นที่งานแอป เลขรุ่นมาจาก <code>App/project.yml</code> ผลบนเครื่องจำลองมาจาก <code>Test-LunaV-2569.11.12_21-55-17-+0700.xcresult</code> และผลสองชุดวันที่ 16 พฤศจิกายนมาจาก <code>Test/Mac-Benchmark-2026-11-16/</code> กับ <code>Test/iPhone-Distance-2026-11-16/</code> ส่วนผลรุ่นก่อนอยู่ใน <code>VALIDATION.md</code> และโฟลเดอร์ <code>Logs/</code> ของแอป</p>
 </article><article class="document" data-document-language="en" lang="en">
 <h1>LunaV project status</h1>
-<p><strong>Updated 16 November 2026.</strong> LunaV <strong>3.2.1 (build 6)</strong> is an on-device iPhone research prototype. It uses the camera and speech to make everyday tasks easier for people who are blind, have low vision, or have difficulty seeing in a particular situation. The website and its notices are in the public GitHub repository. App and motion source are available as release assets. <a href="https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source">Download the 3.2.1 source release</a>.</p>
-<h2>Reading and visual assistance</h2>
-<ul>
-<li><strong>Follow up on the same photo.</strong> Turn on <strong>Reuse the photo on hold</strong> in Settings. Hold the shutter to ask about the latest photo and its paired depth, or tap briefly to take a new photo. VoiceOver also offers a follow-up action on the shutter.</li>
-<li><strong>Read only what you ask for.</strong> Say “Read only the price on the right” or ask for the bus route number in Thai or English. Apple Vision OCR extracts the requested text from the photo. LunaV asks for the item or area when several values match and says when it cannot verify the requested text.</li>
-<li><strong>Find something nearby.</strong> Say “Help me find my keys” to search a fresh camera photo. LunaV reports where a matching item appears in the frame or asks for a distinguishing detail such as its colour. Aim the camera as directed and ask again. When LunaV confirms that the object is centred in a recent capture, it can play a short tone and pulse the haptics on supported devices.</li>
-<li><strong>Read the most prominent text.</strong> In 3.2.1, a general request such as “Read the label” prefers a prominent heading over small text such as the package quantity. Ask to read all text or name a field when you need it. LunaV can ask which area to read when several prominent headings match.</li>
-</ul>
-<h2>Recent validation</h2>
+<p>LunaV <strong>3.2.1 (build 6)</strong> is the current iPhone research prototype. <a href="https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source">Download the source on GitHub</a>.</p>
+<h2>Latest test results</h2>
 <h3>iPhone Simulator — 12 November 2026</h3>
-<p>The focused <strong>3.2.1 (build 6)</strong> run used the iPhone 17 Simulator with iOS 27.2.</p>
+<p>This run checked text reading and version information on an iPhone 17 Simulator with iOS 27.2.</p>
 <div class="document-table" role="region" tabindex="0" aria-label="iPhone Simulator — 12 November 2026 table"><table><thead><tr>
-<th scope="col">Check</th>
+<th scope="col">Test</th>
 <th scope="col">Passed</th>
-<th scope="col">What it covered</th>
+<th scope="col">What we checked</th>
 </tr></thead><tbody>
 <tr>
 <td>Unit tests</td>
 <td><strong>21/21</strong></td>
-<td>Document reading, prominent text, requested fields and packaged version information.</td>
+<td>Reading documents, headings and specific fields, plus the packaged version number.</td>
 </tr>
 <tr>
-<td>UI tests</td>
+<td>Screen tests</td>
 <td><strong>2/2</strong></td>
-<td>Spoken label reading and reading a requested price with Apple Vision OCR. Both used simulated camera and speech inputs.</td>
+<td>Asking LunaV to read a label heading or a specific price. Camera and speech inputs were simulated.</td>
 </tr>
 <tr>
 <td>Total</td>
 <td><strong>23/23</strong></td>
-<td>Zero failures, skips or recorded runtime warnings in this run.</td>
+<td>No failures, skipped tests or recorded runtime warnings.</td>
 </tr>
 </tbody></table></div>
-<p>An earlier run of the label-reading check failed that evening. The check passed in the 23-test run.</p>
-<h3>Mac component benchmark — 16 November 2026</h3>
-<p>The evaluation used file inputs on Apple Silicon with macOS 27.2.1 and tools built from LunaV 3.2.1 (build 6). OCR used Apple Vision, the visual model used Qwen3-VL-2B-Instruct 4-bit via MLX, and speech used the app’s Apple Dictation decoder. CER is character error rate and WER is word error rate. Lower is better for both. Each result applies to its own inputs and scoring method.</p>
-<div class="document-table" role="region" tabindex="0" aria-label="Mac component benchmark — 16 November 2026 table"><table><thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Evaluation inputs</th>
-<th scope="col">Recorded result</th>
+<p>The label-heading check failed in an earlier run that evening and passed in this run.</p>
+<h3>Component tests on Mac — 16 November 2026</h3>
+<p>These tests used images and recordings on an Apple silicon Mac with macOS 27.2.1. OCR turns text in a photo into readable text. CER measures errors per character. WER measures errors per word. Lower rates are better.</p>
+<div class="document-table" role="region" tabindex="0" aria-label="Component tests on Mac — 16 November 2026 table"><table><thead><tr>
+<th scope="col">Test</th>
+<th scope="col">What we used</th>
+<th scope="col">Result</th>
 </tr></thead><tbody>
 <tr>
-<td>OCR</td>
-<td><a href="https://data.mendeley.com/datasets/ntdmgksh9w/5">TEMS v5</a>, 514 text crops</td>
+<td>Read text</td>
+<td>514 text crops from <a href="https://data.mendeley.com/datasets/ntdmgksh9w/5">TEMS v5</a></td>
 <td><strong>3.07% CER</strong>. Exact text on <strong>434/514</strong> images.</td>
 </tr>
 <tr>
-<td>Visual Q&amp;A</td>
-<td><a href="https://vizwiz.org/tasks-and-datasets/vqa/">VizWiz VQA</a>, 150 questions</td>
+<td>Answer questions about images</td>
+<td>150 questions from <a href="https://vizwiz.org/tasks-and-datasets/vqa/">VizWiz VQA</a></td>
 <td><strong>56.07%</strong> under VizWiz’s scoring method.</td>
 </tr>
 <tr>
-<td>Object finding</td>
-<td>50 synthetic scenes</td>
+<td>Find objects</td>
+<td>50 generated test scenes</td>
 <td><strong>39/50 (78%)</strong> matched the expected response.</td>
 </tr>
 <tr>
-<td>Thai Dictation</td>
-<td><a href="https://huggingface.co/datasets/google/fleurs">FLEURS</a>, 50 Thai clips</td>
-<td><strong>10.73% CER</strong>. All 50 returned text.</td>
+<td>Transcribe Thai speech</td>
+<td>50 Thai clips from <a href="https://huggingface.co/datasets/google/fleurs">FLEURS</a></td>
+<td><strong>10.73% CER</strong>. All 50 clips returned text.</td>
 </tr>
 <tr>
-<td>English Dictation</td>
-<td><a href="https://huggingface.co/datasets/google/fleurs">FLEURS</a>, 50 US English clips</td>
+<td>Transcribe English speech</td>
+<td>50 US English clips from <a href="https://huggingface.co/datasets/google/fleurs">FLEURS</a></td>
 <td><strong>22.68% CER</strong>, <strong>28.00% WER</strong>. Ten clips returned no text.</td>
 </tr>
 <tr>
-<td>Document summaries</td>
-<td>8 synthetic document images</td>
-<td><strong>18/27 facts</strong> retained. <strong>3/8</strong> summaries retained every expected fact.</td>
+<td>Summarise documents</td>
+<td>8 generated document images</td>
+<td><strong>18/27 facts</strong> kept. <strong>3/8</strong> summaries kept every expected fact.</td>
 </tr>
 </tbody></table></div>
 <ul>
-<li><strong>OCR.</strong> The CER represents 263 edits across 8,571 reference characters. Whitespace-delimited WER was 10.64%. Eight images returned no text and counted as deletions.</li>
-<li><strong>Visual Q&amp;A.</strong> The score was 48.10% on the 100 answerable questions and 72.00% on the 50 unanswerable questions. The model said <code>unanswerable</code> on 13 and 35 questions in those groups, respectively. One image below the model’s minimum height scored zero.</li>
-<li><strong>Object finding.</strong> Left 10/10, right 10/10, centred 4/10, absent 10/10 and multiple matches 5/10. The other six centred scenes prompted a camera adjustment.</li>
-<li><strong>Dictation.</strong> Thai had 628 edits across 5,854 reference characters. English had 1,139 across 5,023. The ten missing English transcriptions counted as deletions. CER was 5.36% across the 40 English clips that returned text.</li>
-<li><strong>Summaries.</strong> One reviewer checked the retained facts. Example errors included changing a correctly read Friday time and misidentifying a correctly read water label.</li>
+<li><strong>Reading text.</strong> Apple Vision output needed 263 edits to match 8,571 reference characters. WER was 10.64%, counting words split by spaces. Eight blank results counted as deletions. CER by group was 2.41% on Thai (258 images), 0.83% on English (188), 8.36% on mixed Thai and English (63), and 0.00% on numbers and symbols (5).</li>
+<li><strong>Visual questions.</strong> Qwen3-VL-2B-Instruct 4-bit (MLX) scored 48.10% on 100 answerable questions and 72.00% on 50 unanswerable ones. It answered <code>unanswerable</code> 13 and 35 times in those groups, respectively. One image below the model’s minimum height scored zero.</li>
+<li><strong>Finding objects.</strong> Left 10/10, right 10/10, centre 4/10, absent 10/10 and multiple matches 5/10. The other six centre cases prompted the user to aim again.</li>
+<li><strong>Speech.</strong> Apple Dictation output needed 628 edits across 5,854 Thai reference characters and 1,139 across 5,023 English characters. The ten blank English results counted as deletions. CER on the 40 English clips with text was 5.36%.</li>
+<li><strong>Summaries.</strong> One person checked the results. Examples of mistakes include changing a Friday appointment time and misidentifying a water label even though OCR read both correctly.</li>
 </ul>
-<p>TEMS CER was 2.41% for Thai (258 crops), 0.83% for English (188), 8.36% for mixed Thai/English (63) and 0.00% for numerals/symbols (5). Exploratory 95% bootstrap intervals were <strong>1.93–4.60% CER</strong> for TEMS and <strong>49.00–63.07%</strong> for the VizWiz score. TEMS resampling grouped crops by source photo. The v5 metadata contains 112 test source-photo IDs. The accompanying paper reports 162, so the results should only be compared directly once the test IDs are matched. VizWiz and FLEURS samples used seed 2027. These file-based checks leave live microphone use, end-to-end offline operation, iPhone latency and battery life open for measurement.</p>
-<h3>Physical iPhone distance comparison — 16 November 2026</h3>
-<p>A LunaV <strong>3.2.1 (build 6) Release test build</strong> captured five frames per phone in one scene with a white jar. The iPhone 14 Pro produced filtered rear LiDAR depth. The iPhone 14 used DA3 with scale 1.0 and the camera’s intrinsic matrix. Both devices returned values at all five selected positions in all five frames, giving <strong>25 paired readings</strong>. The DA3 test path invoked the camera, image preparation and depth runtime directly after ordinary preparation attempts reported the model as busy. Both paths used LunaV’s production range reader.</p>
-<div class="document-table" role="region" tabindex="0" aria-label="Physical iPhone distance comparison — 16 November 2026 table"><table><thead><tr>
-<th scope="col">Point in the frame</th>
-<th scope="col">Median LiDAR (m)</th>
-<th scope="col">Median DA3 (m)</th>
-<th scope="col">Mean DA3 minus LiDAR (cm)</th>
+<p>The exploratory 95% ranges were <strong>1.93–4.60% CER</strong> for TEMS and <strong>49.00–63.07%</strong> for VizWiz. The TEMS bootstrap grouped text crops by source photo. The v5 metadata lists 112 test-photo IDs and the paper lists 162. Match those IDs before comparing scores directly. VizWiz and FLEURS used random seed 2027. Live microphone accuracy, end-to-end offline use, iPhone response times and battery life still need separate tests.</p>
+<h3>Distance on two iPhones — 16 November 2026</h3>
+<p>A Release build set up to record test data took five photos per phone in one scene with a white jar. The iPhone 14 Pro measured depth with its rear LiDAR sensor. The iPhone 14 estimated depth with Depth Anything 3 (DA3), using scale 1.0 and the camera’s lens data. Both phones returned distances at five points per frame. The usual DA3 preparation reported the model as busy, so the test called the camera, image preparation and model directly and used the app’s standard distance reader.</p>
+<div class="document-table" role="region" tabindex="0" aria-label="Distance on two iPhones — 16 November 2026 table"><table><thead><tr>
+<th scope="col">Point in the photo</th>
+<th scope="col">LiDAR median (m)</th>
+<th scope="col">DA3 median (m)</th>
+<th scope="col">Mean DA3 − LiDAR (cm)</th>
 </tr></thead><tbody>
 <tr>
 <td>Jar surface</td>
@@ -464,97 +378,55 @@
 <td>−22.1</td>
 </tr>
 </tbody></table></div>
-<p>Mean absolute difference across the 25 pairs was <strong>19.5 cm</strong>, and <strong>17.5 cm</strong> over the five jar-surface pairs. A negative value means DA3 estimated a closer surface than LiDAR. The cameras have different frame proportions, so matching corner coordinates may sample different spots. This experiment uses LiDAR as its reference across two devices in one scene. Absolute error remains unmeasured because there was no independent physical reference for each point.</p>
-<h2>App language and About</h2>
-<p>Use <strong>Settings → App language</strong> to switch the interface immediately between Thai and English. The choice persists across relaunches and covers the camera, Settings, About, conversation controls, region/text-group/distance tools, runtime information, status, and errors. It is independent of the selected Dictation language, answer language, and reading voice. Existing questions, answers, and original OCR text are preserved rather than translated when the interface changes. Language names and the creator&#x27;s name keep their original spelling.</p>
-<p>The final Settings group opens <strong>About → About LunaV</strong>, showing the actual bundle version <strong>3.2.1 / build 6</strong>, creator <strong>Wachirawich kripindakul (koomean)</strong>, and a link to the LunaV website. The bundle includes Thai and English interface catalogs and permission descriptions. iOS system screens follow the system language.</p>
-<h2>Current interface</h2>
-<p>The camera, Settings, conversation, region-selection, text-grouping, and distance screens use midnight blue, warm white, pale blue/gold, Noto Sans Thai, and Manrope. The app icon now uses the website&#x27;s crescent-and-star geometry. Settings puts language, speech input, and answer voices before testing tools, with expandable speech and calibration details. The camera screen retains its two main buttons; the front/rear camera-switch menu has been removed from Settings.</p>
-<p>The iPhone Duo layout keeps the same two controls on the outer screen, separates the preview and answer areas in the wider open layout, and uses the space available around the fold in partly folded mode.</p>
-<p>A native SwiftUI introduction shows <strong>LunaVision → red pen over “ision” → LunaV. → camera header</strong> in about <strong>4.22 seconds</strong>. Model preparation starts alongside it and continues underneath. If preparation is still incomplete, the app shows its actual preparation/retry state after the animation. Reduce Motion uses a brief static mark instead; returning from the background does not replay the introduction. The app does not use a WebView or video for this sequence.</p>
-<p>The website’s camera, conversation, Settings, and Thai/English About previews were captured from <strong>iOS Simulator on 29 October 2026</strong> for version 3.0.0. The English conversation preserves its original Thai question and source OCR text. The text-grouping preview shows the earlier lunar UI. These previews illustrate interface behaviour and OCR test images.</p>
-<h2>Ask, read, and listen</h2>
-<p>By default, holding the centre button starts photo/depth capture and microphone recording together after microphone permission is granted. Speak while holding, then release to stop recording and submit once the image is ready. A short tap takes a photograph only. The optional same-photo setting reuses the latest capture for follow-up questions. The finder still uses a fresh capture. Recordings over the <strong>2-minute limit</strong> are rejected rather than submitting only their beginning.</p>
-<p><strong>Apple DictationTranscriber through SpeechAnalyzer</strong> handles speech input locally using installed Apple language assets. Thai is the default; select English with the separate speech-language setting in Settings. Each request uses one selected language, without automatic language switching. The app checks device/locale support. Missing language assets may need an initial download; fresh-install offline speech is not guaranteed. Transcription has a <strong>45-second deadline</strong>. Whisper is no longer in the current app bundle.</p>
-<p>Completed AI, OCR, summary, and distance answers are read automatically by default with <strong>installed Apple voices</strong>. Settings can disable reading, select Thai/English voices, and preview a voice. Reading stops before new capture/recording, cancellation, context clearing, or backgrounding. This does not promise access to the user&#x27;s selected Siri voice. Additional voices can be installed through iOS Settings.</p>
-<p>Apple Vision OCR and Qwen3-VL-2B-Instruct 4-bit through MLX/Metal run locally. Settings tools support region selection, grouping signs/menus/labels, and summarising selected OCR text. Same-photo questions use bounded follow-up context. Finder directions describe the captured camera frame. OCR, transcription, estimates, and generated answers can be wrong.</p>
-<h2>Distance and its source</h2>
-<p>On a <strong>LiDAR-equipped device</strong>, supported captures use sensor depth paired with the photograph: camera-to-surface distance at capture time. These devices skip Depth Anything 3, including when sensor depth is missing. A failed LiDAR reading is not silently replaced with a model estimate labelled as LiDAR.</p>
-<p>On a <strong>device without LiDAR</strong>, bundled <strong>Depth Anything 3 Metric</strong> estimates depth from a new photograph and its lens focal information <strong>when a distance question or manual point selection needs it</strong>. Ordinary visual questions do not trigger a prediction. A successful map is reused for the same capture; transient prediction failures can be retried. Missing lens information, sky, or invalid values can prevent a reading. Answers label the model source and round estimates to 0.1 metre. Imported images without paired depth do not produce numeric distances.</p>
-<p>Settings can fit a per-camera scale from a measured camera-to-surface reference of <strong>0.3–8 metres</strong> near the image centre. Calibration can reduce a consistent bias for that camera. The 16 November comparison used LiDAR as its reference and measured how closely the two devices agreed in one scene. Measuring absolute accuracy requires independent physical reference distances.</p>
-<p><strong>LiDAR obstacle haptics</strong> are an optional Settings feature on compatible iPhones with rear LiDAR. During live camera preview, the pulses become stronger and more frequent as an obstacle in the central area gets closer. The default start distance is <strong>2 m</strong>, the strongest point is <strong>0.4 m</strong>, and the maximum strength is <strong>80%</strong>. Settings lets users adjust all three and preview the vibration. Monitoring pauses during capture or AI processing, while the app is in the background, or when the device is too hot.</p>
-<h2>Preparation and resource use</h2>
-<p>The app targets <strong>iOS 27.0 or later</strong>. Build the source with <strong>Xcode 27.1 or later</strong>. Dictation support depends on device and language; image/depth inference still needs sufficient memory and supported hardware. It prepares visual models before enabling questions and retries temporary failures in the foreground. DA3 preparation applies only to devices without LiDAR. Speech preparation has a <strong>30-second deadline</strong> and can retry separately. If speech is unavailable, photos, typed questions, OCR, and summaries remain available once their required visual models are ready.</p>
-<p>The compact policy applies at <strong>6 GiB physical RAM or below</strong>, or when reported positive process headroom is below <strong>1 GiB</strong>. It releases idle visual-model weights before a new capture and after answers, and retains lightweight image references and bounded text/OCR/tokenizer caches. OCR runs before a cold visual-model load. Releasing weights can add another load before the next answer. Successful warmup stages are tracked separately from resident weights so returning from the background does not repeat every completed stage.</p>
-<p>Cancellation and memory-warning cleanup follow running work before models reload. In-flight inference may own buffers until it returns; cancellation does not guarantee immediate or complete RAM release. Native-speech cleanup does not block typed visual questions. The optimisation retained model weights, quantisation, image resolution, answer checks, and memory-admission safeguards. Warmup does not guarantee that weights remain in RAM or every device can run inference.</p>
-<h2>Earlier app validation</h2>
-<h3>3.2.0 build 5 — 11 November 2026</h3>
-<p>This release passed <strong>288/288 (285 unit and 3 UI)</strong> on an iPhone 17 Simulator with iOS 27.0. The UI tests used simulated camera and speech inputs and checked hold-to-ask, photo reuse and replacement, and Apple Vision price reading. Four selected Mac finder prompts checked right, centred, multiple matches and absent objects. A generic iOS Release compiled with signing disabled and reported version 3.2.0 / build 5.</p>
-<h3>3.1.0 build 4 — 11 November 2026</h3>
-<p>Version 3.1 added a layout that adapts to the iPhone Duo’s outer, open, and partly folded states, plus the optional LiDAR obstacle haptics. On the Duo Simulator, <strong>2/2</strong> UI checks passed, including the layout transition with the question, photo status, and both controls preserved. On the regular iPhone 17 Simulator, <strong>271 unit tests</strong> and <strong>7/7 landscape checks</strong> passed. A generic iOS Release compiled with signing disabled. The sensor-distance and haptic-strength checks were simulated.</p>
-<h3>3.0.0 build 3 — 29 October 2026</h3>
-<p>Version 3.0 added Thai/English UI selection and About. The Simulator suite passed <strong>269/269 (253 unit and 16 UI)</strong>, followed by a <strong>2/2</strong> focused translation and bundle metadata rerun. A signed generic-iOS Release passed strict code-signature verification. The iPhone 14 installation command was cancelled after more than three minutes without connection or transfer progress. The source and catalog audit found 26 unchanged core source hashes and no missing or invalid English entries.</p>
-<h3>Earlier lunar interface — 29 October 2026</h3>
-<p>The lunar-theme update before 3.0.0 passed <strong>262/262 Simulator tests (249 unit + 13 UI)</strong> and its signed Release passed verification. That build&#x27;s physical iPhone 14 install failed with <strong>CoreDevice 4000 / transport peer no longer reachable</strong>. Its seven UI source hashes and 18 Shared hashes matched its recorded manifest.</p>
-<h2>Earlier resource build — 24 October 2026</h2>
-<p>These results belong to the earlier resource-optimisation build, not the new UI&#x27;s physical-device validation.</p>
-<div class="document-table" role="region" tabindex="0" aria-label="Earlier resource build — 24 October 2026 table"><table><thead><tr>
-<th scope="col">Check</th>
-<th scope="col">Recorded result</th>
-<th scope="col">Scope and limit</th>
+<p>The average size of the gap was <strong>19.5 cm across 25 pairs</strong> and <strong>17.5 cm</strong> at the jar surface. A negative number means DA3 estimated a shorter distance. Different frame shapes can put the corners on different spots. The test used LiDAR as the reference in this one scene. Measuring error against the true distance requires separate physical measurements.</p>
+<h2>Reading and device details</h2>
+<ul>
+<li><strong>Read a label or a specific detail.</strong> “Read the label” usually reads the most prominent text first. You can ask for all the text, name a field, or specify an area, such as “Read the price on the right.” LunaV may ask which detail you mean if several match.</li>
+<li><strong>Ask a follow-up.</strong> Turn on <strong>Reuse the photo on hold</strong> in Settings or use the shutter’s VoiceOver follow-up action. Tap briefly to take a new photo. The object finder takes a fresh photo and describes the object’s position in the frame. It can play a short tone or vibrate when the object is centred on supported devices.</li>
+<li><strong>Choose a language.</strong> Go to <strong>Settings → App language</strong> to change the buttons and menus. Your choice is saved. Dictation, answers and reading voices have their own settings. Existing questions, answers and text read from photos stay in their original language. Find the installed version under <strong>Settings → About → About LunaV</strong>.</li>
+<li><strong>Timing and speech.</strong> Dictation has 30 seconds to prepare and 45 seconds to transcribe a recording. When voice input is unavailable, you can still take photos, type questions, read text, and summarise once the required models are ready.</li>
+<li><strong>Check a distance.</strong> LunaV shows which source it used. LiDAR readings need matching sensor data. DA3 estimates use a photo and lens data and are calculated when needed. Imported photos need paired depth for a numeric reading. A compatible rear LiDAR iPhone can also vibrate during the live preview when a central obstacle comes closer. The optional setting defaults to a 2 m start, 0.4 m for the strongest pulse and 80% maximum strength. Capture, processing, backgrounding or high temperature pauses the feature. Haptic strength and finder tones still need physical-device checks.</li>
+</ul>
+<p>On phones with 6 GiB of RAM or less, or when the app has less than 1 GiB of available memory, LunaV can unload idle models and reload them as needed. For iOS, Xcode, and model requirements, see <a href="devices.html">Supported devices</a>.</p>
+<p>Camera, Settings and About previews on the site show version <strong>3.0.0</strong> from 29 October 2026. <a href="credits.html">See screenshot credits</a>.</p>
+<h2>Earlier tests</h2>
+<div class="document-table" role="region" tabindex="0" aria-label="Earlier tests table"><table><thead><tr>
+<th scope="col">Version or date</th>
+<th scope="col">Simulator or Mac</th>
+<th scope="col">Build or physical device</th>
 </tr></thead><tbody>
 <tr>
-<td>Simulator regression</td>
-<td><strong>259/259: 248 unit + 11 UI</strong>, no failures/skips/runtime warnings</td>
-<td>Recorded before later device diagnostics and headroom-check ordering entered the final signed build.</td>
+<td>3.2.0 build 5 · 11 November</td>
+<td><strong>288/288</strong> on iPhone 17 Simulator with iOS 27.0 (285 unit and 3 screen tests). Four Mac finder prompts checked right, centre, multiple matches and no match.</td>
+<td>An unsigned iOS Release built successfully.</td>
 </tr>
 <tr>
-<td>iPhone 14 / iOS 27.2</td>
-<td>Signed Release installed and returned to normal ready mode</td>
-<td>This check used the 24 October resource build on an iPhone 14 without LiDAR.</td>
+<td>3.1.0 build 4 · 11 November</td>
+<td><strong>2/2</strong> iPhone Duo layout checks, <strong>271</strong> unit tests and <strong>7/7</strong> landscape checks. The sensor and vibration checks used simulated input.</td>
+<td>An unsigned iOS Release built successfully.</td>
 </tr>
 <tr>
-<td>Two real-camera question cycles</td>
-<td>Recorded speech fixtures → VLM/TTS completed without retry, fallback, or memory refusal in those cases</td>
-<td>Real captures with file-based speech input; not a live-human microphone or semantic-accuracy benchmark.</td>
+<td>3.0.0 build 3 · 29 October</td>
+<td><strong>269/269</strong> on Simulator (253 unit and 16 screen tests), plus <strong>2/2</strong> for language and version information.</td>
+<td>The iOS Release signature passed verification. Installation on an iPhone 14 was cancelled after more than three minutes without progress.</td>
 </tr>
 <tr>
-<td>Deferred/reused DA3</td>
-<td>Two ordinary photos used <strong>0</strong> predictions; manual depth then automatic range on one photo reused <strong>1</strong> prediction</td>
-<td>Capture time and lens pairing checked; no measured reference distance or calibration change.</td>
+<td>Lunar interface · 29 October</td>
+<td><strong>262/262</strong> Simulator tests (249 unit and 13 screen tests).</td>
+<td>The Release signature passed verification. An iPhone 14 lost its connection during installation (CoreDevice 4000).</td>
 </tr>
 <tr>
-<td>Two OCR fixture questions</td>
-<td>OCR preceded cold model loading; second question reused the same-image OCR cache</td>
-<td>Confirms order/cache use for those cases, not universal semantic correctness.</td>
-</tr>
-<tr>
-<td>Speech / answer reading</td>
-<td>Five Thai/English fixtures returned text, silence/white noise were rejected, and <strong>3</strong> TTS completion/session-handoff cases passed</td>
-<td>Fixed recordings and synthesis callbacks; not human accuracy, human-heard playback, or Silent-switch validation.</td>
-</tr>
-<tr>
-<td>Sampled app-process footprint</td>
-<td>Peak <strong>2.394 GB</strong>; settled <strong>96.7–117.6 MB</strong> after TTS/range, decimal units</td>
-<td>Includes diagnostics overhead, excludes separate iOS speech services. No controlled savings comparison, battery/thermal benchmark, or new long-duration soak.</td>
+<td>Memory optimisation · 24 October</td>
+<td><strong>259/259</strong> Simulator tests (248 unit and 11 screen tests) before final diagnostics changes.</td>
+<td>A signed Release installed on an iPhone 14 with iOS 27.2. Two real-camera question cycles completed with recorded speech. One depth estimate was reused for two checks on the same photo.</td>
 </tr>
 </tbody></table></div>
-<h2>Earlier evidence and remaining limits</h2>
-<p>A preceding compact-memory build on <strong>iPhone 14 Pro</strong> completed <strong>30/30 cycles in 545.8 seconds</strong>, using real RGB/depth captures, recorded speech, and TTS enabled. <strong>15 cycles returned a safe fallback after retry</strong>. No memory refusal/app stop was recorded in that run, but this is not 30 correct or spoken model answers. Settled footprint was <strong>91.6–225.8 MiB, median 155.9 MiB</strong>; sampled peak about <strong>2.47 GB</strong>. Settled memory rose during the run and a serious thermal state was observed. A separate controlled three-cycle check compared about <strong>1.9 GiB</strong> baseline with <strong>61–66 MiB</strong> compact footprint; one injected memory warning recovered. These are bounded earlier tests, not universal savings or unlimited-operation guarantees.</p>
-<p>Earlier 24 October speech work recorded 224 unit passes, initially 10/11 UI followed by a corrected targeted 2/2 rerun. The earlier Dictation run passed 220/220 plus six separate native-integration cases. Five synthetic speech files and two non-speech files were checked on iPhone 14 Pro; a 41-second file retained speech beyond 30 seconds. These historical results are not added to the latest test total.</p>
-<p>Earlier 21 October Mac VLM/OCR evidence contained <strong>22 correct concrete answers + 7 abstentions across 29 cases</strong>; six abstentions missed visible information and one declined an absent price. Former Whisper synthetic results were <strong>10/12 exact transcriptions</strong>, not current Apple Dictation accuracy. The historical 23 October hold/release suite passed 155/155. Controlled follow-up/LiDAR/DA3 fixtures establish routing or geometry for their setup, not physical distance accuracy.</p>
-<p>Live microphone accuracy, human-confirmed audibility and Silent-switch behaviour, and absolute distance accuracy still require measurement. Finder tones and haptic strength also require checks on a physical iPhone.</p>
-<h2>Data handling</h2>
-<p>Image/depth inference, OCR, installed-asset transcription, and installed-voice synthesis run on the device without a cloud AI service or API key. Initial Apple language downloads may need network access. Qwen and DA3 are bundled; iOS manages speech assets and voices.</p>
-<p>Temporary WAV recordings, compressed images, previews, and crops can be stored in the app sandbox. Audio is removed when its worker actually finishes, including after cancellation/timeout; deletion is not necessarily immediate while work continues. Superseded images are cleaned up. This is not a claim that data stays only in RAM. These statements describe the app, not website hosting or external links.</p>
-<h2>Evidence provenance</h2>
-<p>Descriptions were checked against the supplied app&#x27;s current <code>README.md</code>, <code>VALIDATION.md</code>, UI/runtime source, and recorded logs. These provenance names refer to the app workspace, not files distributed in this website repository.</p>
-<p>Current version metadata comes from <code>App/project.yml</code>. The 12 November XCTest result is <code>Test-LunaV-2569.11.12_21-55-17-+0700.xcresult</code> in local Xcode DerivedData. The 16 November aggregate results come from <code>Test/Mac-Benchmark-2026-11-16/</code> and <code>Test/iPhone-Distance-2026-11-16/</code>. The public status page reports aggregates and methods.</p>
-<p>Version 3.2 evidence uses <code>Logs/LunaV-v32-delivery-simulator.xcresult</code>, <code>Logs/LunaV-v32-delivery-simulator.log</code>, <code>Logs/LunaV-v32-delivery-iphone.log</code>, and the local <code>LunaVModelCheck</code> finder runs. <code>project.yml</code> is the app version source.</p>
-<p>Version 3.1 evidence uses <code>Logs/v31-duo-handoff-summary.json</code>, <code>Logs/v31-iphone17-verified-summary.json</code>, <code>Logs/v31-landscape-delivery-summary.json</code>, and <code>Logs/v31-device-final.log</code>.</p>
-<p>Version 3.0 evidence uses <code>Logs/v3-language-delivery-test-summary.json</code>, <code>Logs/v3-catalog-final-test-summary.json</code>, <code>Logs/v3-language-source-summary.json</code>, <code>Logs/ui-localization-audit.json</code>, <code>Logs/v3-language-final-release-build.log</code>, <code>Logs/v3-language-final-signature.log</code>, and <code>Logs/v3-language-device-install.log</code>. The UI session ledger and V3 Simulator previews record visual checks.</p>
-<p>Earlier lunar-UI evidence retains <code>Logs/website-ui-delivery-test-summary.json</code>, <code>Logs/website-ui-source-summary.json</code>, and its release/signature/device-install records.</p>
-<p>Earlier resource results use <code>Logs/resource-optimization-tests-summary.json</code>, <code>Logs/resource-optimization-delivery-summary.json</code>, <code>Logs/resource-device-delivery-summary.json</code>, and the functional/OCR/native/TTS/normal-preparation device records. Compact-memory results use <code>Logs/memory-delivery-summary.json</code>, <code>Logs/memory-final-soak.json</code>, and <code>Logs/memory-constrained-fixed.json</code>. Earlier speech/geometry results retain their <code>answer-speech-*</code>, <code>native-dictation-*</code>, <code>da3-*</code>, <code>qa-*</code>, and <code>ptt-*</code> provenance.</p>
+<p>On the 24 October build, measured app memory peaked at <strong>2.394 GB</strong> and fell to <strong>96.7–117.6 MB</strong> after reading or distance checks. The figures cover the app process.</p>
+<p>An earlier compact build completed <strong>30/30</strong> cycles on an iPhone 14 Pro in <strong>545.8 seconds</strong> with real camera captures and recorded speech. <strong>15 cycles returned a fallback message</strong> after retry. Settled app memory was <strong>91.6–225.8 MiB</strong> (median <strong>155.9 MiB</strong>) and peaked at about <strong>2.47 GB</strong>. Memory rose during the run and the phone reached a serious thermal state. The 24 October speech checks used recordings, so hearing the spoken answer and using the Silent switch still need separate checks.</p>
+<h2>Where the app processes data</h2>
+<p>If you cancel a request or it times out, LunaV deletes temporary audio once the background processing ends. See <a href="./#privacy">privacy</a> for how the app handles photos and voice input.</p>
+<h2>Test records</h2>
+<p>The app workspace holds the original records. The current version comes from <code>App/project.yml</code>, the Simulator run from <code>Test-LunaV-2569.11.12_21-55-17-+0700.xcresult</code>, and the two 16 November results from <code>Test/Mac-Benchmark-2026-11-16/</code> and <code>Test/iPhone-Distance-2026-11-16/</code>. Earlier checks are recorded in the app’s <code>VALIDATION.md</code> and <code>Logs/</code> folders.</p>
 </article>
     <div class="document-source"><a href="docs/th/PROJECT-STATUS.md" data-document-original="PROJECT-STATUS.md" data-en="Read the English Markdown original">อ่านต้นฉบับ Markdown ภาษาไทย</a><span aria-hidden="true">·</span><a href="https://github.com/koomean/visionassistant/blob/main/docs/th/PROJECT-STATUS.md" data-document-github="PROJECT-STATUS.md" data-en="View document source on GitHub">ดูซอร์สเอกสารบน GitHub</a></div>
   </main>
