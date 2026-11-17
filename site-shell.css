@@ -131,14 +131,14 @@ html:not(.navigation-ready) .site-header .nav-more{display:none}
   .site-header .nav-more-link strong{font-size:.82rem}
   .site-header .nav-more-link small{font-size:.69rem}
 }
-@media(max-width:390px){
+@media(max-width:440px){
   .site-header .header-inner{width:calc(100% - 28px);gap:6px}
   .site-header .header-actions{gap:3px}
   .site-header .language-switch{gap:2px}
   .site-header .language-switch button{min-width:24px;padding-inline:2px}
   .site-header .menu-toggle,.site-header .github-link{width:38px}
   .site-header .menu-toggle span{left:8px}
-  .site-header .lite-link-brand{display:none}
 }
+@media(max-width:365px){.site-header .lite-link-brand{display:none}}
 @media(prefers-reduced-motion:reduce){.site-header,.site-header *{transition:none!important}}
 @media print{.site-header{display:none!important}}

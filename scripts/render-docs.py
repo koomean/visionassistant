@@ -17,7 +17,7 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 TRANSITION_HEAD = (ROOT / 'partials' / 'page-transition-head.html').read_text().rstrip()
-SITE_SHELL_VERSION = 'luna-20261117-lite'
+SITE_SHELL_VERSION = 'luna-20261117-lite-nav'
 PAGES = [
     ('PROJECT-STATUS.md', 'project-status.html', 'Project status', 'สถานะโครงการ',
      'Current LunaV version, test results, and how to read them.',
