@@ -22,6 +22,7 @@
     try{saved=localStorage.getItem('lunav-language');reduced=reduced||localStorage.getItem('lunav-reduce-motion')==='true'}catch{}
     const requested=new URLSearchParams(location.search).get('lang');
     const language=(requested||saved||root.lang)==='en'?'en':'th';
+    const lite=location.pathname==='/lite.html';
     root.dataset.pageTransitionLanguage=language;
     root.dataset.pageTransitionLabel=language==='en'?'Finding a path to the stars':'กำลังหาเส้นทางไปยังดวงดาว';
     if(!reduced&&location.pathname==='/contact.html'){root.classList.add('contact-entry-pending');setTimeout(()=>root.classList.remove('contact-entry-pending'),1200)}
@@ -33,29 +34,30 @@
     let fallback=false;
     if(!storage)try{
       const from=new URL(document.referrer),known=path=>/^\/(?:index\.html|demo\.html|contact\.html|project-status\.html|licensing\.html|credits\.html|resources\.html|lunavision-architecture\.html|devices\.html|lite\.html|404\.html)?$/.test(path);
-      fallback=from.origin===location.origin&&known(from.pathname)&&known(location.pathname)&&((from.pathname==='/contact.html')!==(location.pathname==='/contact.html'));
+      fallback=from.origin===location.origin&&known(from.pathname)&&known(location.pathname)&&from.pathname!==location.pathname&&(lite||((from.pathname==='/contact.html')!==(location.pathname==='/contact.html')));
     }catch{}
     const age=pending?Date.now()-pending.time:Infinity;
     if(!(pending&&pending.to===location.href&&age>=0&&age<7000)&&!fallback)return;
-    const direction=location.pathname==='/contact.html'?'outbound':'return';
+    const direction=lite||location.pathname==='/contact.html'?'outbound':'return';
     const returnHome=direction==='return'&&(location.pathname==='/'||location.pathname==='/index.html');
     root.dataset.pageTransitionDirection=direction;
     root.dataset.pageTransitionLabel=direction==='return'?(language==='en'?'Taking you back to the stars':'กำลังพากลับสู่ดวงดาว'):(language==='en'?'Finding a path to the stars':'กำลังหาเส้นทางไปยังดวงดาว');
     if(returnHome)root.dataset.pageTransitionReturnHome='true';
     root.dataset.pageTransitionArrival='true';
     if(reduced)return;
+    if(lite)root.dataset.pageTransitionVariant='lite';
     root.classList.add('page-arriving');
     if(returnHome)root.classList.add('page-positioning');
     setTimeout(()=>{if(!root.dataset.pageTransitionManaged)root.classList.remove('page-arriving','page-arrival-reveal','page-positioning')},returnHome?5000:1500);
   })();</script>
-  <script src="/page-transition.js?v=luna-20261117-lite" defer></script>
+  <script src="/page-transition.js?v=luna-20261117-lite-bolt" defer></script>
   <!-- page-transition:end -->
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/noto-sans-thai.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css?v=luna-20261103-safari">
-  <link rel="stylesheet" href="site-shell.css?v=luna-20261117-lite-nav">
+  <link rel="stylesheet" href="site-shell.css?v=luna-20261117-lite-bolt">
   <link rel="stylesheet" href="docs.css?v=luna-20261116-results">
-  <script src="site-shell.js?v=luna-20261117-lite-nav" defer></script>
+  <script src="site-shell.js?v=luna-20261117-lite-bolt" defer></script>
   <script src="docs-language.js?v=luna-20261031-nav" defer></script>
   <title data-title-th="เครดิตและแหล่งที่มา — LunaV" data-title-en="Credits and sources — LunaV">เครดิตและแหล่งที่มา — LunaV</title>
 </head>

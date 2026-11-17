@@ -5,6 +5,7 @@
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const key = 'lunav-page-transition';
   const contact = path => path === '/contact.html';
+  const lite = path => path === '/lite.html';
   const pages = new Set(['/', '/index.html', '/demo.html', '/contact.html', '/project-status.html', '/licensing.html', '/credits.html', '/resources.html', '/lunavision-architecture.html', '/devices.html', '/lite.html', '/404.html']);
   let departing = false, navigationTimer, resetTimer, arrivalFrame;
   let direction = root.dataset.pageTransitionDirection || 'outbound';
@@ -25,9 +26,13 @@
   function label(language, nextDirection = direction) {
     direction = nextDirection;
     const english = language === 'en';
-    root.dataset.pageTransitionLabel = direction === 'return'
-      ? (english ? 'Taking you back to the stars' : 'กำลังพากลับสู่ดวงดาว')
-      : (english ? 'Finding a path to the stars' : 'กำลังหาเส้นทางไปยังดวงดาว');
+    if (root.dataset.pageTransitionVariant === 'lite') {
+      root.dataset.pageTransitionLabel = english ? 'Opening LunaV Lite' : 'กำลังเปิด LunaV Lite';
+    } else {
+      root.dataset.pageTransitionLabel = direction === 'return'
+        ? (english ? 'Taking you back to the stars' : 'กำลังพากลับสู่ดวงดาว')
+        : (english ? 'Finding a path to the stars' : 'กำลังหาเส้นทางไปยังดวงดาว');
+    }
     status.lang = english ? 'en' : 'th';
     message.textContent = root.dataset.pageTransitionLabel;
   }
@@ -46,6 +51,7 @@
     delete root.dataset.pageTransitionManaged;
     departing = false;
     root.classList.remove('page-leaving', 'page-arriving', 'page-arrival-reveal', 'page-positioning');
+    delete root.dataset.pageTransitionVariant;
     status.setAttribute('aria-hidden', 'true');
   }
   function reveal() {
@@ -131,23 +137,27 @@
     const link = event.target.closest('a[href]');
     if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
     const url = new URL(link.href, location.href);
-    if (url.origin !== location.origin || !pages.has(url.pathname) || (!contact(location.pathname) && !contact(url.pathname))) return;
+    const opensLite = lite(url.pathname);
+    const usesContactTransition = contact(location.pathname) || contact(url.pathname);
+    if (url.origin !== location.origin || !pages.has(url.pathname) || (!opensLite && !usesContactTransition)) return;
     if (url.pathname === location.pathname && url.search === location.search) return;
     event.preventDefault();
     if (departing) return;
     cancelAnimationFrame(arrivalFrame);
     cancelPositioning();
     departing = true;
-    label(root.lang, contact(url.pathname) ? 'outbound' : 'return');
+    if (opensLite) root.dataset.pageTransitionVariant = 'lite';
+    else delete root.dataset.pageTransitionVariant;
+    label(root.lang, opensLite || contact(url.pathname) ? 'outbound' : 'return');
     status.setAttribute('aria-hidden', 'false');
     clearTimeout(resetTimer);
     root.classList.remove('page-arriving', 'page-arrival-reveal', 'page-positioning');
     root.classList.add('page-leaving');
-    try { sessionStorage.setItem(key, JSON.stringify({ to: url.href, time: Date.now(), direction })); } catch { /* Ordinary navigation works without storage. */ }
-    // Let the short status settle into view before the next document replaces it.
     navigationTimer = setTimeout(() => {
+      try { sessionStorage.setItem(key, JSON.stringify({ to: url.href, time: Date.now(), direction })); }
+      catch { /* Ordinary navigation works without storage. */ }
       location.assign(url.href);
-    }, 360);
+    }, opensLite ? 300 : 360);
     // A cancelled or failed navigation must not leave a curtain over the page.
     resetTimer = setTimeout(reset, 2200);
   });
