@@ -28,6 +28,8 @@
     const english = language === 'en';
     if (root.dataset.pageTransitionVariant === 'lite') {
       root.dataset.pageTransitionLabel = english ? 'Opening LunaV Lite' : 'กำลังเปิด LunaV Lite';
+    } else if (root.dataset.pageTransitionVariant === 'moon') {
+      root.dataset.pageTransitionLabel = english ? 'Returning to LunaV' : 'กำลังกลับสู่ LunaV';
     } else {
       root.dataset.pageTransitionLabel = direction === 'return'
         ? (english ? 'Taking you back to the stars' : 'กำลังพากลับสู่ดวงดาว')
@@ -138,8 +140,9 @@
     if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
     const url = new URL(link.href, location.href);
     const opensLite = lite(url.pathname);
+    const leavesLite = lite(location.pathname) && !opensLite;
     const usesContactTransition = contact(location.pathname) || contact(url.pathname);
-    if (url.origin !== location.origin || !pages.has(url.pathname) || (!opensLite && !usesContactTransition)) return;
+    if (url.origin !== location.origin || !pages.has(url.pathname) || (!opensLite && !leavesLite && !usesContactTransition)) return;
     if (url.pathname === location.pathname && url.search === location.search) return;
     event.preventDefault();
     if (departing) return;
@@ -147,17 +150,22 @@
     cancelPositioning();
     departing = true;
     if (opensLite) root.dataset.pageTransitionVariant = 'lite';
+    else if (leavesLite) root.dataset.pageTransitionVariant = 'moon';
     else delete root.dataset.pageTransitionVariant;
-    label(root.lang, opensLite || contact(url.pathname) ? 'outbound' : 'return');
+    label(root.lang, !leavesLite && (opensLite || contact(url.pathname)) ? 'outbound' : 'return');
     status.setAttribute('aria-hidden', 'false');
     clearTimeout(resetTimer);
     root.classList.remove('page-arriving', 'page-arrival-reveal', 'page-positioning');
     root.classList.add('page-leaving');
     navigationTimer = setTimeout(() => {
-      try { sessionStorage.setItem(key, JSON.stringify({ to: url.href, time: Date.now(), direction })); }
+      try {
+        sessionStorage.setItem(key, JSON.stringify({
+          to: url.href, time: Date.now(), direction, variant: root.dataset.pageTransitionVariant
+        }));
+      }
       catch { /* Ordinary navigation works without storage. */ }
       location.assign(url.href);
-    }, opensLite ? 300 : 360);
+    }, opensLite || leavesLite ? 300 : 360);
     // A cancelled or failed navigation must not leave a curtain over the page.
     resetTimer = setTimeout(reset, 2200);
   });

@@ -72,6 +72,27 @@ html[data-page-transition-variant="lite"]::after{content:'';margin:auto;padding:
   62%{transform:translateY(-3px) rotate(3deg) scale(1.04)}
   100%{transform:none}
 }
+[data-page-transition-variant="moon"]{
+  --transition-moon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23f2f0e9' d='M26 19.1A12 12 0 0 1 12.9 6 12 12 0 1 0 26 19.1Z'/%3E%3Cpath fill='%23dac7a0' d='m23 3 .9 3.1L27 7l-3.1.9L23 11l-.9-3.1L19 7l3.1-.9Z'/%3E%3C/svg%3E");
+}
+html[data-page-transition-variant="moon"]::after,
+[data-page-transition-variant="moon"] .page-transition-orbit{
+  width:56px;height:56px;background:var(--transition-moon) center / contain no-repeat;
+}
+html[data-page-transition-variant="moon"]::after{content:'';margin:auto;padding:0}
+[data-page-transition-variant="moon"] .page-transition-orbit{border:0;border-radius:0;margin:0;animation:none}
+[data-page-transition-variant="moon"] .page-transition-orbit::after{content:none}
+[data-page-transition-variant="moon"] .page-transition-message{
+  position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;
+}
+.page-leaving[data-page-transition-variant="moon"] .page-transition-orbit{
+  animation:page-transition-moon 260ms ease-out both;
+}
+@keyframes page-transition-moon{
+  0%{transform:translateY(5px) rotate(-8deg) scale(.9)}
+  65%{transform:translateY(-2px) rotate(2deg) scale(1.02)}
+  100%{transform:none}
+}
 @media(prefers-reduced-motion:reduce){html::before,html::after,.page-transition-status{display:none!important}}
 @media print{html::before,html::after,.page-transition-status{display:none!important}}
 .document-page .site-header,.not-found-page .site-header{background:rgba(8,15,32,.96);border-bottom-color:var(--line);backdrop-filter:blur(18px)}
