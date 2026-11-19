@@ -1,6 +1,8 @@
 # LunaV project status
 
-LunaV **3.2.1 (build 6)** is the current iPhone research prototype. [Download the source on GitHub](https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source).
+LunaV **3.2.2 (build 7)** is the current iPhone research prototype. [Download the source on GitHub](https://github.com/koomean/visionassistant/releases/tag/v3.2.2-source).
+
+On one iPhone 14 Pro at a user-provided 44 cm reference, five fresh photographs after per-source calibration gave median readings of 44.11 cm with LiDAR and 43.51 cm with Depth Anything 3. This covers one object and one distance. Earlier results below refer to their stated versions.
 
 ## Latest test results
 

@@ -4,6 +4,8 @@
 
 # LunaV
 
+Current full app: **3.2.2 (build 7)**. [Download the 3.2.2 source release](https://github.com/koomean/visionassistant/releases/tag/v3.2.2-source). Earlier validation results below retain their original version labels.
+
 ### Ask about the world around you. Privately, on your iPhone.
 
 **An experimental, on-device AI visual assistant** built to explore more accessible ways to understand photographs, read text, and estimate supported distances.
