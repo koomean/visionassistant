@@ -84,12 +84,12 @@ LunaV processes its core image, depth, OCR, question-transcription, and answer-g
 
 The repository's `main` branch contains the **project website**, documentation, and licensing notices. **The Xcode app source is distributed through GitHub Releases**, not directly in the root repository tree.
 
-| | **LunaV 3.2.1** | **LunaV Lite 4.0.0** |
+| | **LunaV 3.2.1** | **LunaV Lite 4.1.0 (build 8)** |
 | --- | --- | --- |
 | Focus | On-device visual question answering | A separate, lighter photo/text toolset |
 | Target | iPhone | iPhone and iPad |
 | Core technology | Qwen3-VL-2B-Instruct, MLX/Metal, Apple Vision, LiDAR / DA3 Metric | Apple Vision and a compressed DA3 model |
-| Source package | [`v3.2.1-source`](https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source) | [`v4.0.0-lite`](https://github.com/koomean/visionassistant/releases/tag/v4.0.0-lite) |
+| Source package | [`v3.2.1-source`](https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source) | [`v4.1.0-lite`](https://github.com/koomean/visionassistant/releases/tag/v4.1.0-lite) |
 | Included model files | **Not included** in the 3.2.1 source ZIP | Compressed Depth Anything 3 included in the Xcode project |
 
 **For LunaV 3.2.1:** Open the release's **Assets** and download `LunaV-3.2.1-source.zip` and `SHA256SUMS.txt`. Verify the source archive against the published checksums. The ZIP is **source code, not an installable iPhone app**; model preparation and your own Xcode signing are required.
@@ -170,7 +170,7 @@ Useful pages: [Website](https://lunavision.koomean.com/) · [Architecture](https
 - **ความเป็นส่วนตัว:** ประมวลผล AI หลักในเครื่อง ไม่ต้องใช้ Cloud AI หรือ API Key
 - **ข้อควรทราบ:** บางภาษาอาจต้องดาวน์โหลดไฟล์เสียงของ Apple ก่อนจึงจะใช้ Dictation แบบออฟไลน์ได้ และแอปยังเป็นต้นแบบวิจัย **ไม่ใช่เครื่องมือนำทางหรืออุปกรณ์ทดแทนไม้เท้าขาว**
 
-**ดาวน์โหลดซอร์ส:** [LunaV 3.2.1](https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source) · [LunaV Lite](https://github.com/koomean/visionassistant/releases/tag/v4.0.0-lite)
+**ดาวน์โหลดซอร์ส:** [LunaV 3.2.1](https://github.com/koomean/visionassistant/releases/tag/v3.2.1-source) · [LunaV Lite](https://github.com/koomean/visionassistant/releases/tag/v4.1.0-lite)
 
 **ผลทดสอบ:** ผ่าน Simulator test เฉพาะส่วน **23/23** สำหรับเวอร์ชัน 3.2.1; OCR มี Character Error Rate **3.07%** บนข้อมูลทดสอบผ่าน Mac; และ DA3 มีค่าเฉลี่ยความต่างจาก LiDAR **19.5 ซม.** ในฉากทดลองเดียว ซึ่งยังไม่ใช่การวัดเทียบระยะจริง อ่านรายละเอียดและข้อจำกัดได้ใน [PROJECT-STATUS.md](PROJECT-STATUS.md)
 
